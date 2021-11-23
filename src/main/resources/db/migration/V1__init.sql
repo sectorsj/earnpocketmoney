@@ -2,7 +2,6 @@ create table users (
     id              bigserial primary key,
     username        varchar(30) not null unique,
     password        varchar(80) not null,
-    email           varchar(80) unique,
     created_at      timestamp default current_timestamp,
     updated_at      timestamp default current_timestamp
 );
@@ -22,13 +21,13 @@ CREATE TABLE users_roles (
 
 insert into roles (name)
 values
-('ROLE_USER'),
-('ROLE_ADMIN');
+('ROLE_CHILD'),
+('ROLE_PARENT');
 
 insert into users (username, password, email)
 values
-('user', '$2y$12$4g1SOm4vGFSF/CbT84nOzOyygKSuTtRshecj7HYOCC1xUPjhkVPWG', 'bob_johnson@gmail.com'),
-('admin', '$2y$12$4g1SOm4vGFSF/CbT84nOzOyygKSuTtRshecj7HYOCC1xUPjhkVPWG', 'john_johnson@gmail.com');
+('child', '111'),
+('parent', '000');
 
 insert into users_roles (user_id, role_id)
 values
