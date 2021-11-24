@@ -24,7 +24,7 @@ values
 ('ROLE_CHILD'),
 ('ROLE_PARENT');
 
-insert into users (username, password, email)
+insert into users (username, password)
 values
 ('child', '111'),
 ('parent', '000');
