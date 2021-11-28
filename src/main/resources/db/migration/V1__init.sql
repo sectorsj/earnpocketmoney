@@ -1,3 +1,25 @@
+---------------------------------------------------Временно------------------------------------------------
+create table parents (
+    id              bigserial primary key,
+    login           varchar(30) not null unique,
+    password        varchar(80) not null
+);
+
+create table children (
+    id              bigserial primary key,
+    login           varchar(30) not null unique,
+    password        varchar(80) not null
+);
+
+insert into parents (login, password)
+values
+('parent1', '000');
+
+insert into children (login, password)
+values
+('child1', '111');
+-------------------------------------------------------------------------------------------------------------
+
 create table users (
     id              bigserial primary key,
     username        varchar(30) not null unique,
