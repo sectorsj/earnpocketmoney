@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EarnpocketmoneyApplication<earnpocketmoney>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "ru.coolteam.earnpocketmoney.EarnpocketmoneyApplication",
+            "projectName": "earnpocketmoney",
+            "args": ""
+        }
+    ]
+}
