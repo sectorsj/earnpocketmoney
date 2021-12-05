@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.coolteam.earnpocketmoney.models.Parent;
 
 @Repository
-public interface ParentRepository extends JpaRepository<Parent, Long> {
+public interface ParentRepository extends JpaRepository<Parent, Integer> {
 }

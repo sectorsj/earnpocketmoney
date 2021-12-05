@@ -1,35 +1,25 @@
 package ru.coolteam.earnpocketmoney.models;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
-@Table(name = "tasks")
+@Table(name = "bonuses")
+@Data
 @NoArgsConstructor
-public class Task{
+public class Bonus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "title")
     private String title;
-
-    @Column(name = "created_at")
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "id_parent")
@@ -39,7 +29,11 @@ public class Task{
     @JoinColumn(name = "id_child")
     private Child child;
 
-    @Column(name = "cost")
-    private Integer cost;
+    @Column(name = "price")
+    private Integer price;
+
+    @Column(name = "received_at")
+    private LocalDateTime receivedAt;
+
 
 }

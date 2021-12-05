@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "children")
@@ -21,4 +22,11 @@ public class Child {
 
     @Column
     private String password;
+
+    @Column(name = "wallet")
+    private Integer wallet;
+
+    @OneToMany(mappedBy = "child")
+    List<Task> tasks;
+
 }
