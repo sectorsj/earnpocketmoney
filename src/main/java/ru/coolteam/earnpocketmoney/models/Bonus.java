@@ -35,5 +35,14 @@ public class Bonus {
     @Column(name = "received_at")
     private LocalDateTime receivedAt;
 
+    public Bonus(Integer id, String title, Parent parent, Child child, Integer price, LocalDateTime receivedAt) {
+        this.id = id;
+        this.title = title;
+        this.parent = parent;
+        this.child = child;
+        this.price = price;
+        this.receivedAt = receivedAt;
+    }
+
 
 }
