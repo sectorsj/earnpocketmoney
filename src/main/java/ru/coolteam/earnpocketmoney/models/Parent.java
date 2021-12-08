@@ -3,6 +3,7 @@ package ru.coolteam.earnpocketmoney.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "parents")
@@ -20,4 +21,11 @@ public class Parent {
 
     @Column
     private String password;
+
+    @OneToMany(mappedBy = "parent")
+    List<Task> tasks;
+
+    @OneToMany(mappedBy = "parent")
+    List<Bonus> bonuses;
+
 }

@@ -22,8 +22,9 @@ public class TaskController {
     }
 
     @GetMapping("/create")
-    public String createNewTask(@RequestParam(name = "title") String title) {
-        taskService.createTask(title);
+    public String createNewTask(@RequestParam(name = "title") String title,
+                                @RequestParam(name = "cost") Integer cost) {
+        taskService.createTask(title,cost);
         return "New task = " + title;
     }
 }

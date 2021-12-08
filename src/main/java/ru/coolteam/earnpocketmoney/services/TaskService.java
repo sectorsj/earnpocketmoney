@@ -13,7 +13,7 @@ import java.util.Optional;
 public class TaskService {
     private final TaskRepository taskRepository;
 
-    public Optional<Task> findById(Long id) {
+    public Optional<Task> findById(Integer id) {
         return taskRepository.findById(id);
     }
 
@@ -21,9 +21,10 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task createTask(String title) {
+    public Task createTask(String title, Integer cost) {
         Task task = new Task();
         task.setTitle(title);
+        task.setCost(cost);
         task = taskRepository.save(task);
         return task;
     }

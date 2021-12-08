@@ -5,7 +5,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
+    # url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
+    # сохранил в файлик, т.к. если база в оперативной памяти, то ни идея, ни консольное приложение не определяет ее содержимое
+    url: jdbc:h2:file:C:/Main/Education/GB/thief1;MODE=PostgreSQL;AUTO_SERVER=TRUE;
     username: sa
     password:
   jpa:
