@@ -30,16 +30,4 @@ public class Task{
     @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-
-    @ManyToOne
-    @JoinColumn(name = "id_parent")
-    private Parent parent;
-
-    @ManyToOne
-    @JoinColumn(name = "id_child")
-    private Child child;
-
-    @Column(name = "cost")
-    private Integer cost;
-
 }

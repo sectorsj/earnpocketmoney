@@ -13,7 +13,7 @@ import java.util.Optional;
 public class ParentService {
     private final ParentRepository parentRepository;
 
-    public Optional<Parent> findById(Integer id) {
+    public Optional<Parent> findById(Long id) {
         return parentRepository.findById(id);
     }
 
