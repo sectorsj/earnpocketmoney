@@ -15,6 +15,8 @@ public interface BonusRepository extends JpaRepository<Bonus,Integer> {
     Optional <Bonus> findFirstBonusByTitle (String title);
     Bonus findFirstByTitle (String title);
 
+
+
     @Query("SELECT i FROM Bonus i where i.title = :name ")
     Bonus findBonusByName (String name);
 

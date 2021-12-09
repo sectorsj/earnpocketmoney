@@ -35,6 +35,11 @@ public class BonusController {
         return bonusService.findById(id).map(BonusDto::new);
     }
 
+    @GetMapping("/getTitle")
+    public Optional<BonusDto> getBonusDtoByTitle(@RequestParam String title){
+        return bonusService.findByName(title).map(BonusDto::new);
+    }
+
     @GetMapping("/create")
     public Optional<BonusDto> create (@RequestParam String title,
                                       @RequestParam Integer idParent,  //надо обдумать с какого места отправить родителя в запрос
@@ -54,8 +59,6 @@ public class BonusController {
     public Optional<BonusDto> updateBonusFromParent (@RequestParam String title,
                                            @RequestParam Integer idParent,  //надо обдумать с какого места отправить родителя в запрос
                                            @RequestParam Integer price){
-
-
         return Optional.of(new BonusDto(bonusService.updateBonusFromParent(title,new Parent(),price)));
     }
 
@@ -63,7 +66,6 @@ public class BonusController {
     public Optional<BonusDto> updateBonusFromChild (@RequestParam String title,
                                                      @RequestParam Integer idChild  //надо обдумать с какого места отправить родителя в запрос
                                                      ){
-
         Child child = childService.findById(idChild).get();
         return Optional.of(new BonusDto(bonusService.updateBonusFromChildren(title,child,LocalDateTime.now())));
     }
