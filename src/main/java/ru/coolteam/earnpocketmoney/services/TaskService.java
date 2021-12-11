@@ -24,6 +24,10 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+    public List<Task> findAllByChild(Child child){
+        return taskRepository.findAllByChild(child);
+    }
+
     public Task createTask(String title, Parent parent, Child child, Integer cost) {
         Task task = new Task();
         task.setTitle(title);
@@ -41,6 +45,12 @@ public class TaskService {
         Task task = taskRepository.findTaskByTitle(title).get();
         task.setUpdatedAt(updatedAt);
         return taskRepository.save(task);
+    }
+
+    public Task updateChild (String title, Child child){
+        Task task = taskRepository.findTaskByTitle(title).get();
+        task.setChild(child);
+        return task;
     }
 
     public boolean delete (String title){

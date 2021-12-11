@@ -3,8 +3,12 @@ package ru.coolteam.earnpocketmoney.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.ChildDto;
+import ru.coolteam.earnpocketmoney.models.Bonus;
 import ru.coolteam.earnpocketmoney.models.Child;
+import ru.coolteam.earnpocketmoney.models.Task;
+import ru.coolteam.earnpocketmoney.services.BonusService;
 import ru.coolteam.earnpocketmoney.services.ChildService;
+import ru.coolteam.earnpocketmoney.services.TaskService;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +19,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/children")
 public class ChildController {
     private final ChildService childService;
+    private final TaskService taskService;
+    private final BonusService bonusService;
 
     @GetMapping()
     public List<ChildDto> getAllChildren() {
@@ -37,6 +43,19 @@ public class ChildController {
     @DeleteMapping("/delete")
     public boolean delete (@RequestParam String login,
                            @RequestParam String password){
+        Child child = childService.findByLogin(login).get();
+       List<Task> tasks = taskService.findAllByChild(child);
+       if(tasks.size()!=0){
+           for (Task t: tasks ) {
+               taskService.updateChild(t.getTitle(),null);
+           }
+       }
+       List<Bonus> bonuses = bonusService.findAllByChild(child);
+        if(bonuses.size()!=0){
+            for (Bonus b: bonuses ) {
+                bonusService.updateChild(b.getTitle(),null);
+            }
+        }
         childService.delete(login,password);
         return true;
     }

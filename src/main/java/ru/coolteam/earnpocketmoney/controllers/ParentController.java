@@ -38,7 +38,7 @@ public class ParentController {
         return Optional.of(new ParentDto(parent));
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete")  //todo нужен ли,если да, то что делать с создаными этим родителем задачами и бонусами
     public boolean delete (@RequestParam String login,
                            @RequestParam String password){
         parentService.delete(login,password);

@@ -40,13 +40,18 @@ public class TaskController {
         return Optional.of(new TaskDto(taskService.updatedTime(title, LocalDateTime.now())));
     }
 
-    @GetMapping("/create")
-    public Optional<TaskDto> createTask(@RequestParam(name = "title") String title,
+
+    @GetMapping("/create")      //todo не забудь добавить description в модели и далее по коду, или удали этот столбец из таблицы в БД
+    public Optional<TaskDto> create(@RequestParam(name = "title") String title,
                                            @RequestParam(name = "idParent") Integer idParent,
                                            @RequestParam(name = "idChild") Integer idChild,
                                            @RequestParam(name = "cost") Integer cost) {
         Parent parent = parentService.findById(idParent).get();
-        Child child  = childService.findById(idChild).get();
+        Child child;
+        if(idChild == null || idChild == 0)
+            {child = null;
+            }else{child  = childService.findById(idChild).get();}
+
         return Optional.of(new TaskDto(taskService.createTask(title, parent, child, cost)));
     }
 

@@ -29,7 +29,7 @@ create table tasks (
                        title           varchar(30) not null,
                        description     varchar(80),
                        created_at      timestamp default current_timestamp,
-                       updated_at      timestamp default current_timestamp,
+                       updated_at      timestamp,
                        id_parent       integer not null REFERENCES parents(id),
                        id_child        integer REFERENCES children(id),
                        cost            integer not null

@@ -25,6 +25,10 @@ public class BonusService {
         return bonusRepository.findAll();
     }
 
+    public List<Bonus> findAllByChild(Child child) {
+        return bonusRepository.findAllByChild(child);
+    }
+
     public Optional<Bonus> findByName (String title) {
         return bonusRepository.findFirstBonusByTitle(title);
     }
@@ -57,6 +61,12 @@ public class BonusService {
         Bonus bonus = findByName(title).get();
         bonusRepository.delete(bonus);
         return true;
+    }
+
+    public Bonus updateChild (String title, Child child){
+        Bonus bonus = bonusRepository.findFirstBonusByTitle(title).get();
+        bonus.setChild(child);
+        return bonus;
     }
 
 }
