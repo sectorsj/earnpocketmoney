@@ -1,30 +1,66 @@
 package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.coolteam.earnpocketmoney.dtos.BonusDto;
+import ru.coolteam.earnpocketmoney.dtos.TaskDto;
+import ru.coolteam.earnpocketmoney.models.Child;
+import ru.coolteam.earnpocketmoney.models.Parent;
 import ru.coolteam.earnpocketmoney.models.Task;
+import ru.coolteam.earnpocketmoney.services.ChildService;
+import ru.coolteam.earnpocketmoney.services.ParentService;
 import ru.coolteam.earnpocketmoney.services.TaskService;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/tasks")
 public class TaskController {
     private final TaskService taskService;
+    private final ParentService parentService;
+    private final ChildService childService;
 
     @GetMapping()
-    public List<Task> getAllTasks() {
-        return taskService.findAll();
+    public List<TaskDto> getAllTasks() {
+        return taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
     }
 
-    @GetMapping("/create")
-    public String createNewTask(@RequestParam(name = "title") String title,
-                                @RequestParam(name = "cost") Integer cost) {
-        taskService.createTask(title,cost);
-        return "New task = " + title;
+    @GetMapping("/getTitle")
+    public Optional<TaskDto> getTaskDtoByTitle(@RequestParam String title){
+        return taskService.findByTitle(title).map(TaskDto::new);
     }
+
+    @GetMapping("/updateTime")
+    public Optional<TaskDto> updatedTime (@RequestParam String title
+                                          ){
+        return Optional.of(new TaskDto(taskService.updatedTime(title, LocalDateTime.now())));
+    }
+
+
+    @GetMapping("/create")      //todo не забудь добавить description в модели и далее по коду, или удали этот столбец из таблицы в БД
+    public Optional<TaskDto> create(@RequestParam(name = "title") String title,
+                                           @RequestParam(name = "idParent") Integer idParent,
+                                           @RequestParam(name = "idChild") Integer idChild,
+                                           @RequestParam(name = "cost") Integer cost) {
+        Parent parent = parentService.findById(idParent).get();
+        Child child;
+        if(idChild == null || idChild == 0)
+            {child = null;
+            }else{child  = childService.findById(idChild).get();}
+
+        return Optional.of(new TaskDto(taskService.createTask(title, parent, child, cost)));
+    }
+
+    @DeleteMapping("/delete")
+    public boolean delete (@RequestParam String title){
+        taskService.delete(title);
+        return true;
+    }
+
+
+
 }

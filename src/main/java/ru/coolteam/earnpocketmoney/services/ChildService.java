@@ -20,4 +20,36 @@ public class ChildService {
     public List<Child> findAll() {
         return childRepository.findAll();
     }
+
+    public Optional<Child> findByLogin (String login) {
+        return childRepository.findChildByLogin(login);
+    }
+
+    public Child createChild (String login, String password){
+        Child child = new Child();
+        child.setLogin(login);
+        child.setPassword(password);
+        return childRepository.save(child);
+    }
+
+    public Child updateWalletChild (String login, Integer wallet){
+        Child child = findByLogin(login).get();
+        child.setWallet(wallet);
+        return childRepository.save(child);
+    }
+
+    public Child updatePasswordChild (String login, String lastPass, String futurePass){
+        Child child = childRepository.findChildByLoginAndPassword(login,lastPass).get();
+        child.setPassword(futurePass);
+        return childRepository.save(child);
+    }
+
+    public boolean delete (String login, String password){
+        Child child = childRepository.findChildByLoginAndPassword(login,password).get();
+        childRepository.delete(child);
+        return true;
+    }
+
+
+
 }
