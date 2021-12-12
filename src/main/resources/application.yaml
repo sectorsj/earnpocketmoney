@@ -26,3 +26,7 @@ spring:
       host: localhost
       password:
       port: 6379
+  thymeleaf:
+    check-template-location: true
+    prefix: classpath:/static/
+
