@@ -37,7 +37,7 @@ public class BonusController {
 
     @GetMapping("/create")
     public Optional<BonusDto> create (@RequestParam String title,
-                                      @RequestParam Integer idParent,  //надо обдумать с какого места отправить родителя в запрос
+                                      @RequestParam Integer idParent,  //TODO надо обдумать с какого места отправить родителя в запрос
                                       @RequestParam Integer price){
         Parent parent = parentService.findById(idParent).get();
         Bonus bonus = bonusService.createBonus(title, parent, price);
@@ -52,7 +52,7 @@ public class BonusController {
 
     @GetMapping("/updateFromParent")
     public Optional<BonusDto> updateBonusFromParent (@RequestParam String title,
-                                           @RequestParam Integer idParent,  //надо обдумать с какого места отправить родителя в запрос
+                                           @RequestParam Integer idParent,  //TODO надо обдумать с какого места отправить родителя в запрос
                                            @RequestParam Integer price){
 
 
@@ -61,7 +61,7 @@ public class BonusController {
 
     @GetMapping("/updateFromChild")
     public Optional<BonusDto> updateBonusFromChild (@RequestParam String title,
-                                                     @RequestParam Integer idChild  //надо обдумать с какого места отправить родителя в запрос
+                                                     @RequestParam Integer idChild  //TODO надо обдумать с какого места отправить родителя в запрос
                                                      ){
 
         Child child = childService.findById(idChild).get();
