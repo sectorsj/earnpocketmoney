@@ -3,6 +3,7 @@ package ru.coolteam.earnpocketmoney.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.coolteam.earnpocketmoney.models.Parent;
+import ru.coolteam.earnpocketmoney.models.Role;
 import ru.coolteam.earnpocketmoney.repositories.ParentRepository;
 
 import java.util.List;
@@ -26,9 +27,12 @@ public class ParentService {
     }
 
     public Parent createParent (String login, String password){
+        Role role = new Role();
+        role.setRole("ROLE_PARENT");
         Parent parent = new Parent();
         parent.setLogin(login);
         parent.setPassword(password);
+        parent.setRole(role);
         return parentRepository.save(parent);
     }
 

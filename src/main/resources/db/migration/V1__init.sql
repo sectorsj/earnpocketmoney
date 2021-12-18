@@ -1,10 +1,12 @@
----------------------------------------------------Временно------------------------------------------------
+/*---------------------------------------------------Временно------------------------------------------------
+drop table  if exists parents;
 create table parents (
     id              bigserial primary key,
     login           varchar(30) not null unique,
     password        varchar(80) not null
 );
 
+drop table  if exists children;
 create table children (
     id              bigserial primary key,
     login           varchar(30) not null unique,
@@ -67,4 +69,4 @@ values
 insert into users_roles (user_id, role_id)
 values
 (1, 1),
-(2, 2);
+(2, 2);*/

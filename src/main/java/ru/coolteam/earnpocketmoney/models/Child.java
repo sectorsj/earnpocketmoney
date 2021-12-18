@@ -10,7 +10,8 @@ import java.util.List;
 @Table(name = "children")
 @Data
 @NoArgsConstructor
-public class Child {
+public class Child extends UserEntity {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,10 @@ public class Child {
 
     @Column
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "id_role")
+    private Role role;
 
     @Column(name = "wallet")
     private Integer wallet;
