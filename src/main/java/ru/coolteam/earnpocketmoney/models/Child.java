@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "children")
 @Data
 @NoArgsConstructor
-public class Child extends UserEntity {
+public class Child implements UserEntity {
 
 
     @Id

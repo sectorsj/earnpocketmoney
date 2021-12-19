@@ -6,10 +6,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-
+@Data
 @Entity
 @Table(name = "roles")
-@Data
 @NoArgsConstructor
 public class Role {
 

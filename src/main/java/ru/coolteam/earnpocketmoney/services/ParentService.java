@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.coolteam.earnpocketmoney.models.Parent;
 import ru.coolteam.earnpocketmoney.models.Role;
 import ru.coolteam.earnpocketmoney.repositories.ParentRepository;
+import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ParentService {
     private final ParentRepository parentRepository;
+    private final RoleRepository roleRepository;
 
     public Optional<Parent> findById(Integer id) {
         return parentRepository.findById(id);
@@ -27,8 +29,7 @@ public class ParentService {
     }
 
     public Parent createParent (String login, String password){
-        Role role = new Role();
-        role.setRole("ROLE_PARENT");
+        Role role = roleRepository.findByRole("ROLE_PARENT");
         Parent parent = new Parent();
         parent.setLogin(login);
         parent.setPassword(password);
