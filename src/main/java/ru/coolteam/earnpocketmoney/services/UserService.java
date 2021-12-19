@@ -9,7 +9,6 @@ import ru.coolteam.earnpocketmoney.models.Child;
 import ru.coolteam.earnpocketmoney.models.UserEntity;
 import ru.coolteam.earnpocketmoney.repositories.ChildRepository;
 import ru.coolteam.earnpocketmoney.repositories.ParentRepository;
-import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,24 +23,9 @@ public class UserService {
     private ChildRepository childRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public UserEntity saveUser(UserEntity userEntity) {
-        /*RoleEntity r = new RoleEntity();
-        r.setName("ROLE_USER");
-        roleRepository.save(r);
-
-        RoleEntity a = new RoleEntity();
-        a.setName("ROLE_ADMIN");
-        roleRepository.save(a);*/
-
-      //  Role userRole = roleRepository.findByName("ROLE_USER");
-
-       /* RoleEntity userRole = new RoleEntity();
-        userRole.setName("ROLE_USER");*/
 
         if(userEntity.getRole().getRole().equals("ROLE_PARENT")){
             userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
@@ -50,19 +34,7 @@ public class UserService {
             userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         return     childRepository.save((Child) userEntity);
         }
-
-
-       /* userEntity.setRoleEntity(userRole);
-        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
-        return userEntityRepository.save(userEntity);*/
     }
-
-
-    /*public Parent saveUserParent(UserEntity userEntity){
-
-
-    }*/
-
 
     public UserEntity findByLogin(String login) {
         if(parentRepository.findParentByLogin(login).isPresent()){
@@ -92,7 +64,5 @@ public class UserService {
             userEntityList.addAll(childRepository.findAll().stream().map((UserEntity.class::cast)).collect(Collectors.toList())) ;}
         return userEntityList;
     }
-
-
 
 }

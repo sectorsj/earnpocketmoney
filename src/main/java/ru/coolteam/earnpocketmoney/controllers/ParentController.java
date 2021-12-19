@@ -1,6 +1,8 @@
 package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.ParentDto;
 import ru.coolteam.earnpocketmoney.models.Parent;
@@ -21,6 +23,7 @@ public class ParentController {
         return parentService.findAll().stream().map(ParentDto::new).collect(Collectors.toList());
     }
 
+ //   @PreAuthorize("hasRole('ROLE_PARENT')")
     @GetMapping("/dto")
     public List<ParentDto> getAllParentsDto() {
         return parentService.findAll().stream().map(ParentDto::new).collect(Collectors.toList());
