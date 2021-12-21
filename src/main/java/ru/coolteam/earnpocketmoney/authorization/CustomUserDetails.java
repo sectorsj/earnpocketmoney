@@ -4,6 +4,7 @@ package ru.coolteam.earnpocketmoney.authorization;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ru.coolteam.earnpocketmoney.models.User;
 import ru.coolteam.earnpocketmoney.models.UserEntity;
 
 import java.util.Collection;
@@ -15,11 +16,11 @@ public class CustomUserDetails implements UserDetails {
     private String password;
     private Collection<? extends GrantedAuthority> grantedAuthorities;
 
-    public static CustomUserDetails fromUserEntityToCustomUserDetails(UserEntity userEntity) {
+    public static CustomUserDetails fromUserEntityToCustomUserDetails(User user) {
         CustomUserDetails c = new CustomUserDetails();
-        c.login = userEntity.getLogin();
-        c.password = userEntity.getPassword();
-        c.grantedAuthorities = Collections.singletonList(new SimpleGrantedAuthority(userEntity.getRole().getRole()));
+        c.login = user.getLogin();
+        c.password = user.getPassword();
+        c.grantedAuthorities = Collections.singletonList(new SimpleGrantedAuthority(user.getRole().getRole()));
         return c;
     }
 

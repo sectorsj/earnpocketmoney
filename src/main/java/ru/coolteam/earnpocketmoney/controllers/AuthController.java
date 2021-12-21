@@ -9,9 +9,7 @@ import ru.coolteam.earnpocketmoney.authorization.AuthRequest;
 import ru.coolteam.earnpocketmoney.authorization.AuthResponse;
 import ru.coolteam.earnpocketmoney.authorization.RegistrationRequest;
 import ru.coolteam.earnpocketmoney.authorization.jwt.JwtProvider;
-import ru.coolteam.earnpocketmoney.models.Child;
-import ru.coolteam.earnpocketmoney.models.Parent;
-import ru.coolteam.earnpocketmoney.models.UserEntity;
+import ru.coolteam.earnpocketmoney.models.*;
 import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
@@ -29,8 +27,8 @@ public class AuthController {
 
     @PostMapping("/register")
     public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
-       // UserEntity u = new UserEntity();
-        if(registrationRequest.getRole().equals("ROLE_PARENT")){
+        User u = new User();
+        /*if(registrationRequest.getRole().equals("ROLE_PARENT")){
             Parent parent = new Parent();
             parent.setLogin(registrationRequest.getLogin());
             parent.setPassword(registrationRequest.getPassword());
@@ -44,18 +42,19 @@ public class AuthController {
             child.setRole(roleRepository.findByRole(registrationRequest.getRole()));
             userService.saveUser(child);
             return "OK";
-        }
-
-        /*u.setPassword(registrationRequest.getPassword());
+        }*/
+        Role r = roleRepository.findByRole(registrationRequest.getRole());
+        u.setPassword(registrationRequest.getPassword());
         u.setLogin(registrationRequest.getLogin());
+        u.setRole(r);
         userService.saveUser(u);
-        return "OK";*/
+        return "OK";
     }
 
     @PostMapping("/auth")
     public AuthResponse auth(@RequestBody AuthRequest request) {
-        UserEntity userEntity = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
-        String token = jwtProvider.generateToken(userEntity.getLogin());
+        User user = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
+        String token = jwtProvider.generateToken(user.getLogin());
         return new AuthResponse(token);
     }
 }

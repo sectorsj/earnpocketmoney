@@ -5,6 +5,37 @@ create table roles (
 );
 insert into roles (role)  values ('ROLE_PARENT'), ('ROLE_CHILDREN');
 
+drop table  if exists wallets;
+create table wallets (
+                       id              bigserial primary key,
+                       value           integer
+);
+insert into wallets (value)  values (99), (101);
+
+drop table  if exists families;
+create table families (
+                         id              bigserial primary key,
+                         name           varchar(30) not null unique
+);
+insert into families (name)  values ('Abramov'), ('Yakovlev');
+
+
+drop table  if exists users;
+create table users (
+                         id              bigserial primary key,
+                         login           varchar(30) not null unique,
+                         password        varchar(80) not null,
+                         name            varchar(80) ,
+                         id_role         integer not null REFERENCES roles(id),
+                         id_wallet        integer  REFERENCES wallets(id),
+                         id_family        integer  REFERENCES families(id)
+);
+insert into users (login, password,id_wallet, id_role, id_family)
+values
+    ('parent1', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 1, 1, 1),
+    ('children2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 2);
+
+
 drop table  if exists parents;
 create table parents (
                          id              bigserial primary key,
