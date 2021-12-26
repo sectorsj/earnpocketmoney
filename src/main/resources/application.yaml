@@ -30,3 +30,6 @@ spring:
       port: 6379
 jwt:
   secret: javamaster
+thymeleaf:
+  check-template-location: true
+  prefix: classpath:/static/
