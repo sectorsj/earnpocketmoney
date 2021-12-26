@@ -1,15 +1,12 @@
 package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.BonusDto;
 import ru.coolteam.earnpocketmoney.models.Bonus;
-import ru.coolteam.earnpocketmoney.models.Child;
-import ru.coolteam.earnpocketmoney.models.Parent;
 import ru.coolteam.earnpocketmoney.models.User;
 import ru.coolteam.earnpocketmoney.services.BonusService;
-import ru.coolteam.earnpocketmoney.services.ChildService;
-import ru.coolteam.earnpocketmoney.services.ParentService;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
 import java.time.LocalDateTime;
@@ -22,8 +19,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/bonuses")
 public class BonusController {
     private final BonusService bonusService;
-    private final ParentService parentService;
-    private final ChildService childService;
     private final UserService userService;
 
 
@@ -43,6 +38,7 @@ public class BonusController {
         return bonusService.findByName(title).map(BonusDto::new);
     }
 
+    @PreAuthorize("hasRole('ROLE_PARENT')")
     @GetMapping("/create")
     public Optional<BonusDto> create (@RequestParam String title,
                                       @RequestParam String userCreatingBonusLogin,  //TODO надо обдумать с какого места отправить родителя в запрос
@@ -52,6 +48,7 @@ public class BonusController {
         return Optional.of(new BonusDto(bonus));
     }
 
+    @PreAuthorize("hasRole('ROLE_PARENT')")
     @DeleteMapping("/delete")
     public boolean delete (@RequestParam String title){
         bonusService.delete(title);

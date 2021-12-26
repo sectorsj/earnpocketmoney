@@ -1,15 +1,12 @@
 package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.coolteam.earnpocketmoney.dtos.BonusDto;
 import ru.coolteam.earnpocketmoney.dtos.TaskDto;
-import ru.coolteam.earnpocketmoney.models.Child;
-import ru.coolteam.earnpocketmoney.models.Parent;
 import ru.coolteam.earnpocketmoney.models.Task;
 import ru.coolteam.earnpocketmoney.models.User;
-import ru.coolteam.earnpocketmoney.services.ChildService;
-import ru.coolteam.earnpocketmoney.services.ParentService;
 import ru.coolteam.earnpocketmoney.services.TaskService;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
@@ -23,24 +20,41 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/tasks")
 public class TaskController {
     private final TaskService taskService;
-    private final ParentService parentService;
-    private final ChildService childService;
     private final UserService userService;
 
-    @GetMapping()
+    //rest version
+    /*@GetMapping()
     public List<TaskDto> getAllTasks() {
-        return taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
+        List<TaskDto> taskDtoList = taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
+        return taskDtoList;
+    }*/
+
+    @GetMapping()
+    public String getAllTasks(Model model) {
+        List<TaskDto> taskDtoList = taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
+        model.addAttribute("tasks", taskDtoList);
+        return "tasklist";
+    }
+
+    @GetMapping("/{id}")
+    public String showTaskInfo (@PathVariable(name = "id") Long id, Model model) {
+        Optional<Task> task = taskService.findById(id);
+        if (task.isPresent()) {
+            model.addAttribute("task", task.get());
+        }
+        return "task_info";
     }
 
     @GetMapping("/getTitle")
-    public Optional<TaskDto> getTaskDtoByTitle(@RequestParam String title){
-        return taskService.findByTitle(title).map(TaskDto::new);
+    public TaskDto getTaskDtoByTitle(@RequestParam String title){
+        TaskDto taskDto = new TaskDto(taskService.findByTitle(title).get()) ;
+        return taskDto;
     }
 
     @GetMapping("/updateTime")
-    public Optional<TaskDto> updatedTime (@RequestParam String title
-                                          ){
-        return Optional.of(new TaskDto(taskService.updatedTime(title, LocalDateTime.now())));
+    public TaskDto updatedTime (@RequestParam String title){
+        TaskDto taskDto = new TaskDto(taskService.updatedTime(title, LocalDateTime.now()));
+        return taskDto;
     }
 
     @GetMapping("/groupTasks")
@@ -70,6 +84,7 @@ public class TaskController {
         return taskDtoList;
     }
 
+    @PreAuthorize("hasRole('ROLE_PARENT')")
     @GetMapping("/create")
     public TaskDto create (@RequestParam String title,
                             @RequestParam String taskText,
@@ -82,26 +97,8 @@ public class TaskController {
         return new TaskDto(taskService.createTask(title, taskText, userCreatingTask, userExecutingTask, wages));
     }
 
-    /*@GetMapping("by_role")
-    public List<TaskDto> getTaskDtoByUserCreatingRole(){
-        return taskService.
-    }*/
 
-
-   /* @GetMapping("/create")      //todo не забудь добавить description в модели и далее по коду, или удали этот столбец из таблицы в БД
-    public Optional<TaskDto> create(@RequestParam(name = "title") String title,
-                                           @RequestParam(name = "idParent") Integer idParent,
-                                           @RequestParam(name = "idChild") Integer idChild,
-                                           @RequestParam(name = "cost") Integer cost) {
-        Parent parent = parentService.findById(idParent).get();
-        Child child;
-        if(idChild == null || idChild == 0)
-            {child = null;
-            }else{child  = childService.findById(idChild).get();}
-
-        return Optional.of(new TaskDto(taskService.createTask(title, parent, child, cost)));
-    }*/
-
+    @PreAuthorize("hasRole('ROLE_PARENT')")
     @DeleteMapping("/delete")
     public boolean delete (@RequestParam String title){
         taskService.delete(title);

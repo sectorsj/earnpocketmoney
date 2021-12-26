@@ -1,6 +1,7 @@
 package ru.coolteam.earnpocketmoney.controllers;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,33 +17,16 @@ import ru.coolteam.earnpocketmoney.services.UserService;
 import javax.validation.Valid;
 
 @RestController
+@RequiredArgsConstructor
 public class AuthController {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private JwtProvider jwtProvider;
 
-    @Autowired
-    RoleRepository roleRepository;
+    private final UserService userService;
+    private final JwtProvider jwtProvider;
+    private final RoleRepository roleRepository;
 
     @PostMapping("/register")
     public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
         User u = new User();
-        /*if(registrationRequest.getRole().equals("ROLE_PARENT")){
-            Parent parent = new Parent();
-            parent.setLogin(registrationRequest.getLogin());
-            parent.setPassword(registrationRequest.getPassword());
-            parent.setRole(roleRepository.findByRole(registrationRequest.getRole()));
-            userService.saveUser(parent);
-            return "OK";
-        }else {
-            Child child = new Child();
-            child.setLogin(registrationRequest.getLogin());
-            child.setPassword(registrationRequest.getPassword());
-            child.setRole(roleRepository.findByRole(registrationRequest.getRole()));
-            userService.saveUser(child);
-            return "OK";
-        }*/
         Role r = roleRepository.findByRole(registrationRequest.getRole());
         u.setPassword(registrationRequest.getPassword());
         u.setLogin(registrationRequest.getLogin());
