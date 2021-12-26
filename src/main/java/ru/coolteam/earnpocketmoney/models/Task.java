@@ -23,6 +23,9 @@ public class Task{
     @Column(name = "title")
     private String title;
 
+    @Column(name="task_text")
+    private String taskText;
+
     @Column(name = "created_at")
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -31,14 +34,19 @@ public class Task{
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "id_parent")
-    private Parent parent;
+    @JoinColumn(name = "id_user_creating_task")
+    private User userCreatingTask;
 
     @ManyToOne
-    @JoinColumn(name = "id_child")
-    private Child child;
+    @JoinColumn(name = "id_user_executing_task")
+    private User userExecutingTask;
 
-    @Column(name = "cost")
-    private Integer cost;
+    @ManyToOne
+    @JoinColumn(name = "id_status")
+    private Status status;
+
+    //обозвал зарплату
+    @Column(name = "wages")
+    private Long wages;
 
 }

@@ -5,17 +5,18 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "families")
 @Data
+@Entity
+@Table(name = "statuses")
 @NoArgsConstructor
-public class Family {
+public class Status {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
-    @Column
-    private String name;
+    @Column(name = "title")
+    private String title;
+
 }

@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "wallets")
+@Table(name = "people_groups")
 @Data
 @NoArgsConstructor
-public class Wallet {
+public class PeopleGroups {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,5 +17,5 @@ public class Wallet {
     private Long id;
 
     @Column
-    private Long value;
+    private String name;
 }

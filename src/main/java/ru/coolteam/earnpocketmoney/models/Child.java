@@ -31,7 +31,7 @@ public class Child implements UserEntity {
     @Column(name = "wallet")
     private Integer wallet;
 
-    @OneToMany(mappedBy = "child")
-    List<Task> tasks;
+  /*  @OneToMany(mappedBy = "child")
+    List<Task> tasks;*/
 
 }

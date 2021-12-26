@@ -27,10 +27,10 @@ public class Parent implements UserEntity {
     @JoinColumn(name = "id_role")
     private Role role;
 
-    @OneToMany(mappedBy = "parent")
-    List<Task> tasks;
+   /* @OneToMany(mappedBy = "parent")
+    List<Task> tasks;*/
 
-    @OneToMany(mappedBy = "parent")
-    List<Bonus> bonuses;
+    /*@OneToMany(mappedBy = "parent")
+    List<Bonus> bonuses;*/
 
 }

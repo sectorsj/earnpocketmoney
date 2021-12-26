@@ -12,12 +12,24 @@ create table wallets (
 );
 insert into wallets (value)  values (99), (101);
 
-drop table  if exists families;
-create table families (
+drop table  if exists people_groups;
+create table people_groups (
                          id              bigserial primary key,
                          name           varchar(30) not null unique
 );
-insert into families (name)  values ('Abramov'), ('Yakovlev');
+insert into people_groups (name)  values ('Abramov'), ('Yakovlev');
+
+drop table if exists statuses;
+create table statuses (
+    id bigserial primary key,
+    title varchar(30) not null unique
+);
+insert into statuses (title)
+values
+       ('do_not_accepted'),
+       ('accepted'),
+       ('executed'),
+       ('expired');
 
 
 drop table  if exists users;
@@ -28,12 +40,13 @@ create table users (
                          name            varchar(80) ,
                          id_role         integer not null REFERENCES roles(id),
                          id_wallet        integer  REFERENCES wallets(id),
-                         id_family        integer  REFERENCES families(id)
+                         id_people_groups        integer  REFERENCES people_groups(id)
 );
-insert into users (login, password,id_wallet, id_role, id_family)
+insert into users (login, password,id_wallet, id_role, id_people_groups)
 values
     ('parent1', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 1, 1, 1),
-    ('children2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 2);
+    ('children2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 2),
+    ('children3', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 2);
 
 
 drop table  if exists parents;
@@ -57,22 +70,26 @@ drop table  if exists bonuses;
 create table bonuses (
                           id              bigserial primary key,
                           title           varchar(80) not null,
-                          id_parent       integer not null REFERENCES parents(id),
-                          id_child        integer REFERENCES children(id),
-                          price             integer not null,
-                          received_at      timestamp
+                          bonus_text      varchar(80),
+                          created_at      timestamp default current_timestamp,
+                          updated_at      timestamp,
+                          id_user_creating_bonus       integer not null REFERENCES users(id),
+                          id_user_getting_bonus        integer REFERENCES users(id),
+                          price            bigint not null,
+                          getting_status    boolean
 );
 
 drop table  if exists tasks;
 create table tasks (
                        id              bigserial primary key,
                        title           varchar(30) not null,
-                       description     varchar(80),
+                       task_text        varchar(80),
                        created_at      timestamp default current_timestamp,
                        updated_at      timestamp,
-                       id_parent       integer not null REFERENCES parents(id),
-                       id_child        integer REFERENCES children(id),
-                       cost            integer not null
+                       id_user_creating_task       integer not null REFERENCES users(id),
+                       id_user_executing_task        integer REFERENCES users(id),
+                       id_status        integer REFERENCES statuses(id),
+                       wages            bigint not null
 );
 
 
@@ -87,14 +104,14 @@ values
     ('child2', '222', 20, 2),
     ('child3', '333', 55, 2);
 
-insert into tasks (title, id_parent, id_child, cost)
+insert into tasks (title, task_text , id_user_creating_task , id_user_executing_task, id_status , wages)
 values
-    ('Тестовая задача 1',1,1,2),
-    ('Brush teeth',1,2,15),
-    ('trow iut the trash',2,3,21);
+    ('Тестовая задача 1', 'attention! attention! attention!',1, 2, 1, 15),
+    ('Brush teeth', 'attention! attention! attention!', 1, 3, 2, 44),
+    ('trow iut the trash', 'attention! attention! attention!', 2, 3, 3, 21);
 
 
-insert into bonuses (title, id_parent, price)
+insert into bonuses (title, id_user_creating_bonus , price)
 values
     ('bicycle', 1, 15),
     ('gun', 2, 99);

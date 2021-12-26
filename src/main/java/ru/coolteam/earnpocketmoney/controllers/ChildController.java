@@ -40,7 +40,7 @@ public class ChildController {
         return Optional.of(new ChildDto(child));
     }
 
-    @DeleteMapping("/delete")
+    /*@DeleteMapping("/delete")
     public boolean delete (@RequestParam String login,
                            @RequestParam String password){
         Child child = childService.findByLogin(login).get();
@@ -58,7 +58,7 @@ public class ChildController {
         }
         childService.delete(login,password);
         return true;
-    }
+    }*/
 
     @GetMapping("/updateWallet")
     public Optional<ChildDto> updateWallet (@RequestParam String login,

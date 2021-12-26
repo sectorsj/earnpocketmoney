@@ -6,9 +6,11 @@ import ru.coolteam.earnpocketmoney.dtos.BonusDto;
 import ru.coolteam.earnpocketmoney.models.Bonus;
 import ru.coolteam.earnpocketmoney.models.Child;
 import ru.coolteam.earnpocketmoney.models.Parent;
+import ru.coolteam.earnpocketmoney.models.User;
 import ru.coolteam.earnpocketmoney.services.BonusService;
 import ru.coolteam.earnpocketmoney.services.ChildService;
 import ru.coolteam.earnpocketmoney.services.ParentService;
+import ru.coolteam.earnpocketmoney.services.UserService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,6 +24,7 @@ public class BonusController {
     private final BonusService bonusService;
     private final ParentService parentService;
     private final ChildService childService;
+    private final UserService userService;
 
 
 
@@ -42,10 +45,10 @@ public class BonusController {
 
     @GetMapping("/create")
     public Optional<BonusDto> create (@RequestParam String title,
-                                      @RequestParam Integer idParent,  //TODO надо обдумать с какого места отправить родителя в запрос
-                                      @RequestParam Integer price){
-        Parent parent = parentService.findById(idParent).get();
-        Bonus bonus = bonusService.createBonus(title, parent, price);
+                                      @RequestParam String userCreatingBonusLogin,  //TODO надо обдумать с какого места отправить родителя в запрос
+                                      @RequestParam Long price){
+        User userCreatingBonus = userService.findByLogin(userCreatingBonusLogin);
+        Bonus bonus = bonusService.createBonus(title, userCreatingBonus, price);
         return Optional.of(new BonusDto(bonus));
     }
 
@@ -57,18 +60,18 @@ public class BonusController {
 
     @GetMapping("/updateFromParent")
     public Optional<BonusDto> updateBonusFromParent (@RequestParam String title,
-                                           @RequestParam Integer idParent,  //TODO надо обдумать с какого места отправить родителя в запрос
-                                           @RequestParam Integer price){
-        Parent parent = parentService.findById(idParent).get();
-        return Optional.of(new BonusDto(bonusService.updateBonusFromParent(title,parent,price)));
+                                           @RequestParam String userCreatingBonusLogin,  //TODO надо обдумать с какого места отправить родителя в запрос
+                                           @RequestParam Long price){
+        User userCreatingBonus = userService.findByLogin(userCreatingBonusLogin);
+        return Optional.of(new BonusDto(bonusService.updateBonusFromParent(title,userCreatingBonus,price)));
     }
 
     @GetMapping("/updateFromChild")
     public Optional<BonusDto> updateBonusFromChild (@RequestParam String title,
-                                                     @RequestParam Integer idChild  //надо обдумать с какого места отправить родителя в запрос
+                                                     @RequestParam String userGettingBonusLogin  //надо обдумать с какого места отправить родителя в запрос
                                                      ){
-        Child child = childService.findById(idChild).get();
-        return Optional.of(new BonusDto(bonusService.updateBonusFromChildren(title,child,LocalDateTime.now())));
+        User userGettingBonus = userService.findByLogin(userGettingBonusLogin);
+        return Optional.of(new BonusDto(bonusService.updateBonusFromChildren(title,userGettingBonus,LocalDateTime.now())));
     }
 
 

@@ -14,7 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column
     private String login;
@@ -34,8 +34,8 @@ public class User {
     private Wallet wallet;
 
     @ManyToOne
-    @JoinColumn(name = "id_family")
-    private Family family;
+    @JoinColumn(name = "id_people_groups")
+    private PeopleGroups peopleGroups;
 
 
 }

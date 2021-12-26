@@ -6,7 +6,7 @@ import ru.coolteam.earnpocketmoney.models.Role;
 import ru.coolteam.earnpocketmoney.models.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByLogin(String login);
     User findParentByLoginAndPassword(String login, String password);
