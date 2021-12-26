@@ -3,9 +3,7 @@ package ru.coolteam.earnpocketmoney.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.coolteam.earnpocketmoney.models.Bonus;
-import ru.coolteam.earnpocketmoney.models.Child;
-import ru.coolteam.earnpocketmoney.models.Parent;
+import ru.coolteam.earnpocketmoney.models.*;
 import ru.coolteam.earnpocketmoney.repositories.BonusRepository;
 
 import java.time.LocalDateTime;
@@ -25,24 +23,32 @@ public class BonusService {
         return bonusRepository.findAll();
     }
 
-    public List<Bonus> findAllByChild(Child child) {
-        return bonusRepository.findAllByChild(child);
+    public List<Bonus> getAllBonusesByPeopleGroups(PeopleGroups peopleGroups) {
+        return bonusRepository.findBonusByUserCreatingBonus_PeopleGroups(peopleGroups);
+    }
+
+    public List<Bonus> getAllBonusesByUserCreatingBonus (User userCreatingBonus){
+        return bonusRepository.findBonusByUserCreatingBonus(userCreatingBonus);
+    }
+
+    public List<Bonus> getAllBonusesByUserGettingBonus (User userGettingBonus){
+        return bonusRepository.findBonusByUserGettingBonus(userGettingBonus);
     }
 
     public Optional<Bonus> findByName (String title) {
         return bonusRepository.findFirstBonusByTitle(title);
     }
 
-    public Bonus createBonus (String title, Parent parent, Integer price){
+    public Bonus createBonus (String title, User userCreatingBonus, Long price){
         Bonus bonus = new Bonus();
         bonus.setTitle(title);
-        bonus.setParent(parent);
+        bonus.setUserCreatingBonus(userCreatingBonus);
         bonus.setPrice(price);
         return bonusRepository.save(bonus);
     }
 
     //метод для корректировки стоимости бонуса родителем
-    public Bonus updateBonusFromParent (String title, Parent parent, Integer price){
+    public Bonus updateBonusFromParent (String title, User userCreatingBonus, Long price){
         Bonus bonus = findByName(title).get();
         bonus.setPrice(price);
         return bonusRepository.save(bonus);
@@ -50,10 +56,10 @@ public class BonusService {
     }
 
     //метод для корректировки бонуса со стороны ребенка (получение)
-    public Bonus updateBonusFromChildren (String title, Child child, LocalDateTime localDateTime){
+    public Bonus updateBonusFromChildren (String title, User userGettingBonus, LocalDateTime localDateTime){
         Bonus bonus = findByName(title).get();
-        bonus.setChild(child);
-        bonus.setReceivedAt(localDateTime);
+        bonus.setUserGettingBonus(userGettingBonus);
+        bonus.setUpdatedAt(localDateTime);
         return bonusRepository.save(bonus);
     }
 
@@ -63,10 +69,6 @@ public class BonusService {
         return true;
     }
 
-    public Bonus updateChild (String title, Child child){
-        Bonus bonus = bonusRepository.findFirstBonusByTitle(title).get();
-        bonus.setChild(child);
-        return bonus;
-    }
+
 
 }
