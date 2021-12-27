@@ -2,6 +2,7 @@ package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.BonusDto;
 import ru.coolteam.earnpocketmoney.models.Bonus;
@@ -14,7 +15,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@RestController
+//@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/bonuses")
 public class BonusController {

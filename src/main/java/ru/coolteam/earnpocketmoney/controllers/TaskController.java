@@ -2,6 +2,7 @@ package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.TaskDto;
@@ -15,7 +16,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@RestController
+//@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/tasks")
 public class TaskController {
@@ -87,7 +89,7 @@ public class TaskController {
     @PreAuthorize("hasRole('ROLE_PARENT')")
     @GetMapping("/create")
     public TaskDto create (@RequestParam String title,
-                            @RequestParam String taskText,
+                           @RequestParam String taskText,
                            @RequestParam String userCreatingTaskLogin,
                            @RequestParam String userExecutingTaskLogin,
                            @RequestParam Long wages){
@@ -96,7 +98,6 @@ public class TaskController {
 
         return new TaskDto(taskService.createTask(title, taskText, userCreatingTask, userExecutingTask, wages));
     }
-
 
     @PreAuthorize("hasRole('ROLE_PARENT')")
     @DeleteMapping("/delete")

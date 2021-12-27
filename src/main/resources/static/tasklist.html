@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earn Pocket Money</title>
+
+    <link th:href="@{/css/blocks/tasklist.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/task-creating.css}" rel="stylesheet" />
+
+    <link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" />
+
+    <!-- Fonts -->
+    <link th:href="@{/css/fonts/Georgia/stylesheet.css}" rel="stylesheet">
+    <link th:href="@{/css/fonts/Lato/stylesheet.css}" rel="stylesheet">
+    <link th:href="@{/css/fonts/EcoCoding/stylesheet.css}" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="header-logo">CoolTeam<!--<img src=".img/logo.svg" alt="Logo">--></div>
+                <nav class="header-nav">
+                    <ul class="">
+                        <li><a th:href="@{/app}">Главная</a></li>
+                        <li><a href="#">Семья</a></li>
+                        <li><a href="/app/api/v1/tasks/all">Задачи</a></li>
+                        <li><a href="#">Статистика</a></li>
+                    </ul>
+                </nav>
+                <div class="header-login">
+                    <a href="#">Sign in</a>
+                    <a href="#" class="btn">Поехали!</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="home">
+            <div class="container">
+                <div class="home-content-row">
+
+                    <!-- Доска создания задачи -->
+                    <div class="task-making">
+                        <!-- Функционал в "task_creating.html" -->
+                    </div>
+
+                    <!-- Обертка доски -->
+                    <div class="tasklist">
+
+                        <!-- Доска списка задач -->
+                        <div class="board__tasklist__content">
+
+                            <!-- Заголовок доски задач -->
+                            <h1 class="h1-header">Список задач :</h1>
+
+                            <div class="element__container">
+
+                                <!-- Список карточек задач -->
+                                <div class="board__tasklist" th:each="t : ${tasks}">
+
+                                    <!-- Карточка задачи -->
+                                    <div class="taskcard">
+
+                                        <div class="taskcard__row">
+                                            <!-- Блок заголовок и текст карточки -->
+                                            <div class="taskcard__headerandtext" >
+
+                                                <!-- Заголовок карточки -->
+                                                <h1 class="task__header" th:text="${t.title}">Заголовок задачи</h1>
+
+                                                <!-- Текст карточки -->
+                                                <p class="task__text" th:text="${t.taskText}">Текст задачи</p>
+                                            </div>
+
+                                            <!-- Блок оценка карточки -->
+                                            <div class="task__cost">
+                                                <!-- Оценка карточки -->
+                                                <span class="cost" th:text="${t.cost}">5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Блок показать "ЕЩЕ" -->
+                        <div class=" showmore">
+                            <div class="showmore__row">
+                                <div class="showmore__text">
+                                    <a href="#" class="showmore__link">Еще...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__row">
+            <div th:insert="copyright :: copy" class="footer__text">
+            </div>
+        </div>
+    </footer>
+</body>
+
+
+</html>

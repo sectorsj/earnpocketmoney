@@ -2,10 +2,9 @@ package ru.coolteam.earnpocketmoney.controllers;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 import ru.coolteam.earnpocketmoney.authorization.AuthRequest;
 import ru.coolteam.earnpocketmoney.authorization.AuthResponse;
 import ru.coolteam.earnpocketmoney.authorization.RegistrationRequest;
@@ -16,7 +15,8 @@ import ru.coolteam.earnpocketmoney.services.UserService;
 
 import javax.validation.Valid;
 
-@RestController
+//@RestController
+@Controller
 @RequiredArgsConstructor
 public class AuthController {
 
