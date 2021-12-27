@@ -22,7 +22,6 @@ public class BonusController {
     private final UserService userService;
 
 
-
     @GetMapping()
     public List<BonusDto> getAllChildren() {
         return  bonusService.findAll().stream().map(BonusDto::new).collect(Collectors.toList());
@@ -41,7 +40,7 @@ public class BonusController {
     @PreAuthorize("hasRole('ROLE_PARENT')")
     @GetMapping("/create")
     public Optional<BonusDto> create (@RequestParam String title,
-                                      @RequestParam String userCreatingBonusLogin,  //TODO надо обдумать с какого места отправить родителя в запрос
+                                      @RequestParam String userCreatingBonusLogin,  // TODO надо обдумать с какого места отправить родителя в запрос
                                       @RequestParam Long price){
         User userCreatingBonus = userService.findByLogin(userCreatingBonusLogin);
         Bonus bonus = bonusService.createBonus(title, userCreatingBonus, price);
@@ -57,7 +56,7 @@ public class BonusController {
 
     @GetMapping("/updateFromParent")
     public Optional<BonusDto> updateBonusFromParent (@RequestParam String title,
-                                           @RequestParam String userCreatingBonusLogin,  //TODO надо обдумать с какого места отправить родителя в запрос
+                                           @RequestParam String userCreatingBonusLogin,  // TODO надо обдумать с какого места отправить родителя в запрос
                                            @RequestParam Long price){
         User userCreatingBonus = userService.findByLogin(userCreatingBonusLogin);
         return Optional.of(new BonusDto(bonusService.updateBonusFromParent(title,userCreatingBonus,price)));
@@ -65,16 +64,9 @@ public class BonusController {
 
     @GetMapping("/updateFromChild")
     public Optional<BonusDto> updateBonusFromChild (@RequestParam String title,
-<<<<<<< HEAD
-                                                     @RequestParam Integer idChild  //TODO надо обдумать с какого места отправить родителя в запрос
-=======
-                                                     @RequestParam String userGettingBonusLogin  //надо обдумать с какого места отправить родителя в запрос
->>>>>>> 72b5e9eff8dd8d9fb9cfd1c39ad61fc75d8fc248
-                                                     ){
+                                                     @RequestParam String userGettingBonusLogin)  // TODO надо обдумать с какого места отправить родителя в запрос
+    {
         User userGettingBonus = userService.findByLogin(userGettingBonusLogin);
         return Optional.of(new BonusDto(bonusService.updateBonusFromChildren(title,userGettingBonus,LocalDateTime.now())));
     }
-
-
-
 }
