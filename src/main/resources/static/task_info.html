@@ -17,7 +17,7 @@
         <div th:if="${task != null}">
             <h5 th:text="${'Название задачи: ' + task.title}"/>
             <h5 th:text="${'Текст задачи: ' + task.taskText}"/>
-            <h5 th:text="${'Стоимость задачи: ' + task.cost}"/>
+            <h5 th:text="${'Стоимость задачи: ' + task.wages}"/>
         </div>
         <div th:if="${task == null}">
             <h5>Такого задачи не существует. Проверьте ID</h5>

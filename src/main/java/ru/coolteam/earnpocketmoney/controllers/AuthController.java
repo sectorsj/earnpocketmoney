@@ -3,8 +3,10 @@ package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.coolteam.earnpocketmoney.authorization.AuthRequest;
 import ru.coolteam.earnpocketmoney.authorization.AuthResponse;
 import ru.coolteam.earnpocketmoney.authorization.RegistrationRequest;
@@ -18,14 +20,26 @@ import javax.validation.Valid;
 //@RestController
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("")
 public class AuthController {
 
     private final UserService userService;
     private final JwtProvider jwtProvider;
     private final RoleRepository roleRepository;
 
-    @PostMapping("/register")
-    public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
+//    @PostMapping("/register")
+//    public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
+//        User u = new User();
+//        Role r = roleRepository.findByRole(registrationRequest.getRole());
+//        u.setPassword(registrationRequest.getPassword());
+//        u.setLogin(registrationRequest.getLogin());
+//        u.setRole(r);
+//        userService.saveUser(u);
+//        return "OK";
+//    }
+
+   @PostMapping("/register")
+    public String registerUser(@PathVariable @Valid RegistrationRequest registrationRequest) {
         User u = new User();
         Role r = roleRepository.findByRole(registrationRequest.getRole());
         u.setPassword(registrationRequest.getPassword());
@@ -33,6 +47,7 @@ public class AuthController {
         u.setRole(r);
         userService.saveUser(u);
         return "OK";
+
     }
 
     @PostMapping("/auth")

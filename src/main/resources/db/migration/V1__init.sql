@@ -90,9 +90,9 @@ create table tasks (
 
 insert into tasks (title, task_text , id_user_creating_task , id_user_executing_task, id_status , wages)
 values
-('Тестовая задача 1', 'attention! attention! attention!',1, 2, 1, 15),
-('Brush teeth', 'attention! attention! attention!', 1, 3, 2, 44),
-('trow iut the trash', 'attention! attention! attention!', 2, 3, 3, 21);
+('Тестовая задача 1', 'First task description! attention! attention!',1, 2, 1, 15),
+('Brush teeth', 'Second task description! attention!', 1, 3, 2, 44),
+('Trow out the trash', 'Third task description! attention! attention!', 2, 3, 3, 21);
 
 
 insert into bonuses (title, id_user_creating_bonus , price) values

@@ -31,13 +31,36 @@ public class TaskController {
         return taskDtoList;
     }*/
 
-    @GetMapping()
+//    @GetMapping()
+//    public String getAllTasks(Model model) {
+//        List<TaskDto> taskDtoList = taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
+//        model.addAttribute("tasks", taskDtoList);
+//        return "tasklist";
+//    }
+
+    // Вывести весь список задач
+    @GetMapping("/all")
     public String getAllTasks(Model model) {
-        List<TaskDto> taskDtoList = taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
+        List<TaskDto> taskDtoList = taskService.findAll()
+                .stream()
+                .map(TaskDto::new)
+                .collect(Collectors.toList());
+
         model.addAttribute("tasks", taskDtoList);
-        return "tasklist";
+        return "index";
     }
 
+
+//    @GetMapping("/{id}")
+//    public String showTaskInfo (@PathVariable(name = "id") Long id, Model model) {
+//        Optional<Task> task = taskService.findById(id);
+//        if (task.isPresent()) {
+//            model.addAttribute("task", task.get());
+//        }
+//        return "task_info";
+//    }
+
+    // Найти задачу по ID
     @GetMapping("/{id}")
     public String showTaskInfo (@PathVariable(name = "id") Long id, Model model) {
         Optional<Task> task = taskService.findById(id);
@@ -47,12 +70,14 @@ public class TaskController {
         return "task_info";
     }
 
+    // Поиск по Заголовку Задачи
     @GetMapping("/getTitle")
     public TaskDto getTaskDtoByTitle(@RequestParam String title){
         TaskDto taskDto = new TaskDto(taskService.findByTitle(title).get()) ;
         return taskDto;
     }
 
+    // Обновление времени создания Задачи
     @GetMapping("/updateTime")
     public TaskDto updatedTime (@RequestParam String title){
         TaskDto taskDto = new TaskDto(taskService.updatedTime(title, LocalDateTime.now()));
