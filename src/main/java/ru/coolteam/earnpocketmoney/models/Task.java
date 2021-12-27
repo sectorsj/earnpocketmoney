@@ -3,10 +3,8 @@ package ru.coolteam.earnpocketmoney.models;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -48,5 +46,13 @@ public class Task{
     //обозвал зарплату
     @Column(name = "wages")
     private Long wages;
+
+    public void incrementWages() {
+        this.wages++;
+    }
+
+    public void decrementWages() {
+        this.wages--;
+    }
 
 }

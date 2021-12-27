@@ -1,8 +1,10 @@
 package ru.coolteam.earnpocketmoney.models;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -45,6 +47,4 @@ public class Bonus {
 
     @Column(name = "getting_status")
     private Boolean gettingStatus;
-
-
 }
