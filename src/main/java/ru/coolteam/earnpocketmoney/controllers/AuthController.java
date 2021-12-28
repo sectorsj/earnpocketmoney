@@ -2,25 +2,21 @@ package ru.coolteam.earnpocketmoney.controllers;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.authorization.AuthRequest;
-import ru.coolteam.earnpocketmoney.authorization.AuthResponse;
-import ru.coolteam.earnpocketmoney.authorization.RegistrationRequest;
+import ru.coolteam.earnpocketmoney.authorization.JwtResponse;
 import ru.coolteam.earnpocketmoney.authorization.jwt.JwtProvider;
 import ru.coolteam.earnpocketmoney.models.*;
 import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
-import javax.validation.Valid;
-
 //@RestController
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("")
 public class AuthController {
 
     private final UserService userService;
@@ -38,22 +34,40 @@ public class AuthController {
 //        return "OK";
 //    }
 
-   @PostMapping("/register")
-    public String registerUser(@PathVariable @Valid RegistrationRequest registrationRequest) {
-        User u = new User();
-        Role r = roleRepository.findByRole(registrationRequest.getRole());
-        u.setPassword(registrationRequest.getPassword());
-        u.setLogin(registrationRequest.getLogin());
-        u.setRole(r);
-        userService.saveUser(u);
-        return "OK";
+//   @PostMapping("/register")
+//    public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest, Model model) {
+//        User u = new User();
+//        Role r = roleRepository.findByRole(registrationRequest.getRole());
+//        u.setPassword(registrationRequest.getPassword());
+//        u.setLogin(registrationRequest.getLogin());
+//        u.setRole(r);
+//        userService.saveUser(u);
+//        return "registration";
+//    }
+
+    @GetMapping("/register")
+    public String registration(Model model) {
+        model.addAttribute("userForm", new User());
+        return "registration";
 
     }
 
+    @PostMapping("/register")
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+
+        userForm.setRole(roleRepository.findByRole("ROLE_PARENT"));
+        userService.saveUser(userForm);
+        return "redirect:/api/v1/tasks/all";
+    }
+
     @PostMapping("/auth")
-    public AuthResponse auth(@RequestBody AuthRequest request) {
+    public ResponseEntity<?> auth(@RequestBody AuthRequest request) {
         User user = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
         String token = jwtProvider.generateToken(user.getLogin());
-        return new AuthResponse(token);
+        return ResponseEntity.ok(new JwtResponse(token));
     }
 }
