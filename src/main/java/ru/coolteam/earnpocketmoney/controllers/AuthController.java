@@ -71,6 +71,8 @@ public class AuthController {
 //        return ResponseEntity.ok(new JwtResponse(token));
 //    }
 
+
+
     @GetMapping("/auth")
     public String authentication(Model model) {
         model.addAttribute("userForm", new User());
