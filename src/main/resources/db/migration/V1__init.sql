@@ -48,7 +48,8 @@ create table users (
                 id                          bigserial primary key,
                 login                       varchar(30) not null unique,
                 password                    varchar(80) not null,
-                name                        varchar(80) ,
+                email                       varchar (80) unique,
+                username                    varchar(80),
                 id_role                     integer not null REFERENCES roles(id),
                 id_wallet                   integer  REFERENCES wallets(id),
                 id_people_groups            integer  REFERENCES people_groups(id)

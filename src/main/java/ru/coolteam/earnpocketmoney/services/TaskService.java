@@ -32,12 +32,20 @@ public class TaskService {
         return taskRepository.findTaskByUserCreatingTask_PeopleGroups(peopleGroupsRepository.findByName(groupName));
     }
 
+//    public List<Task> getAllTasksByUserCreatingTask (String login){
+//        return taskRepository.findTaskByUserCreatingTask(userRepository.findByLogin(login));
+//    }
+//
+//    public List<Task> getAllTasksByUserExecutingTask (String login){
+//        return taskRepository.findTaskByUserExecutingTask(userRepository.findByLogin(login));
+//    }
+
     public List<Task> getAllTasksByUserCreatingTask (String login){
-        return taskRepository.findTaskByUserCreatingTask(userRepository.findByLogin(login));
+        return taskRepository.findTaskByUserCreatingTask(userRepository.findByLogin(login).orElseThrow());
     }
 
     public List<Task> getAllTasksByUserExecutingTask (String login){
-        return taskRepository.findTaskByUserExecutingTask(userRepository.findByLogin(login));
+        return taskRepository.findTaskByUserExecutingTask(userRepository.findByLogin(login).orElseThrow());
     }
 
     public Task createTask (String title,

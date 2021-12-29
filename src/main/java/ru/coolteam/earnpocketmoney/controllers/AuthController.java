@@ -64,10 +64,31 @@ public class AuthController {
         return "redirect:/api/v1/tasks/all";
     }
 
-    @PostMapping("/auth")
-    public ResponseEntity<?> auth(@RequestBody AuthRequest request) {
-        User user = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
+//    @PostMapping("/auth")
+//    public ResponseEntity<?> auth(@RequestBody AuthRequest request) {
+//        User user = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
+//        String token = jwtProvider.generateToken(user.getLogin());
+//        return ResponseEntity.ok(new JwtResponse(token));
+//    }
+
+    @GetMapping("/auth")
+    public String authentication(Model model) {
+        model.addAttribute("userForm", new User());
+        return "login";
+    }
+
+    @GetMapping()
+    public ResponseEntity<?> authentication(@RequestBody AuthRequest request) {
+        User user = userService.findByLogin(request.getLogin());
         String token = jwtProvider.generateToken(user.getLogin());
         return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    @PostMapping("/auth")
+    public String authentication(@ModelAttribute("userForm") User userForm) {
+
+        userForm.setRole(roleRepository.findByRole("ROLE_PARENT"));
+        userService.findByLogin("parent1");
+        return "redirect:/api/v1/tasks/all";
     }
 }

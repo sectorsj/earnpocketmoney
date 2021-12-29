@@ -23,8 +23,11 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "username")
+    private String username;
 
     @Transient
     private String passwordConfirm;
@@ -32,10 +35,6 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "id_role")
     private Role role;
-
-//    @ManyToMany
-//    @JoinColumn(name = "id_role")
-//    private Set<Role> roles;
 
     @OneToOne
     @JoinColumn(name = "id_wallet")
