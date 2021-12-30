@@ -33,3 +33,5 @@ spring:
   thymeleaf:
     check-template-location: true
     prefix: classpath:/static/
+    suffix: .html
+    cache: false
