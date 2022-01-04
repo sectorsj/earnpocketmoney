@@ -1,0 +1,70 @@
+.content__element {
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+}
+
+.right__content__element {
+    display: flex;
+    height: 100%;
+}
+.content__element__col {
+  height: 100%;
+}
+
+
+.task__examples__board {
+    overflow: hidden;
+    height: 100%;
+
+    background-image: url(/src/main/resources/static/content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: 60%;
+    flex-grow: 6;
+    margin-bottom: 1%; */
+}
+
+.board__header {
+    
+}
+
+.tasks__list__board__header {
+    
+}
+
+.tasks__examples__list {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    
+}
+.card {
+    display: flex;
+    width: 492px;
+    height: 80px;
+    margin-bottom: 5%;
+}
+.card__task__example {
+}
+.card__row {
+}
+.task__card__row {
+}
+.card__header__text {
+}
+.task__card__headerandtext {
+}
+.card__header__h1 {
+}
+.task__card__header__h1 {
+}
+.card__text__p {
+}
+.task__card__text__p {
+}

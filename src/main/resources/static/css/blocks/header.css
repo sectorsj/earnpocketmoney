@@ -82,7 +82,7 @@
 
 /**/
 .btn, a.btn {
-    display: inline-block;
+    /* display: inline-block; */
 
     /*один из вариантов выравнивания текста внутри кнопки */
     /* height: 51px;
