@@ -1,13 +1,29 @@
-body {
+body{
+    
+}
+.registration {
+    font-family: 'VAGRounded', sans-serif;
+    color: #000;
     padding-top: 40px;
     padding-bottom: 40px;
+
     background-color: #eee;
+    background-image: url(/src/main/resources/static/content/img/fon_ny_1-01.svg);
+}
+
+.registration__wrapper {
+
+}
+.registration__col {
+    margin-top: 100px;
+    
 }
 
 .form-signin {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
+    background-color: #fff;
 }
 
 .form-signin .form-signin-heading,
@@ -41,6 +57,7 @@ body {
 
 .form-signin button {
     margin-top: 10px;
+    background-color: #01996D;
 }
 
 .has-error {

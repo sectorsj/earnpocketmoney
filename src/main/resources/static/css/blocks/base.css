@@ -1,16 +1,15 @@
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'VAGRounded', sans-serif;
     font-weight: 400;
     font-size:  20px;
-    color: #292929;
+    /* color: #292929; */
+    color: #e71313;
 }
-
 
 /* Utility */
 .none {
     display: none !important;
 }
-
 
 .visually-hidden {
     position: absolute;
@@ -24,14 +23,193 @@ body {
     font-size: 0;
 }
 
-
 /* Grid */
+/* Основной контейнер */
 .container {
     width: 1400px;
+    padding-top: 1%;
+    padding-bottom: 1%;
     padding-left: 15px;
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
     /* border: 1px solid #828282;
     box-sizing: border-box; */
+}
+
+/* Заголовок досок(экранов)*/
+.header__h1, .board__header__h1 {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    font-weight: 700;
+    font-size: 32px;
+    font-family: 'VAGRounded', serif;
+    color: #01996D;
+}
+
+/* Левая и правая часть досок(экранов) */
+/* Расположение элементов во фрейме Контерент */
+.content__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* При необходимости не разделять на доски (экраны) */
+.content__element {
+}
+
+/* Контент на левой доске (экране) */
+.left__content__element {
+    overflow: hidden;
+    width: 59.5%;
+    height: 1000px;
+    min-height: 100%;
+    background-image: url(/src/main/resources/static/content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+/* Контент на правой доске (экране) */
+.right__content__element {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 39.5%;
+    /* height: 800px; */
+    /* min-height: 100%; */
+    /* background-image: url(/src/main/resources/static/content/img/fon_ny_2-01.svg); */
+
+    /* border: 1px solid #828282; */
+    /* box-sizing: border-box; */
+    /* border-radius: 10px;  */
+}
+
+/* Обеспечивается вертикальное положение элементов */
+.content__element__col{
+    /* padding-left: 5%;
+    padding-right: 5%; */
+
+}
+
+/* Перевод доски(экрана) во flex-элемент, с вертикальным положением элементов */
+.board {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Область для отображения спосков (задач, семьи и др) */
+.list {
+    display: flex;
+    max-width: 100%;
+
+    margin: 0px auto;
+    /* margin-top: 5%; */
+
+    justify-content: center;
+    flex: 1 1 auto;
+}
+
+/* Элементы на доске (экране) */
+.item {
+
+}
+
+/* Первый элемент на доске (экране) */
+.first__item{
+
+}
+
+/* Общая карточка */
+.card{
+    padding: 9px 9px;
+    background: #F9F9F9;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+/* Схема положения элементов в карточке - вертикальная */
+.card__row{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Область заголовка и текста карточки */
+.card__header__text{
+    color: #292929;
+    padding: 0px 30px 0px 0px;
+}
+
+/* Текст заголовка карточки */
+.card__header__h1 {
+    margin: 0px 0px 4px 0px;
+}
+
+/* Текст карточки */
+.card__text__p {
+    font-family: VAGRounded;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 140%;
+}
+
+/* Элмемент для отображения числа */
+.card__span{
+    display: flex;
+    background-color: #01996D;
+    border-radius: 5px;
+    /* width: 58px;
+    height: 58px; */
+
+    align-items: center;
+    justify-content: center;
+}
+
+/* Число в элементе для отображения числа*/
+.number_span {
+    font-family: VAGRounded;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Общие иконки */
+.icons {
+    width: 100px;
+}
+
+.item__header__h1{
+    margin-left: 2%;
+    display:  flex;
+    align-items: center;
+}
+
+.expand__list__element {
+}
+
+.element__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link__a {
+    color: #292929;
+}
+
+.input {
 }
