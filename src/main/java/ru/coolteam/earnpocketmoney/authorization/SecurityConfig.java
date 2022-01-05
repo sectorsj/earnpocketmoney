@@ -33,9 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/**").authenticated()
-              //  .antMatchers("/api/v1/tasks/create").hasRole("PARENT")
-               // .antMatchers("/api/v1/children/**").hasRole("CHILDREN")
+//                .antMatchers("/api/**").authenticated()
+//                .antMatchers("/api/v1/tasks/create").hasRole("PARENT")
+//                .antMatchers("/api/v1/children/**").hasRole("CHILDREN")
                 .antMatchers("/register", "/auth").permitAll()
                 .and()
                 .headers().frameOptions().disable();
@@ -43,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    //поче му то появилась закольцованность, хотя в аналогичном проекте такой ошибки не было
+    //почему то появилась закольцованность, хотя в аналогичном проекте такой ошибки не было
+
    /* @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

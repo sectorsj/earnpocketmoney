@@ -1,0 +1,48 @@
+
+body{
+    font-family: 'VAGRounded', sans-serif;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    background-color: #eee;
+    background-image: url(/src/main/resources/static/content/img/fon_ny_1-01.svg);
+}
+
+.login__wrapper {
+}
+.login__col {
+}
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.form-signin .form-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-heading {
+}
+.form-group {
+}
+.form-control {
+}
+.has-error {
+}
+.btn {
+}
+.btn-lg {
+}
+.btn-primary {
+}
+.btn-block {
+}
+.text-center {
+}

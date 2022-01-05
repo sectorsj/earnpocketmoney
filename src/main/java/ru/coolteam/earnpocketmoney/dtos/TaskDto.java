@@ -19,7 +19,7 @@ public class TaskDto {
     private UserDto userExecutingTask;
     private StatusDto status;
     private Long wages;
-   // private Integer cost;
+//    private Integer cost;
 
     public TaskDto(Task task) {
         this.title = task.getTitle();

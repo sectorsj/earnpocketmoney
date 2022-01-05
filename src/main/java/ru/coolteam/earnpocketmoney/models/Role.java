@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -15,10 +16,14 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Integer id;
+//    private Integer id;
+    private Long id;
 
-    @Column
-    String role;
+//    private String name; // нет в БД, если добавлять. то нужно добавить и в БД
 
+    @Column (name = "role")
+    private String role;
 
+//    @ManyToMany(mappedBy = "roles")
+//    private Set<User> users;
 }

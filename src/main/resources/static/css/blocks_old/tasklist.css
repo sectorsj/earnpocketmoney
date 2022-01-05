@@ -1,0 +1,102 @@
+.tasklist {
+    overflow: hidden;
+    width: 40%;
+    height: 800px;
+    min-height: 100%;
+    background: #F3F5F6;
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.board__tasklist__content {
+    flex: 1 1 auto;
+}
+.element__container > * {
+    padding: 0px 0px 18px 0px;
+}
+
+.h1-header + * {
+    margin-top: 48px;
+}
+
+.board__tasklist {
+    display: flex;
+    max-width: 100%;
+    margin: 0px auto;
+    justify-content: center;
+}
+
+.taskcard {
+    width: 492px;
+    height: 80px;
+    padding: 9px 9px;
+    background: #F9F9F9;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.taskcard__row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.taskcard__headerandtext {
+    color: #292929;
+    padding: 0px 30px 0px 0px;
+}
+
+.task__header {
+    margin: 0px 0px 4px 0px;
+}
+
+.task__text {
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 140%;
+}
+
+.task__cost {
+    display: block;
+    background-color: #01996D;
+    border-radius: 5px;
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cost {
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+}
+
+.showmore {
+
+}
+
+.showmore__row {
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+.showmore__text {
+
+}
+
+.showmore__link {
+
+}

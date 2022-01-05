@@ -1,265 +1,30 @@
 .home {
-    min-height: 872px;
-    background-color:bisque;
-    padding: 36px 0;
+    overflow: hidden;
+    background-image: url(/src/main/resources/static/content/img/fon_ny_1-01.svg);
 }
 
-.home-content-row {
+.home__content__row {
     display: flex;
-    align-items: center;
-    justify-content:space-between;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-/* .home-content-row > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-} */
-
-.task-making {
-    width: 800px;
-    /* max-width: 800px; */
-    height: 800px;
-    left: 253px;
-    top: 36px;
-
-background: #F3F5F6;
-/* Gray 3 */
-
-border: 1px solid #828282;
-box-sizing: border-box;
-border-radius: 10px;
+.left__content__element {
 
 }
 
-.h1-header {
-    margin-top: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-    font-weight: 700;
-    font-size: 36px;
-    font-family: 'Georgia', serif;
-    color: #01996D;
-}
+.right__content__element {
+    overflow: hidden;
 
-.h1-header + * {
-    margin-top: 48px;
-}
-
-.create_task-input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.create_task-input + div {
-    margin-top: 30px;
-}
-
-.create_task-input input {
-    width: 600px;
-    height: 51px;
-    padding: 18px;
-    border: 1px solid #BDBDBD;
-    box-sizing: border-box;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-}
-
-input::placeholder{
-    font-size: small;
-}
-
-input:focus::placeholder {
-    opacity: 0;
-}
-
-
-/* Элемент стоимости задачи */
-.task-cost-header > * {
-    margin-left: 100px;
-    max-width: 300px;
-}
-
-
-/* Заголовок стоимость задачи */
-.task-cost-button-header{
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    max-width: 215px;
-    margin-bottom: 8px;
-}
-
-.task-cost-buttons {
-    display: flex;
-    align-items: center;
-}
-
-.task-cost-buttons > * + *  {
-    margin-left: 10px;
-}
-
-.btn-coast, a.btn-coast {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 1;
-
-    background-color: #ffffff;
-
-    font-size: 24px;
-    font-weight: 400;
-    width: 71px;
-    height: 71px;
-    margin: 0 20;
-
-    border: 5px solid #E0E0E0;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    margin-bottom: 38px;
-}
-
-
-/* Добавление фото */
-.task-photo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 38px;
-}
-
-.task-photo > h1 {
-    margin-left: 10px;
-}
-
-
-/* Добавление ребенка */
-.add-child {
-    display: flex;
-    align-items: center;
-    margin-bottom: 38px;
-}
-
-.add-child > h1 {
-    margin-left: 10px;
-}
-
-
-/* Доска со списком задач */
-.task-board{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 550px;
-    height: 800px;
-    left: 1255px;
-    top: 32px;
-    background: #F3F5F6;
-    
-    /* Gray 3 */
-    border: 1px solid #828282;
+
+    min-width: 39.5%;
+    height: 1000px;
+    min-height: 100%;
+    background-image: url(/src/main/resources/static/content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282; 
     box-sizing: border-box;
-    border-radius: 10px;
-}
-
-
-/*  Список карточек задач */
-.task-card-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    max-height: 620px;
-    /* background-color:rgb(150, 174, 184); */
-
-    /*Отступ карточки задачи */
-    /* margin-left: 10px; */      
-}
-
-.task-card-wraper > div {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-}
-
-
-/* Карточка задачи */
-.task-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 450px;
-    height: 80px; 
-    left: 0px;
-    top: 0px;
-   
-    /* Gray 4 */
-    border: 1px solid #BDBDBD;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px; 
-
-    /* Inside Auto Layout */
-    order: 0;
-    flex-grow: 0;
-    margin: 10px 0px;
-    margin-left: 5px;
-    margin-right: 5px;
-    background: #F9F9F9;
-}
-
-
-/* Блок заголовок и текст карточки */
-.task-card-header-text {
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* Заголовок карточки */
-.task-card-header {
-    font-weight: 700;
-    font-size: 24px;
-    font-family: 'EcoCoding', serif;
-}
-
-
-/* Текст карточки */
-.task-card-text {
-}
-
-
-/*  Блок оценка карточки */
-.task-coast {
-    display: flex;
-    justify-content: center;
-    background-color: #828282;
-    width: 58px;
-    height: 58px;
-    left: 369px;
-    top: 11px;
-    border-radius: 5px;
-    background: #69DB4D;
-}
-
-
-/*  Оценка карточки */
-.coast {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 400;
-    font-size: 28px;
-    font-family: 'EcoCoding', serif;
-}
-
-
-/* Оценка карточки */
-.show-more {
-    display: flex;
-    justify-content: center;
-    margin-top: 24px;
+    border-radius: 10px; 
 }

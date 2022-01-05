@@ -2,6 +2,7 @@ package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.TaskDto;
@@ -15,7 +16,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@RestController
+//@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/tasks")
 public class TaskController {
@@ -29,13 +31,36 @@ public class TaskController {
         return taskDtoList;
     }*/
 
-    @GetMapping()
+//    @GetMapping()
+//    public String getAllTasks(Model model) {
+//        List<TaskDto> taskDtoList = taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
+//        model.addAttribute("tasks", taskDtoList);
+//        return "tasklist";
+//    }
+
+    // Вывести весь список задач
+    @GetMapping("/all")
     public String getAllTasks(Model model) {
-        List<TaskDto> taskDtoList = taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
+        List<TaskDto> taskDtoList = taskService.findAll()
+                .stream()
+                .map(TaskDto::new)
+                .collect(Collectors.toList());
+
         model.addAttribute("tasks", taskDtoList);
-        return "tasklist";
+        return "index";
     }
 
+
+//    @GetMapping("/{id}")
+//    public String showTaskInfo (@PathVariable(name = "id") Long id, Model model) {
+//        Optional<Task> task = taskService.findById(id);
+//        if (task.isPresent()) {
+//            model.addAttribute("task", task.get());
+//        }
+//        return "task_info";
+//    }
+
+    // Найти задачу по ID
     @GetMapping("/{id}")
     public String showTaskInfo (@PathVariable(name = "id") Long id, Model model) {
         Optional<Task> task = taskService.findById(id);
@@ -45,12 +70,14 @@ public class TaskController {
         return "task_info";
     }
 
+    // Поиск по Заголовку Задачи
     @GetMapping("/getTitle")
     public TaskDto getTaskDtoByTitle(@RequestParam String title){
         TaskDto taskDto = new TaskDto(taskService.findByTitle(title).get()) ;
         return taskDto;
     }
 
+    // Обновление времени создания Задачи
     @GetMapping("/updateTime")
     public TaskDto updatedTime (@RequestParam String title){
         TaskDto taskDto = new TaskDto(taskService.updatedTime(title, LocalDateTime.now()));
@@ -87,7 +114,7 @@ public class TaskController {
     @PreAuthorize("hasRole('ROLE_PARENT')")
     @GetMapping("/create")
     public TaskDto create (@RequestParam String title,
-                            @RequestParam String taskText,
+                           @RequestParam String taskText,
                            @RequestParam String userCreatingTaskLogin,
                            @RequestParam String userExecutingTaskLogin,
                            @RequestParam Long wages){
@@ -97,14 +124,10 @@ public class TaskController {
         return new TaskDto(taskService.createTask(title, taskText, userCreatingTask, userExecutingTask, wages));
     }
 
-
     @PreAuthorize("hasRole('ROLE_PARENT')")
     @DeleteMapping("/delete")
     public boolean delete (@RequestParam String title){
         taskService.delete(title);
         return true;
     }
-
-
-
 }
