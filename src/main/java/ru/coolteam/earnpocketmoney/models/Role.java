@@ -19,7 +19,8 @@ public class Role {
 //    private Integer id;
     private Long id;
 
-//    private String name; // нет в БД, если добавлять. то нужно добавить и в БД
+//     TODO нет в БД, если добавлять. то нужно добавить и в БД
+//    private String name;
 
     @Column (name = "role")
     private String role;
