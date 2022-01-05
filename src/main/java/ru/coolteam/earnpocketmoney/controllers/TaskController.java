@@ -19,7 +19,8 @@ import java.util.stream.Collectors;
 //@RestController
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/tasks")
+//@RequestMapping("/api/v1/tasks")
+@RequestMapping("/api/v1/")
 public class TaskController {
     private final TaskService taskService;
     private final UserService userService;
@@ -39,7 +40,7 @@ public class TaskController {
 //    }
 
     // Вывести весь список задач
-    @GetMapping("/all")
+    @GetMapping("/tasks/all")
     public String getAllTasks(Model model) {
         List<TaskDto> taskDtoList = taskService.findAll()
                 .stream()
@@ -48,6 +49,18 @@ public class TaskController {
 
         model.addAttribute("tasks", taskDtoList);
         return "index";
+    }
+
+    // Вывести весь список задач
+    @GetMapping("/cabinet")
+    public String getCabinet(Model model) {
+        List<TaskDto> taskDtoList = taskService.findAll()
+                .stream()
+                .map(TaskDto::new)
+                .collect(Collectors.toList());
+
+        model.addAttribute("tasks", taskDtoList);
+        return "cabinet";
     }
 
 
