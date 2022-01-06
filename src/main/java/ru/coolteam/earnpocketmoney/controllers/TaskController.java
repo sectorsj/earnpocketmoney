@@ -64,7 +64,6 @@ public class TaskController {
         return "cabinet";
     }
 
-
 //    @GetMapping("/{id}")
 //    public String showTaskInfo (@PathVariable(name = "id") Long id, Model model) {
 //        Optional<Task> task = taskService.findById(id);
