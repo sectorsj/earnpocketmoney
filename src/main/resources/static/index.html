@@ -7,19 +7,19 @@
     <title> CoolTeam HTML project for earn pocket money</title>
 
 <!--    <link th:href="@{/css/blocks/tasklist.css}" rel="stylesheet" />-->
-    <link th:href="@{css/blocks/header.css}" rel="stylesheet" />
-<!--    <link th:href="@{css/blocks/home.css}" rel="stylesheet" />-->
-    <link th:href="@{css/blocks/base.css}" rel="stylesheet" />
-    <link th:href="@{css/blocks/reset.css}" rel="stylesheet" />
-    <link th:href="@{css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" />
+   <link th:href="@{/css/blocks/home.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" />
+    <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" />
 
 <!--    <link rel="stylesheet" href="css/blocks/task-creating.css">-->
-<!--    <link rel="stylesheet" href="css/blocks/header.css">-->
-<!--    <link rel="stylesheet" href="css/blocks/home.css">-->
+   <link rel="stylesheet" href="css/blocks/home.css">
+    <link rel="stylesheet" href="css/blocks/header.css">
 
-<!--    &lt;!&ndash;Reset&ndash;&gt;-->
-<!--    <link rel="stylesheet" href="css/blocks/base.css">-->
-<!--    <link rel="stylesheet" href="css/blocks/reset.css">-->
+    <!--Reset-->
+    <link rel="stylesheet" href="css/blocks/base.css">
+    <link rel="stylesheet" href="css/blocks/reset.css">
 
     <!--Fonts-->
     <link rel="stylesheet" href="css/fonts/VAGRounded/stylesheet.css">
@@ -30,7 +30,7 @@
         <div class="container">
             <div class="header-row">
                 <div class="header-logo">
-                    <img src="content/img/logo-01.svg" alt="Logo" width="250px">
+                    <img src="content/img/logo-01.svg"  alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
                 </div>
                 <nav class="header-nav">
                     <ul class="">
@@ -53,7 +53,7 @@
 
     <main>
         <!-- Основной view -->
-        <section class="home">
+        <section class="home" th:src="@{/content/img/fon_ny_1-01.svg}">
 
             <!-- Контейнер -->
             <div class="container">
@@ -61,11 +61,11 @@
                 <!--  -->
                 <div class="home__content__row">
 
-                    <div class="left__content__element">
+                    <div class="left__content__element" th:src="@{/content/img/fon_ny_-01.svg}">
                         <h1>Это главная страница</h1>
                     </div>
                     
-                    <div class="right__content__element">
+                    <div class="right__content__element" th:src="@{/content/img/fon_ny_2-01.svg}">
                         
                     </div>
 

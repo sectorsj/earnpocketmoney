@@ -48,12 +48,13 @@ public class TaskController {
                 .collect(Collectors.toList());
 
         model.addAttribute("tasks", taskDtoList);
-        return "index";
+         return "index";
+//        return "tasks";
     }
 
     // Вывести весь список задач
     @GetMapping("/cabinet")
-    public String getCabinet(Model model) {
+    public String getCabinet(Model model, String login) {
         List<TaskDto> taskDtoList = taskService.findAll()
                 .stream()
                 .map(TaskDto::new)
