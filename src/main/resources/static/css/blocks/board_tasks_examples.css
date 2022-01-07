@@ -2,32 +2,39 @@
     display: flex;
     flex-direction: column;
     height: 1000px;
+
+    /*height: 800px; */
+    min-height: 100%;
+    background-image: url(/src/main/resources/static/content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .right__content__element {
-    display: flex;
-    height: 100%;
+
 }
+
 .content__element__col {
-  height: 100%;
 }
 
 
 .task__examples__board {
-    overflow: hidden;
+    /* overflow: hidden;
     height: 100%;
 
     background-image: url(/src/main/resources/static/content/img/fon_ny_2-01.svg);
 
     border: 1px solid #828282;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 10px; */
 
     display: flex;
     flex-direction: column;
-    /* flex-basis: 60%;
+    flex-basis: 60%;
     flex-grow: 6;
-    margin-bottom: 1%; */
+    margin-bottom: 1%;
 }
 
 .board__header {
@@ -40,10 +47,9 @@
 
 .tasks__examples__list {
     display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    
+    flex-direction: column;    
 }
+
 .card {
     display: flex;
     width: 492px;
