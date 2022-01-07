@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> EPM_cabinet</title>
+    
+    <link th:href="@{/css/blocks/board_greeting.css}" media="screen" rel="stylesheet" />
+    <link th:href="@{/css/blocks/board_tasks_list.css}" media="screen" rel="stylesheet" />
+    <link th:href="@{/css/blocks/board_family_list.css}" media="screen" rel="stylesheet" />
+    <link th:href="@{/css/blocks/footer.css}" media="screen" rel="stylesheet" />
 
-    <link th:href="@{/css/blocks/board_greeting.css}" rel="stylesheet" />
-    <link th:href="@{/css/blocks/board_tasks_list.css}" rel="stylesheet" />
-    <link th:href="@{/css/blocks/board_family_list.css}" rel="stylesheet" />
-    <link th:href="@{/css/blocks/footer.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/header.css}" media="screen" rel="stylesheet" />
 
-    <link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
-
-    <link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/base.css}" media="screen" rel="stylesheet" />
     <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" />
     <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" />
 
@@ -38,21 +38,22 @@
 
 Thameleaf - далее Таймлиф, ТЛ
 
-
-
 -->
 
 <body>
     <header class="header">
         <div class="container">
             <div class="header-row">
-                <div class="header-logo"><img src="content/img/logo-01.svg" alt="Logo" width="250px"></div>
+                <div class="header-logo">
+                    <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
+                </div>
+
                 <nav class="header-nav">
                     <ul class="">
-                        <li><a href="#">Главная</a></li>
+                        <li><a th:href="@{/}">Главная</a></li>
                         <li><a href="#" class= "link__active">Кабинет</a></li>
                         <li><a href="#">Семья</a></li>
-                        <li><a href="/app/api/v2/tasks/all">Задачи</a></li>
+                        <li><a th:href="@{/app/api/v2/tasks/all}">Задачи</a></li>
                         <li><a href="#">Статистика</a></li>
                     </ul>
                 </nav>
@@ -84,9 +85,11 @@ Thameleaf - далее Таймлиф, ТЛ
 
                                 <div class="item first__item create__new__task__item">
 
+                                     <!-- <img th:src="@{img/myImage.jpg}" alt=""/>  -->
+                                     <!-- th:href="@{/url/url}" -->
                                     <a href="#" class="btn__link create__new__task__link">
 
-                                        <img src="content/img/Icon_3.svg" class="icons create__new__task__icon" alt="task-photo">
+                                        <img src="content/img/Icon_3.svg" class="icons create__new__task__icon" alt="task-photo" th:src="@{/content/img/Icon_3.svg}"/>
                                    
                                     </a>
 
@@ -107,10 +110,10 @@ Thameleaf - далее Таймлиф, ТЛ
 
                                 <h1 class="header__h1 board__header tasks__list__board__header">Список задач:</h1>
                                 
-                                <div class="list tasks__list" th:each="t : ${tasks}">
+                                <div class="list tasks__list">
 
                                     <!-- Карточка задачи -->
-                                    <div class="card card__task">
+                                    <div class="card card__task" th:each="t : ${tasks}">
 
 
                                         <div class="card__row task__card__row">
