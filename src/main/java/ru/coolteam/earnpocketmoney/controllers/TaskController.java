@@ -66,19 +66,7 @@ public class TaskController {
 //
 //        model.addAttribute("tasks", taskDtoList);
         return "tasks";
-
-    @GetMapping("/tasks/cabinet")
-    public String getCabinet(Model model, String login) {
-        List<TaskDto> taskDtoList = taskService.findAll()
-                .stream()
-                .map(TaskDto::new)
-                .collect(Collectors.toList());
-
-        model.addAttribute("tasks", taskDtoList);
-        return "cabinet";
-
     }
-
 //    @GetMapping("/{id}")
 //    public String showTaskInfo (@PathVariable(name = "id") Long id, Model model) {
 //        Optional<Task> task = taskService.findById(id);
