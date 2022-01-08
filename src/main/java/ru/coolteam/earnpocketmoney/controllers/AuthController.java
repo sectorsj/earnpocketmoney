@@ -92,6 +92,6 @@ public class AuthController {
 
         userForm.setRole(roleRepository.findByRole("ROLE_PARENT"));
         userService.findByLogin("parent1");
-        return "redirect:/api/v1/tasks/all";
+        return "redirect:/api/v1/cabinet";
     }
 }
