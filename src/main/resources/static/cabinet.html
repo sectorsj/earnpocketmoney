@@ -23,8 +23,7 @@
     <link rel="stylesheet" href="css/blocks/board_greeting.css">
     <link rel="stylesheet" href="css/blocks/board_tasks_list.css"> 
     <link rel="stylesheet" href="css/blocks/board_family_list.css"> 
-    <link rel="stylesheet" href="css/blocks/footer.css"> 
-    <!-- <link rel="stylesheet" href="css/blocks/home.css"> -->
+    <link rel="stylesheet" href="css/blocks/footer.css">
 
     <!--Reset/Base-->
     <link rel="stylesheet" href="css/blocks/base.css">
@@ -34,11 +33,7 @@
     <link rel="stylesheet" href="css/fonts/VAGRounded/stylesheet.css">
 </head>
 
-<!-- Документация
 
-Thameleaf - далее Таймлиф, ТЛ
-
--->
 
 <body>
     <header class="header">
@@ -53,7 +48,7 @@ Thameleaf - далее Таймлиф, ТЛ
                         <li><a th:href="@{/}">Главная</a></li>
                         <li><a href="#" class= "link__active">Кабинет</a></li>
                         <li><a href="#">Семья</a></li>
-                        <li><a th:href="@{/app/api/v2/tasks/all}">Задачи</a></li>
+                        <li><a th:href="@{/api/v1/tasks/all}">Задачи</a></li>
                         <li><a href="#">Статистика</a></li>
                     </ul>
                 </nav>
@@ -81,7 +76,7 @@ Thameleaf - далее Таймлиф, ТЛ
 
                             <div class="board greeting__board greeting">
 
-                                <h1 class="header__h1 board__header__h1 greeting__board__header">Добро пожаловать, Parent 1!</h1>
+                                <h1 class="header__h1 board__header__h1 greeting__board__header" >Добро пожаловать, Parent 1!</h1>
 
                                 <div class="item first__item create__new__task__item">
 

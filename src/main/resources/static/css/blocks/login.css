@@ -5,11 +5,9 @@ body{
     padding-top: 40px;
     padding-bottom: 40px;
 
-    background-color: #eee;
-    /* background-image: url( /src/main/resources/static/content/img/fon_ny_1-01.svg); */
+    /*background-color: #eee;*/
+    background-image: url(../../content/img/fon_ny_1-01.svg);
 }
-
-/* /src/main/resources/static/content/img/fon_ny_2-01.svg */
 
 .login {
 
@@ -31,9 +29,9 @@ body{
     min-width: 320px;
     padding: 15px;
     margin: 0 auto;
-    /* background-color: #fff; */
-    background-image: url(/src/main/resources/static/content/img/fon_ny_2-01.svg);
+    background-image: url(../../content/img/fon_ny_2-01.svg);
 }
+
 .login__board {
 }
 .form-signin {
@@ -55,9 +53,6 @@ body{
 .form-group > input {
     margin-bottom: 20px;
 }
-/* .form-control {
-    margin-top: 20px;
-} */
 
 .form-control   {
     

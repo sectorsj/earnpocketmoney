@@ -2,7 +2,7 @@
     overflow: hidden;
     height: 100%;
 
-    background-image: url(/src/main/resources/static/content/img/fon_ny_2-01.svg);
+    background-image: url(../../content/img/fon_ny_2-01.svg);
 
     border: 1px solid #828282;
     box-sizing: border-box;

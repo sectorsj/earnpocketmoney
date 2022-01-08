@@ -1,29 +1,45 @@
 body{
-    
-}
-.registration {
     font-family: 'VAGRounded', sans-serif;
     color: #000;
     padding-top: 40px;
     padding-bottom: 40px;
 
     background-color: #eee;
-    background-image: url(/src/main/resources/static/content/img/fon_ny_1-01.svg);
+    background-image: url(../../content/img/fon_ny_1-01.svg);
 }
 
-.registration__wrapper {
+.registration {
 
 }
-.registration__col {
-    margin-top: 100px;
-    
+
+.container {
+}
+.registration__container {
+}
+.content {
+}
+.registration__content {
+}
+.content__element {
+}
+
+.board {
+    height: 400px;
+    max-width: 450px;
+    min-width: 320px;
+    padding: 15px;
+    margin: 0 auto;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+}
+
+.registration__board {
 }
 
 .form-signin {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-    background-color: #fff;
+    /* max-width: 330px; */
+    /* padding: 15px; */
+    /* margin: 0 auto; */
+    /* background-color: #fff; */
 }
 
 .form-signin .form-signin-heading,
@@ -60,6 +76,36 @@ body{
     background-color: #01996D;
 }
 
+.header__h2, .board__header__h2, .registration__board__header {
+    margin-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.form-group > input {
+    margin-bottom: 20px;
+}
+
+.form-control {
+}
+
 .has-error {
     color: red
+}
+
+
+.btn {
+    margin-top: 20%;
+    color: #000;
+    background-color: #01996D;
+}
+.btn:hover {
+    background-color: #01996D;
+    opacity: 0.8;
+}
+
+.btn-lg {
+}
+.btn-primary {
+}
+.btn-block {
 }

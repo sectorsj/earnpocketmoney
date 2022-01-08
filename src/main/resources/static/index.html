@@ -34,17 +34,17 @@
                 </div>
                 <nav class="header-nav">
                     <ul class="">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="/app/api/v1/cabinet" class= "link__active">Кабинет</a></li>
+                        <li><a href="#" class="link__active">Главная</a></li>
+                        <li><a th:href="@{/api/v1/cabinet}">Кабинет</a></li>
                         <li><a href="#">Семья</a></li>
-                        <li><a href="/app/api/v1/tasks/all">Задачи</a></li>
+                        <li><a th:href="@{/api/v1/tasks/all}">Задачи</a></li>
                         <li><a href="#">Статистика</a></li>
                     </ul>
                 </nav>
                 <div class="header-login">
 
-                    <a  class="btn__signin btn-default" href="/app/register">Регистрация</a>
-                    <a class="btn btn-default" href="/app/auth">Вход</a>
+                    <a class="btn__signin btn-default" th:href="@{/register}">Регистрация</a>
+                    <a class="btn btn-default" th:href="@{/auth}">Вход</a>
 
                 </div>
             </div>

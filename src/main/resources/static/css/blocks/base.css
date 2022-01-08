@@ -73,8 +73,7 @@ body {
     width: 59.5%;
     height: 1000px;
     min-height: 100%;
-    /* background-image: url('/src/main/resources/static/content/img/fon_ny_2-01.svg'); */
-    background: url('fon_ny_2-01.svg') no-repeat center;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
 
     border: 1px solid #828282;
     box-sizing: border-box;
@@ -83,6 +82,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 /* Контент на правой доске (экране) */
 .right__content__element {
     overflow: hidden;
@@ -93,7 +93,7 @@ body {
     min-width: 39.5%;
     /* height: 800px; */
     /* min-height: 100%; */
-    background-image: url('/src/main/resources/static/content/img/fon_ny_2-01.svg');
+    background-image: url(../../content/img/fon_ny_2-01.svg);
 
     /* border: 1px solid #828282; */
     /* box-sizing: border-box; */

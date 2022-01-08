@@ -1,7 +1,7 @@
 .cabinet {
     /* min-height: 872px; */
     overflow: hidden;
-    background-image: url(/src/main/resources/static/content/img/fon_ny_1-01.svg);
+    background-image: url(../../content/img/fon_ny_1-01.svg);
 }
 
 .сabinet__container {

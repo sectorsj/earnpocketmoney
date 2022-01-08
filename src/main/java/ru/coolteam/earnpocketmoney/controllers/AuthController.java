@@ -99,7 +99,6 @@ public class AuthController {
 
     @PostMapping("/auth")
     public String authentication(@ModelAttribute("userForm") User userForm) {
-
         /*userForm.setRole(roleRepository.findByRole("ROLE_PARENT"));
         userService.findByLogin("parent1");*/
 
