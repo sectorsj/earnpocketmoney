@@ -2,7 +2,13 @@ package ru.coolteam.earnpocketmoney.controllers;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +28,10 @@ public class AuthController {
     private final UserService userService;
     private final JwtProvider jwtProvider;
     private final RoleRepository roleRepository;
+
+    private final UserDetailsService userDetailsService;
+    private final AuthenticationManager authenticationManager;
+
 
 //    @PostMapping("/register")
 //    public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
@@ -80,18 +90,41 @@ public class AuthController {
         return "login";
     }
 
-    @GetMapping()
+/*    @GetMapping()
     public ResponseEntity<?> authentication(@RequestBody AuthRequest request) {
         User user = userService.findByLogin(request.getLogin());
         String token = jwtProvider.generateToken(user.getLogin());
         return ResponseEntity.ok(new JwtResponse(token));
-    }
+    }*/
 
     @PostMapping("/auth")
     public String authentication(@ModelAttribute("userForm") User userForm) {
+        /*userForm.setRole(roleRepository.findByRole("ROLE_PARENT"));
+        userService.findByLogin("parent1");*/
 
-        userForm.setRole(roleRepository.findByRole("ROLE_PARENT"));
-        userService.findByLogin("parent1");
-        return "redirect:/api/v1/cabinet";
+        UserDetails userDetails = userDetailsService.loadUserByUsername(userForm.getLogin());
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, userForm.getPassword(), userDetails.getAuthorities());
+
+        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+
+        if (usernamePasswordAuthenticationToken.isAuthenticated()) {
+            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+
+            ////проверка авторизации
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            String username;
+            if (principal instanceof UserDetails) {
+                username = ((UserDetails)principal).getUsername();
+            } else {
+                username = principal.toString();
+            }
+
+            System.out.println(principal.getClass());
+            System.out.println(username);
+            ////
+        }
+
+
+        return "redirect:/api/v1/tasks/cabinet";
     }
 }

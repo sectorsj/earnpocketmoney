@@ -1,6 +1,7 @@
 package ru.coolteam.earnpocketmoney.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.coolteam.earnpocketmoney.models.*;
 import ru.coolteam.earnpocketmoney.repositories.PeopleGroupsRepository;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class TaskService {
+
     private final TaskRepository taskRepository;
     private final PeopleGroupsRepository peopleGroupsRepository;
     private final UserRepository userRepository;
