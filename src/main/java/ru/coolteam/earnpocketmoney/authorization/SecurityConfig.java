@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,10 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .httpBasic().disable()
-                .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+          //      .httpBasic().disable()
+           //     .csrf().disable()
+         //       .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+         //       .and()
                 .authorizeRequests()
 //                .antMatchers("/api/**").authenticated()
 //                .antMatchers("/api/v1/tasks/create").hasRole("PARENT")
@@ -39,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register", "/auth").permitAll()
                 .and()
                 .headers().frameOptions().disable();
-                http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+       //         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
 
@@ -49,5 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }*/
+
+    @Bean
+    public AuthenticationManager customAuthenticationManager() throws Exception {
+        return authenticationManager();
+    }
 
 }

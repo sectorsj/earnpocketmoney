@@ -17,6 +17,7 @@ import ru.coolteam.earnpocketmoney.services.UserService;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -58,7 +59,7 @@ public class TaskController {
     }
 
     // Вывести весь список задач
-    @GetMapping("/tasks/cabinet")
+  /*  @GetMapping("/tasks/cabinet")
     public String getCabinet(Model model, String login) {
         List<TaskDto> taskDtoList = taskService.findAll()
                 .stream()
@@ -67,7 +68,41 @@ public class TaskController {
 
         model.addAttribute("tasks", taskDtoList);
         return "cabinet";
+    }*/
+
+   /* @GetMapping("/tasks/cabinet")
+    public String getTasksByUserCreatingTask (Principal principal, Model model){
+        List<TaskDto> taskDtoList = new ArrayList<>();
+        taskDtoList = taskService.getAllTasksByUserCreatingTask(principal.getName())
+                .stream()
+                .map(TaskDto::new)
+                .collect(Collectors.toList());
+        model.addAttribute("tasks", taskDtoList);
+        return "cabinet";
+    }*/
+
+    ////////Метод показывает задачи актуальные для юзера - для родителя - которые он создал, для ребенка - которые ему назначены
+    @GetMapping("/tasks/cabinet")
+    public String getTasksByUserCreatingTask (Principal principal, Model model){
+        List<TaskDto> taskDtoList = new ArrayList<>();
+        User user = userService.findByLogin(principal.getName());
+        if(user.getRole().getRole().equals("ROLE_PARENT")){
+        taskDtoList = taskService.getAllTasksByUserCreatingTask(principal.getName())
+                .stream()
+                .map(TaskDto::new)
+                .collect(Collectors.toList());
+        }else if (user.getRole().getRole().equals("ROLE_CHILDREN")){
+            taskDtoList = taskService.getAllTasksByUserExecutingTask(principal.getName())
+                    .stream()
+                    .map(TaskDto::new)
+                    .collect(Collectors.toList());
+        }
+        model.addAttribute("tasks", taskDtoList);
+        return "cabinet";
     }
+
+
+
 
 //    @GetMapping("/{id}")
 //    public String showTaskInfo (@PathVariable(name = "id") Long id, Model model) {
@@ -153,7 +188,7 @@ public class TaskController {
         if (bindingResult.hasErrors()) {
             return "test";
         }
-        taskService.createTask(taskForm);
+        taskService.createTask(taskForm.getTitle(),taskForm.getTaskText(),taskForm.getUserCreatingTask(),taskForm.getUserExecutingTask(),taskForm.getWages());
         return "redirect:/api/v1/tasks/all";
     }
 
