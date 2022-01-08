@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:action="@{/api/v1/tasks/create}" th:object="${taskForm}">
+    <input id="title" required type="text" th:field="*{title}"/><br>
+    <input id="taskText" required type="text" th:field="*{taskText}"/><br>
+    <input id="wages" required type="number" th:field="*{wages}"/><br>
+    <input id="userCreatingTask" required type="number" th:field="*{userCreatingTask}"/><br><br>
+    <input type="submit" value="Create task">
+</form>
+</body>
+</html>
