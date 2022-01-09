@@ -1,21 +1,18 @@
 package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.coolteam.earnpocketmoney.dtos.RoleDto;
 import ru.coolteam.earnpocketmoney.dtos.TaskDto;
 import ru.coolteam.earnpocketmoney.models.Task;
-import ru.coolteam.earnpocketmoney.models.User;
 import ru.coolteam.earnpocketmoney.services.TaskService;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -23,58 +20,12 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/tasks")
+//@RequestMapping("/api/v1/tasks")
+@RequestMapping("/api/v1/")
 public class TaskController {
     private final TaskService taskService;
     private final UserService userService;
 
-//    rest version
-//    @GetMapping()
-//    public List<TaskDto> getAllTasks() {
-//        List<TaskDto> taskDtoList = taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
-//        return taskDtoList;
-//    }
-
-//    @GetMapping()
-//    public String getAllTasks(Model model) {
-//        List<TaskDto> taskDtoList = taskService.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
-//        model.addAttribute("tasks", taskDtoList);
-//        return "tasklist";
-//    }
-
-
-//     Вывести весь список задач
-//    @GetMapping("/tasks/all")
-//    public String getAllTasks(Model model) {
-//        List<TaskDto> taskDtoList = taskService.findAll()
-//                .stream()
-//                .map(TaskDto::new)
-//                .collect(Collectors.toList());
-//
-//        model.addAttribute("tasks", taskDtoList);
-//        return "tasks";
-//    }
-
-    // Вывести весь список задач
-
-    @GetMapping("/all")
-    public String getAllTasks() {
-//        List<TaskDto> taskDtoList = taskService.findAll()
-//                .stream()
-//                .map(TaskDto::new)
-//                .collect(Collectors.toList());
-//
-//        model.addAttribute("tasks", taskDtoList);
-        return "tasks";
-    }
-//    @GetMapping("/{id}")
-//    public String showTaskInfo (@PathVariable(name = "id") Long id, Model model) {
-//        Optional<Task> task = taskService.findById(id);
-//        if (task.isPresent()) {
-//            model.addAttribute("task", task.get());
-//        }
-//        return "task_info";
-//    }
 
     // Найти задачу по ID
     @GetMapping("/{id}")
@@ -140,19 +91,31 @@ public class TaskController {
 //        return new TaskDto(taskService.createTask(title, taskText, userCreatingTask, userExecutingTask, wages));
 //    }
 
-    @GetMapping("/tasks/create")
-    public String createTask(Model model) {
-        model.addAttribute("taskForm", new Task());
-        return "test";
-    }
+//   @GetMapping("/tasks/create")
+//   public String createTask(Model model) {
+//       model.addAttribute("taskForm", new Task());
+//       return "tasks";
+//   }
 
-    @PostMapping("/tasks/create")
+   @GetMapping("/tasks")
+   public String createTask(Model model) {
+       model.addAttribute("taskForm", new Task());
+       return "tasks";
+   }
+
+    @PostMapping("/tasks")
     public String createTask(@Valid @ModelAttribute("taskForm") Task taskForm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "test";
+            return "tasks";
         }
-        taskService.createTask(taskForm);
-        return "redirect:/api/v1/tasks/all";
+        taskService.createTask(taskForm.getTitle(),
+                taskForm.getTaskText(),
+                taskForm.getUserCreatingTask(),
+                taskForm.getUserExecutingTask(),
+                taskForm.getWages());
+
+//        return "redirect:/api/v1/tasks/all";
+        return "redirect:/api/v1/cabinet";
     }
 
     @PreAuthorize("hasRole('ROLE_PARENT')")

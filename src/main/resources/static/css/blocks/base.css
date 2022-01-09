@@ -93,7 +93,7 @@ body {
     min-width: 39.5%;
     /* height: 800px; */
     /* min-height: 100%; */
-    background-image: url(../../content/img/fon_ny_2-01.svg);
+    /* background-image: url(../../content/img/fon_ny_2-01.svg); */
 
     /* border: 1px solid #828282; */
     /* box-sizing: border-box; */
@@ -104,7 +104,6 @@ body {
 .content__element__col{
     /* padding-left: 5%;
     padding-right: 5%; */
-
 }
 
 /* Перевод доски(экрана) во flex-элемент, с вертикальным положением элементов */
