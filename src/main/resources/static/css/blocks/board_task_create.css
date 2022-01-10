@@ -2,7 +2,7 @@
     /* min-height: 872px; */
     overflow: hidden;
     background-image: url(../../content/img/fon_ny_1-01.svg);
-    padding: 36px 0;
+    /* padding: 36px 0; */
 }
 
 .board {
@@ -88,7 +88,6 @@ input:focus::placeholder {
     margin-left: 10px;
 }
 
-
 .btn__wages, a.btn__wages {
     display: flex;
     justify-content: center;
@@ -114,9 +113,6 @@ input:focus::placeholder {
     opacity: 0.8;
     /* color: #292929; */
 }
-
-
-
 
 /* Элемент формы - Добавление фото */
 
@@ -155,11 +151,6 @@ input:focus::placeholder {
 
 .add__child__header {
 }
-
-
-
-
-
 
 /* Кнопка Submit */
 .btn__submit, a.btn__submit {

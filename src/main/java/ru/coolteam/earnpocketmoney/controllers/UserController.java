@@ -17,7 +17,8 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/users")
+//@RequestMapping("/users")
+@RequestMapping("api/v1/")
 public class UserController {
 
     private final UserService userService;
@@ -34,8 +35,20 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/allByFamily")
-    public String getAllUsersBeFamily (Principal principal, Model model){
+//    @GetMapping("/allByFamily")
+//    public String getAllUsersBeFamily (Principal principal, Model model){
+//        List<UserDto> userDtoList;
+//        User user = userService.findByLogin(principal.getName());
+//        userDtoList = userService.findAllByPeopleGroups(user.getPeopleGroups())
+//                .stream()
+//                .map(UserDto::new)
+//                .collect(Collectors.toList());
+//        model.addAttribute(userDtoList);
+//        return "index";
+//    }
+
+    @GetMapping("/family")
+    public String getAllUsersByFamily (Principal principal, Model model){
         List<UserDto> userDtoList;
         User user = userService.findByLogin(principal.getName());
         userDtoList = userService.findAllByPeopleGroups(user.getPeopleGroups())
@@ -43,8 +56,6 @@ public class UserController {
                 .map(UserDto::new)
                 .collect(Collectors.toList());
         model.addAttribute(userDtoList);
-        return "index";
+        return "family";
     }
-
-
 }

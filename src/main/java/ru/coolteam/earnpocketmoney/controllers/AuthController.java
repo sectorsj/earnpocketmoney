@@ -20,7 +20,6 @@ import ru.coolteam.earnpocketmoney.models.*;
 import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
-//@RestController
 @Controller
 @RequiredArgsConstructor
 public class AuthController {
@@ -31,29 +30,6 @@ public class AuthController {
 
     private final UserDetailsService userDetailsService;
     private final AuthenticationManager authenticationManager;
-
-
-//    @PostMapping("/register")
-//    public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
-//        User u = new User();
-//        Role r = roleRepository.findByRole(registrationRequest.getRole());
-//        u.setPassword(registrationRequest.getPassword());
-//        u.setLogin(registrationRequest.getLogin());
-//        u.setRole(r);
-//        userService.saveUser(u);
-//        return "OK";
-//    }
-
-//   @PostMapping("/register")
-//    public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest, Model model) {
-//        User u = new User();
-//        Role r = roleRepository.findByRole(registrationRequest.getRole());
-//        u.setPassword(registrationRequest.getPassword());
-//        u.setLogin(registrationRequest.getLogin());
-//        u.setRole(r);
-//        userService.saveUser(u);
-//        return "registration";
-//    }
 
     @GetMapping("/register")
     public String registration(Model model) {
@@ -71,18 +47,8 @@ public class AuthController {
 
         userForm.setRole(roleRepository.findByRole("ROLE_PARENT"));
         userService.saveUser(userForm);
-//        return "redirect:/api/v1/tasks/all";
         return "redirect:/api/v1/cabinet";
     }
-
-//    @PostMapping("/auth")
-//    public ResponseEntity<?> auth(@RequestBody AuthRequest request) {
-//        User user = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
-//        String token = jwtProvider.generateToken(user.getLogin());
-//        return ResponseEntity.ok(new JwtResponse(token));
-//    }
-
-
 
     @GetMapping("/auth")
     public String authentication(Model model) {
@@ -99,18 +65,21 @@ public class AuthController {
 
     @PostMapping("/auth")
     public String authentication(@ModelAttribute("userForm") User userForm) {
-        /*userForm.setRole(roleRepository.findByRole("ROLE_PARENT"));
-        userService.findByLogin("parent1");*/
+
+//        userForm.setRole(roleRepository.findByRole("ROLE_PARENT"));
+//        userService.findByLogin("parent1");
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(userForm.getLogin());
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, userForm.getPassword(), userDetails.getAuthorities());
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails,
+                userForm.getPassword(),
+                userDetails.getAuthorities());
 
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 
-            ////проверка авторизации
+//          Проверка авторизации
             Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             String username;
             if (principal instanceof UserDetails) {
@@ -121,10 +90,7 @@ public class AuthController {
 
             System.out.println(principal.getClass());
             System.out.println(username);
-            ////
         }
-
-
-        return "redirect:/api/v1/tasks/cabinet";
+        return "redirect:/api/v1/cabinet";
     }
 }
