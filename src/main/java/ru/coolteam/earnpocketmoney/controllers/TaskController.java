@@ -8,11 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.TaskDto;
+import ru.coolteam.earnpocketmoney.dtos.UserInfo;
+import ru.coolteam.earnpocketmoney.models.Role;
 import ru.coolteam.earnpocketmoney.models.Task;
+import ru.coolteam.earnpocketmoney.models.User;
+import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
 import ru.coolteam.earnpocketmoney.services.TaskService;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +30,7 @@ import java.util.stream.Collectors;
 public class TaskController {
     private final TaskService taskService;
     private final UserService userService;
+    private final RoleRepository roleRepository;
 
 
     // Найти задачу по ID
@@ -98,7 +104,17 @@ public class TaskController {
 //   }
 
    @GetMapping("/tasks")
-   public String createTask(Model model) {
+   public String createTask(Principal principal, Model model) {
+       User user = userService.findByLogin(principal.getName());
+       Role role = roleRepository.findByRole("ROLE_CHILDREN");
+
+       List<UserInfo> userInfoList = userService.findAllByPeopleGroupsAndRole(user.getPeopleGroups(), role)
+               .stream()
+               .map(UserInfo::new)
+               .collect(Collectors.toList());
+       model.addAttribute("users" , userInfoList);
+
+
        model.addAttribute("taskForm", new Task());
        return "tasks";
    }

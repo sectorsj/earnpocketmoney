@@ -73,7 +73,7 @@
 
                             <div class="board greeting__board greeting">
 
-                                <h1 class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getLogin + ' !'}">Добро пожаловать, Parent XXX!</h1>
+                                <h1 class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
 
                                 <div class="item first__item create__new__task__item">
 
@@ -158,7 +158,7 @@
                                 <h1 class="header__h1 board__header family__list__board__header">Семья:</h1>
 
                                 <!-- Каторчка задач в цикле, получение из БД чере ТЛ -->
-                                <div class="list family__list" th:each="t : ${tasks}">
+                                <div class="list family__list" th:each="f : ${myFamily}">
 
                                     <!-- Карточка задачи -->
                                     <div class="card card__family">
@@ -169,10 +169,10 @@
                                             <div class="card__header__text family__card__headerandtext">
 
                                                 <!-- Заголовок карточки -->
-                                                <h1 class="card__header__h1 family__card__header__h1" th:text="${t.title}">Имя ребнка</h1>
+                                                <h1 class="card__header__h1 family__card__header__h1" th:text="${f.login}">Имя ребнка</h1>
 
                                                 <!-- Текст карточки -->
-                                                <p class="card__text__p family__card__text__p" th:text="${t.taskText}">Количество полученных задач</p>
+                                                <p class="card__text__p family__card__text__p" th:text="${f.peopleGroupName}">Количество полученных задач</p>
 
                                             </div>
 
@@ -180,7 +180,7 @@
                                             <div class="card__span family__card__span family__tasks__span">
 
                                                 <!-- Оценка карточки -->
-                                                <span class="number_span tasks__span" th:text="${t.wages}">2</span>
+                                                <span class="number_span tasks__span" th:text="${f.executingTasksListSize}">2</span>
 
                                             </div>
 

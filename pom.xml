@@ -11,8 +11,10 @@
 	<groupId>ru.coolteam</groupId>
 	<artifactId>earnpocketmoney</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>earnpocketmoney</name>
 	<description>Useful application for children and parents</description>
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -42,6 +44,14 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<version>2.3.12.RELEASE</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -74,7 +84,19 @@
 			<artifactId>jakarta.validation-api</artifactId>
 			<version>2.0.2</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<version>2.6.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
 	</dependencies>
+
+
 
 	<build>
 		<plugins>

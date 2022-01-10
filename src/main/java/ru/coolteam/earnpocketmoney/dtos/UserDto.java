@@ -5,6 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.coolteam.earnpocketmoney.models.User;
 
+import javax.persistence.Transient;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @NoArgsConstructor
 public class UserDto {
@@ -17,6 +21,8 @@ public class UserDto {
     private WalletDto walletDto;
     private PeopleGroupsDto peopleGroupsDto;
 
+
+
     public UserDto(User user) {
   //      this.id = user.getId();
         this.login = user.getLogin();
@@ -25,5 +31,6 @@ public class UserDto {
         this.roleDto = new RoleDto(user.getRole());
         this.walletDto = new WalletDto(user.getWallet());
         this.peopleGroupsDto = new PeopleGroupsDto(user.getPeopleGroups());
+
     }
 }

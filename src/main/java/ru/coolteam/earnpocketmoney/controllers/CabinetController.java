@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.TaskDto;
+import ru.coolteam.earnpocketmoney.dtos.UserDto;
+import ru.coolteam.earnpocketmoney.dtos.UserInfo;
 import ru.coolteam.earnpocketmoney.models.User;
+import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
 import ru.coolteam.earnpocketmoney.services.TaskService;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
@@ -21,6 +24,7 @@ import java.util.stream.Collectors;
 public class CabinetController {
     private final TaskService taskService;
     private final UserService userService;
+    private final RoleRepository roleRepository;
 
 //    Доступ в кабинет
 //    TODO для кабинета необходимо добавить 1)инфу о юзере вошедшем в кабинет 2)список членов семьи (дети, родители)
@@ -53,8 +57,20 @@ public class CabinetController {
         }
 
         user.getLogin();
+        List<UserInfo> userInfoList = userService.findAllByPeopleGroups(user.getPeopleGroups())
+                .stream()
+                .map(UserInfo::new)
+                .collect(Collectors.toList());
+        model.addAttribute("myFamily" ,userInfoList);
         model.addAttribute("tasks", taskDtoList);
         model.addAttribute("user", user);
+
         return "cabinet";
     }
+
+
+
+
+
+
 }

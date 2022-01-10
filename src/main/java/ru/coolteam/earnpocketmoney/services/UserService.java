@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.coolteam.earnpocketmoney.models.PeopleGroups;
+import ru.coolteam.earnpocketmoney.models.Role;
 import ru.coolteam.earnpocketmoney.models.User;
 import ru.coolteam.earnpocketmoney.repositories.UserRepository;
 
@@ -42,6 +43,10 @@ public class UserService {
 
     public List<User> findAllByPeopleGroups (PeopleGroups peopleGroups){
         return userRepository.findAllByPeopleGroups(peopleGroups);
+    }
+
+    public List<User> findAllByPeopleGroupsAndRole (PeopleGroups peopleGroups, Role role){
+        return userRepository.findAllByPeopleGroupsAndRole(peopleGroups, role);
     }
 
 //    public User findByLogin(String login){
