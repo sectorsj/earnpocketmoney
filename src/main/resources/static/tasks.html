@@ -147,6 +147,33 @@
                                                     <img src="content/img/Icon_4.svg" class="icons" alt="add__child">
                                                 </a>
                                                 <h1 class="add__child__header">Добавить ребенка</h1>
+
+                                                <select>
+                                                    <option>
+                                                    <div class="list family__list" th:each="f : ${users}">
+                                                        <!-- Карточка задачи -->
+                                                        <div class="card card__family">
+                                                            <div class="card__row family__card__row">
+                                                                <!-- Блок заголовок и текст карточки -->
+                                                                <div class="card__header__text family__card__headerandtext">
+                                                                    <!-- Заголовок карточки -->
+                                                                    <h1 class="card__header__h1 family__card__header__h1" th:text="${f.login}">Имя ребнка</h1>
+                                                                    <!-- Текст карточки -->
+                                                                    <p class="card__text__p family__card__text__p" th:text="${f.peopleGroupName}">Количество полученных задач</p>
+                                                                </div>
+                                                                <!-- Блок оценка карточки -->
+                                                                <div class="card__span family__card__span family__tasks__span">
+                                                                    <!-- Оценка карточки -->
+                                                                    <span class="number_span tasks__span" th:text="${f.executingTasksListSize}">2</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    </option>
+                                                </select>
+
+
                                             </div>
 
                                             <span class="has-error"

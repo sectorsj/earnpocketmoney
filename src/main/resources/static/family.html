@@ -75,7 +75,8 @@
 
                             <div class="board family__board">
 
-                                <h1 class="header__h1 board__header__h1 family__board__header">Семья "Ивановы"</h1>
+                                <!--/*@thymesVar id="getPeopleGroupName" type=""*/-->
+                                <h1 class="header__h1 board__header__h1 family__board__header" th:text="${'Семья ' + user.getPeopleGroups().getName() + ' !'}" >Семья 'ивановы'</h1>
 
                                 
                                 <div class="list tasks__list">
@@ -84,7 +85,7 @@
 
                                     <div class="item first__item ">
 
-                                        <div class="card card__family" th:each="t : ${tasks}">
+                                        <div class="card card__family" th:each="u : ${users}">
     
                                             <div class="card__row family__card__row">
     
@@ -92,10 +93,10 @@
                                                 <div class="card__header__text family__card__headerandtext">
     
                                                     <!-- Заголовок карточки -->
-                                                    <h1 class="card__header__h1 family__card__header__h1" th:text="${t.title}">Child 1</h1>
+                                                    <h1 class="card__header__h1 family__card__header__h1" th:text="${u.login}">Child 1</h1>
     
                                                     <!-- Текст карточки -->
-                                                    <p class="card__text__p task__card__text__p" th:text="${t.taskText}">Задач у ребенка</p>
+                                                    <p class="card__text__p task__card__text__p" th:text="${u.login}">Задач у ребенка</p>
     
                                                 </div>
     
@@ -103,7 +104,7 @@
                                                 <div class="card__span task__card__span task__wages__span">
                                                     <!-- Оценка карточки -->
     
-                                                    <span class="number_span wages__span" th:text="${t.wages}">5</span>
+                                                    <span class="number_span wages__span" th:text="${u.executingTasksListSize}">5</span>
     
                                                 </div>
     

@@ -4,12 +4,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
 @Data
-@NoArgsConstructor
+//@NoArgsConstructor
 public class User {
 
     @Id
@@ -43,4 +44,14 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "id_people_groups")
     private PeopleGroups peopleGroups;
+
+    @OneToMany(mappedBy = "userCreatingTask")
+    private List<Task>  creatingTasksList;
+
+    @OneToMany(mappedBy = "userExecutingTask")
+    private List<Task>  executingTasksList;
+
+
+
+
 }

@@ -34,6 +34,10 @@ public class TaskService {
         return taskRepository.findTaskByUserCreatingTask_PeopleGroups(peopleGroupsRepository.findByName(groupName));
     }
 
+    public List<Task> getAllExecutingTasksByPeopleGroups (String groupName){
+        return taskRepository.findAllByUserExecutingTask_PeopleGroups(peopleGroupsRepository.findByName(groupName));
+    }
+
 //    public List<Task> getAllTasksByUserCreatingTask (String login){
 //        return taskRepository.findTaskByUserCreatingTask(userRepository.findByLogin(login));
 //    }

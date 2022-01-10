@@ -60,7 +60,8 @@ insert into users (login, password,id_wallet, id_role, id_people_groups) values
 ('parent1', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 1, 1, 1),
 ('children1', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 1),
 ('parent2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 1, 1, 2),
-('children2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 2);
+('children2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 2),
+('children3', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 1);
 
 
 drop table  if exists bonuses;
@@ -95,6 +96,7 @@ values
 ('Тестовая задача 1', '1 task description! attention! attention!', 1, 2, 1, 15),
 ('Тестовая задача 2', '2 task description! attention! attention!', 1, 2, 1, 24),
 ('Тестовая задача 3', '3 task description! attention! attention!', 1, 2, 2, 1),
+('Тестовая задача 33', '33 task description! attention! attention!', 1, 5, 2, 1),
 ('Тестовая задача 4', '4 task description! attention! attention!', 3, 4, 3, 14),
 ('Тестовая задача 5', '5 task description! attention! attention!', 3, 4, 3, 10);
 
