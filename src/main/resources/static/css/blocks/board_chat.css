@@ -1,0 +1,75 @@
+.content__element {
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+
+    min-height: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+}
+.right__content__element {
+}
+.content__element__col {
+}
+.right__content__element__col {
+}
+.chat__board {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    flex-grow: 6;
+    margin-bottom: 1%;
+}
+
+.header__h1 {
+}
+.board__header {
+}
+.family__board__header {
+}
+.list {
+}
+.chat__view {
+    display: flex;
+    flex-direction: column;   
+
+    max-width: 100%;
+
+    /* margin: 0px auto; */
+    margin-left: 5%;
+    margin-right: 5%;
+    /* justify-content: center; */
+    flex: 1 1 auto;
+}
+.family__chat__view {
+}
+.card {
+}
+.message {
+}
+.chat__message {
+}
+.family__chat {
+}
+.card__row {
+}
+.message__row {
+}
+.message__family__chat__row {
+}
+.card__header__text {
+}
+.message__headerandtext {
+}
+.card__header__h1 {
+}
+.message__header__h1 {
+}
+.card__text__p {
+}
+.message__text__p {
+}

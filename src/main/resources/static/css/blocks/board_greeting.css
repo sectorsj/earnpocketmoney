@@ -1,0 +1,41 @@
+.cabinet {
+    /* min-height: 872px; */
+    overflow: hidden;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.сabinet__container {
+
+}
+
+.cabinet__content__row {
+
+}
+
+.greeting__board{
+
+}
+
+.greeting__board__header {
+    
+}
+
+.create__new__task__item {
+    display:  flex;
+    flex-direction: row;
+    
+    margin-top: 20%;
+    margin-left: 5%;
+}
+
+.btn__link, .create__new__task__link {
+    
+}
+
+.create__new__task__icon {
+
+}
+
+ .create__task__header__h1 {
+     color: #292929;
+}

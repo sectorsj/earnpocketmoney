@@ -1,0 +1,29 @@
+.home {
+    overflow: hidden;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.home__content__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.left__content__element {
+}
+
+.right__content__element {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 39.5%;
+    height: 1000px;
+    min-height: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282; 
+    box-sizing: border-box;
+    border-radius: 10px; 
+}

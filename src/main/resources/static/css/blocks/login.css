@@ -1,0 +1,81 @@
+
+body{
+    overflow: hidden;
+    font-family: 'VAGRounded', sans-serif;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    /*background-color: #eee;*/
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.login {
+
+}
+.container {
+}
+.login__container {
+}
+.content {
+}
+.login__content {
+}
+.content__element {
+    
+}
+.board {
+    height: 400px;
+    max-width: 450px;
+    min-width: 320px;
+    padding: 15px;
+    margin: 0 auto;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+}
+
+.login__board {
+}
+.form-signin {
+}
+
+.form-signin .form-heading,
+.form-signin .checkbox {
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.header__h2, .board__header__h2, .login__board__header {
+    margin-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.form-group > input {
+    margin-bottom: 20px;
+}
+
+.form-control   {
+    
+}
+
+.has-error {
+}
+
+.btn {
+    margin-top: 20%;
+    color: #000;
+    background-color: #01996D;
+}
+.btn:hover {
+    background-color: #01996D;
+    opacity: 0.8;
+}
+
+.btn-lg {
+}
+.btn-primary {
+}
+.btn-block {
+}
+.text-center {
+}

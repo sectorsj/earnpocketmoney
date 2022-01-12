@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CoolTeam HTML project for earn pocket money</title>
+
+<!--    <link th:href="@{/css/blocks/tasklist.css}" rel="stylesheet" />-->
+   <link th:href="@{/css/blocks/home.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" />
+    <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" />
+
+<!--    <link rel="stylesheet" href="css/blocks/task-creating.css">-->
+   <link rel="stylesheet" href="css/blocks/home.css">
+    <link rel="stylesheet" href="css/blocks/header.css">
+
+    <!--Reset-->
+    <link rel="stylesheet" href="css/blocks/base.css">
+    <link rel="stylesheet" href="css/blocks/reset.css">
+
+    <!--Fonts-->
+    <link rel="stylesheet" href="css/fonts/VAGRounded/stylesheet.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="header-logo">
+                    <img src="content/img/logo-01.svg"  alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
+                </div>
+                <nav class="header-nav">
+                    <ul class="">
+                        <li><a href="#" class="link__active">Главная</a></li>
+                        <li><a th:href="@{/api/v1/cabinet}">Кабинет</a></li>
+                        <li><a th:href="@{/api/v1/family}">Семья</a></li>
+                        <li><a th:href="@{/api/v1/tasks}">Задачи</a></li>
+                        <li><a href="#">Статистика</a></li>
+                    </ul>
+                </nav>
+                <div class="header-login">
+
+                    <a class="btn__signin btn-default" th:href="@{/register}">Регистрация</a>
+                    <a class="btn btn-default" th:href="@{/auth}">Вход</a>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Основной view -->
+        <section class="home" th:src="@{/content/img/fon_ny_1-01.svg}">
+
+            <!-- Контейнер -->
+            <div class="container">
+
+                <!--  -->
+                <div class="home__content__row">
+
+                    <div class="left__content__element" th:src="@{/content/img/fon_ny_-01.svg}">
+                        <h1>Это главная страница</h1>
+                    </div>
+                    
+                    <div class="right__content__element" th:src="@{/content/img/fon_ny_2-01.svg}">
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div th:insert="copyright :: copy"></div>
+    </footer>
+
+</body>
+
+</html>

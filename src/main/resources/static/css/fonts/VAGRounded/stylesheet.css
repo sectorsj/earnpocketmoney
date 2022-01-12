@@ -1,0 +1,9 @@
+
+@font-face {
+	font-family: 'VAGRounded';
+	src: url('VAGRounded.ttf');
+	src: local('VAGRounded'), local('VAGRounded'),
+		url('VAGRounded.ttf') format('truetype');
+	font-weight: regular;
+	font-style: normal;
+}
