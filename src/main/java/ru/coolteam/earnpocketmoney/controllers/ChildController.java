@@ -19,4 +19,5 @@ public class ChildController {
     public List<Child> getAllChildren() {
         return childService.findAll();
     }
+
 }
