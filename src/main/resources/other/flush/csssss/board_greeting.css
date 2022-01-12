@@ -1,0 +1,49 @@
+.cabinet {
+    overflow: hidden;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.сabinet__container {
+
+}
+
+.cabinet__content__row {
+
+}
+
+
+/* Контент на левой доске (экране) */
+.left__content__element {   
+    width: 59.5%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.greeting__board{
+
+}
+
+.greeting__board__header {
+    
+}
+
+.create__new__task__item {
+    display:  flex;
+    flex-direction: row;
+    
+    margin-top: 20%;
+    margin-left: 5%;
+}
+
+.btn__link, .create__new__task__link {
+    
+}
+
+.create__new__task__icon {
+
+}
+
+ .create__task__header__h1 {
+     color: #292929;
+}

@@ -2,6 +2,8 @@ package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,11 +51,6 @@ public class TaskController {
     public TaskDto getTaskDtoByTitle(@RequestParam String title){
         TaskDto taskDto = new TaskDto(taskService.findByTitle(title).get()) ;
         return taskDto;
-    // Поиск по Заголовку Задачи
-    @GetMapping("/getTitle")
-    public TaskDto getTaskDtoByTitle(@RequestParam String title){
-        TaskDto taskDto = new TaskDto(taskService.findByTitle(title).get()) ;
-        return taskDto;
     }
 
     // Обновление времени создания Задачи
@@ -109,125 +106,23 @@ public class TaskController {
 //       return "tasks";
 //   }
 
-   @GetMapping("/tasks")
-   public String createTask(Principal principal, Model model) {
-       User user = userService.findByLogin(principal.getName());
-       Role role = roleRepository.findByRole("ROLE_CHILDREN");
-
-       List<UserInfo> userInfoList = userService.findAllByPeopleGroupsAndRole(user.getPeopleGroups(), role)
-               .stream()
-               .map(UserInfo::new)
-               .collect(Collectors.toList());
-       model.addAttribute("users" , userInfoList);
-
-       TaskForm taskForm = new TaskForm();
-       taskForm.setWages(5L);
-       model.addAttribute("taskForm", taskForm);
-
-       return "tasks";
-   }
-
-
-    @PostMapping("/tasks")
-    public String createTask(@Valid @ModelAttribute("taskForm") TaskForm taskForm, BindingResult bindingResult, Model model, Principal principal) {
-        if (bindingResult.hasErrors()) {
-            return "tasks";
-        }
+    @GetMapping("/tasks")
+    public String createTask(Principal principal, Model model) {
         User user = userService.findByLogin(principal.getName());
-        User userExecutingTask = null;
-        if(taskForm.getUserExecutingTask()!=null){
-            userExecutingTask = userService.findByLogin(taskForm.getUserExecutingTask());
-        }
+        Role role = roleRepository.findByRole("ROLE_CHILDREN");
 
-        //TODO исправить ручное введение стоимости!!
+        List<UserInfo> userInfoList = userService.findAllByPeopleGroupsAndRole(user.getPeopleGroups(), role)
+                .stream()
+                .map(UserInfo::new)
+                .collect(Collectors.toList());
+        model.addAttribute("users" , userInfoList);
+
+        TaskForm taskForm = new TaskForm();
         taskForm.setWages(5L);
+        model.addAttribute("taskForm", taskForm);
 
-        taskService.createTask(taskForm.getTitle(),
-                taskForm.getTaskText(),
-                user,
-                userExecutingTask,
-                taskForm.getWages());
-
-//        return "redirect:/api/v1/tasks/all";
-        return "redirect:/api/v1/cabinet";
+        return "tasks";
     }
-
-    @GetMapping("/create")
-    public String createNewTask(@RequestParam(name = "title") String title) {
-        taskService.createTask(title);
-        return "New task = " + title;
-    }
-
-    // Обновление времени создания Задачи
-    @GetMapping("/updateTime")
-    public TaskDto updatedTime (@RequestParam String title){
-        TaskDto taskDto = new TaskDto(taskService.updatedTime(title, LocalDateTime.now()));
-        return taskDto;
-    }
-
-    @GetMapping("/groupTasks")
-    public List<TaskDto> getgroupsTaskDtos (@RequestParam String groupName){
-        List<TaskDto> taskDtoList = taskService.getAllTasksByPeopleGroups(groupName)
-                .stream()
-                .map(TaskDto::new)
-                .collect(Collectors.toList());
-        return taskDtoList;
-    }
-
-    @GetMapping("/userCreatingTask")
-    public List<TaskDto> getTasksByUserCreatingTask (@RequestParam String login){
-        List<TaskDto> taskDtoList = taskService.getAllTasksByUserCreatingTask(login)
-                .stream()
-                .map(TaskDto::new)
-                .collect(Collectors.toList());
-        return taskDtoList;
-    }
-
-    @GetMapping("/userExecutingTask")
-    public List<TaskDto> getTasksByUserExecutingTask (@RequestParam String login){
-        List<TaskDto> taskDtoList = taskService.getAllTasksByUserExecutingTask(login)
-                .stream()
-                .map(TaskDto::new)
-                .collect(Collectors.toList());
-        return taskDtoList;
-    }
-
-//    @PreAuthorize("hasRole('ROLE_PARENT')")
-//    @GetMapping("/create")
-//    public TaskDto create (@RequestParam String title,
-//                           @RequestParam String taskText,
-//                           @RequestParam String userCreatingTaskLogin,
-//                           @RequestParam String userExecutingTaskLogin,
-//                           @RequestParam Long wages){
-//        User userCreatingTask = userService.findByLogin(userCreatingTaskLogin);
-//        User userExecutingTask = userService.findByLogin(userExecutingTaskLogin);
-//
-//        return new TaskDto(taskService.createTask(title, taskText, userCreatingTask, userExecutingTask, wages));
-//    }
-
-//   @GetMapping("/tasks/create")
-//   public String createTask(Model model) {
-//       model.addAttribute("taskForm", new Task());
-//       return "tasks";
-//   }
-
-   @GetMapping("/tasks")
-   public String createTask(Principal principal, Model model) {
-       User user = userService.findByLogin(principal.getName());
-       Role role = roleRepository.findByRole("ROLE_CHILDREN");
-
-       List<UserInfo> userInfoList = userService.findAllByPeopleGroupsAndRole(user.getPeopleGroups(), role)
-               .stream()
-               .map(UserInfo::new)
-               .collect(Collectors.toList());
-       model.addAttribute("users" , userInfoList);
-
-       TaskForm taskForm = new TaskForm();
-       taskForm.setWages(5L);
-       model.addAttribute("taskForm", taskForm);
-
-       return "tasks";
-   }
 
 
     @PostMapping("/tasks")

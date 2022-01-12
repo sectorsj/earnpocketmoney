@@ -30,8 +30,6 @@ public class Task{
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-<<<<<<< HEAD
-=======
 
     @ManyToOne
     @JoinColumn(name = "id_user_creating_task")
@@ -59,5 +57,4 @@ public class Task{
         System.out.println("wages = " + getWages());
     }
 
->>>>>>> dev_front
 }
