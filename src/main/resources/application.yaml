@@ -8,6 +8,11 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
+<<<<<<< HEAD
+=======
+    # сохранил в файлик, т.к. если база в оперативной памяти, то ни идея, ни консольное приложение не определяет ее содержимое
+#    url: jdbc:h2:file:C:/Main/Education/GB/thief3;MODE=PostgreSQL;AUTO_SERVER=TRUE;
+>>>>>>> dev_front
     # сохранил в файлик, т.к. если база в оперативной памяти, то ни идея, ни консольное приложение не определяет ее содержимое
 #    url: jdbc:h2:file:C:/Main/Education/GB/thief3;MODE=PostgreSQL;AUTO_SERVER=TRUE;
     username: sa

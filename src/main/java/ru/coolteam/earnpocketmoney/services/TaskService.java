@@ -30,6 +30,12 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+<<<<<<< HEAD
+    public Task createTask(String title) {
+        Task task = new Task();
+        task.setTitle(title);
+        task = taskRepository.save(task);
+=======
     public List<Task> getAllTasksByPeopleGroups (String groupName){
         return taskRepository.findTaskByUserCreatingTask_PeopleGroups(peopleGroupsRepository.findByName(groupName));
     }
@@ -85,6 +91,7 @@ public class TaskService {
     public Task updateUserExecutingTasks (String title, User userExecutingTasks){
         Task task = taskRepository.findTaskByTitle(title).get();
         task.setUserExecutingTask(userExecutingTasks);
+>>>>>>> dev_front
         return task;
     }
 

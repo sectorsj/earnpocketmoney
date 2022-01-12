@@ -9,6 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
+<<<<<<< HEAD
+=======
 
     Optional<Task> findTaskByTitle (String login);
   //  List<Task> findAllByChild (Child child);
@@ -19,4 +21,5 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findTaskByUserExecutingTask (User user);
     List<Task> findAllByUserExecutingTask_PeopleGroups (PeopleGroups peopleGroups);
 
+>>>>>>> dev_front
 }
