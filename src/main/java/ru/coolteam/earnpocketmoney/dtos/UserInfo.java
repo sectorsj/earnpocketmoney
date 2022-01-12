@@ -14,6 +14,7 @@ public class UserInfo {
 
     private String login;
     private String password;
+    private String passwordConfirm;
     private String username;
     private Long walletSize;
     private List<TaskDto> creatingTasksList;
@@ -22,6 +23,7 @@ public class UserInfo {
     private Integer executingTasksListSize;
     private Integer expiredTasksListSize;
     private String peopleGroupName;
+    private String role;
 
     public UserInfo(User user) {
         this.login = user.getLogin();
@@ -33,5 +35,7 @@ public class UserInfo {
         this.creatingTasksListSize = creatingTasksList.size();
         this.executingTasksListSize = executingTasksList.size();
         this.peopleGroupName = user.getPeopleGroups().getName();
+        this.role = user.getRole().getRole();
+        this.passwordConfirm = user.getPasswordConfirm();
     }
 }

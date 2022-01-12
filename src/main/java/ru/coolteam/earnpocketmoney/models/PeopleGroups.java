@@ -18,4 +18,8 @@ public class PeopleGroups {
 
     @Column
     private String name;
+
+    public PeopleGroups(String name) {
+        this.name = name;
+    }
 }

@@ -23,7 +23,7 @@ import ru.coolteam.earnpocketmoney.authorization.jwt.JwtFilter;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final JwtFilter jwtFilter;
+   private final JwtFilter jwtFilter;
 
 
     @Override
@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
          //       .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
          //       .and()
                 .authorizeRequests()
-//                .antMatchers("/api/**").authenticated()
+                .antMatchers("/api/**").authenticated()
 //                .antMatchers("/api/v1/tasks/create").hasRole("PARENT")
 //                .antMatchers("/api/v1/children/**").hasRole("CHILDREN")
                 .antMatchers("/register", "/auth").permitAll()
@@ -44,12 +44,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    //почему то появилась закольцованность, хотя в аналогичном проекте такой ошибки не было
-
-   /* @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }*/
 
     @Bean
     public AuthenticationManager customAuthenticationManager() throws Exception {
