@@ -1,71 +1,74 @@
-.right__content__element__col {
+.family {
+    overflow: hidden;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.left__content__element {
     display: flex;
     flex-direction: column;
     height: 1000px;
-}
 
-.family__list__board {
-    overflow: hidden;
-    max-width: 100%; 
+    min-height: 100%;
     background-image: url(../../content/img/fon_ny_2-01.svg);
 
     border: 1px solid #828282;
     box-sizing: border-box;
     border-radius: 10px;
+}
 
+.board, .family__board {
     display: flex;
     flex-direction: column;
-    flex-basis: 38%;
-    flex-grow: 1;
-    margin-top: 1%;
-}
-
-.board__header, .family__list__board__header {
+    flex-basis: 60%;
+    flex-grow: 6;
+    margin-bottom: 1%;
 
 }
 
-.family__list {
-
+.header__h1, .board__header__h1, .family__board__header {
 }
 
-.card__family {
-    width: 492px;
-    height: 80px;
+.family__view, .children__parents__view{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+
+    margin-left: 5%;
+    margin-right: 5%;
+    flex: 1 1 auto;
 }
 
-.family__card__row {
+.header__h2, .view__header__h2 .family__view__header__h2 {
 }
 
-.family__card__headerandtext {
+.view__header__h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.family__card__header__h1 {
+.item, .first__item {
 }
 
-.family__card__text__p {
+.card, .card__family, .card__family__members {
 }
 
-.family__card__span, .family__tasks__span {
-    width: 58px;
-    height: 58px;
-
+.card__row, .family__card__row {
 }
 
-.tasks__span {
+.card__header__text, .family__card__headerandtext {
 }
 
-.more__details__element {
+.card__header__h1, .family__card__header__h1 {
 }
 
-.more__details__element__row {
-    height: 60px;
+.card__text__p, .task__card__text__p {
 }
 
-.more__details__text {
+.card__span, .task__card__spa, .task__summ__wages__spann {
 }
 
-.more__details__link {
-
+.number_span, .wages__span {
 }
-
-

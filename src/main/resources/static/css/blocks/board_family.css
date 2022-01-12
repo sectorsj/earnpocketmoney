@@ -1,65 +1,69 @@
-.family {
-    overflow: hidden;
-    background-image: url(../../content/img/fon_ny_1-01.svg);
+.right__content__element__col {
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
 }
 
-.container {
+.family__list__board {
+    overflow: hidden;
+    max-width: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 38%;
+    flex-grow: 1;
+    margin-top: 1%;
 }
-.family__container {
+
+.board__header, .family__list__board__header {
+
 }
-.content__row {
+
+.family__list {
+
 }
-.family__content__row {
+
+.card__family {
+    width: 492px;
+    height: 80px;
 }
-.content__element {
+
+.family__card__row {
 }
-.left__content__element {
+
+.family__card__headerandtext {
 }
-.content__element__col {
+
+.family__card__header__h1 {
 }
-.board {
+
+.family__card__text__p {
 }
-.family__board {
+
+.family__card__span, .family__tasks__span {
+
 }
-.header__h1 {
+
+.tasks__span {
 }
-.board__header__h1 {
+
+.more__details__element {
 }
-.family__board__header {
+
+.more__details__element__row {
+    height: 60px;
 }
-.item {
+
+.more__details__text {
 }
-.first__item {
+
+.more__details__link {
+
 }
-.card {
-}
-.card__task {
-}
-.card__row {
-}
-.task__card__row {
-}
-.card__header__text {
-}
-.task__card__headerandtext {
-}
-.card__header__h1 {
-}
-.task__card__header__h1 {
-}
-.card__text__p {
-}
-.task__card__text__p {
-}
-.card__span {
-}
-.task__card__span {
-}
-.task__wages__span {
-}
-.number_span {
-}
-.wages__span {
-}
-.right__content__element {
-}
+
+

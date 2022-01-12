@@ -5,11 +5,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-
 @Entity
 @Table(name = "people_groups")
 @Data

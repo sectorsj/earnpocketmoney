@@ -1,4 +1,4 @@
-.content__element {
+.right__content__element {
     display: flex;
     flex-direction: column;
     height: 1000px;
@@ -9,12 +9,8 @@
     border: 1px solid #828282;
     box-sizing: border-box;
     border-radius: 10px;
+}
 
-}
-.right__content__element {
-}
-.content__element__col {
-}
 .right__content__element__col {
 }
 .chat__board {
@@ -25,18 +21,16 @@
     margin-bottom: 1%;
 }
 
-.header__h1 {
+.header__h1 .board__header{
 }
-.board__header {
-}
+
 .family__board__header {
 }
-.list {
-}
-.chat__view {
-    display: flex;
-    flex-direction: column;   
 
+
+.chat__view, .family__chat__view {
+    display: flex;
+    flex-direction: column;
     max-width: 100%;
 
     /* margin: 0px auto; */
@@ -45,31 +39,54 @@
     /* justify-content: center; */
     flex: 1 1 auto;
 }
-.family__chat__view {
+
+.message, .chat__message, .family__chat__message {
+
 }
-.card {
-}
+
 .message {
+    margin-bottom: 5%;
+    width: 480px;
+
 }
-.chat__message {
+
+.chat__message, .family__chat__message{
+
 }
-.family__chat {
+
+.message__row, .message__family__chat__row {
 }
-.card__row {
+
+.message__header__text {
 }
-.message__row {
+
+.message__header, .message__header__h2 {
 }
-.message__family__chat__row {
-}
-.card__header__text {
-}
-.message__headerandtext {
-}
-.card__header__h1 {
-}
-.message__header__h1 {
-}
-.card__text__p {
-}
+
 .message__text__p {
+    padding: 15px;
+}
+
+
+.item {
+
+}
+
+.second__item {
+    height: 100px;
+    background-color: rgb(204, 41, 150);
+}
+.message__sender {
+}
+.body__sender {
+}
+
+.form-control {
+    width: 400px;
+    height: 51px;
+    padding: 18px;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
 }

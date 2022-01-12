@@ -2,8 +2,6 @@ package ru.coolteam.earnpocketmoney.controllers;
 
 import lombok.RequiredArgsConstructor;
 
-import lombok.RequiredArgsConstructor;
-
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
