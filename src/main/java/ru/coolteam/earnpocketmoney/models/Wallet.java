@@ -18,4 +18,8 @@ public class Wallet {
 
     @Column
     private Long value;
+
+    public Wallet(Long value) {
+        this.value = value;
+    }
 }

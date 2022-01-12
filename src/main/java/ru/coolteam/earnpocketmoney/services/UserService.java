@@ -1,9 +1,12 @@
 package ru.coolteam.earnpocketmoney.services;
 
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.coolteam.earnpocketmoney.models.PeopleGroups;
 import ru.coolteam.earnpocketmoney.models.Role;
 import ru.coolteam.earnpocketmoney.models.User;
@@ -13,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     @Autowired
@@ -37,6 +41,7 @@ public class UserService {
 
     public User saveUser(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
        return userRepository.save(user);
     }
 
@@ -48,6 +53,8 @@ public class UserService {
     public List<User> findAllByPeopleGroupsAndRole (PeopleGroups peopleGroups, Role role){
         return userRepository.findAllByPeopleGroupsAndRole(peopleGroups, role);
     }
+
+
 
 //    public User findByLogin(String login){
 //        return userRepository.findByLogin(login);

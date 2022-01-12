@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.TaskDto;
+import ru.coolteam.earnpocketmoney.dtos.TaskForm;
 import ru.coolteam.earnpocketmoney.dtos.UserInfo;
 import ru.coolteam.earnpocketmoney.models.Role;
 import ru.coolteam.earnpocketmoney.models.Task;
@@ -114,20 +115,32 @@ public class TaskController {
                .collect(Collectors.toList());
        model.addAttribute("users" , userInfoList);
 
+       TaskForm taskForm = new TaskForm();
+       taskForm.setWages(5L);
+       model.addAttribute("taskForm", taskForm);
 
-       model.addAttribute("taskForm", new Task());
        return "tasks";
    }
 
+
     @PostMapping("/tasks")
-    public String createTask(@Valid @ModelAttribute("taskForm") Task taskForm, BindingResult bindingResult, Model model) {
+    public String createTask(@Valid @ModelAttribute("taskForm") TaskForm taskForm, BindingResult bindingResult, Model model, Principal principal) {
         if (bindingResult.hasErrors()) {
             return "tasks";
         }
+        User user = userService.findByLogin(principal.getName());
+        User userExecutingTask = null;
+        if(taskForm.getUserExecutingTask()!=null){
+            userExecutingTask = userService.findByLogin(taskForm.getUserExecutingTask());
+        }
+
+        //TODO исправить ручное введение стоимости!!
+        taskForm.setWages(5L);
+
         taskService.createTask(taskForm.getTitle(),
                 taskForm.getTaskText(),
-                taskForm.getUserCreatingTask(),
-                taskForm.getUserExecutingTask(),
+                user,
+                userExecutingTask,
                 taskForm.getWages());
 
 //        return "redirect:/api/v1/tasks/all";

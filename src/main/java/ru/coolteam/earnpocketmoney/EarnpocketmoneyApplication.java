@@ -15,19 +15,3 @@ public class EarnpocketmoneyApplication {
 	}
 
 }
-//
-//// небольшой костыль для таймлифа
-//@Controller
-//class IndexController {
-//
-////	@RequestMapping(value = "/", method = RequestMethod.GET)
-////	public String index(){
-////		return "index";
-////	}
-//
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String index(Model model){
-//		model.addAttribute("message", "Мы рады приветствовать Вас!");
-//		return "index";
-//	}
-//}

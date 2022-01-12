@@ -49,10 +49,12 @@ public class Task{
 
     public void incrementWages() {
         this.wages++;
+        System.out.println("wages = " + getWages());
     }
 
     public void decrementWages() {
         this.wages--;
+        System.out.println("wages = " + getWages());
     }
 
 }
