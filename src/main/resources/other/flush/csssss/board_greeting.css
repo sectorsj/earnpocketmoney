@@ -13,7 +13,7 @@
 
 
 /* Контент на левой доске (экране) */
-.left__content__element {
+.left__content__element {   
     width: 59.5%;
     background-image: url(../../content/img/fon_ny_2-01.svg);
     /* display: flex;
@@ -25,19 +25,19 @@
 }
 
 .greeting__board__header {
-
+    
 }
 
 .create__new__task__item {
     display:  flex;
     flex-direction: row;
-
+    
     margin-top: 20%;
     margin-left: 5%;
 }
 
 .btn__link, .create__new__task__link {
-
+    
 }
 
 .create__new__task__icon {

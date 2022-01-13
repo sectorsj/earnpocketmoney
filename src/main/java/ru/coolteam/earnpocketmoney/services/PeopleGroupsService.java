@@ -19,7 +19,7 @@ public class PeopleGroupsService {
     }
 
     public PeopleGroups savePeopleGroups (PeopleGroups peopleGroups){
-       return   peopleGroupsRepository.save(peopleGroups);
+        return   peopleGroupsRepository.save(peopleGroups);
     }
 
 

@@ -54,7 +54,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
+   
     font-weight: 700;
     font-size: 32px;
     font-family: 'VAGRounded', serif;
@@ -92,7 +92,7 @@ body {
 .left__content__element {
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     width: 100%;
 
     width: 59.5%;
@@ -120,7 +120,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    
 }
 
 /* Область для отображения спосков (задач, семьи и др) */
@@ -165,7 +165,7 @@ body {
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-
+    
 }
 
 /* Схема положения элементов в карточке - вертикальная */

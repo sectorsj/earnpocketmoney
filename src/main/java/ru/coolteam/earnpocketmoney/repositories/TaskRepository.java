@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
     Optional<Task> findTaskByTitle (String login);
-  //  List<Task> findAllByChild (Child child);
+    //  List<Task> findAllByChild (Child child);
 
     List<Task> findTaskByUserCreatingTaskRoleContains (Role role);
     List<Task> findTaskByUserCreatingTask_PeopleGroups (PeopleGroups peopleGroups);
