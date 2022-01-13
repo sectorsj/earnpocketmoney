@@ -30,7 +30,7 @@
 
 .chat__view, .family__chat__view {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   
     max-width: 100%;
 
     /* margin: 0px auto; */
@@ -47,7 +47,7 @@
 .message {
     margin-bottom: 5%;
     width: 480px;
-
+    
 }
 
 .chat__message, .family__chat__message{
@@ -70,6 +70,8 @@
 
 .item {
 
+    
+    
 }
 
 .second__item {

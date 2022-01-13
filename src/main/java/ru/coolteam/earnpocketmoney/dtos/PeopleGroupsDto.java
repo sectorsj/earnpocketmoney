@@ -9,11 +9,11 @@ import ru.coolteam.earnpocketmoney.models.PeopleGroups;
 @NoArgsConstructor
 public class PeopleGroupsDto {
 
-   // private Long id;
+    // private Long id;
     private String name;
 
     public PeopleGroupsDto(PeopleGroups peopleGroups) {
-  //      this.id = family.getId();
+        //      this.id = family.getId();
         this.name = peopleGroups.getName();
     }
 }
