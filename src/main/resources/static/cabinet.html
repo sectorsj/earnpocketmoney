@@ -72,8 +72,8 @@
                     <div class="content__element__col left__content__element__col">
 
                         <div class="board greeting__board greeting">
-
-                            <h1 class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
+                          
+                                <h1 class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getLogin() + ' ' +  user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
 
                             <div class="item first__item create__new__task__item">
 
@@ -97,9 +97,12 @@
 
                         <!-- Tasklist -->
                         <div class="tasks__list__board">
-
+                          
+                                    <!-- Карточка задачи -->
+                                    <div  class="card card__task" th:each="t : ${tasks}">
+                                      
                             <h1 class="header__h1 board__header tasks__list__board__header">Список задач:</h1>
-
+                                      
                             <div class="list tasks__list">
 
                                 <!-- Карточка задачи -->
@@ -110,10 +113,14 @@
 
                                         <!-- Блок заголовок и текст карточки -->
                                         <div class="card__header__text task__card__headerandtext">
+                                          
+                                                <p class="card__text__p task__card__text__p" th:text="${ 'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
 
+                                            </div>
+                                      
                                             <!-- Заголовок карточки -->
                                             <h1 class="card__header__h1 task__card__header__h1" th:text="${t.title}">Заголовок задачи</h1>
-
+                                      
                                             <!-- Текст карточки -->
                                             <p class="card__text__p task__card__text__p" th:text="${t.taskText}">Текст задачи</p>
 

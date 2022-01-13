@@ -19,7 +19,9 @@
 
     <!-- Specific -->
     <link rel="stylesheet" href="css/blocks/board_family.css">
+  
     <link rel="stylesheet" href="css/blocks/board_chat.css">
+  
 
     <!-- Main -->
     <link rel="stylesheet" href="css/blocks/header.css">
@@ -59,43 +61,57 @@
 
             </div>
         </div>
-    </div>
-</header>
+      
+    </header>
 
-<main>
-    <section class="family">
+    <main>
+        <section class="family">
 
-        <div class="container family__container">
+            <div class="container family__container">
 
-            <div class="content__row family__content__row">
+                <div class="content__row family__content__row">
 
-                <div class="content__element left__content__element">
+                    <div class="content__element left__content__element">
 
-                    <div class="content__element__col">
+                        <div class="content__element__col">
 
-                        <div class="family__board">
+                            <div class="board family__board">
 
-                            <!--/*@thymesVar id="getPeopleGroupName" type=""*/-->
-                            <h1 class="header__h1 board__header__h1 family__board__header" th:text="${'Семья ' + user.getPeopleGroups().getName() + ' !'}" >Семья 'ивановы'</h1>
+                                <!--/*@thymesVar id="getPeopleGroupName" type=""*/-->
+                                <h1 class="header__h1 board__header__h1 family__board__header" th:text="${'Семья ' + user.getPeopleGroups().getName() + ' !'}" >Семья 'ивановы'</h1>
 
+                                
+                                <div class="list tasks__list">
 
-                            <div class="family__view children__parents__view">
+                                    <h2 class="header__h2 board__header__h1 family__board__header">Дети:</h2>
 
-                                <h2 class="header__h2 view__header__h2 family__view__header__h2">Дети:</h2>
+                                    <div class="item first__item ">
 
-                                <div class="card card__family card__family__members" th:each="u : ${users}">
-
-                                    <div class="card__row family__card__row">
-
-                                        <!-- Блок заголовок и текст карточки -->
-                                        <div class="card__header__text family__card__headerandtext">
-
-                                            <!-- Заголовок карточки -->
-                                            <h1 class="card__header__h1 family__card__header__h1" th:text="${u.login}">Child 1</h1>
-
-                                            <!-- Текст карточки -->
-                                            <p class="card__text__p task__card__text__p" th:text="${u.login}">Задач у ребенка</p>
-
+                                        <div class="card card__family" th:each="c : ${children}">
+    
+                                            <div class="card__row family__card__row">
+    
+                                                <!-- Блок заголовок и текст карточки -->
+                                                <div class="card__header__text family__card__headerandtext">
+    
+                                                    <!-- Заголовок карточки -->
+                                                    <h1 class="card__header__h1 family__card__header__h1" th:text="${c.login}">Child 1</h1>
+    
+                                                    <!-- Текст карточки -->
+                                                    <p class="card__text__p task__card__text__p" th:text="${c.peopleGroupName}">Задач у ребенка</p>
+    
+                                                </div>
+    
+                                                <!-- Блок оценка карточки -->
+                                                <div class="card__span task__card__span task__wages__span">
+                                                    <!-- Оценка карточки -->
+    
+                                                    <span class="number_span wages__span" th:text="${ 'кол-во назначенных задач = ' + c.executingTasksListSize}">5</span>
+    
+                                                </div>
+    
+                                            </div>
+    
                                         </div>
 
                                         <!-- Блок оценка карточки -->
@@ -109,36 +125,44 @@
                                     </div>
 
                                 </div>
+                              
+                                <div class="list tasks__list">
 
-                                <h2 class="header__h2 view__header__h2 family__view__header__h2">Взрослые:</h2>
+                                    <h2 class="header__h2 board__header__h1 family__board__header">Взрослые:</h2>
 
-                                <div class="card card__family card__family__members" th:each="u : ${users}">
+                                    <div class="item first__item ">
 
-                                    <div class="card__row family__card__row">
+                                        <div class="card card__family" th:each="p : ${parent}">
 
-                                        <!-- Блок заголовок и текст карточки -->
-                                        <div class="card__header__text family__card__headerandtext">
+                                            <div class="card__row family__card__row">
 
-                                            <!-- Заголовок карточки -->
-                                            <h1 class="card__header__h1 family__card__header__h1" th:text="${u.login}">Child 1</h1>
+                                                <!-- Блок заголовок и текст карточки -->
+                                                <div class="card__header__text family__card__headerandtext">
 
-                                            <!-- Текст карточки -->
-                                            <p class="card__text__p task__card__text__p" th:text="${u.login}">Задач у ребенка</p>
+                                                    <!-- Заголовок карточки -->
+                                                    <h1 class="card__header__h1 family__card__header__h1" th:text="${p.login}">Child 1</h1>
 
-                                        </div>
+                                                    <!-- Текст карточки -->
+                                                    <p class="card__text__p task__card__text__p" th:text="${p.peopleGroupName}">Задач у ребенка</p>
 
-                                        <!-- Блок оценка карточки -->
-                                        <div class="card__span task__card__span task__summ__wages__span">
-                                            <!-- Оценка карточки -->
+                                                </div>
 
-                                            <span class="number_span wages__span" th:text="${u.executingTasksListSize}">5</span>
+                                                <!-- Блок оценка карточки -->
+                                                <div class="card__span task__card__span task__wages__span">
+                                                    <!-- Оценка карточки -->
 
+                                                    <span class="number_span wages__span" th:text="${ 'кол-во созданных задач = ' + p.creatingTasksListSize}">5</span>
+
+                                                </div>
+
+                                            </div>
+                                          
                                         </div>
 
                                     </div>
 
                                 </div>
-
+                              
                             </div>
 
 

@@ -44,7 +44,9 @@ public class CabinetController {
     public String getTasksByUser (Principal principal, Model model){
         List<TaskDto> taskDtoList = new ArrayList<>();
         User user = userService.findByLogin(principal.getName());
-        if(user.getRole().getRole().equals("ROLE_PARENT")){
+
+        //наверное на потом подобную выборку отложим, оставим отображение всех задач созданных в семье
+      /*  if(user.getRole().getRole().equals("ROLE_PARENT")){
             taskDtoList = taskService.getAllTasksByUserCreatingTask(principal.getName())
                     .stream()
                     .map(TaskDto::new)
@@ -54,7 +56,14 @@ public class CabinetController {
                     .stream()
                     .map(TaskDto::new)
                     .collect(Collectors.toList());
-        }
+        }*/
+
+        taskDtoList = taskService.getAllTasksByPeopleGroups(user.getPeopleGroups().getName())
+                        .stream()
+                        .map(TaskDto::new)
+                        .collect(Collectors.toList());
+
+
 
         user.getLogin();
         List<UserInfo> userInfoList = userService.findAllByPeopleGroups(user.getPeopleGroups())
