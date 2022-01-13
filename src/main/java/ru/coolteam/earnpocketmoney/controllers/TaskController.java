@@ -130,12 +130,12 @@ public class TaskController {
         }
         User user = userService.findByLogin(principal.getName());
         User userExecutingTask = null;
-        if(taskForm.getUserExecutingTask()!=null){
+        if(!taskForm.getUserExecutingTask().equals("")){
             userExecutingTask = userService.findByLogin(taskForm.getUserExecutingTask());
         }
 
         //TODO исправить ручное введение стоимости!!
-        taskForm.setWages(5L);
+       // taskForm.setWages(5L);
 
         taskService.createTask(taskForm.getTitle(),
                 taskForm.getTaskText(),

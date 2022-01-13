@@ -129,7 +129,14 @@
                                                 <div class="task__wages__buttons">
                                                     <a href = "#" class="btn__wages"  >-</a>
                                                    <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
-                                                    <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>
+                                                   <!-- <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
+                                                    <select class="btn__wages" th:field= "*{wages}">
+                                                        <option
+                                                                th:each="i : ${#numbers.sequence(1, 100)}"
+                                                                th:value="${i}"
+                                                                th:text="${i}">
+                                                        </option>
+                                                    </select>
                                                     <a href = "#" class="btn__wages"   >+</a>
                                                 </div>
                                             </div>
@@ -150,10 +157,11 @@
                                                 <h1 class="add__child__header">Добавить ребенка</h1>
 
                                                 <select th:field= "*{userExecutingTask}">
+                                                    <option th:value="*{null}">  Задача на выбор  </option>
                                                     <option
                                                      th:each="u : ${users}"
                                                      th:value="${u.login}"
-                                                     th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}">
+                                                     th:text="${u.login}">
                                                      </option>
                                                 </select>
 

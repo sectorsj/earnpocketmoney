@@ -32,24 +32,21 @@ public class FamilyController {
     public String getAllChildrenByFamily (Principal principal, Model model){
         List<UserDto> userDtoList;
         User user = userService.findByLogin(principal.getName());
-        Role role = roleRepository.findByRole("ROLE_CHILDREN");
-        userDtoList = userService.findAllByPeopleGroupsAndRole(user.getPeopleGroups(), role)
-                .stream()
-                .map(UserDto::new)
-                .collect(Collectors.toList());
-        model.addAttribute("children" , userDtoList);
-        List<TaskDto> taskDtoList;
-        taskDtoList = taskService.getAllExecutingTasksByPeopleGroups(user.getPeopleGroups().getName())
-                .stream()
-                .map(TaskDto::new)
-                .collect(Collectors.toList());
-        model.addAttribute("tasks" , taskDtoList);
 
-        List<UserInfo> userInfoList = userService.findAllByPeopleGroupsAndRole(user.getPeopleGroups(), role)
+        List<UserInfo> userParentInfoList = userService
+                .findAllByPeopleGroupsAndRole(user.getPeopleGroups(), roleRepository.findByRole("ROLE_PARENT"))
                 .stream()
                 .map(UserInfo::new)
                 .collect(Collectors.toList());
-        model.addAttribute("users" , userInfoList);
+
+        List<UserInfo> userChildrenInfoList = userService
+                .findAllByPeopleGroupsAndRole(user.getPeopleGroups(), roleRepository.findByRole("ROLE_CHILDREN"))
+                .stream()
+                .map(UserInfo::new)
+                .collect(Collectors.toList());
+
+        model.addAttribute("children", userChildrenInfoList );
+        model.addAttribute("parent", userParentInfoList);
         model.addAttribute("user", user);
 
         return "family";

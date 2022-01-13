@@ -73,7 +73,7 @@
 
                             <div class="board greeting__board greeting">
 
-                                <h1 class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
+                                <h1 class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getLogin() + ' ' +  user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
 
                                 <div class="item first__item create__new__task__item">
 
@@ -118,6 +118,8 @@
 
                                                 <!-- Текст карточки -->
                                                 <p class="card__text__p task__card__text__p" th:text="${t.taskText}">Текст задачи</p>
+
+                                                <p class="card__text__p task__card__text__p" th:text="${ 'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
 
                                             </div>
 
