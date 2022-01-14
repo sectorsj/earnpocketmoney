@@ -1,87 +1,33 @@
-.right__content__element__col {
-    display: flex;
-    flex-direction: column;
-    height: 1000px;
-}
+/* index */
 
-.family__list__board {
+
+
+.index {
     overflow: hidden;
-    max-width: 100%;
-    background-image: url(../../content/img/fon_ny_2-01.svg);
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
 
-    border: 1px solid #828282;
-    box-sizing: border-box;
-    border-radius: 10px;
+.index__container {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
 
-    display: flex;
+.coolteam-products__icon{
+    width: 20%;
+}
+
+.coolteam-products__item {
+    display:  flex;
     flex-direction: column;
-    flex-basis: 38%;
-    flex-grow: 1;
-    margin-top: 1%;
-}
 
-.board__header, .family__list__board__header {
-
-}
-
-.family__list {
-
-}
-
-.card__family {
-    width: 492px;
-    height: 80px;
-}
-
-.family__card__row {
-}
-
-.family__card__headerandtext {
-}
-
-.family__card__header__h1 {
-}
-
-.family__card__text__p {
-}
-
-.family__card__span, .family__tasks__span {
-
-}
-
-.tasks__span {
-}
-
-.more__details__element {
-}
-
-.more__details__element__row {
-    height: 60px;
-}
-
-.more__details__text {
-}
-
-.more__details__link {
-
+    margin-top: 5%;
+    margin-left: 5%;
 }
 
 
 
-/*                                              */
 
-
-
-
-
-
-
-
-
-
-
-
-
+/* cabinet */
 
 
 
@@ -90,6 +36,7 @@
     overflow: hidden;
     background-image: url(../../content/img/fon_ny_1-01.svg);
 }
+
 
 /* .family {
     overflow: hidden;
@@ -100,24 +47,31 @@
 .сabinet__container {
     padding-top: 1%;
     padding-bottom: 1%;
-
 }
+
 .content__row {
 }
 .cabinet__content__row {
 }
-.content__element {
+
+.left__content__element__col {
+    width: 50%;
+}
+
+.right__content__element__col {
+    width: 50%;
+    /* display: flex;
+    flex-direction: column;
+    height: 1000px; */
 }
 
 /* Контент на левой доске (экране) */
-
 .left__content__element {
     display: flex;
     flex-direction: column;
     min-height: 100%;
-    width: 50%;
+    width: 100%;
     background-image: url(../../content/img/fon_ny_2-01.svg);
-
 }
 
 /* Контент на правой доске (экране) */
@@ -128,17 +82,8 @@
     width: 100%;
 }
 
-
-.left__content__element__col {
-}
-
-
-.right__content__element__col {
-    width: 50%;
-
-}
 .right__content__element {
-    /* margin-left: 30px; */
+
 }
 .right__content__element > div {
     margin-left: 1%;
@@ -164,14 +109,19 @@
 .greeting {
 
 }
+
 .header__h1 {
 }
+
 .board__header__h1 {
 }
+
 .greeting__board__header {
 }
+
 .item {
 }
+
 .first__item {
 }
 
@@ -185,13 +135,16 @@
 
 .btn__link {
 }
+
 .create__new__task__link {
 }
 
 .icons {
 }
+
 .create__new__task__icon {
 }
+
 .item__header__h1 {
 }
 
@@ -305,6 +258,23 @@
     flex-grow: 6;
 }
 
+.family__list__board {
+    overflow: hidden;
+    max-width: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 38%;
+    flex-grow: 1;
+    margin-top: 1%;
+}
+
+
 .family__board {
     display: flex;
     flex-direction: column;
@@ -329,8 +299,12 @@
 }
 .family__list {
 }
+
 .card__family {
+    width: 492px;
+    height: 80px;
 }
+
 .family__card__row {
 }
 .family__card__headerandtext {
@@ -349,6 +323,11 @@
 }
 .more__details__element__row {
 }
+
+.more__details__element__row {
+    height: 60px;
+}
+
 .more__details__text {
 }
 .more__details__link {

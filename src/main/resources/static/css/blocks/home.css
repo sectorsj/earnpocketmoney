@@ -1,9 +1,9 @@
-.home {
+.index {
     overflow: hidden;
     background-image: url(../../content/img/fon_ny_1-01.svg);
 }
 
-.home__content__row {
+.index__content__row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,3 +27,5 @@
     box-sizing: border-box;
     border-radius: 10px; 
 }
+
+

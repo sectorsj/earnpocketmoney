@@ -7,14 +7,16 @@
     <title> CoolTeam HTML project for earn pocket money</title>
 
 <!--    <link th:href="@{/css/blocks/tasklist.css}" rel="stylesheet" />-->
-   <link th:href="@{/css/blocks/home.css}" rel="stylesheet" />
+   <!-- <link th:href="@{/css/blocks/home.css}" rel="stylesheet" /> -->
+   <link th:href="@{/css/blocks/board_greeting.css}" rel="stylesheet" />
     <link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
     <link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
     <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" />
     <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" />
 
 <!--    <link rel="stylesheet" href="css/blocks/task-creating.css">-->
-   <link rel="stylesheet" href="css/blocks/home.css">
+   <!-- <link rel="stylesheet" href="css/blocks/home.css"> -->
+   <link rel="stylesheet" href="css/blocks/board_greeting.css">
     <link rel="stylesheet" href="css/blocks/header.css">
 
     <!--Reset-->
@@ -52,13 +54,12 @@
     </header>
 
     <main>
-        <!-- Основной view -->
-        <section class="home" th:src="@{/content/img/fon_ny_1-01.svg}">
 
-            <!-- Контейнер -->
+        <!-- <section class="home">
+
+
             <div class="container">
 
-                <!--  -->
                 <div class="home__content__row">
 
                     <div class="content__element left__content__element" th:src="@{/content/img/fon_ny_-01.svg}">
@@ -73,11 +74,50 @@
 
             </div>
 
+        </section> -->
+
+
+        <section class="index">
+
+
+            <div class="container index__container">
+
+                <div class="content__row index__content__row">
+
+                    <div class="content__element left__content__element">
+
+                        <div class="board board__index__left left">
+
+                            <h1 class="header__h1 board__header__h1 greeting__board__header">Добро пожаловать, на наш сайт!</h1>
+
+                            <div class="item first__item coolteam-products__item">
+
+                                <a href="/app/api/v1/tasks" class="btn__link coolteam-products__link">
+
+                                    <img src="content/img/logo-01.svg" class="coolteam-products__icon" alt="projet-photo" th:src="@{/content/img/Icon_3.svg}"/>
+
+                                </a>
+
+                                <h1 class="item__header__h1 create__task__header__h1">Проект CoolTeam</h1>
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
+
     </main>
 
     <footer>
-        <div th:insert="copyright :: copy"></div>
+        <div th:insert="copyright :: copy">
+
+        </div>
     </footer>
 
 </body>

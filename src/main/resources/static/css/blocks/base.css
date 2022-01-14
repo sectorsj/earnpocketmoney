@@ -72,6 +72,12 @@ body {
     flex-wrap: wrap;
 }
 
+/* Обеспечивается вертикальное положение элементов */
+.content__element__col {
+    display:  flex;
+    flex-direction: column;
+}
+
 /* При необходимости не разделять на доски (экраны) */
 .content__element {
     height: 1000px;
@@ -80,17 +86,12 @@ body {
     border-radius: 10px;
 }
 
-/* Обеспечивается вертикальное положение элементов */
-.content__element__col {
-    display:  flex;
-    flex-direction: column;
-}
-
 /* Перевод доски(экрана) во flex-элемент, с вертикальным положением элементов */
 .board {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     /* margin-left: 30px; */
 }
 
