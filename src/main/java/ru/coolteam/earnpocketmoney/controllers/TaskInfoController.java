@@ -4,11 +4,13 @@ package ru.coolteam.earnpocketmoney.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import ru.coolteam.earnpocketmoney.dtos.TaskDto;
+import ru.coolteam.earnpocketmoney.dtos.TaskForm;
 import ru.coolteam.earnpocketmoney.services.TaskService;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
@@ -20,14 +22,21 @@ public class TaskInfoController {
     private final UserService userService;
 
 
-    @GetMapping("/task_info")
-    public String getTaskInfo (Principal principal, Model model){
+    /*@PostMapping("/task_info")
+    public String getTaskInfo (@Valid @ModelAttribute("taskForm") TaskForm taskForm, Principal principal, Model model){
 
+        System.out.println("++++++++++" + taskForm.getTitle());
 
+        return "task_info";
+    }*/
+
+    @GetMapping("/task_info/{id}")
+    public String getTaskInfo (@PathVariable Integer id, Principal principal, Model model){
+
+        System.out.println("++++++++++" + id);
 
         return "task_info";
     }
-
 
 
 
