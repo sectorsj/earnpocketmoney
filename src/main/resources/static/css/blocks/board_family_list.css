@@ -1,4 +1,4 @@
-.family {
+/* .family {
     overflow: hidden;
     background-image: url(../../content/img/fon_ny_1-01.svg);
 }
@@ -16,7 +16,7 @@
     border-radius: 10px;
 }
 
-.board, .family__board {
+.family__board {
     display: flex;
     flex-direction: column;
     flex-basis: 60%;
@@ -71,4 +71,4 @@
 }
 
 .number_span, .wages__span {
-}
+} */

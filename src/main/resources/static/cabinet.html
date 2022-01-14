@@ -12,22 +12,20 @@
     <link th:href="@{/css/blocks/board_family_list.css}" media="screen" rel="stylesheet" >
     <link th:href="@{/css/blocks/footer.css}" media="screen" rel="stylesheet" >
     <link th:href="@{/css/blocks/header.css}" media="screen" rel="stylesheet" >
-
     <link th:href="@{/css/blocks/base.css}" media="screen" rel="stylesheet" >
     <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" >
     <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" >
 
 
-    <link rel="stylesheet" href="css/blocks/header.css">
+
     <link rel="stylesheet" href="css/blocks/board_greeting.css">
     <link rel="stylesheet" href="css/blocks/board_tasks_list.css">
     <link rel="stylesheet" href="css/blocks/board_family_list.css">
     <link rel="stylesheet" href="css/blocks/footer.css">
-
+    <link rel="stylesheet" href="css/blocks/header.css">
     <!--Reset/Base-->
     <link rel="stylesheet" href="css/blocks/base.css">
     <link rel="stylesheet" href="css/blocks/reset.css">
-
     <!--Fonts-->
     <link rel="stylesheet" href="css/fonts/VAGRounded/stylesheet.css">
 </head>
@@ -91,12 +89,12 @@
                     </div>
                 </div>
 
-                <div class="content__element right__content__element">
+                <div class="content__element__col right__content__element__col ">
 
-                    <div class="content__element__col right__content__element__col">
+                    <div class="container right__content__element top__right__element">
 
                         <!-- Tasklist -->
-                        <div class="tasks__list__board">
+                        <div class="board board__tasks-list">
 
                             <h1 class="header__h1 board__header tasks__list__board__header">Список задач:</h1>
 
@@ -148,9 +146,13 @@
 
                         </div>
 
+                    </div>
 
-                        <!-- Family -->
-                        <div class="family__list__board">
+
+                    <div class="container right__content__element bottom__right__element ">
+
+                    <!-- Family -->
+                        <div class="board board__family">
 
                             <!-- Заголовок доски -->
                             <h1 class="header__h1 board__header family__list__board__header">Семья:</h1>

@@ -20,65 +20,55 @@
 
   <body>
   <!-- <body> -->
-    <div class="login">
+  <div class="login">
+
       <div class="container login__container">
 
-        <div class="content login__content">
+          <div class="content login__content">
+              <div class="board registration_login__board login__board ">
+                  <form method="POST"
+                        class="form-signin"
+                        th:object="${userForm}"
+                        th:action="@{/auth}" >
 
-          <div class="content__element">
+                      <h2 class="header__h1 board__header__h1 login__board__header">Вход</h2>
 
-            <div class="board login__board ">
-    
-              <form method="POST"
-                class="form-signin"
-                th:object="${userForm}"
-                th:action="@{/auth}" >
-    
-                <h2 class="header__h2 board__header__h2 login__board__header">Вход</h2>
-        
-                <div class="form-group">
+                      <div class="form-group">
 
-                  <span th:text="${message}"></span>
+                          <span th:text="${message}"></span>
 
-                  <input type="text"
-                    th:field="*{login}"
-                    class="form-control"
-                    placeholder="login"
-                    autofocus="true"/>
-        
-                  <input type="password"
-                    th:field="*{password}"
-                    class="form-control"
-                    placeholder="Password"/>
-    
-                  <span class="has-error"
-                    th:text="${error}">
-                  </span>
-        
-                  <input type="hidden"
-                    name="${_csrf.parameterName}"
-                    value="${_csrf.token}"/>
-        
-                  <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
-                    
-                  <h4 class="text-center"><a href="/register">Создать новый аккаунт</a></h4>
-               
-                </div>
+                          <input type="text"
+                                 th:field="*{login}"
+                                 class="form-control"
+                                 placeholder="login"
+                                 autofocus="true"/>
 
-              </form>
+                          <input type="password"
+                                 th:field="*{password}"
+                                 class="form-control"
+                                 placeholder="Password"/>
 
-            </div>
+                          <span class="has-error"
+                                th:text="${error}">
+                          </span>
 
+                          <input type="hidden"
+                                 name="${_csrf.parameterName}"
+                                 value="${_csrf.token}"/>
+
+                          <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+
+                          <h4 class="text-center login__text-center"><a href="/register">Создать новый аккаунт</a></h4>
+
+                      </div>
+
+                  </form>
+
+              </div>
+
+              <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+              <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+              <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script><!--    <script src="/js/main.js"></script>-->
           </div>
-          
-        </div>
-        
-      </div>
-  
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <!--    <script src="/js/main.js"></script>-->
-    </div>
   </body>
 </html>
