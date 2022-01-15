@@ -7,20 +7,14 @@
     <title>EPM_Tasks</title>
 
 
-    <link th:href="@{/css/blocks/board_task_create.css}"  media="screen" rel="stylesheet" >
-    <link th:href="@{/css/blocks/board_tasks_list.css}"  media="screen" rel="stylesheet" >
-    <link th:href="@{/css/blocks/board_tasks_examples.css}"  media="screen" rel="stylesheet" >
-
+    <link th:href="@{/css/blocks/board_greeting.css}"  media="screen" rel="stylesheet" >
     <link th:href="@{/css/blocks/header.css}" media="screen" rel="stylesheet">
     <link th:href="@{/css/blocks/base.css}" media="screen" rel="stylesheet">
     <link th:href="@{/css/blocks/reset.css}" media="screen" rel="stylesheet">
     <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" >
 
 
-    <link rel="stylesheet" href="css/blocks/board_task_create.css">
-    <link rel="stylesheet" href="css/blocks/board_tasks_list.css">
-    <link rel="stylesheet" href="css/blocks/board_tasks_examples.css">
-
+    <link rel="stylesheet" href="css/blocks/board_greeting.css">
     <link rel="stylesheet" href="css/blocks/header.css">
     <link rel="stylesheet" href="css/blocks/footer.css">
 
@@ -52,7 +46,7 @@
                 </nav>
                 <div class="header-login">
 
-                    <a  class="btn__signin btn-default" href="/app/register">Регистрация</a>
+                    <a class="btn__signin" href="/app/register">Регистрация</a>
                     <a class="btn btn-default" th:href="@{/}">Выход</a>
 
                 </div>
@@ -63,110 +57,121 @@
     <main>
         <section class="tasks">
 
-            <div class="container tasks__container">
+            <div class="container container__tasks">
 
-                <div class="content__row tasks__content__row">
+                <div class="content__row content__row__tasks">
 
-                    <div class="content__element left__content__element">
+                    <div class="content__element__col left__content__element__col">
 
-                        <div class="content__element__col">
+                        <div class="content__element left__content__element">
 
-                            <div class="board task__making__board task__making">
+                            <div class="board board__task-making task-making">
 
                                 <!-- Заголовок -->
-                                <h1 class="header__h1 board__header__h1 task__making__board__header">Создать задачу:</h1>
+                                <h1 class="header__h1 board__header__h1 board__header__task-making">Создать задачу:</h1>
 
-                                <div class="item first__item make__new__task__item">
+                                <div class="item item-first item__make-new-task">
 
                                     <!-- Стоимость задачи -->
                                     <!-- <div class="increment__element task__wages__header__buttons__row"> -->
-                                    <div class="list create__task__list create__task__list__col">
+                                    <div class="list__col create__task-list__col">
 
-                                        <!-- Форма создания карточки -->
-                                        <form method="POST"
-                                              th:action="@{/api/v1/tasks}"
-                                              th:object="${taskForm}">
+                                        <div class="list list__create-task-list">
 
-                                            <!-- Форма ввода текста -->
-                                            <div class="input create__task__input">
+                                            <!-- Форма создания карточки -->
+                                            <form method="POST"
+                                                th:action="@{/api/v1/tasks}"
+                                                th:object="${taskForm}">
 
-                                                <div class="task-header">
+                                                <!-- Форма ввода текста -->
+                                                <div class="input create__task__input">
 
-                                                    <input type="text"                                                       
-                                                        th:field="*{title}"
-                                                        value=""
-                                                        class="form-control"
-                                                        id="title"
-                                                        placeholder="Введите заголовок задачи..."
-                                                        aria-describedby="taskHelp">
+                                                    <div class="task-header">
+
+                                                        <input type="text"                                                       
+                                                            th:field="*{title}"
+                                                            value=""
+                                                            class="form-control form-control__create-task"
+                                                            id="title"
+                                                            placeholder="Введите заголовок задачи..."
+                                                            aria-describedby="taskHelp">
+
+                                                    </div>
+
+                                                </div>
+                              
+                                                <div class="input create__task__input">
+                                          
+                                                    <div class="task-text">
+
+                                                        <input type="text"
+                                                            th:field="*{taskText}"
+                                                            value=""
+                                                            class="form-control form-control__create-task"
+                                                            id="taskText"
+                                                            placeholder="Введите описание задачи..."
+                                                            aria-describedby="taskHelp">
+
+                                                    </div>
 
                                                 </div>
 
-                                            </div>
-                                    
-                                            <div class="input create__task__input">
-                                                
-                                                <div class="task-text">
+                                                <div class="item item-first item__header__increment__buttons">
 
-                                                    <input type="text"
-                                                        th:field="*{taskText}"
-                                                        value=""
-                                                        class="form-control"
-                                                        id="taskText"
-                                                        placeholder="Введите описание задачи..."
-                                                        aria-describedby="taskHelp">
+                                                    <div class="tasks__wage__header__h1">
+                                                        <h2 class="wages ">Стоимость задачи</h2>
+                                                    </div>
+
+                                                    <div class="task__wages__buttons">
+                                                        <a href = "#" class="btn__wages"  >-</a>
+                                                        <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
+                                                        <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>
+                                                        <a href = "#" class="btn__wages"   >+</a>
+                                                    </div>
 
                                                 </div>
-
-                                            </div>
-
-                                            <div class="item first__item item__header__increment__buttons">
-
-                                                <div class="tasks__wage__header__h1">
-                                                    <h2 class="wages ">Стоимость задачи</h2>
-                                                </div>
-
-                                                <div class="task__wages__buttons">
-                                                    <a href = "#" class="btn__wages"  >-</a>
-                                                   <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
-                                                    <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>
-                                                    <a href = "#" class="btn__wages"   >+</a>
-                                                </div>
-                                            </div>
-                                    
+                              
                                                 <!-- Фото задачи -->
-                                            <div class="add__task__photo">
-                                                <a href="#" class = add__photo__icon>
-                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo">
-                                                </a>
-                                                <h1 class="add__photo__header">Сделать фото задачи</h1>
-                                            </div>
-                                    
-                                            <!-- Добавление ребенка -->
-                                            <div class="add__child">
-                                                <a href="#"class = add__child__icon>
-                                                    <img src="content/img/Icon_4.svg" class="icons" alt="add__child">
-                                                </a>
-                                                <h1 class="add__child__header">Добавить ребенка</h1>
+                                                <div class="add__task__photo">
 
-                                                <select th:field= "*{userExecutingTask}">
-                                                    <option
-                                                     th:each="u : ${users}"
-                                                     th:value="${u.login}"
-                                                     th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}">
-                                                     </option>
-                                                </select>
+                                                    <a href="#" class = add__photo__icon>
 
+                                                        <img src="content/img/Icon_3.svg" class="icons" alt="task__photo">
 
-                                            </div>
+                                                    </a>
 
-                                            <span class="has-error"
-                                                  th:text="${error}">
-                                            </span>
-                                    
+                                                    <h1 class="add__photo__header">Сделать фото задачи</h1>
+
+                                                </div>
+                              
+                                                <!-- Добавление ребенка -->
+                                                <div class="add__child">
+
+                                                    <a href="#"class = add__child__icon>
+                                                        <img src="content/img/Icon_4.svg" class="icons" alt="add__child">
+                                                    </a>
+
+                                                    <h1 class="add__child__header">Добавить ребенка</h1>
+
+                                                    <select th:field= "*{userExecutingTask}">
+                                                        <option
+                                                        th:each="u : ${users}"
+                                                        th:value="${u.login}"
+                                                        th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}">
+                                                        </option>
+                                                    </select>
+                                                </div>
+
+                                                <span class="has-error"
+                                                        th:text="${error}">
+                                                </span>
+                              
                                                 <!-- Кнопка создания формы -->
-                                            <button type="submit" class="btn__submit btn-primary">Создать задачу</button>
-                                        </form>
+                                                <button type="submit" class="btn__submit btn-primary">Создать задачу</button>
+
+                                            </form>
+
+                                        </div>
 
                                     </div>
 
@@ -175,17 +180,15 @@
                             </div>
 
                         </div>
-                    
+
                     </div>
 
-
-                    <div class="content__element right__content__element">
+                    <div class="content__element__col right__content__element__col">
 
                         <!-- Шаблоны задач -->
+                        <div class="container right__content__element">
 
-                        <div class="content__element__col right__content__element__col">
-
-                            <div class="task__examples__board">
+                            <div class="board board__task-examples">
 
                                 <h1 class="header__h1 board__header tasks__list__board__header">Шаблоны задач:</h1>
 
@@ -200,13 +203,12 @@
                                             <div class="card__header__text task__card__headerandtext">
 
                                                 <!-- Заголовок карточки -->
-                                                <h1 class="card__header__h1 task__card__header__h1">Заголовок задачи</h1>
-<!--                                            TODO  жалуется на - th:text="${t.title}"-->
+                                                <h1 class="card__header__h1 task__card__header__h1">Заголовок задачи</h1> <!-- TODO  жалуется на - th:text="${t.title}"-->
+
 
 
                                                 <!-- Текст карточки -->
-                                                <p class="card__text__p task__card__text__p">Текст задачи</p>
-<!--                                            TODO  жалуется на - th:text="${t.taskText}-->
+                                                <p class="card__text__p task__card__text__p">Текст задачи</p> <!--TODO  жалуется на - th:text="${t.taskText}-->
 
                                             </div>
                                             
@@ -219,8 +221,14 @@
                             </div>
 
                         </div>
-                        
+
                     </div>
+
+
+
+
+                    <!-- <div class="content__element__col right__content__element__col"> -->                       
+                    <!-- </div> -->
 
                 </div>
 
@@ -244,83 +252,170 @@
 </html>
 
 
-<!--<div class="task-making">-->
-<!--                       &lt;!&ndash; Заголовок &ndash;&gt;-->
-<!--                       <h1 class="h1-header">Создать задачу :</h1>-->
-<!--                       -->
-<!--                       &lt;!&ndash; Форма создания карточки &ndash;&gt;-->
-<!--                       <form action="#" method="get">-->
-<!--                            &lt;!&ndash; Форма ввода текста &ndash;&gt;-->
-<!--                            <div class="create_task-input">-->
-<!--                                <div class="task-header">-->
-<!--                                    <input type="text"-->
-<!--                                        placeholder="Введите заголовок задачи..."-->
-<!--                                        name="task-header"-->
-<!--                                        value=""-->
-<!--                                        class="form-control"-->
-<!--                                        id="exampleInputTaskHeader"-->
-<!--                                        aria-describedby="taskHelp">-->
-<!--                                -->
-<!--                                    <div id="taskHelp" class="form-text"></div>-->
-<!--                                </div>-->
-<!--                            </div>-->
 
-<!--                            <div class="create_task-input">-->
-<!--                                <div class="task-text"></div>-->
-<!--                               <input type="text"-->
-<!--                                    placeholder="Введите текст задачи..."-->
-<!--                                    name="task-text" value=""-->
-<!--                                    class="form-control"-->
-<!--                                    id="exampleInputTask"-->
-<!--                                    aria-describedby="taskHelp">-->
+<!--<section class="tasks">-->
 
-<!--                               <div id="taskHelp" class="form-text"></div>-->
-<!--                            </div>-->
+<!--    <div class="container tasks__container">-->
+
+<!--        <div class="content__row tasks__content__row">-->
+
+<!--            <div class="content__element left__content__element">-->
+
+<!--                <div class="content__element__col">-->
+
+<!--                    <div class="board task__making__board task__making">-->
+
+<!--                        &lt;!&ndash; Заголовок &ndash;&gt;-->
+<!--                        <h1 class="header__h1 board__header__h1 task__making__board__header">Создать задачу:</h1>-->
+
+<!--                        <div class="item item-first make__new__task__item">-->
 
 <!--                            &lt;!&ndash; Стоимость задачи &ndash;&gt;-->
-<!--                            <div class="task-cost-header">-->
-<!--                                <h1 class="task-cost-button-header">Стоимость задачи</h1>-->
+<!--                            &lt;!&ndash; <div class="increment__element task__wages__header__buttons__row"> &ndash;&gt;-->
+<!--                            <div class="list create__task__list create__task__list__col">-->
 
-<!--                                &lt;!&ndash; Инкрементация стоимости задачи &ndash;&gt;-->
-<!--                                <div class="task-cost-buttons">-->
-<!--                                    <a href = "#" class="btn-cost">-</a>-->
-<!--                                    <a href = "#" class="btn-cost">5</a>-->
-<!--                                    <a href = "#" class="btn-cost">+</a>-->
-<!--                                </div>-->
+<!--                                &lt;!&ndash; Форма создания карточки &ndash;&gt;-->
+<!--                                <form method="POST"-->
+<!--                                      th:action="@{/api/v1/tasks}"-->
+<!--                                      th:object="${taskForm}">-->
 
-<!--                                &lt;!&ndash; Фото задачи &ndash;&gt;-->
-<!--                                <div class="task-photo">-->
-<!--                                    <a href="#" class = add-photo-icon>-->
-<!--                                        <img src="content/img/Icon_3.svg" alt="task-photo" width="100px">-->
-<!--                                    </a>-->
-<!--                                    <h1 class="add-photo-header">Добавить фото</h1>-->
-<!--                                </div>-->
+<!--                                    &lt;!&ndash; Форма ввода текста &ndash;&gt;-->
+<!--                                    <div class="input create__task__input">-->
 
-<!--                                &lt;!&ndash; Добавление ребенка &ndash;&gt;-->
-<!--                                <div class="add-child">-->
-<!--                                    &lt;!&ndash; <p><input type="file" name="add-child-photo" id=""></p> &ndash;&gt;-->
-<!--                                    <a href="#"class = add-child-icon>-->
-<!--                                        <img src="content/img/Icon_4.svg" alt="add-child" width="100px">-->
-<!--                                    </a>-->
-<!--                                    <h1 class="add-child-header">Добавить ребенка</h1>-->
-<!--                                </div>-->
+<!--                                        <div class="task-header">-->
 
-<!--                                &lt;!&ndash; Кнопка создания формы &ndash;&gt;-->
-<!--                                <button type="submit" class="btn btn-primary">Создать задачу</button>-->
+<!--                                            <input type="text"-->
+<!--                                                   th:field="*{title}"-->
+<!--                                                   value=""-->
+<!--                                                   class="form-control"-->
+<!--                                                   id="title"-->
+<!--                                                   placeholder="Введите заголовок задачи..."-->
+<!--                                                   aria-describedby="taskHelp">-->
+
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+
+<!--                                    <div class="input create__task__input">-->
+
+<!--                                        <div class="task-text">-->
+
+<!--                                            <input type="text"-->
+<!--                                                   th:field="*{taskText}"-->
+<!--                                                   value=""-->
+<!--                                                   class="form-control"-->
+<!--                                                   id="taskText"-->
+<!--                                                   placeholder="Введите описание задачи..."-->
+<!--                                                   aria-describedby="taskHelp">-->
+
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+
+<!--                                    <div class="item item-first item__header__increment__buttons">-->
+
+<!--                                        <div class="tasks__wage__header__h1">-->
+<!--                                            <h2 class="wages ">Стоимость задачи</h2>-->
+<!--                                        </div>-->
+
+<!--                                        <div class="task__wages__buttons">-->
+<!--                                            <a href = "#" class="btn__wages"  >-</a>-->
+<!--                                            &lt;!&ndash; <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>&ndash;&gt;-->
+<!--                                            <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
+<!--                                            <a href = "#" class="btn__wages"   >+</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+<!--                                    &lt;!&ndash; Фото задачи &ndash;&gt;-->
+<!--                                    <div class="add__task__photo">-->
+<!--                                        <a href="#" class = add__photo__icon>-->
+<!--                                            <img src="content/img/Icon_3.svg" class="icons" alt="task__photo">-->
+<!--                                        </a>-->
+<!--                                        <h1 class="add__photo__header">Сделать фото задачи</h1>-->
+<!--                                    </div>-->
+
+<!--                                    &lt;!&ndash; Добавление ребенка &ndash;&gt;-->
+<!--                                    <div class="add__child">-->
+<!--                                        <a href="#"class = add__child__icon>-->
+<!--                                            <img src="content/img/Icon_4.svg" class="icons" alt="add__child">-->
+<!--                                        </a>-->
+<!--                                        <h1 class="add__child__header">Добавить ребенка</h1>-->
+
+<!--                                        <select th:field= "*{userExecutingTask}">-->
+<!--                                            <option-->
+<!--                                                    th:each="u : ${users}"-->
+<!--                                                    th:value="${u.login}"-->
+<!--                                                    th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}">-->
+<!--                                            </option>-->
+<!--                                        </select>-->
+
+
+<!--                                    </div>-->
+
+<!--                                    <span class="has-error"-->
+<!--                                          th:text="${error}">-->
+<!--                                            </span>-->
+
+<!--                                    &lt;!&ndash; Кнопка создания формы &ndash;&gt;-->
+<!--                                    <button type="submit" class="btn__submit btn-primary">Создать задачу</button>-->
+<!--                                </form>-->
+
 <!--                            </div>-->
-<!--                        </form>-->
+
+<!--                        </div>-->
+
 <!--                    </div>-->
 
+<!--                </div>-->
+
+<!--            </div>-->
 
 
-<!-- <link th:href="@{/css/blocks/tasklist.css}" rel="stylesheet" />
-<link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
-<link th:href="@{/css/blocks/task-creating.css}" rel="stylesheet" />
+<!--            <div class="content__element right__content__element">-->
 
-<link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
-<link th:href="@{/css/blocks/reset.css}" rel="stylesheet" />
+<!--                &lt;!&ndash; Шаблоны задач &ndash;&gt;-->
+
+<!--                <div class="content__element__col right__content__element__col">-->
+
+<!--                    <div class="task__examples__board">-->
+
+<!--                        <h1 class="header__h1 board__header tasks__list__board__header">Шаблоны задач:</h1>-->
+
+<!--                        <div class="list tasks__examples__list">-->
+
+<!--                            &lt;!&ndash; Карточка шаблона задачи &ndash;&gt;-->
+<!--                            <div class="card card__task__example">-->
+
+<!--                                <div class="card__row task__example__card__row">-->
+
+<!--                                    &lt;!&ndash; Блок заголовок и текст карточки &ndash;&gt;-->
+<!--                                    <div class="card__header__text task__card__headerandtext">-->
+
+<!--                                        &lt;!&ndash; Заголовок карточки &ndash;&gt;-->
+<!--                                        <h1 class="card__header__h1 task__card__header__h1">Заголовок задачи</h1>-->
+<!--                                        &lt;!&ndash;                                            TODO  жалуется на - th:text="${t.title}"&ndash;&gt;-->
 
 
-<link th:href="@{/css/fonts/Georgia/stylesheet.css}" rel="stylesheet">
-<link th:href="@{/css/fonts/Lato/stylesheet.css}" rel="stylesheet">
-<link th:href="@{/css/fonts/EcoCoding/stylesheet.css}" rel="stylesheet"> -->
+<!--                                        &lt;!&ndash; Текст карточки &ndash;&gt;-->
+<!--                                        <p class="card__text__p task__card__text__p">Текст задачи</p>-->
+<!--                                        &lt;!&ndash;                                            TODO  жалуется на - th:text="${t.taskText}&ndash;&gt;-->
+
+<!--                                    </div>-->
+
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--</section>-->

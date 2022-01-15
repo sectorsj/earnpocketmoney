@@ -16,8 +16,6 @@
     <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" >
     <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" >
 
-
-
     <link rel="stylesheet" href="css/blocks/board_greeting.css">
     <link rel="stylesheet" href="css/blocks/board_tasks_list.css">
     <link rel="stylesheet" href="css/blocks/board_family_list.css">
@@ -49,7 +47,7 @@
             </nav>
             <div class="header-login">
 
-                <a  class="btn__signin btn-default" th:href="@{/register}">Регистрация</a>
+                <a class="btn__signin" th:href="@{/register}">Регистрация</a>
                 <a class="btn btn-default" th:href="@{/}">Выход</a>
 
             </div>
@@ -62,19 +60,19 @@
     <!-- Кабинет -->
     <section class="cabinet">
 
-        <div class="container сabinet__container">
+        <div class="container container__cabinet">
 
-            <div class="content__row cabinet__content__row">
+            <div class="content__row content__row__cabinet">
 
                 <div class="content__element__col left__content__element__col">
 
                     <div class="content__element left__content__element">
 
-                        <div class="board greeting__board greeting">
+                        <div class="board board__greeting greeting">
 
                             <h1 class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
 
-                            <div class="item first__item create__new__task__item">
+                            <div class="item item-first create__new__task__item">
 
                                 <a href="/app/api/v1/tasks" class="btn__link create__new__task__link">
 
@@ -94,20 +92,22 @@
 
                 <div class="content__element__col right__content__element__col">
 
-                    <div class="container right__content__element top__right__element">
+                    <div class="container top__right__element">
 
                         <!-- Tasklist -->
                         <div class="board board__tasks-list">
 
-                            <h1 class="header__h1 board__header tasks__list__board__header">Список задач:</h1>
+                            <h1 class="header__h1 board__header__h1 board__tasks-list__header__h1">
+                                Список задач:
+                            </h1>
 
-                            <div class="list tasks__list">
+                            <div class="list list__tasks">
 
-                                <!-- Карточка задачи -->
-                                <div class="card card__task" th:each="t : ${tasks}">
+                                
+                                <div class="card card__task">
 
-
-                                    <div class="card__row task__card__row">
+                                    <!-- Карточка задачи -->
+                                    <div class="card__row task__card__row"th:each="t : ${tasks}">
 
                                         <!-- Блок заголовок и текст карточки -->
                                         <div class="card__header__text task__card__headerandtext">
@@ -120,11 +120,15 @@
 
                                         </div>
 
+                                        <!-- <a class="btn btn__add-task" th:href="@{/}">подтвердить</a> -->
+                                        <!-- <a class="btn btn__add-task" th:href="@{/}">принять</a> -->
+                                        <p class="card__text__p card__status" th:text="${'Статус ' + t.status.getTitle()}">Статус: принята</p>
+
                                         <!-- Блок оценка карточки -->
-                                        <div class="card__span task__card__span task__wages__span">
+                                        <div class="card-span card-span__task card-span__task__wages">
                                             <!-- Оценка карточки -->
 
-                                            <span class="number_span wages__span" th:text="${t.wages}">5</span>
+                                            <span class="span__number span__wages" th:text="${t.wages}">5</span>
 
                                         </div>
 
@@ -152,10 +156,10 @@
                     </div>
 
 
-                    <div class="container right__content__element bottom__right__element ">
+                    <div class="container bottom__right__element">
 
                     <!-- Family -->
-                        <div class="board board__family">
+                        <div class="board board__family board__family-list">
 
                             <!-- Заголовок доски -->
                             <h1 class="header__h1 board__header family__list__board__header">Семья:</h1>
@@ -180,10 +184,10 @@
                                         </div>
 
                                         <!-- Блок оценка карточки -->
-                                        <div class="card__span family__card__span family__tasks__span">
+                                        <div class="card-span card-span__family card-span__family__tasks">
 
                                             <!-- Оценка карточки -->
-                                            <span class="number_span tasks__span" th:text="${f.executingTasksListSize}">2</span>
+                                            <span class="span__number span__wages" th:text="${f.executingTasksListSize}">2</span>
 
                                         </div>
 

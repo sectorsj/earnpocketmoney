@@ -43,7 +43,7 @@ body {
 }
 
 /* Заголовок досок(экранов)*/
-.header__h1, .board__header__h1 {
+.header__h1 {
     margin-top: 30px;
     margin-bottom: 30px;
     display: flex;
@@ -56,6 +56,10 @@ body {
     color: #01996D;
 }
 
+.board__header__h1{
+
+}
+
 .header__h2 {
     font-weight: 700;
     font-size: 24px;
@@ -63,16 +67,66 @@ body {
     color: #706c6c;
 }
 
+/*Кнопка*/
+.btn, a.btn {
+    /*выравнивание текста внутри кнопки*/
+    /* min-height: 58px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+
+    /* padding-left: 50px;
+    padding-right: 50px;
+    background-color: #01996D;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: opacity 0.2s ease; */
+}
+
+/*Наведение на кнопку*/
+.btn:hover, a.btn:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+
+
+/*Кнопка*/
+.btn-default, a.btn-default {
+    /*выравнивание текста внутри кнопки*/
+    /*display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1; */
+
+    min-height: 51px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #01996D;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: opacity 0.2s ease;
+}
+
+/*Наведение на кнопку*/
+.btn-default:hover, a.btn-default:hover {
+    opacity: 0.8;
+    color: #fff;
+}
 
 /* Левая и правая часть досок(экранов) */
 /* Расположение элементов во фрейме Контерент */
 .content__row {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
-/* Обеспечивается вертикальное положение элементов */
+/* вертикальное положение элементов */
 .content__element__col {
     display:  flex;
     flex-direction: column;
@@ -81,10 +135,8 @@ body {
 /* При необходимости не разделять на доски (экраны) */
 .content__element {
     height: 1000px;
-    border: 1px solid #828282;
-    box-sizing: border-box;
-    border-radius: 10px;
 }
+
 
 /* Перевод доски(экрана) во flex-элемент, с вертикальным положением элементов */
 .board {
@@ -95,7 +147,6 @@ body {
     /* margin-left: 30px; */
 }
 
-
 .registration_login__board {
     height: 450px;
     max-width: 450px;
@@ -104,27 +155,48 @@ body {
     margin: 0 auto;
 }
 
-/* Область для отображения спосков (задач, семьи и др) */
-.list {
-    display: flex;
-    flex-direction: column;
-    /* max-width: 100%; */
-
-    margin: 0px auto;
-    flex: 1 1 auto;
-}
-.list > div {
-    margin-bottom: 8px;
-}
-
 /* Элементы на доске (экране) */
 .item {
 
 }
 
 /* Первый элемент на доске (экране) */
-.first__item {
+.item-first {
 
+}
+
+.list_col{
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+}
+
+/* Область для отображения спосков (задач, семьи и др) */
+.list {
+    display: flex;
+    flex-direction: column;
+    /* max-width: 100%; */
+    width: 90%;
+
+    margin: 0px auto;
+    flex: 1 1 auto;
+}
+
+.list > div {
+    margin-bottom: 8px;
+}
+
+/* Схема положения элементов в карточке - вертикальная */
+.card__row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.message__row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 /* Общая карточка */
@@ -137,7 +209,6 @@ body {
     border-radius: 5px;
 }
 
-
 /* Общее сообщение */
 .message {
     padding: 9px 9px;
@@ -147,17 +218,6 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 
-}
-
-/* Схема положения элементов в карточке - вертикальная */
-.card__row{
-    display: flex;
-    justify-content: space-between;
-}
-
-.message__row{
-    display: flex;
-    justify-content: space-between;
 }
 
 /* Область заголовка и текста карточки */
@@ -181,13 +241,14 @@ body {
 }
 
 /* Элемент для отображения числа */
-.card__span {
-    display: flex;
-    background-color: #01996D;
-    border-radius: 5px;
+.card-span {
     width: 58px;
     height: 58px;
 
+    background-color: #01996D;
+    border-radius: 5px;
+
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -224,7 +285,7 @@ body {
 }
 
 /* Число в элементе для отображения числа*/
-.number_span {
+.span__number {
     font-family: VAGRounded;
     font-style: normal;
     font-weight: 600;
@@ -259,9 +320,18 @@ body {
 .input {
 }
 
+.input {
+}
+
 .form-control {
     border: 1px solid #BDBDBD;
     box-sizing: border-box;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
+}
+
+.btn-primary {
+}
+
+.has-error {
 }
