@@ -67,6 +67,23 @@
     background-image: url(../../content/img/fon_ny_1-01.svg);
 }
 
+.board__index {
+    overflow:auto;
+    height: 500px;
+    max-height: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+
 .index__container {
     padding-top: 1%;
     padding-bottom: 1%;
@@ -101,12 +118,50 @@
 }
 
 .board__greeting {
+        /* height: 1000px; */
     display: flex;
-    height: 1000px;
+    max-width: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
 
     flex-basis: 60%;
     flex-grow: 6;
+}
+
+.board__tasks-list {
+    overflow:auto;
+    height: 500px;
+    max-height: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    flex-grow: 6;
     margin-bottom: 1%;
+}
+
+.board__family-list {
+    overflow:auto;
+    height: 500px;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 38%;
+    flex-grow: 6;
 }
 
 .greeting {
@@ -143,40 +198,6 @@
 
 .create__task__header__h1 {
     color: #292929;
-}
-
-.board__family-list {
-    overflow: hidden;
-    max-width: 100%;
-    background-image: url(../../content/img/fon_ny_2-01.svg);
-
-    border: 1px solid #828282;
-    box-sizing: border-box;
-    border-radius: 10px;
-
-    display: flex;
-    flex-direction: column;
-    flex-basis: 38%;
-    flex-grow: 1;
-
-}
-
-.board__tasks-list {
-    overflow:auto;
-    display: flex;
-    height: 500px;
-    max-height: 100%;
-    background-image: url(../../content/img/fon_ny_2-01.svg);
-
-    border: 1px solid #828282;
-    box-sizing: border-box;
-    border-radius: 10px;
-
-    display: flex;
-    flex-direction: column;
-    flex-basis: 60%;
-    flex-grow: 6;
-
 }
 
 .board__tasks-list__header__h1 {
@@ -257,6 +278,11 @@
     background-image: url(../../content/img/fon_ny_1-01.svg);
 }
 
+.container__family {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
 .board__family {
     background-image: url(../../content/img/fon_ny_2-01.svg);
     display: flex;
@@ -270,12 +296,17 @@
     flex-grow: 6;
 }
 
-.board__family {
+.board__chat {
+    background-image: url(../../content/img/fon_ny_2-01.svg);
     display: flex;
     flex-direction: column;
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
     flex-basis: 60%;
     flex-grow: 6;
-    margin-bottom: 1%;
 }
 
 .family__view, .children__parents__view{
@@ -286,6 +317,7 @@
     margin-left: 5%;
     margin-right: 5%;
     flex: 1 1 auto;
+    
 }
 
 .family__list__board__header {
@@ -372,13 +404,6 @@
 .card__family {
 }
 
-.board__chat {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 60%;
-    flex-grow: 6;
-    margin-bottom: 1%;
-}
 
 .header__h1 .board__header{
 }

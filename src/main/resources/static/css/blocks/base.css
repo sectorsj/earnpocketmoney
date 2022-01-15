@@ -69,21 +69,10 @@ body {
 
 /*Кнопка*/
 .btn, a.btn {
-    /*выравнивание текста внутри кнопки*/
-    /* min-height: 58px; */
     display: flex;
     justify-content: center;
     align-items: center;
     line-height: 1;
-
-    /* padding-left: 50px;
-    padding-right: 50px;
-    background-color: #01996D;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 400;
-    border-radius: 4px;
-    transition: opacity 0.2s ease; */
 }
 
 /*Наведение на кнопку*/
@@ -95,16 +84,11 @@ body {
 
 /*Кнопка*/
 .btn-default, a.btn-default {
-    /*выравнивание текста внутри кнопки*/
-    /*display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 1; */
-
     min-height: 51px;
     padding-left: 50px;
     padding-right: 50px;
     background-color: #01996D;
+
     color: #fff;
     font-size: 20px;
     font-weight: 400;
@@ -142,9 +126,6 @@ body {
 .board {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* margin-left: 30px; */
 }
 
 .registration_login__board {
@@ -157,25 +138,21 @@ body {
 
 /* Элементы на доске (экране) */
 .item {
-
 }
 
 /* Первый элемент на доске (экране) */
 .item-first {
-
 }
 
 .list_col{
     display: flex;
     flex-direction: column;
-    /* width: 100%; */
 }
 
 /* Область для отображения спосков (задач, семьи и др) */
 .list {
     display: flex;
     flex-direction: column;
-    /* max-width: 100%; */
     width: 90%;
 
     margin: 0px auto;
@@ -315,9 +292,6 @@ body {
 
 .link__a {
     color: #292929;
-}
-
-.input {
 }
 
 .input {
