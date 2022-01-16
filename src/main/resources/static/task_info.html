@@ -91,7 +91,7 @@
                                             <div class="text-field__task-description">
                                                 <p class="text-field__p">
                                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                                    <!-- Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                                                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
                                                     natoque penatibus et magnis dis parturient montes, nascetur
                                                     ridiculus mus. Donec quam felis, ultricies nec, pellentesque
                                                     eu pretium quis, sem. Nulla consequat massa quis enim.
@@ -103,7 +103,7 @@
                                                     ridiculus mus. Donec quam felis, ultricies nec, pellentesque
                                                     eu pretium quis, sem. Nulla consequat massa quis enim.
                                                     Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-                                                    arcu. In enim justo, rhoncus ut. -->
+                                                    arcu. In enim justo, rhoncus ut.
                                                 </p>                                               
                                             </div>
 
@@ -153,45 +153,84 @@
                                             <p class="placeholder__photo-p">Фото</p>
                                         </div>
 
+
+                                        <!-- Пункт                          -->
+                                        <!-- Родитель : Parent 1            -->
+                                        <!-- Назначить : ----------         --> 
+                                        <!-- Назначить Подтвердить          -->
                                         <div class="item item-second item__role_buttons">
+
                                             <div class="p__column">
-                                                <p class="text-field__p">Родитель : Parent 1</p>
-                                                <p class="text-field__p">назначить : 
-                                                    <select th:field= "*{userExecutingTask}">
-                                                        
+
+                                                <div class="text-field">
+                                                    <p class="text-field__p">Родитель : Parent 1</p>
+                                                </div>
+                                               
+
+                                                <p class="text-field__p">Назначить : 
+
+                                                    <select th:field= "*{userExecutingTask}"> 
+
                                                         <option
                                                         th:each="u : ${users}"
                                                         th:value="${u.login}"
-                                                        th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"> ----------
+                                                        th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"> 
+                                                            ----------
                                                         </option>
+
                                                     </select>
+
                                                 </p> 
+
                                             </div>
                                            
-                                            <div class="btn__row">
+                                            <div class="btn__row btn__jc-sb">
 
-                                                <button type="submit" class="btn btn__add-task" th:href="@{/}">Назначить</a>
-                                                    
-                                                <button type="submit" class="btn btn__add-task" th:href="@{/}">подтвердить</a>
-
-                                            </div>
+                                                <button type="submit"
+                                                    class="btn btn-action btn-acton__parent btn-acton__parent__appoint"
+                                                    th:href="@{/}">
+                                                        Назначить
+                                                </button>
+                                                
+                                                <button type="submit"
+                                                    class="btn btn-action btn-acton__parent btn-acton__parent__confirm"
+                                                    th:href="@{/}">
+                                                        Подтвердить
+                                                </button>
+                                                                                              
+                                           </div>
 
                                         </div>
 
+
+                                        <!--Пункт                           -->
+                                        <!-- Родитель : Child 1             --> 
+                                        <!-- Принять Завершить              -->
                                         <div class="item item-third item__role_buttons">
 
-                                            <p class="text-field__p">Родитель : Child 1</p>
+                                            <div class="text-field ">
+                                                <p class="text-field__p">Родитель : Child 1</p>
+                                            </div>
                                            
-                                            <div class="btn__row">
+                                            <div class="btn__row btn__jc-sb">
 
-                                                <a class="btn btn__add-task" th:href="@{/}">Принять</a>
-                                                <a class="btn btn__add-task" th:href="@{/}">Завершить</a>
+                                                <!-- <a class="btn btn__add-task" th:href="@{/}">Принять</a> -->
+                                                <!-- <a class="btn btn__add-task" th:href="@{/}">Завершить</a>  -->
+                                                <button type="submit"
+                                                    class="btn btn-action btn-acton__child btn-acton__child__accept"
+                                                    th:href="@{/}">
+                                                        Принять
+                                                </button>
+
+                                                <button type="submit"
+                                                    class="btn btn-action btn-acton__child btn-acton__child__complete"
+                                                    th:href="@{/}">
+                                                        Завершить
+                                                <buttona>
                                                 
                                             </div>
 
                                         </div>
-
-
 
                                     </div>
 
