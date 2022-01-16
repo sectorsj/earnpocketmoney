@@ -67,6 +67,20 @@ body {
     color: #706c6c;
 }
 
+.p__column, p.p__column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*Кнопки*/
+.btn__row {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
 /*Кнопка*/
 .btn, a.btn {
     display: flex;
@@ -102,6 +116,7 @@ body {
     color: #fff;
 }
 
+
 /* Левая и правая часть досок(экранов) */
 /* Расположение элементов во фрейме Контерент */
 .content__row {
@@ -118,7 +133,7 @@ body {
 
 /* При необходимости не разделять на доски (экраны) */
 .content__element {
-    height: 1000px;
+    height: 800px;
 }
 
 
@@ -302,9 +317,6 @@ body {
     box-sizing: border-box;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-}
-
-.btn-primary {
 }
 
 .has-error {

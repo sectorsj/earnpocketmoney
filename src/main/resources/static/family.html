@@ -7,20 +7,15 @@
     <title>EPM_Family</title>
 
     <link th:href="@{/css/blocks/board_greeting.css}" media="screen" rel="stylesheet">
-    <!-- <link th:href="@{/css/blocks/board_family.css}" media="screen" rel="stylesheet"> -->
     <link th:href="@{/css/blocks/board_chat.css}"media="screen"  rel="stylesheet">
-
     <link th:href="@{/css/blocks/footer.css}" media="screen" rel="stylesheet">
     <link th:href="@{/css/blocks/header.css}" media="screen" rel="stylesheet">
-
     <link th:href="@{/css/blocks/base.css}" media="screen" rel="stylesheet">
     <link th:href="@{/css/blocks/reset.css}" media="screen" rel="stylesheet">
-
     <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" media="screen" rel="stylesheet">
 
     <!-- Specific -->
     <link rel="stylesheet" href="css/blocks/board_greeting.css">
-    <!-- <link rel="stylesheet" href="css/blocks/board_family.css"> -->
 
     <!-- Main -->
     <link rel="stylesheet" href="css/blocks/header.css">
@@ -81,7 +76,7 @@
                         <div class="board board__family">
 
                             <!--/*@thymesVar id="getPeopleGroupName" type=""*/-->
-                            <h1 class="header__h1 board__header__h1 family__board__header" th:text="${'Семья ' + user.getPeopleGroups().getName() + ' !'}" >Семья 'ивановы'</h1>
+                            <h1 class="header__h1 board__header__h1 family__board__header" th:text="${'Семья ' + user.getPeopleGroups().getName() + ' !'}" >Семья 'Ивановы'</h1>
 
 
                             <div class="family__view children__parents__view">
@@ -125,7 +120,7 @@
                                         <div class="card__header__text family__card__headerandtext">
 
                                             <!-- Заголовок карточки -->
-                                            <h1 class="card__header__h1 family__card__header__h1" th:text="${u.login}">Child 1</h1>
+                                            <h1 class="card__header__h1 family__card__header__h1" th:text="${u.login}">Parent 2</h1>
 
                                             <!-- Текст карточки -->
                                             <p class="card__text__p task__card__text__p" th:text="${u.login}">Задач у ребенка</p>
@@ -220,7 +215,7 @@
     
                             </div>
     
-                            <div class="item second__item message__sender">
+                            <div class="item item-second message__sender">
                                 <div class="body__sender">
                                     <div class="create__task__list__col">
     

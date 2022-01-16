@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earn Pocket Money</title>
+    <title>EPM_Task-info</title>
 
     <link th:href="@{/css/blocks/board_greeting.css}"  media="screen" rel="stylesheet">
     <link th:href="@{/css/blocks/home.css}"  media="screen" rel="stylesheet">
@@ -88,29 +88,49 @@
                                                 <h1 class="header-field__h1">Описание задачи:</h1>
                                             </div>
     
-                                            <div class="text-field text-field__task-description">
+                                            <div class="text-field__task-description">
                                                 <p class="text-field__p">
+                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                                                    <!-- Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                                                    natoque penatibus et magnis dis parturient montes, nascetur
+                                                    ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                                                    eu pretium quis, sem. Nulla consequat massa quis enim.
+                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                                    arcu. In enim justo, rhoncus ut.
                                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
                                                     Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
                                                     natoque penatibus et magnis dis parturient montes, nascetur
                                                     ridiculus mus. Donec quam felis, ultricies nec, pellentesque
                                                     eu pretium quis, sem. Nulla consequat massa quis enim.
                                                     Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-                                                    arcu. In enim justo, rhoncus ut.
-                                                </p>
+                                                    arcu. In enim justo, rhoncus ut. -->
+                                                </p>                                               
                                             </div>
+
                                         </div>
 
                                         <div class="text-field text-field__status">
+
                                             <p class="text-field__p">Статус: Не принята</p>
+
                                         </div>
+
                                         <div class="text-field text-field__executor">
-                                            <div class="text-field__p">Исполнитель: не назначен</div> 
+
+                                            <p class="text-field__p">Исполнитель: не назначен</p> 
                                             
                                         </div>
+
                                         <div class="text-field text-field__task-wage">
-                                            <div class="text-field__p">Стоимость задачи: 10 грефчиков</div>
+
+                                            <p class="text-field__p">Стоимость задачи: 10 грефчиков</p>
                                             
+                                        </div>
+
+                                        <div class="text-field text-field__date text-field__date__col">
+                                            <p class="text-field__p text-fleld_date__p">01.01.2022</p>
+                                            <p class="text-field__p text-fleld_date__p">01.01.2022</p>
+
                                         </div>
 
                                     </div>
@@ -128,6 +148,53 @@
 
                                 <div class="board board__task-info__right task-info__right">
 
+                                    <div class="list">
+                                        <div class="item item-first list__photo-placeholder">
+                                            <p class="placeholder__photo-p">Фото</p>
+                                        </div>
+
+                                        <div class="item item-second item__role_buttons">
+                                            <div class="p__column">
+                                                <p class="text-field__p">Родитель : Parent 1</p>
+                                                <p class="text-field__p">назначить : 
+                                                    <select th:field= "*{userExecutingTask}">
+                                                        
+                                                        <option
+                                                        th:each="u : ${users}"
+                                                        th:value="${u.login}"
+                                                        th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"> ----------
+                                                        </option>
+                                                    </select>
+                                                </p> 
+                                            </div>
+                                           
+                                            <div class="btn__row">
+
+                                                <button type="submit" class="btn btn__add-task" th:href="@{/}">Назначить</a>
+                                                    
+                                                <button type="submit" class="btn btn__add-task" th:href="@{/}">подтвердить</a>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="item item-third item__role_buttons">
+
+                                            <p class="text-field__p">Родитель : Child 1</p>
+                                           
+                                            <div class="btn__row">
+
+                                                <a class="btn btn__add-task" th:href="@{/}">Принять</a>
+                                                <a class="btn btn__add-task" th:href="@{/}">Завершить</a>
+                                                
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -144,59 +211,3 @@
 </body>
 
 </html>
-
-
-
- <!-- <link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
-    <link th:href="@{/css/blocks/home.css}" rel="stylesheet" />
-
-    <link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
-    <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" /> -->
-
-    <!-- Fonts -->
-    <!-- <link th:href="@{/css/fonts/Georgia/stylesheet.css}" rel="stylesheet">
-    <link th:href="@{/css/fonts/Lato/stylesheet.css}" rel="stylesheet">
-    <link th:href="@{/css/fonts/EcoCoding/stylesheet.css}" rel="stylesheet"> -->
-
-    
-    
-    <!-- <section class="task__info">
-
-        <div class="container">
-
-            <div class="container tasks__info__container">
-
-                <div class="task__info__content_row">
-
-                    <div class="left__content__element">
-
-                        <div class="task__info__card">
-
-                            <h1 class="task__info__header">Информация о задаче</h1>
-
-                            <div class="task__info__text" th:if="${task != null}">
-                                <h5 th:text="${'Название задачи: ' + task.title}">
-                                <h5 th:text="${'Текст задачи: ' + task.taskText}">
-                                <h5 th:text="${'Стоимость задачи: ' + task.wages}">
-                            </div>
-
-                            <div class="task__info__check check__id" th:if="${task == null}">
-                                <p class="check__id__answer__text">Такой задачи не существует. Проверьте ID</p>
-                            </div>
-
-                            <a class="task__info__link to__main__link" th:href="@{/}">На главную страницу</a>
-
-                        </div>
-
-                    </div>
-                        
-                    <div class="right__content__element">
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        
-    </section> -->
