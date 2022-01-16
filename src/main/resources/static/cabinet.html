@@ -60,11 +60,7 @@
 
         <script >
             function goToTask(title) {
-              /*  var xhr = new XMLHttpRequest();
-                xhr.open('GET', '/app/api/v1/task_info/' + title, true);
-                xhr.send();*/
                 var url = document.getElementById('/app/api/v1/task_info/' + title);
-               // document.location.href = url.value;
                 document.location.href = "/app/api/v1/task_info/" + title;
             }
         </script>
@@ -125,15 +121,16 @@
                                             <!-- Блок заголовок и текст карточки -->
                                             <button class="card__header__text task__card__headerandtext"
                                                     th:onclick="'goToTask(\'' + *{t.id} + '\')'"
+
                                             >
 
                                                 <!-- Заголовок карточки -->
                                                 <h1 class="card__header__h1 task__card__header__h1" th:text="${t.title}">Заголовок задачи</h1>
-                                                <!--<input type="hidden"  th:name = "title"  th:value= "${t.title}"   >-->
-                                                <!-- Текст карточки -->
-                                                <p class="card__text__p task__card__text__p" th:text="${t.taskText}">Текст задачи</p>
 
-                                                <p class="card__text__p task__card__text__p" th:text="${ 'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
+                                                <!-- Текст карточки -->
+                                                <p class="card__text__p task__card__text__p" th:text="${'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
+
+                                                <p class="card__text__p task__card__text__p" th:text="${ 'Статус: ' + t.status.getTitle()}">текущий статус задачи</p>
 
                                             </button>
 

@@ -94,5 +94,11 @@ public class TaskService {
         return true;
     }
 
+    public Task update (Task task){
+        LocalDateTime localDateTime = LocalDateTime.now();
+        task.setUpdatedAt(localDateTime);
+        return taskRepository.save(task);
+    }
+
 
 }

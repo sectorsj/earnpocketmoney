@@ -41,16 +41,16 @@
                 </div
                 ><nav class="header-nav">
                     <ul class="">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">Кабинет</a></li>
-                        <li><a href="#">Семья</a></li>
-                        <li><a href="/app/api/v2/tasks/all">Задачи</a></li>
+                        <li><a th:href="@{/}">Главная</a></li>
+                        <li><a th:href="@{/api/v1/cabinet}">Кабинет</a></li>
+                        <li><a th:href="@{/api/v1/family}">Семья</a></li>
+                        <li><a th:href="@{/api/v1/tasks}">Задачи</a></li>
                         <li><a href="#">Статистика</a></li>
                     </ul>
                 </nav>
                 <div class="header-login">
-                    <a href="#">Регистрация</a>
-                    <a href="#" class="btn">Вход</a>
+                    <a class="btn__signin btn-default" th:href="@{/register}">Регистрация</a>
+                    <a class="btn btn-default" th:href="@{/}">Вход</a>
                 </div>
             </div>
         </div>
@@ -72,17 +72,31 @@
 
                                 <h1 class="task__info__header">Информация о задаче</h1>
 
-                                <div class="task__info__text" th:if="${task != null}">
-                                    <h5 th:text="${'Название задачи: ' + task.title}">
-                                    <h5 th:text="${'Текст задачи: ' + task.taskText}">
-                                    <h5 th:text="${'Стоимость задачи: ' + task.wages}">
+                                <div class="task__info__text" th:if="${taskDto != null}">
+                                    <h5 th:text="${'Автор задачи: ' + taskDto.userCreatingTask.getLogin()}"></h5>
+                                    <h5 th:text="${'Название задачи: ' + taskDto.title}"></h5>
+                                    <h5 th:text="${'Текст задачи: ' + taskDto.taskText}"></h5>
+                                    <h5 th:text="${'Статус задачи: ' + taskDto.status.getTitle()}"></h5>
+                                    <h5 th:text="${'Исполнитель: ' + taskDto.userExecutingTask.getLogin()}"></h5>
+                                    <h5 th:text="${'Стоимость задачи: ' + taskDto.wages}"></h5>
+                                    <h5 th:text="${'Дата создания задачи: ' + taskDto.createdAt}"></h5>
+                                    <h5 th:text="${'Дата изменения задачи: ' + taskDto.updatedAt}"></h5>
                                 </div>
 
-                                <div class="task__info__check check__id" th:if="${task == null}">
+                                <div class="task__info__check check__id" th:if="${taskDto == null}">
                                     <p class="check__id__answer__text">Такой задачи не существует. Проверьте ID</p>
                                 </div>
 
                                 <a class="task__info__link to__main__link" th:href="@{/}">На главную страницу</a>
+
+                                <div class="task__info__text" th:if="${taskDto != null}">
+                                    <h5 > _    </h5>
+                                    <a th:href="@{ '/api/v1/task_info/end/confirmation/' + ${taskDto.id}}"  >  Кнопка подтвердить   </a>
+                                    <h5 > _    </h5>
+                                    <a th:href="@{ '/api/v1/task_info/accepted/' + ${taskDto.id}}">  Кнопка принять   </a>
+                                    <h5 > _    </h5>
+                                    <a  th:href="@{ '/api/v1/task_info/end/' + ${taskDto.id}}" >  Кнопка завершить   </a>
+                                </div>
 
                             </div>
 

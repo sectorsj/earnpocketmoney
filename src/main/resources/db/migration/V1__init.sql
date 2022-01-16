@@ -19,8 +19,11 @@ create table wallets (
 
 
 insert into wallets (value) values
-(99),
-(101);
+(100),
+(5),
+(101),
+(17),
+(1);
 
 drop table  if exists people_groups;
 create table people_groups (
@@ -38,10 +41,11 @@ create table statuses (
 );
 
 insert into statuses (title) values
-('do_not_accepted'),
-('accepted'),
-('executed'),
-('expired');
+('не принято'),
+('принято'),
+('выполнено'),
+('подтверждено выполнение'),
+('просрочено');
 
 drop table  if exists users;
 create table users (
@@ -59,9 +63,9 @@ insert into users (login, password,id_wallet, id_role, id_people_groups) values
 --*пароль у всех один - '100'*--
 ('parent1', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 1, 1, 1),
 ('children1', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 1),
-('parent2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 1, 1, 2),
-('children2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 2),
-('children3', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 1);
+('parent2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 3, 1, 2),
+('children2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 4, 2, 2),
+('children3', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 5, 2, 1);
 
 
 drop table  if exists bonuses;

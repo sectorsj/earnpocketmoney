@@ -45,6 +45,10 @@ public class UserService {
        return userRepository.save(user);
     }
 
+    public User updateUser(User user){
+        return userRepository.save(user);
+    }
+
 
     public List<User> findAllByPeopleGroups (PeopleGroups peopleGroups){
         return userRepository.findAllByPeopleGroups(peopleGroups);
