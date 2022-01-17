@@ -6,19 +6,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earn Pocket Money</title>
+    <title>EPM_Task-info</title>
 
-
-    <link th:href="@{/css/blocks/home.css.css}"  media="screen" rel="stylesheet" >
+    <link th:href="@{/css/blocks/board_greeting.css}"  media="screen" rel="stylesheet">
+    <link th:href="@{/css/blocks/home.css}"  media="screen" rel="stylesheet">
     <link th:href="@{/css/blocks/header.css}" media="screen" rel="stylesheet">
     <link th:href="@{/css/blocks/base.css}" media="screen" rel="stylesheet">
     <link th:href="@{/css/blocks/reset.css}" media="screen" rel="stylesheet">
     <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" >
 
+
+    <link rel="stylesheet" href="css/blocks/board_greeting.css">
     <link rel="stylesheet" href="css/blocks/header.css">
     <link rel="stylesheet" href="css/blocks/home.css">
-    <!-- <link rel="stylesheet" href="css/blocks/task-creating.css">-->
-
 
     <!--Reset-->
     <link rel="stylesheet" href="css/blocks/base.css">
@@ -31,26 +31,26 @@
 
 <body>
     <header class="header">
-
         <div class="container">
-
             <div class="header-row">
-
                 <div class="header-logo">
                     <img src="content/img/logo-01.svg" alt="Logo" width="250px">
-                </div
-                ><nav class="header-nav">
+                </div>
+
+                <nav class="header-nav">
                     <ul class="">
                         <li><a th:href="@{/}">Главная</a></li>
                         <li><a th:href="@{/api/v1/cabinet}">Кабинет</a></li>
                         <li><a th:href="@{/api/v1/family}">Семья</a></li>
-                        <li><a th:href="@{/api/v1/tasks}">Задачи</a></li>
+                        <li><a th:href="@{/api/v1/tasks}" class= "link__active">Задачи</a></li>
                         <li><a href="#">Статистика</a></li>
                     </ul>
                 </nav>
                 <div class="header-login">
-                    <a class="btn__signin btn-default" th:href="@{/register}">Регистрация</a>
-                    <a class="btn btn-default" th:href="@{/}">Вход</a>
+
+                    <a class="btn__signin" href="/app/register">Регистрация</a>
+                    <a class="btn btn-default" th:href="@{/}">Выход</a>
+
                 </div>
             </div>
         </div>
@@ -58,58 +58,191 @@
 
     <main>
 
-        <section class="task__info">
+        <section class="task-info">
 
-            <div class="container">
+                <div class="container container__task-info">
 
-                <div class="container tasks__info__container">
+                    <div class="content__row content_row__task-info">
 
-                    <div class="task__info__content_row">
+                        <!-- Горизонтальное положение экранов -->
+                        <div class="content__element__col left__content__element__col">
 
-                        <div class="left__content__element">
+                             <!-- Левый экран -->
+                            <div class="content__element left__content__element">
 
-                            <div class="task__info__card">
+                                <!-- Доска  task_info -->
+                                <div class="board board__task-info__left task-info__left">
 
-                                <h1 class="task__info__header">Информация о задаче</h1>
+                                    <div class="list">
+                                        <div class="text-field text-field__author">
+                                            <p th:text="${'Автор задачи: ' + taskDto.userCreatingTask.getLogin()}" class="text-field__p">Автор: Parent 1</p>
+                                        </div>
+    
+                                        <div class="header-field header-field__task-header">
+                                            <h1 th:text="${'Название задачи: ' + taskDto.title}" class="header-field__h1">Заголовок задачи</h1>
+                                        </div>
+    
+                                        <div class="header-text__col header-text-field text-field__description">
+                                            
+                                            <div class="header-field header-field__description">
+                                                <h1  class="header-field__h1">Описание задачи:</h1>
+                                            </div>
+    
+                                            <div class="text-field__task-description">
+                                                <p th:text="${'Текст задачи: ' + taskDto.taskText}" class="text-field__p">
+                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                                                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                                                    natoque penatibus et magnis dis parturient montes, nascetur
+                                                    ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                                                    eu pretium quis, sem. Nulla consequat massa quis enim.
+                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                                    arcu. In enim justo, rhoncus ut.
+                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                                                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                                                    natoque penatibus et magnis dis parturient montes, nascetur
+                                                    ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                                                    eu pretium quis, sem. Nulla consequat massa quis enim.
+                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                                    arcu. In enim justo, rhoncus ut.
+                                                </p>                                               
+                                            </div>
 
-                                <div class="task__info__text" th:if="${taskDto != null}">
-                                    <h5 th:text="${'Автор задачи: ' + taskDto.userCreatingTask.getLogin()}"></h5>
-                                    <h5 th:text="${'Название задачи: ' + taskDto.title}"></h5>
-                                    <h5 th:text="${'Текст задачи: ' + taskDto.taskText}"></h5>
-                                    <h5 th:text="${'Статус задачи: ' + taskDto.status.getTitle()}"></h5>
-                                    <h5 th:text="${'Исполнитель: ' + taskDto.userExecutingTask.getLogin()}"></h5>
-                                    <h5 th:text="${'Стоимость задачи: ' + taskDto.wages}"></h5>
-                                    <h5 th:text="${'Дата создания задачи: ' + taskDto.createdAt}"></h5>
-                                    <h5 th:text="${'Дата изменения задачи: ' + taskDto.updatedAt}"></h5>
+                                        </div>
+
+                                        <div class="text-field text-field__status">
+
+                                            <p th:text="${'Статус задачи: ' + taskDto.status.getTitle()}" class="text-field__p">Статус: Не принята</p>
+
+                                        </div>
+
+                                        <div class="text-field text-field__executor">
+
+                                            <p th:text="${'Исполнитель: ' + taskDto.userExecutingTask.getLogin()}" class="text-field__p">Исполнитель: не назначен</p> 
+                                            
+                                        </div>
+
+                                        <div class="text-field text-field__task-wage">
+
+                                            <p th:text="${'Стоимость задачи: ' + taskDto.wages}" class="text-field__p">Стоимость задачи: 10 грефчиков</p>
+                                            
+                                        </div>
+
+                                        <div class="text-field text-field__date text-field__date__col">
+                                            <p th:text="${'Дата создания задачи: ' + taskDto.createdAt}" class="text-field__p text-fleld_date__p">01.01.2022</p>
+                                            <p th:text="${'Дата изменения задачи: ' + taskDto.updatedAt}" class="text-field__p text-fleld_date__p">01.01.2022</p>
+
+                                        </div>
+
+                                    </div>
+
                                 </div>
 
-                                <div class="task__info__check check__id" th:if="${taskDto == null}">
-                                    <p class="check__id__answer__text">Такой задачи не существует. Проверьте ID</p>
-                                </div>
+                            </div>
+                                                      
+                        </div>
 
-                                <a class="task__info__link to__main__link" th:href="@{/}">На главную страницу</a>
+                        <div class="content__element__col right__content__element__col">
 
-                                <div class="task__info__text" th:if="${taskDto != null}">
-                                    <h5 > _    </h5>
-                                    <a th:href="@{ '/api/v1/task_info/end/confirmation/' + ${taskDto.id}}"  >  Кнопка подтвердить   </a>
-                                    <h5 > _    </h5>
-                                    <a th:href="@{ '/api/v1/task_info/accepted/' + ${taskDto.id}}">  Кнопка принять   </a>
-                                    <h5 > _    </h5>
-                                    <a  th:href="@{ '/api/v1/task_info/end/' + ${taskDto.id}}" >  Кнопка завершить   </a>
+                            <!-- Правый экран -->
+                            <div class="container right__content__element">
+
+                                <div class="board board__task-info__right task-info__right">
+
+                                    <div class="list">
+                                        <div class="item item-first list__photo-placeholder">
+                                            <p class="placeholder__photo-p">Фото</p>
+                                        </div>
+
+
+                                        <!-- Пункт                          -->
+                                        <!-- Родитель : Parent 1            -->
+                                        <!-- Назначить : ----------         --> 
+                                        <!-- Назначить Подтвердить          -->
+                                        <div class="item item-second item__role_buttons">
+
+                                            <div class="p__column">
+
+                                                <div class="text-field">
+                                                    <p class="text-field__p">Родитель : Parent 1</p>
+                                                </div>
+                                               
+
+                                                <p class="text-field__p">Назначить : 
+
+                                                    <select th:field= "*{taskDto.userExecutingTask}"> 
+
+                                                        <option
+                                                        th:each="u : ${users}"
+                                                        th:value="${u.login}"
+                                                        th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"> 
+                                                            ----------
+                                                        </option>
+
+                                                    </select>
+
+                                                </p> 
+
+                                            </div>
+                                           
+                                            <div class="btn__row btn__jc-sb">
+
+                                                <a type="submit"
+                                                    class="btn btn-action btn-acton__parent btn-acton__parent__appoint"
+                                                    th:href="@{/}">
+                                                        Назначить
+                                                </a>
+                                                
+                                                <a type="submit"
+                                                    class="btn btn-action btn-acton__parent btn-acton__parent__confirm"
+                                                    th:href="@{ '/api/v1/task_info/end/confirmation/' + ${taskDto.id}}">
+                                                        Подтвердить
+                                                </a>
+                                                                                              
+                                           </div>
+
+                                        </div>
+
+
+                                        <!--Пункт                           -->
+                                        <!-- Родитель : Child 1             --> 
+                                        <!-- Принять Завершить              -->
+                                        <div class="item item-third item__role_buttons">
+
+                                            <div class="text-field ">
+                                                <p class="text-field__p">Ребенок : Child 1</p>
+                                            </div>
+                                           
+                                            <div class="btn__row btn__jc-sb">
+
+                                                <!-- <a class="btn btn__add-task" th:href="@{/}">Принять</a> -->
+                                                <!-- <a class="btn btn__add-task" th:href="@{/}">Завершить</a>  -->
+                                                <a type="submit"
+                                                    class="btn btn-action btn-acton__child btn-acton__child__accept"
+                                                    th:href="@{ '/api/v1/task_info/accepted/' + ${taskDto.id}}">
+                                                        Принять
+                                                </a>
+
+                                                <a type="submit"
+                                                    class="btn btn-action btn-acton__child btn-acton__child__complete"
+                                                    th:href="@{ '/api/v1/task_info/end/' + ${taskDto.id}}">
+                                                        Завершить
+                                                </a>
+                                                
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
                                 </div>
 
                             </div>
 
                         </div>
-                            
-                        <div class="right__content__element">
-
-                        </div>
-
+                    
                     </div>
 
                 </div>
-            </div>
             
         </section>
 
@@ -117,16 +250,3 @@
 </body>
 
 </html>
-
-
-
- <!-- <link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
-    <link th:href="@{/css/blocks/home.css}" rel="stylesheet" />
-
-    <link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
-    <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" /> -->
-
-    <!-- Fonts -->
-    <!-- <link th:href="@{/css/fonts/Georgia/stylesheet.css}" rel="stylesheet">
-    <link th:href="@{/css/fonts/Lato/stylesheet.css}" rel="stylesheet">
-    <link th:href="@{/css/fonts/EcoCoding/stylesheet.css}" rel="stylesheet"> -->
