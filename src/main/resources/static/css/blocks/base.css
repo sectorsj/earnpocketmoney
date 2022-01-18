@@ -144,13 +144,13 @@ body {
     flex-direction: column;
 }
 
-.registration_login__board {
+/* .registration_login__board {
     height: 450px;
     max-width: 450px;
     min-width: 320px;
     padding: 15px;
     margin: 0 auto;
-}
+} */
 
 /* Элементы на доске (экране) */
 .item {
