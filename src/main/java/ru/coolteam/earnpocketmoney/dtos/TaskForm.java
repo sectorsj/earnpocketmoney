@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class TaskForm {
+    private Long id;
     private String title;
     private String taskText;
     private String userExecutingTask;

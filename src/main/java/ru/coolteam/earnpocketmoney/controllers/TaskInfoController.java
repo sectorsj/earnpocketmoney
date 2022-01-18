@@ -7,10 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.coolteam.earnpocketmoney.dtos.TaskDto;
 import ru.coolteam.earnpocketmoney.dtos.TaskForm;
-import ru.coolteam.earnpocketmoney.models.Status;
-import ru.coolteam.earnpocketmoney.models.Task;
-import ru.coolteam.earnpocketmoney.models.User;
-import ru.coolteam.earnpocketmoney.models.Wallet;
+import ru.coolteam.earnpocketmoney.dtos.UserInfo;
+import ru.coolteam.earnpocketmoney.models.*;
+import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
 import ru.coolteam.earnpocketmoney.repositories.StatusRepository;
 import ru.coolteam.earnpocketmoney.services.TaskService;
 import ru.coolteam.earnpocketmoney.services.UserService;
@@ -18,6 +17,8 @@ import ru.coolteam.earnpocketmoney.services.WalletService;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,12 +29,24 @@ public class TaskInfoController {
     private final UserService userService;
     private final StatusRepository statusRepository;
     private final WalletService walletService;
+    private final RoleRepository roleRepository;
 
 
     @GetMapping("/task_info/{id}")
     public String getTaskInfo (@PathVariable Long id, Principal principal, Model model){
         TaskDto taskDto = new TaskDto(taskService.findById(id).orElseThrow());
         model.addAttribute("taskDto", taskDto);
+        model.addAttribute("taskForm",new TaskForm());
+
+        User user = userService.findByLogin(principal.getName());
+        Role role = roleRepository.findByRole("ROLE_CHILDREN");
+
+        List<UserInfo> userInfoList = userService.findAllByPeopleGroupsAndRole(user.getPeopleGroups(), role)
+                .stream()
+                .map(UserInfo::new)
+                .collect(Collectors.toList());
+        model.addAttribute("users" , userInfoList);
+
         return "task_info";
     }
 
@@ -61,6 +74,19 @@ public class TaskInfoController {
         Wallet wallet = user.getWallet();
         wallet.setValue( wallet.getValue() + task.getWages());
         walletService.saveWallet(wallet);
+        taskService.update(task);
+        return "redirect:/api/v1/cabinet";
+    }
+
+    @PostMapping("/task_info/addChild/{id}")
+    public String addChildToTask (@Valid @ModelAttribute("taskForm") TaskForm taskForm, @PathVariable Long id, Principal principal, Model model){
+        Task task = taskService.findById(id).get();
+        User userChild;
+        if(!taskForm.getUserExecutingTask().equals("")) {
+            userChild = userService.findByLogin(taskForm.getUserExecutingTask());
+        }else {
+            userChild = null;}
+        task.setUserExecutingTask(userChild);
         taskService.update(task);
         return "redirect:/api/v1/cabinet";
     }
