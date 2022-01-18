@@ -26,13 +26,17 @@
 
 <body>
 <header class="header">
+
     <div class="container">
+
         <div class="header-row">
+
             <div class="header-logo">
                 <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
             </div>
 
             <nav class="header-nav">
+
                 <ul class="">
                     <li><a th:href="@{/}">Главная</a></li>
                     <li><a href="#" class= "link__active">Кабинет</a></li>
@@ -40,15 +44,20 @@
                     <li><a th:href="@{/api/v1/tasks}">Задачи</a></li>
                     <li><a href="#">Статистика</a></li>
                 </ul>
+                
             </nav>
+
             <div class="header-login">
 
                 <a class="btn__signin" th:href="@{/register}">Регистрация</a>
                 <a class="btn btn-default" th:href="@{/}">Выход</a>
 
             </div>
+
         </div>
+
     </div>
+
 </header>
 
 <!-- Tasks -->

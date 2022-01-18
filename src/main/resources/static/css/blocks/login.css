@@ -24,10 +24,12 @@ body{
     
 }
 .board {
-   
+    min-height: 300;
+    max-width: 450px;
+    min-width: 320px;
+    padding: 15px;
+    margin: 0 auto;
 }
-
-
 
 .login__board {
     

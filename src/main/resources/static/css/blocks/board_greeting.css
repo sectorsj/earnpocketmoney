@@ -54,13 +54,6 @@
 }
 
 
-
-
-
-
-
-
-
 /*///////////////////////// index ////////////////////////// */
 
 .index {
@@ -782,14 +775,14 @@ input:focus::placeholder {
     font-weight: 700;
     font-size: 30px;
     font-family: 'VAGRounded', serif;
-    color: #110ecc;
+    color: #01996D;
 }
 
 .text-field__p {
     font-weight: 700;
     font-size: 20px;
     font-family: 'VAGRounded', serif;
-    color: #01996D;
+    color: #706c6c;
 }
 
 .header-field {
@@ -852,12 +845,13 @@ input:focus::placeholder {
 }
 
 .text-field__date {
-
+    margin-top: 8%;
 }
+
 .text-field__date__col {
     display:  flex;
     flex-direction: column;
-    margin-top: 8%;
+    
 }
 
 .list__photo-placeholder {
@@ -869,7 +863,7 @@ input:focus::placeholder {
     height: 30%;
     width: 40%;
 
-    border: 1px solid #828282;
+    border: 3px solid #828282;
     box-sizing: border-box;
     border-radius: 10px;
 
@@ -885,5 +879,83 @@ input:focus::placeholder {
     font-weight: 700;
     font-size: 35px;
     font-family: 'VAGRounded', serif;
-    color: #110ecc;
+    color: #706c6c;
+}
+
+.item-second {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-third {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item__role_buttons {
+
+}
+
+/* Кнопка btn-action */
+.btn-action, button.btn-action {
+    min-height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+
+    padding-left: 20%;
+    padding-right: 20%;
+
+    background-color: #01996D;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: opacity 0.2s ease;
+}
+
+.btn-action:hover, button.btn-action:hover {
+    opacity: 0.8;
+    color: #ffffff;
+}
+
+.btn-acton__parent, button.btn-acton__parent {
+    width: 20%;
+    min-width: 30%;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.btn-acton__child {
+    width: 20%;
+    min-width: 30%;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+
+.btn-acton__parent__appoint {
+}
+
+.btn-acton__parent__confirm {
+}
+
+.btn-acton__child__accept {
+}
+.btn-acton__child__complete {
+}
+
+.btn__jc-sb{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
