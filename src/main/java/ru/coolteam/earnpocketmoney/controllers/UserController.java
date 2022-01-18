@@ -7,13 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.coolteam.earnpocketmoney.dtos.UserDto;
-import ru.coolteam.earnpocketmoney.models.Role;
 import ru.coolteam.earnpocketmoney.models.User;
 import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
 import ru.coolteam.earnpocketmoney.services.UserService;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

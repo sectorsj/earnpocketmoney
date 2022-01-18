@@ -2,11 +2,8 @@ package ru.coolteam.earnpocketmoney.dtos;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 import ru.coolteam.earnpocketmoney.models.Bonus;
-import ru.coolteam.earnpocketmoney.models.User;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data

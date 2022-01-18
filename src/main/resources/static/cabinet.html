@@ -5,209 +5,221 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> EPM_Cabinet</title>
+    <title>EPM_Cabinet</title>
 
     <link th:href="@{/css/blocks/board_greeting.css}" media="screen" rel="stylesheet" >
-    <link th:href="@{/css/blocks/board_tasks_list.css}" media="screen" rel="stylesheet" >
-    <link th:href="@{/css/blocks/board_family_list.css}" media="screen" rel="stylesheet" >
     <link th:href="@{/css/blocks/footer.css}" media="screen" rel="stylesheet" >
     <link th:href="@{/css/blocks/header.css}" media="screen" rel="stylesheet" >
-
     <link th:href="@{/css/blocks/base.css}" media="screen" rel="stylesheet" >
     <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" >
     <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" >
 
-
-    <link rel="stylesheet" href="css/blocks/header.css">
     <link rel="stylesheet" href="css/blocks/board_greeting.css">
-    <link rel="stylesheet" href="css/blocks/board_tasks_list.css">
-    <link rel="stylesheet" href="css/blocks/board_family_list.css">
     <link rel="stylesheet" href="css/blocks/footer.css">
-
+    <link rel="stylesheet" href="css/blocks/header.css">
     <!--Reset/Base-->
     <link rel="stylesheet" href="css/blocks/base.css">
     <link rel="stylesheet" href="css/blocks/reset.css">
-
     <!--Fonts-->
     <link rel="stylesheet" href="css/fonts/VAGRounded/stylesheet.css">
 </head>
 
 <body>
-<header class="header">
-    <div class="container">
-        <div class="header-row">
-            <div class="header-logo">
-                <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
-            </div>
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="header-logo">
+                    <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
+                </div>
 
-            <nav class="header-nav">
-                <ul class="">
-                    <li><a th:href="@{/}">Главная</a></li>
-                    <li><a href="#" class= "link__active">Кабинет</a></li>
-                    <li><a th:href="@{/api/v1/family}">Семья</a></li>
-                    <li><a th:href="@{/api/v1/tasks}">Задачи</a></li>
-                    <li><a href="#">Статистика</a></li>
-                </ul>
-            </nav>
-            <div class="header-login">
+                <nav class="header-nav">
+                    <ul class="">
+                        <li><a th:href="@{/}">Главная</a></li>
+                        <li><a href="#" class= "link__active">Кабинет</a></li>
+                        <li><a th:href="@{/api/v1/family}">Семья</a></li>
+                        <li><a th:href="@{/api/v1/tasks}">Задачи</a></li>
+                        <li><a href="#">Статистика</a></li>
+                    </ul>
+                </nav>
+                <div class="header-login">
 
-                <a  class="btn__signin btn-default" th:href="@{/register}">Регистрация</a>
-                <a class="btn btn-default" th:href="@{/}">Выход</a>
-
+                    <a class="btn__signin" th:href="@{/register}">Регистрация</a>
+                    <a class="btn btn-default" th:href="@{/}">Выход</a>
+    
+                </div>
             </div>
         </div>
-    </div>
-</header>
 
-<!-- Tasks -->
-<main>
-    <section class="cabinet">
+        <script >
+            function goToTask(title) {
+                var url = document.getElementById('/app/api/v1/task_info/' + title);
+                document.location.href = "/app/api/v1/task_info/" + title;
+            }
+        </script>
 
-        <div class="container сabinet__container">
+    </header>
 
-            <div class="content__row cabinet__content__row">
+    <!-- Tasks -->
+    <main>
+        <section class="cabinet">
 
-                <div class="content__element left__content__element">
+            <div class="container container__cabinet">
+
+                <div class="content__row content__row__cabinet">
 
                     <div class="content__element__col left__content__element__col">
+    
+                        <div class="content__element left__content__element">
+    
+                            <div class="board board__greeting greeting">
+    
+                                <h1  class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getLogin() + ' ' +  user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
 
-                        <div class="board greeting__board greeting">
-                          
-                                <h1 class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getLogin() + ' ' +  user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
+                                <div class="item item-first create__new__task__item">
 
-                            <div class="item first__item create__new__task__item">
+                                    <a href="/app/api/v1/tasks" class="btn__link create__new__task__link">
 
-                                <a href="/app/api/v1/tasks" class="btn__link create__new__task__link">
+                                        <img src="content/img/Icon_3.svg" class="icons create__new__task__icon" alt="task-photo" th:src="@{/content/img/Icon_3.svg}"/>
+                                   
+                                    </a>
 
-                                    <img src="content/img/Icon_3.svg" class="icons create__new__task__icon" alt="task-photo" th:src="@{/content/img/Icon_3.svg}"/>
+                                    <h1 class="item__header__h1 create__task__header__h1">Создать новую задачу</h1>
 
-                                </a>
-
-                                <h1 class="item__header__h1 create__task__header__h1">Создать новую задачу</h1>
+                                </div>
 
                             </div>
 
                         </div>
+
                     </div>
-                </div>
-
-                <div class="content__element right__content__element">
-
+                    
                     <div class="content__element__col right__content__element__col">
 
-                        <!-- Tasklist -->
-                        <div class="tasks__list__board">
-                          
-                                    <!-- Карточка задачи -->
-                                    <div  class="card card__task" th:each="t : ${tasks}">
-                                      
-                            <h1 class="header__h1 board__header tasks__list__board__header">Список задач:</h1>
-                                      
-                            <div class="list tasks__list">
+                        <div class="container top__right__element">
 
-                                <!-- Карточка задачи -->
-                                <div class="card card__task" th:each="t : ${tasks}">
+                            <!-- Tasklist -->
+                            <div class="board board__tasks-list">
+
+                                <h1 class="header__h1 board__header tasks__list__board__header">Список задач:</h1>
+                                
+                                <div  class="list tasks__list" th:each="t : ${tasks}" >
+
+                                    <div class="card card__task">
+
+                                        <!-- Карточка задачи -->
+
+                                        <div  class="card__row task__card__row"  >
+                                
+                                            <!-- Блок заголовок и текст карточки -->
+                                            <a class="card__header__text task__card__headerandtext"
+
+                                               th:href="@{'/api/v1/task_info/' + ${t.id}}">
 
 
-                                    <div class="card__row task__card__row">
 
-                                        <!-- Блок заголовок и текст карточки -->
-                                        <div class="card__header__text task__card__headerandtext">
-                                          
-                                                <p class="card__text__p task__card__text__p" th:text="${ 'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
+                                                <!-- Заголовок карточки -->
+                                                <h1 class="card__header__h1 task__card__header__h1" th:text="${t.title}">Заголовок задачи</h1>
+
+                                                <!-- Текст карточки -->
+                                                <p class="card__text__p task__card__text__p" th:text="${'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
+
+                                              <!--  <p class="card__text__p card__status" th:text="${ 'Статус: ' + t.status.getTitle()}">текущий статус задачи</p> -->
+
+                                            </a>
+
+                                            <p class="card__text__p card__status" th:text="${'Статус ' + t.status.getTitle()}">Статус: принята</p>
+
+                                            <!-- Блок оценка карточки -->
+                                             <div class="card-span card-span__task card-span__task__wages">
+                                                <!-- Оценка карточки -->
+
+                                                <span class="span__number span__wages" th:text="${t.wages}">5</span>
 
                                             </div>
-                                      
-                                            <!-- Заголовок карточки -->
-                                            <h1 class="card__header__h1 task__card__header__h1" th:text="${t.title}">Заголовок задачи</h1>
-                                      
-                                            <!-- Текст карточки -->
-                                            <p class="card__text__p task__card__text__p" th:text="${t.taskText}">Текст задачи</p>
 
-                                        </div>
 
-                                        <!-- Блок оценка карточки -->
-                                        <div class="card__span task__card__span task__wages__span">
-                                            <!-- Оценка карточки -->
 
-                                            <span class="number_span wages__span" th:text="${t.wages}">5</span>
+                                         </div>
 
+                                    </div>
+                                </div>
+                                
+
+                         
+
+                                <!-- Блок показать "ЕЩЕ" -->
+                                <div class="expand__list__element showmore__element">
+
+                                    <div class="element__row showmore__element__row ">
+
+                                        <div class="showmore__text">
+                                            <a href="#" class="link__a showmore__link">Еще...</a>
                                         </div>
 
                                     </div>
 
                                 </div>
 
-                            </div>
-
-                            <!-- Блок показать "ЕЩЕ" -->
-                            <div class="expand__list__element showmore__element">
-
-                                <div class="element__row showmore__element__row ">
-
-                                    <div class="showmore__text">
-                                        <a href="#" class="link__a showmore__link">Еще...</a>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
+                             </div> 
+                             
                         </div>
 
+                        <div class="container bottom__right__element">
 
-                        <!-- Family -->
-                        <div class="family__list__board">
+                            <!-- Family -->
+                            <div class="board board__family-list">
 
-                            <!-- Заголовок доски -->
-                            <h1 class="header__h1 board__header family__list__board__header">Семья:</h1>
+                                <!-- Заголовок доски -->
+                                <h1 class="header__h1 board__header family__list__board__header">Семья:</h1>
 
-                            <!-- Каторчка задач в цикле, получение из БД чере ТЛ -->
-                            <div class="list family__list" th:each="f : ${myFamily}">
+                                <!-- Каторчка задач в цикле, получение из БД чере ТЛ -->
+                                <div class="list family__list" th:each="f : ${myFamily}">
 
-                                <!-- Карточка задачи -->
-                                <div class="card card__family">
+                                    <!-- Карточка задачи -->
+                                    <div class="card card__family">
 
-                                    <div class="card__row family__card__row">
+                                        <div class="card__row family__card__row">
 
-                                        <!-- Блок заголовок и текст карточки -->
-                                        <div class="card__header__text family__card__headerandtext">
+                                            <!-- Блок заголовок и текст карточки -->
+                                            <div class="card__header__text family__card__headerandtext">
 
-                                            <!-- Заголовок карточки -->
-                                            <h1 class="card__header__h1 family__card__header__h1" th:text="${f.login}">Имя ребнка</h1>
+                                                <!-- Заголовок карточки -->
+                                                <h1 class="card__header__h1 family__card__header__h1" th:text="${f.login}">Имя ребнка</h1>
 
-                                            <!-- Текст карточки -->
-                                            <p class="card__text__p family__card__text__p" th:text="${f.peopleGroupName}">Количество полученных задач</p>
+                                                <!-- Текст карточки -->
+                                                <p class="card__text__p family__card__text__p" th:text="${f.peopleGroupName}">Количество полученных задач</p>
+
+                                            </div>
+
+                                            <!-- Блок оценка карточки -->
+                                            <div class="card-span card-span__family card-span__family__tasks">
+
+                                                <!-- Оценка карточки -->
+                                                <span class="span__number span__wages" th:text="${f.executingTasksListSize}">2</span>
+
+                                            </div>
 
                                         </div>
-
-                                        <!-- Блок оценка карточки -->
-                                        <div class="card__span family__card__span family__tasks__span">
-
-                                            <!-- Оценка карточки -->
-                                            <span class="number_span tasks__span" th:text="${f.executingTasksListSize}">2</span>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Блок показать "Подробнее" -->
-                            <div class="expand__list__element  more__details__element">
-
-                                <div class="element__row more__details__element__row ">
-
-                                    <div class="more__details__text">
-
-                                        <a href="#" class="link__a more__details__link">Подробнее...</a>
                                     </div>
 
                                 </div>
 
-                            </div>
+                                <!-- Блок показать "Подробнее" -->
+                                <div class="expand__list__element  more__details__element">
 
+                                    <div class="element__row more__details__element__row ">
+
+                                        <div class="more__details__text">
+
+                                            <a href="#" class="link__a more__details__link">Подробнее...</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                
                         </div>
 
                     </div>
@@ -216,15 +228,13 @@
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+    </main>
 
-</main>
-
-<footer>
-    <div th:insert="copyright :: copy"></div>
-</footer>
+    <footer>
+        <div th:insert="copyright :: copy"></div>
+    </footer>
 
 </body>
 

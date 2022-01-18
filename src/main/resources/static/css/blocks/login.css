@@ -24,16 +24,20 @@ body{
     
 }
 .board {
-    height: 400px;
-    max-width: 450px;
-    min-width: 320px;
-    padding: 15px;
-    margin: 0 auto;
-    background-image: url(../../content/img/fon_ny_2-01.svg);
+   
 }
 
+
+
 .login__board {
+    
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
+
 .form-signin {
 }
 
@@ -63,10 +67,15 @@ body{
 
 .btn {
     margin-top: 20%;
-    color: #000;
+    color: #ffffff;
     background-color: #01996D;
 }
 .btn:hover {
+    background-color: #01996D;
+    opacity: 0.8;
+}a
+
+.btn:active {
     background-color: #01996D;
     opacity: 0.8;
 }
@@ -78,4 +87,9 @@ body{
 .btn-block {
 }
 .text-center {
+    color: #706c6c;
+}
+
+.login__text-center {
+    margin-top: 25px;
 }

@@ -5,10 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.coolteam.earnpocketmoney.models.User;
 
-import javax.persistence.Transient;
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Data
 @NoArgsConstructor
 public class UserDto {

@@ -3,9 +3,10 @@ package ru.coolteam.earnpocketmoney.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.coolteam.earnpocketmoney.dtos.TaskDto;
-import ru.coolteam.earnpocketmoney.dtos.UserDto;
+import ru.coolteam.earnpocketmoney.dtos.TaskForm;
 import ru.coolteam.earnpocketmoney.dtos.UserInfo;
 import ru.coolteam.earnpocketmoney.models.User;
 import ru.coolteam.earnpocketmoney.repositories.RoleRepository;
@@ -15,7 +16,6 @@ import ru.coolteam.earnpocketmoney.services.UserService;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -73,7 +73,7 @@ public class CabinetController {
         model.addAttribute("myFamily" ,userInfoList);
         model.addAttribute("tasks", taskDtoList);
         model.addAttribute("user", user);
-
+        model.addAttribute("taskForm", new TaskForm());
         return "cabinet";
     }
 

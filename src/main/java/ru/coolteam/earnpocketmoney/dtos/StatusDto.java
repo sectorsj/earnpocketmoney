@@ -4,8 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.coolteam.earnpocketmoney.models.Status;
 
-import javax.persistence.Column;
-
 @Data
 @NoArgsConstructor
 public class StatusDto {

@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import ru.coolteam.earnpocketmoney.models.PeopleGroups;
 import ru.coolteam.earnpocketmoney.repositories.PeopleGroupsRepository;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class PeopleGroupsService {
@@ -19,7 +17,7 @@ public class PeopleGroupsService {
     }
 
     public PeopleGroups savePeopleGroups (PeopleGroups peopleGroups){
-        return   peopleGroupsRepository.save(peopleGroups);
+       return   peopleGroupsRepository.save(peopleGroups);
     }
 
 

@@ -2,7 +2,6 @@ package ru.coolteam.earnpocketmoney.dtos;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.coolteam.earnpocketmoney.models.Task;
 import ru.coolteam.earnpocketmoney.models.User;
 
 import java.util.List;

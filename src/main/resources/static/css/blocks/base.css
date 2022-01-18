@@ -26,13 +26,8 @@ body {
 /* Основной контейнер */
 .container {
     max-width: 1400px;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-left: 15px;
-    padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 @media (max-width:992px) {
@@ -48,7 +43,7 @@ body {
 }
 
 /* Заголовок досок(экранов)*/
-.header__h1, .board__header__h1 {
+.header__h1 {
     margin-top: 30px;
     margin-bottom: 30px;
     display: flex;
@@ -61,11 +56,65 @@ body {
     color: #01996D;
 }
 
+.board__header__h1{
+
+}
+
 .header__h2 {
     font-weight: 700;
     font-size: 24px;
     font-family: 'VAGRounded', serif;
     color: #706c6c;
+}
+
+.p__column, p.p__column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*Кнопки*/
+.btn__row {
+    display: flex;
+    flex-direction: row;  
+}
+
+
+
+
+/*Кнопка*/
+.btn, a.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+/*Наведение на кнопку*/
+.btn:hover, a.btn:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+
+
+/*Кнопка*/
+.btn-default, a.btn-default {
+    min-height: 51px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #01996D;
+
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: opacity 0.2s ease;
+}
+
+/*Наведение на кнопку*/
+.btn-default:hover, a.btn-default:hover {
+    opacity: 0.8;
+    color: #fff;
 }
 
 
@@ -74,76 +123,73 @@ body {
 .content__row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
-/* При необходимости не разделять на доски (экраны) */
-.content__element {
-    overflow: hidden;
-    height: 1000px;
-    min-height: 100%;
-    border: 1px solid #828282;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-/* Контент на левой доске (экране) */
-.left__content__element {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    width: 59.5%;
-    background-image: url(../../content/img/fon_ny_2-01.svg);
-}
-
-
-/* Контент на правой доске (экране) */
-.right__content__element {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    min-width: 39.5%;
-
-}
-
-/* Обеспечивается вертикальное положение элементов */
+/* вертикальное положение элементов */
 .content__element__col {
     display:  flex;
     flex-direction: column;
 }
 
+/* При необходимости не разделять на доски (экраны) */
+.content__element {
+    height: 800px;
+}
+
+
 /* Перевод доски(экрана) во flex-элемент, с вертикальным положением элементов */
 .board {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+}
 
+.registration_login__board {
+    height: 450px;
+    max-width: 450px;
+    min-width: 320px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+/* Элементы на доске (экране) */
+.item {
+}
+
+/* Первый элемент на доске (экране) */
+.item-first {
+}
+
+.list_col{
+    display: flex;
+    flex-direction: column;
 }
 
 /* Область для отображения спосков (задач, семьи и др) */
 .list {
     display: flex;
     flex-direction: column;
-    /* max-width: 100%; */
+    width: 90%;
 
     margin: 0px auto;
     flex: 1 1 auto;
 }
+
 .list > div {
     margin-bottom: 8px;
 }
 
-/* Элементы на доске (экране) */
-.item {
-
+/* Схема положения элементов в карточке - вертикальная */
+.card__row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-/* Первый элемент на доске (экране) */
-.first__item {
-
+.message__row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 /* Общая карточка */
@@ -156,7 +202,6 @@ body {
     border-radius: 5px;
 }
 
-
 /* Общее сообщение */
 .message {
     padding: 9px 9px;
@@ -166,17 +211,6 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 
-}
-
-/* Схема положения элементов в карточке - вертикальная */
-.card__row{
-    display: flex;
-    justify-content: space-between;
-}
-
-.message__row{
-    display: flex;
-    justify-content: space-between;
 }
 
 /* Область заголовка и текста карточки */
@@ -200,13 +234,14 @@ body {
 }
 
 /* Элемент для отображения числа */
-.card__span {
-    display: flex;
-    background-color: #01996D;
-    border-radius: 5px;
+.card-span {
     width: 58px;
     height: 58px;
 
+    background-color: #01996D;
+    border-radius: 5px;
+
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -243,7 +278,7 @@ body {
 }
 
 /* Число в элементе для отображения числа*/
-.number_span {
+.span__number {
     font-family: VAGRounded;
     font-style: normal;
     font-weight: 600;
@@ -283,4 +318,7 @@ body {
     box-sizing: border-box;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
+}
+
+.has-error {
 }

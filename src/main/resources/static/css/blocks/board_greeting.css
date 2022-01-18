@@ -1,49 +1,968 @@
-.cabinet {
-    overflow: hidden;
-    background-image: url(../../content/img/fon_ny_1-01.svg);
+
+.left__content__element__col {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
 
-.сabinet__container {
-
-}
-
-.cabinet__content__row {
-
+.right__content__element__col {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
 }
 
 
 /* Контент на левой доске (экране) */
 .left__content__element {
-    width: 59.5%;
-    background-image: url(../../content/img/fon_ny_2-01.svg);
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    width: 100%;
 }
 
-.greeting__board{
+/* Контент на правой доске (экране) */
+.right__content__element {
+    display: flex;
+    flex-direction: column;
 
+    min-height: 100%;
+    height: 500px;
+    width: 100%; 
+}
+
+.right__content__element > div {
+    margin-left: 1%;
+}
+
+.top__right__element {
+    height: 50%;
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+.top__right__element > div {
+    margin-left: 1%;
+}
+
+.bottom__right__element {
+    height: 50%;
+    width: 100%;
+}
+
+.bottom__right__element > div {
+    margin-left: 1%;
+}
+
+
+
+
+
+
+
+
+
+/*///////////////////////// index ////////////////////////// */
+
+.index {
+    overflow: hidden;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.board__index {
+    overflow:auto;
+    height: 500px;
+    max-height: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+
+.index__container {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.coolteam-products__icon {
+    width: 20%;
+}
+
+.item__coolteam-products {
+    display:  flex;
+    flex-direction: column;
+
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+
+/*///////////////////////// cabinet ////////////////////////// */
+
+.cabinet {
+    overflow: hidden;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.container__cabinet {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.content__row__cabinet {
+}
+
+.board__greeting {
+    display: flex;
+    max-width: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+.board__tasks-list {
+    overflow:auto;
+    height: 400px;
+    max-height: 100%;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+.board__family-list {
+    overflow:auto;
+    height: 400px;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 38%;
+    flex-grow: 6;
+}
+
+.greeting {
+}
+
+.board__header__h1 {
 }
 
 .greeting__board__header {
-
 }
 
 .create__new__task__item {
-    display:  flex;
+    display: flex;
     flex-direction: row;
 
     margin-top: 20%;
     margin-left: 5%;
 }
 
-.btn__link, .create__new__task__link {
+.btn__link {
+}
 
+.create__new__task__link {
+}
+
+.icons {
 }
 
 .create__new__task__icon {
+}
+
+.item__header__h1 {
+}
+
+.create__task__header__h1 {
+    color: #292929;
+}
+
+.board__tasks-list__header__h1 {
+}
+
+.list__tasks {
+    /* display: flex;
+    max-width: 100%;
+    margin: 0px auto;
+    justify-content: center;
+    flex: 1 1 auto; */
+}
+
+.task__card__row {
+    display: flex;
+    flex-direction: row;
+}
+
+.card__task {
+    width: 100%;
+    height: 80px;
+}
+
+.card__header__text {
+    
+}
+
+.task__card__headerandtext {
 
 }
 
- .create__task__header__h1 {
-     color: #292929;
+.card__header__h1 {
+}
+
+.card__text__p {
+    display: flex;
+    align-items: center;
+}
+
+.task__card__text__p {
+}
+
+.card-span__task {
+
+}
+
+.card-span__task__wages {
+}
+
+.span__wages {
+}
+
+.expand__list__element {
+}
+
+.showmore__element {
+}
+
+.element__row {
+}
+
+.showmore__element__row {
+    height: 60px;
+}
+
+.showmore__text {
+}
+
+.link__a {
+}
+
+.showmore__link {
+}
+
+/*///////////////////////// family ////////////////////////// */
+
+.family {
+    overflow: hidden;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.container__family {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.board__family {
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+.board__chat {
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+.family__view, .children__parents__view{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+
+    margin-left: 5%;
+    margin-right: 5%;
+    flex: 1 1 auto;
+}
+
+.family__list__board__header {
+}
+
+.family__list {
+}
+
+.card__family {
+    width: 100%;
+    height: 80px;
+}
+
+.family__card__row {
+}
+
+.family__card__headerandtext {
+}
+
+.family__card__header__h1 {
+}
+
+.card_span__family {
+}
+
+.family__tasks__span {
+}
+
+.view__header__h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tasks__span {
+}
+
+.more__details__element {
+}
+
+.more__details__element__row {
+}
+
+.more__details__element__row {
+    height: 60px;
+}
+
+.more__details__text {
+}
+
+.more__details__link {
+}
+
+.view__header__h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.family__view__header__h2{
+}
+
+.family__list {
+}
+
+.family__card__row {
+}
+
+.family__card__headerandtext {
+}
+
+.card-span__family {
+}
+
+.family__card__text__p {
+}
+
+.card__family {
+}
+
+
+.header__h1 .board__header{
+}
+
+.family__board__header {
+}
+
+.chat__view {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+
+    margin-left: 5%;
+    margin-right: 5%;
+    flex: 1 1 auto;
+}
+
+.family__chat__view {
+
+}
+
+.message {
+    margin-bottom: 5%;
+    width: 100%;
+}
+
+.chat__message {
+
+}
+
+.family__chat__message {
+
+}
+
+.message__row, .message__family__chat__row {
+}
+
+.message__header__text {
+}
+
+.message__header, .message__header__h2 {
+}
+
+.message__text__p {
+    padding: 15px;
+}
+
+.item {
+}
+
+.item-second {
+   
+}
+
+.message__sender {
+    height: 100px;
+    background-color: rgb(204, 41, 150);
+}
+
+.body__sender {
+}
+
+.form-control__chat {
+    width: 400px;
+    height: 51px;
+    padding: 18px;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+/*///////////////////////// tasks ////////////////////////// */
+
+.tasks {
+    overflow: hidden;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.container__tasks {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.board__task-making{
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+    overflow:auto;
+    display: flex;
+    max-height: 100%;
+   
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+.board__task-examples {
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+    overflow:auto;
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+.board__header {
+}
+
+.tasks__list__board__header {
+}
+
+.tasks__examples__list {
+    display: flex;
+    flex-direction: column;    
+}
+
+.card {
+}
+
+.card__task__example {
+}
+
+.task__card__headerandtext {
+}
+
+.content__row__tasks {
+}
+
+
+.board__task-making {
+}
+
+.task-making {
+
+}
+
+.board__header__task-making {
+}
+
+
+.item__make-new-task {
+    display: flex;
+    width: 80%;
+}
+
+.create__task__input {
+    display: flex;
+    align-items: center;
+}
+
+.create__task__input + div {
+    margin-top: 30px;
+}
+
+.create__task__input input {
+
+}
+
+input::placeholder{
+    font-size: small;
+}
+
+input:focus::placeholder {
+    opacity: 0;
+}
+
+.task-header {
+}
+
+.form-control{
+}
+
+.form-control__create-task {
+    width: 100%;
+    height: 51px;
+    padding: 18px;
+}
+
+.task-text {
+}
+
+.create__task-list__col {
+}
+
+.list__create-task-list {
+    display: flex;
+    flex-direction: column;
+    padding-left: 12%;
+}
+
+
+
+.item__header__increment__buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 233px;
+}
+
+/* Заголовок стоимости задачи */
+.tasks__wage__header__h1{
+    display: flex;
+    margin-bottom: 13%;
+    justify-content: center;
+}
+
+.wages {
+}
+
+.task__wages__buttons {
+    display: flex;
+    align-items: center;
+}
+
+.task__wages__buttons > * + *  {
+    margin-left: 10px;
+}
+
+/* Элемент формы - Добавление фото */
+.add__task__photo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 38px;
+}
+
+.add__task__photo > h1 {
+    margin-left: 10px;
+}
+
+.add__photo__icon {
+}
+
+.add__photo__header {
+}
+
+/* Элемент формы - Добавление ребенка */
+.add__child {
+    display: flex;
+    align-items: center;
+    margin-bottom: 38px;
+}
+
+.add__child > h1 {
+    margin-left: 10px;
+}
+
+.add__child__icon {
+}
+
+.add__child__header {
+}
+
+
+/* Кнопка Submit */
+.btn__submit, a.btn__submit {
+    /* width: 40%; */
+    min-height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #01996D;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: opacity 0.2s ease;
+}
+
+/* Кнопка Submit - при наведении и нажатии */
+.btn__submit:hover, a.btn__submit:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+
+.btn__wages, a.btn__wages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+
+    background-color: #ffffff;
+
+    font-size: 24px;
+    font-weight: 400;
+    width: 71px;
+    height: 71px;
+    margin: 0 20;
+
+    border: 5px solid #E0E0E0;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-bottom: 38px;
+}
+
+.btn__wages:hover, a.btn__wages:hover {
+    opacity: 0.8;
+}
+
+/* Кнопка btn__add-task */
+.btn__add-task, a.btn__add-task {
+    width: 20%;
+    min-width: 30%;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+
+    background-color: #e7c157;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: opacity 0.2s ease;
+}
+
+.btn__add-task:hover, a.btn__add-task:hover {
+    opacity: 0.8;
+    color: #ffffff;
+}
+
+/*///////////////////////// task-info ////////////////////////// */
+
+.task-info {
+    overflow: hidden;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.container__task-info {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.board__task-info__left {
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+    overflow:auto;
+    display: flex;
+    max-height: 100%;
+   
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+.board__task-info__right {
+    overflow:auto;
+    display: flex;
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+    max-height: 100%;
+   
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+.header-field__h1 {
+    font-weight: 700;
+    font-size: 30px;
+    font-family: 'VAGRounded', serif;
+    color: #01996D;
+}
+
+.text-field__p {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'VAGRounded', serif;
+    color: #706c6c;
+}
+
+.header-field {
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.text-field{
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.text-field__author{
+    margin: 8% 0 5% 0;
+}
+
+.header-field__task-header {
+    margin: 7% 0 5% 0;
+}
+
+.header-text__col{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-text-field {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.header-field__description {
+    height: 20%;
+}
+
+
+.text-field__task-description {
+    overflow:auto;
+    display: flex;
+    align-items: start;
+    /* min-height: 10%; */
+    width: 100%;
+    height: 200px;
+    background-color: #ffffff;
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: 2%;
+}
+
+.text-field__date {
+    margin-top: 8%;
+}
+
+.text-field__date__col {
+    display:  flex;
+    flex-direction: column;
+    
+}
+
+.list__photo-placeholder {
+    background-color: rgb(190, 189, 189);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    width: 40%;
+
+    border: 3px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+.placeholder__photo-p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 35px;
+    font-family: 'VAGRounded', serif;
+    color: #706c6c;
+}
+
+.item-second {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-third {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item__role_buttons {
+
+}
+
+/* Кнопка btn-action */
+.btn-action, button.btn-action {
+    min-height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+
+    padding-left: 20%;
+    padding-right: 20%;
+
+    background-color: #01996D;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: opacity 0.2s ease;
+}
+
+.btn-action:hover, button.btn-action:hover {
+    opacity: 0.8;
+    color: #ffffff;
+}
+
+.btn-acton__parent, button.btn-acton__parent {
+    width: 20%;
+    min-width: 30%;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.btn-acton__child {
+    width: 20%;
+    min-width: 30%;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+
+.btn-acton__parent__appoint {
+}
+
+.btn-acton__parent__confirm {
+}
+
+.btn-acton__child__accept {
+}
+.btn-acton__child__complete {
+}
+
+.btn__jc-sb{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
