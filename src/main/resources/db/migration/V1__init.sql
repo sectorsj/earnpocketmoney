@@ -107,6 +107,8 @@ values
 
 insert into bonuses (title, id_user_creating_bonus , price) values
 ('bicycle', 1, 15),
+('Tobacco', 1, 19),
+('Notebook', 1, 35),
 ('gun', 2, 99);
 
 commit;

@@ -35,6 +35,10 @@ public class BonusService {
         return bonusRepository.findBonusByUserGettingBonus(userGettingBonus);
     }
 
+    public Bonus save (Bonus bonus){
+        return bonusRepository.save(bonus);
+    }
+
     public Optional<Bonus> findByName (String title) {
         return bonusRepository.findFirstBonusByTitle(title);
     }
