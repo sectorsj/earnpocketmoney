@@ -38,7 +38,7 @@
                         <li><a href="#" class= "link__active">Кабинет</a></li>
                         <li><a th:href="@{/api/v1/family}">Семья</a></li>
                         <li><a th:href="@{/api/v1/tasks}">Задачи</a></li>
-                        <li><a th:href="@{/api/v1/bonuses}">Статистика</a></li>
+                        <li><a href="#">Статистика</a></li>
                     </ul>
                 </nav>
                 <div class="header-login">
@@ -75,7 +75,11 @@
     
                                 <h1  class="header__h1 board__header__h1 greeting__board__header" th:text="${'Добро пожаловать, ' + user.getLogin() + ' ' +  user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
 
-                                <div class="item item-first create__new__task__item">
+                                <!--Блоки для родителей-->
+
+                                <div class="item item-first create__new__task__item"
+                                     th:if="${user.role.getRole().equals('ROLE_PARENT')}"
+                                >
 
                                     <a href="/app/api/v1/tasks" class="btn__link create__new__task__link">
 
@@ -83,9 +87,89 @@
                                    
                                     </a>
 
-                                    <h1 class="item__header__h1 create__task__header__h1">Создать новую задачу</h1>
+                                    <h1 class="item__header__h1 create__task__header__h1">Создать новую задачу </h1>
 
                                 </div>
+
+                                <!--Кнопка для создания бонусов-->
+                                <div class="item item-first create__new__task__item"
+                                     th:if="${user.role.getRole().equals('ROLE_PARENT')}"
+                                >
+
+                                    <a href="/app/api/v1/bonuses" class="btn__link create__new__task__link">
+
+                                        <img src="content/img/Icon_3.svg" class="icons create__new__task__icon" alt="task-photo" th:src="@{/content/img/Icon_3.svg}"/>
+
+                                    </a>
+
+                                    <h1 class="item__header__h1 create__task__header__h1">Создать новый бонус </h1>
+
+                                </div>
+
+                                <!--Блоки для детей-->
+
+                                <div class="board board__tasks-list" th:if="${user.role.getRole().equals('ROLE_CHILDREN')}">
+
+                                    <h1 class="header__h1 board__header tasks__list__board__header">Текущая принятая задача:</h1>
+
+                                    <div  class="list tasks__list" th:each="t : ${executingTaskDto}" >
+
+                                        <div class="card card__task">
+
+                                            <!-- Карточка задачи -->
+
+                                            <div  class="card__row task__card__row"  >
+
+                                                <!-- Блок заголовок и текст карточки -->
+                                                <a class="card__header__text task__card__headerandtext"
+
+                                                   th:href="@{ '/api/v1/task_info/' + ${t.id}}">
+
+
+
+                                                    <!-- Заголовок карточки -->
+                                                    <h1 class="card__header__h1 task__card__header__h1" th:text="${t.title}">Заголовок задачи</h1>
+
+                                                    <!-- Текст карточки -->
+                                                    <p class="card__text__p task__card__text__p" th:text="${'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
+
+                                                    <!--  <p class="card__text__p card__status" th:text="${ 'Статус: ' + t.status.getTitle()}">текущий статус задачи</p> -->
+
+                                                </a>
+
+                                                <p class="card__text__p card__status" th:text="${'Статус ' + t.status.getTitle()}">Статус: принята</p>
+
+                                                <!-- Блок оценка карточки -->
+                                                <div class="card-span card-span__task card-span__task__wages">
+                                                    <!-- Оценка карточки -->
+
+                                                    <span class="span__number span__wages" th:text="${t.wages}">5</span>
+
+                                                </div>
+
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="board board__tasks-list"
+                                     th:if="${user.role.getRole().equals('ROLE_CHILDREN')}"
+
+                                >
+
+                                    <h1 class="header__h1 board__header tasks__list__board__header"
+                                        th:text="${'Количество денег в кошельке:' + user.wallet.getValue()}"
+                                    >Количество денег в кошельке:  </h1>
+
+                                </div>
+
+
+
 
                             </div>
 
@@ -100,7 +184,7 @@
                             <!-- Tasklist -->
                             <div class="board board__tasks-list">
 
-                                <h1 class="header__h1 board__header tasks__list__board__header">Список задач:</h1>
+                                <h1 class="header__h1 board__header tasks__list__board__header">Общий список задач:</h1>
                                 
                                 <div  class="list tasks__list" th:each="t : ${tasks}" >
 

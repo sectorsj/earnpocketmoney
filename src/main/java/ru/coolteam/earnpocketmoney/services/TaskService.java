@@ -100,5 +100,20 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
+    public List<Task> findTasksByUserAndStatus (User user, Status status){
+        List<Task> tasks = null;
+        tasks = taskRepository.findTasksByUserExecutingTaskAndStatusOrderByUpdatedAtAsc(user, status);
+        return tasks;
+    }
+
+    public Task findTaskByUserAndStatus (User user, Status status){
+        List<Task> tasks = null;
+        tasks = taskRepository.findTasksByUserExecutingTaskAndStatusOrderByUpdatedAtAsc(user, status);
+        Task task = null;
+        if(tasks.size()!=0){
+            task = taskRepository.findTasksByUserExecutingTaskAndStatusOrderByUpdatedAtAsc(user, status).get(0);
+        }
+        return task;
+    }
 
 }

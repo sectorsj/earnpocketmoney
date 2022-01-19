@@ -65,7 +65,9 @@
 
                     <div class="content__element left__content__element">
 
-                        <div class="board board__task-making task-making">
+                        <div class="board board__task-making task-making"
+                             th:if="${user.role.getRole().equals('ROLE_PARENT')}"
+                        >
 
                             <!-- Заголовок -->
                             <h1 class="header__h1 board__header__h1 board__header__task-making">Создать бонус:</h1>
@@ -233,7 +235,7 @@
                                             <!-- Блок заголовок и текст карточки -->
                                             <a class="card__header__text task__card__headerandtext"
 
-                                               th:href="@{ '/api/v1/task_info/' + ${b.id}}">
+                                               >
 
 
 

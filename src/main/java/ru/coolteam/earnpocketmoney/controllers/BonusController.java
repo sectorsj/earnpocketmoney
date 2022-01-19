@@ -50,6 +50,7 @@ public class BonusController {
                 .collect(Collectors.toList());
         model.addAttribute("bonusDtoList", bonusDtoList);
         model.addAttribute("bonusForm",new BonusForm());
+        model.addAttribute("user", user);
         return "bonuses";
     }
 

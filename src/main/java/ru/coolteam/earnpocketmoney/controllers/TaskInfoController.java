@@ -46,6 +46,7 @@ public class TaskInfoController {
                 .map(UserInfo::new)
                 .collect(Collectors.toList());
         model.addAttribute("users" , userInfoList);
+        model.addAttribute("user", user);
 
         return "task_info";
     }
