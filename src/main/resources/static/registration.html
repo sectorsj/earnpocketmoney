@@ -32,26 +32,28 @@
 
                 <div class="content registration__content">
             
-                    <div class="content__element__col">
+                    <div class="content__element">
     
-                        <div class="board board__registration ">
+                        <div class="board board__registration">
                             
-                            <h1 class="header__h1 board__header__h1 greeting__board__header">Регистрация</h1>
+                            <h1 class="header__h1 board__header__h1 registration__board__header">Регистрация</h1>
 
-                            <div class="list">
+                            <div class="list list__input-fields">
 
-                                <form
-                                    class="form-signin"
+
+                                <!-- class="form-signin" -->
+                                <form        
+                                class="form-singin"                          
                                     method="POST"
                                     th:object="${userForm}"
                                     th:action="@{/register}">
         
-                                    <div class="form-group">
+                                    <div class="input registration__input">
 
                                         <input
+                                            class="form-control__i form-control__input form-control__input__login"                                    
                                             type="text"
-                                            th:field="*{login}"
-                                            class="form-control"
+                                            th:field="*{login}"                                           
                                             placeholder="Логин"
                                             autofocus="true">
                     
@@ -64,7 +66,7 @@
                                         <input 
                                             type="password"
                                             th:field="*{password}"
-                                            class="form-control"
+                                            class="form-control__i form-control__input form-control__input__password"
                                             placeholder="Пароль">
                     
                                         <span
@@ -76,7 +78,7 @@
                                         <input
                                             type="password"
                                             th:field="*{passwordConfirm}"
-                                            class="form-control"
+                                            class="form-control__i form-control__input form-control__input__confirm-password"
                                             placeholder="Подтвердите Ваш пароль">
                 
                                         <span
@@ -88,7 +90,7 @@
                                         <input
                                             type="text"
                                             th:field="*{peopleGroupName}"
-                                            class="form-control"
+                                            class="form-control__i form-control__input form-control__input__people-group-name"
                                             placeholder="Введите название Семьи">
 
                                         <span 
@@ -97,30 +99,38 @@
                                             th:errors="*{peopleGroupName}">
                                         </span>
 
-                                        <h2
-                                            class="hader__h2">
+                                        <div class="checkbox__col">
+
+                                            <h2 class="header__h2 header__h2__choose-role">
                                                 Кто ты по жизни?
-                                        </h2>
+                                            </h2>
 
-                                        <input
-                                            type="radio"
-                                            name="role"
-                                            th:value="${'ROLE_PARENT'}"
-                                            class="form-control">
-                                                Родитель
+                                            <div class="checkbox__row ">
 
-                                        <input
-                                            type="radio"
-                                            name="role"
-                                            th:value="${'ROLE_CHILDREN'}"
-                                            class="form-control">
-                                                Ребенок
+                                                <input
+                                                    type="radio"
+                                                    name="role"
+                                                    th:value="${'ROLE_PARENT'}"
+                                                    class="form-control">
+                                                        Родитель
 
-                                        <button
-                                            class="btn btn-lg btn-primary btn-block"
-                                            type="submit">
-                                                Submit
-                                        </button>
+                                                <input
+                                                    type="radio"
+                                                    name="role"
+                                                    th:value="${'ROLE_CHILDREN'}"
+                                                    class="form-control">
+                                                        Ребенок
+                                            </div>
+
+                                        </div>                         
+
+                                            <button
+                                                class="btn btn-lg btn-primary btn-block"
+                                                type="submit">
+                                                    Submit
+                                            </button>
+
+                                        </div>
 
                                     </div>
 

@@ -70,18 +70,18 @@
                                 <!-- Заголовок -->
                                 <h1 class="header__h1 board__header__h1 board__header__task-making">Создать задачу:</h1>
 
-                                <div class="item item-first item__make-new-task">
+                                <div class="container item item-first item__make-new-task">
 
                                     <!-- Стоимость задачи -->
-                                    <!-- <div class="increment__element task__wages__header__buttons__row"> -->
                                     <div class="list__col create__task-list__col">
 
                                         <div class="list list__create-task-list">
 
-                                            <!-- Форма создания карточки -->
-                                            <form method="POST"
-                                                th:action="@{/api/v1/tasks}"
-                                                th:object="${taskForm}">
+                                        <!-- Форма создания карточки -->
+                                        <form
+                                            method="POST"
+                                            th:action="@{/api/v1/tasks}"
+                                            th:object="${taskForm}">
 
                                                 <!-- Форма ввода текста -->
                                                 <div class="input create__task__input">
@@ -99,9 +99,9 @@
                                                     </div>
 
                                                 </div>
-                              
+                    
                                                 <div class="input create__task__input">
-                                          
+                                        
                                                     <div class="task-text">
 
                                                         <input type="text"
@@ -116,6 +116,7 @@
 
                                                 </div>
 
+
                                                 <div class="item item-first item__header__increment__buttons">
 
                                                     <div class="tasks__wage__header__h1">
@@ -125,7 +126,7 @@
                                                     <div class="task__wages__buttons">
                                                         <a href = "#" class="btn__wages"  >-</a>
                                                         <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
-                                                      <!--  <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
+                                                        <!--  <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
                                                         <select class="btn__wages" th:field= "*{wages}">
                                                             <option
                                                                     th:each="i : ${#numbers.sequence(1, 100)}"
@@ -137,7 +138,7 @@
                                                     </div>
 
                                                 </div>
-                              
+                                
                                                 <!-- Фото задачи -->
                                                 <div class="add__task__photo">
 
@@ -150,7 +151,7 @@
                                                     <h1 class="add__photo__header">Сделать фото задачи</h1>
 
                                                 </div>
-                              
+                                
                                                 <!-- Добавление ребенка -->
                                                 <div class="add__child">
 
@@ -158,7 +159,7 @@
                                                         <img src="content/img/Icon_4.svg" class="icons" alt="add__child" th:src="@{/content/img/Icon_4.svg}">
                                                     </a>
 
-                                                    <h1 class="add__child__header"></h1>
+                                                    <!-- <h1 class="add__child__header"></h1> -->
 
                                                     <select th:field= "*{userExecutingTask}">
 
@@ -174,13 +175,14 @@
                                                         </option>
 
                                                     </select>
+
                                                 </div>
 
                                                 <span
                                                     class="has-error"
                                                     th:text="${error}">
                                                 </span>
-                              
+                                
                                                 <!-- Кнопка создания формы -->
                                                 <button
                                                     type="submit"
@@ -189,7 +191,7 @@
                                                 </button>
 
                                             </form>
-
+                                            
                                         </div>
 
                                     </div>
@@ -209,7 +211,7 @@
 
                             <div class="board board__task-examples">
 
-                                <h1 class="header__h1 board__header tasks__list__board__header">Шаблоны задач:</h1>
+                                <h1 class="header__h1 board__header__h1 tasks__list__board__header">Шаблоны задач:</h1>
 
                                 <div class="list tasks__examples__list">
 

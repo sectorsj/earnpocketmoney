@@ -162,16 +162,22 @@
 .board__header__h1 {
 }
 
-.greeting__board__header {
+.greeting__board__header__h1 {
+}
+
+.cabinet__board__header__h1 {
 }
 
 .create__new__task__item {
     display: flex;
     flex-direction: row;
-
-    margin-top: 20%;
-    margin-left: 5%;
 }
+
+.create__new__task__item > * {
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
 
 .btn__link {
 }
@@ -263,6 +269,7 @@
 
 .showmore__link {
 }
+
 
 /*///////////////////////// family ////////////////////////// */
 
@@ -544,7 +551,13 @@
 
 .item__make-new-task {
     display: flex;
-    width: 80%;
+    width: 100%;
+}
+
+
+
+.input-fields input{
+    width: 100%;
 }
 
 .create__task__input {
@@ -555,6 +568,7 @@
 .create__task__input + div {
     margin-top: 30px;
 }
+
 
 .create__task__input input {
 
@@ -584,12 +598,15 @@ input:focus::placeholder {
 }
 
 .create__task-list__col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .list__create-task-list {
     display: flex;
     flex-direction: column;
-    padding-left: 12%;
+    /* padding-left: 12%; */
 }
 
 
@@ -805,7 +822,7 @@ input:focus::placeholder {
 }
 
 .text-field__author{
-    margin: 8% 0 5% 0;
+    margin: 5% 0 5% 0;
 }
 
 .header-field__task-header {
@@ -844,9 +861,21 @@ input:focus::placeholder {
     margin: 2%;
 }
 
+.text-field__currency-amount{
+    margin: 2% 5% 0;
+}
+
+.text-field__currency-amount__p{
+    font-weight: 700;
+    font-size: 28px;
+    color: #706c6c;
+}
+
 .text-field__date {
     margin-top: 8%;
 }
+
+
 
 .text-field__date__col {
     display:  flex;
@@ -882,20 +911,19 @@ input:focus::placeholder {
     color: #706c6c;
 }
 
-.item-second {
+.item__role_buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+.item-second {
+    margin-top: 10;
+}
+
 
 .item-third {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.item__role_buttons {
-
+    margin-top: 10%;
 }
 
 /* Кнопка btn-action */
@@ -958,4 +986,30 @@ input:focus::placeholder {
     justify-content: space-between;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+
+.btn-acton__complete, button.btn-acton__complete {
+    width: 20%;
+    min-width: 30%;
+    max-height: 58px;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.subitem__child-button{
+    display: flex;
+   
+}
+.subitem__child-button__complete{
+    margin-top: 5%;
+    justify-content: center;
+}
+.subitem__child-button__list{
+    margin-top: 5%;
+    justify-content: space-between;
+}
+
+.cabinet__board__header__h1{
+
 }
