@@ -129,8 +129,9 @@
 
                                         <div class="text-field text-field__date text-field__date__col">
                                             <p th:text="${'Дата создания задачи: ' + taskDto.createdAt}" class="text-field__p text-fleld_date__p">01.01.2022</p>
-                                            <p th:text="${'Дата изменения задачи: ' + taskDto.updatedAt}" class="text-field__p text-fleld_date__p">01.01.2022</p>
-
+                                            <!--<p th:text="${'Дата изменения задачи: ' + taskDto.updatedAt}" class="text-field__p text-fleld_date__p">01.01.2022</p>-->
+                                            <!--<p th:text="${'Дата изменения задачи: ' +  taskDto.updatedAt!=null?'+++++':'-&#45;&#45;&#45;&#45;'}" class="text-field__p text-fleld_date__p">01.01.2022</p>-->
+                                            <p th:if="${taskDto.updatedAt!=null}" th:text="${'Дата изменения задачи: ' + taskDto.updatedAt}" class="text-field__p text-fleld_date__p">01.01.2022</p>
                                         </div>
 
                                     </div>

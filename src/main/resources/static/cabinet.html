@@ -146,7 +146,7 @@
                                                         <h1 class="card__header__h1 task__card__header__h1" th:text="${t.title}">Заголовок задачи</h1>
     
                                                         <!-- Текст карточки -->
-                                                        <p class="card__text__p task__card__text__p" th:text="${'Назначено: ' + t.getUserExecutingTask().getLogin()}">
+                                                        <p   class="card__text__p task__card__text__p" th:text="${'Назначено: ' + t.getUserExecutingTask().getLogin()}">
                                                             Назначенный исполнитель
                                                         </p>
 
@@ -258,7 +258,7 @@
                                                 <h1 class="card__header__h1 task__card__header__h1" th:text="${t.title}">Заголовок задачи</h1>
 
                                                 <!-- Текст карточки -->
-                                                <p class="card__text__p task__card__text__p" th:text="${'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
+                                                <p th:if="${!t.userExecutingTask.equals(null)}" class="card__text__p task__card__text__p" th:text="${'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
 
                                               <!--  <p class="card__text__p card__status" th:text="${ 'Статус: ' + t.status.getTitle()}">текущий статус задачи</p> -->
 
