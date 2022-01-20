@@ -10,26 +10,23 @@ body{
 }
 
 .login {
+}
 
-}
-.container {
-}
 .login__container {
 }
-.content {
-}
+
+
 .login__content {
 }
-.content__element {
-    
-}
-.board {
-   
-}
 
 
+.board__login {
 
-.login__board {
+    height: 450px;
+    max-width: 450px;
+    min-width: 320px;
+    padding: 15px;
+    margin: 0 auto;
     
     background-image: url(../../content/img/fon_ny_2-01.svg);
 

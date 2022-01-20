@@ -32,7 +32,7 @@
         <div class="container">
             <div class="header-row">
                 <div class="header-logo">
-                    <img src="content/img/logo-01.svg" alt="Logo" width="250px">
+                    <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
                 </div>
 
                 <nav class="header-nav">
@@ -52,6 +52,22 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            var wageValue = 6;
+
+            function incWageValue(){
+                wageValue++;
+                document.getElementById('input_wages_value').value = wageValue;
+            }
+
+            function decWageValue(){
+                wageValue--;
+                document.getElementById('input_wages_value').value = wageValue;
+            }
+
+        </script>
+
     </header>
 
     <main>
@@ -123,17 +139,32 @@
                                                     </div>
 
                                                     <div class="task__wages__buttons">
-                                                        <a href = "#" class="btn__wages"  >-</a>
+
+                                                        <!--<a href = "#" class="btn__wages"  >-</a>-->
+                                                        <a th:onclick="'decWageValue();'" class="btn__wages"  >-</a>
+
+
                                                         <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
                                                       <!--  <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
-                                                        <select class="btn__wages" th:field= "*{wages}">
+
+                                                        <!--<select class="btn__wages" th:field= "*{wages}">
                                                             <option
                                                                     th:each="i : ${#numbers.sequence(1, 100)}"
                                                                     th:value="${i}"
                                                                     th:text="${i}">
                                                             </option>
-                                                        </select>
-                                                        <a href = "#" class="btn__wages"   >+</a>
+                                                        </select>-->
+
+                                                        <input class="btn__wages"
+                                                               id = "input_wages_value"
+                                                               th:field="*{wages}"
+                                                               value=""
+                                                        >
+
+                                                        <!--<a href = "#" class="btn__wages"   >+</a>-->
+
+                                                        <a onclick="incWageValue()" class="btn__wages"  >+</a>
+
                                                     </div>
 
                                                 </div>
@@ -143,7 +174,7 @@
 
                                                     <a href="#" class = add__photo__icon>
 
-                                                        <img src="content/img/Icon_3.svg" class="icons" alt="task__photo">
+                                                        <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_3.svg}">
 
                                                     </a>
 
@@ -155,7 +186,7 @@
                                                 <div class="add__child">
 
                                                     <a href="#"class = add__child__icon>
-                                                        <img src="content/img/Icon_4.svg" class="icons" alt="add__child">
+                                                        <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_4.svg}">
                                                     </a>
 
                                                     <h1 class="add__child__header"></h1>
@@ -199,7 +230,7 @@
 
                             <div class="board board__task-examples">
 
-                                <h1 class="header__h1 board__header tasks__list__board__header">Шаблоны задач:</h1>
+                                <h1 class="header__h1 board__header__h1 tasks__list__board__header">Шаблоны задач:</h1>
 
                                 <div class="list tasks__examples__list">
 
@@ -247,6 +278,12 @@
         </div>
 
     </footer>
+
+    <script>
+
+        document.getElementById('input_wages_value').value = wageValue;
+
+    </script>
 
 </body>
 

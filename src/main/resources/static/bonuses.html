@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPM_Tasks</title>
+    <title>EPM_Bonuses</title>
 
 
     <link th:href="@{/css/blocks/board_greeting.css}"  media="screen" rel="stylesheet" >
@@ -32,7 +32,7 @@
     <div class="container">
         <div class="header-row">
             <div class="header-logo">
-                <img src="content/img/logo-01.svg" alt="Logo" width="250px">
+                <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
             </div>
 
             <nav class="header-nav">
@@ -52,6 +52,23 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        var priceValue = 5;
+
+        function incPriceValue(){
+            priceValue++;
+            document.getElementById('input_price_value').value = priceValue;
+        }
+
+        function decPriceValue(){
+            priceValue--;
+            document.getElementById('input_price_value').value = priceValue;
+        }
+
+    </script>
+
 </header>
 
 <main>
@@ -66,13 +83,13 @@
                     <div class="content__element left__content__element">
 
                         <div class="board board__task-making task-making"
-                             th:if="${user.role.getRole().equals('ROLE_PARENT')}"
-                        >
+                             >
 
                             <!-- Заголовок -->
                             <h1 class="header__h1 board__header__h1 board__header__task-making">Создать бонус:</h1>
 
-                            <div class="item item-first item__make-new-task">
+                            <div class="item item-first item__make-new-task"
+                                 th:if="${user.role.getRole().equals('ROLE_PARENT')}">
 
                                 <!-- Стоимость задачи -->
                                 <!-- <div class="increment__element task__wages__header__buttons__row"> -->
@@ -125,17 +142,30 @@
                                                 </div>
 
                                                 <div class="task__wages__buttons">
-                                                    <a href = "#" class="btn__wages"  >-</a>
+
+                                                    <a th:onclick="'decPriceValue();'" class="btn__wages"  >-</a>
+
+                                                    <!--<a href = "#" class="btn__wages"  >-</a>-->
                                                     <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
                                                     <!--  <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
-                                                    <select class="btn__wages" th:field= "*{price}">
+                                                    <!--<select class="btn__wages" th:field= "*{price}">
                                                         <option
                                                                 th:each="i : ${#numbers.sequence(1, 100)}"
                                                                 th:value="${i}"
                                                                 th:text="${i}">
                                                         </option>
-                                                    </select>
-                                                    <a href = "#" class="btn__wages"   >+</a>
+                                                    </select>-->
+
+                                                    <input class="btn__wages"
+                                                           id = "input_price_value"
+                                                           th:field="*{price}"
+                                                           value=""
+                                                    >
+
+                                                    <!--<a href = "#" class="btn__wages"   >+</a>-->
+
+                                                    <a onclick="incPriceValue()" class="btn__wages"  >+</a>
+
                                                 </div>
 
                                             </div>
@@ -145,7 +175,7 @@
 
                                                 <a href="#" class = add__photo__icon>
 
-                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo">
+                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_3.svg}">
 
                                                 </a>
 
@@ -157,7 +187,7 @@
                                             <div class="add__child">
 
                                                 <a href="#"class = add__child__icon>
-                                                    <img src="content/img/Icon_4.svg" class="icons" alt="add__child">
+                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_4.svg}">
                                                 </a>
 
                                                 <h1 class="add__child__header"></h1>
@@ -200,7 +230,7 @@
 
                         <div class="board board__task-examples">
 
-                            <h1 class="header__h1 board__header tasks__list__board__header">Текущие бонусы:</h1>
+                            <h1 class="header__h1 board__header__h1 tasks__list__board__header">Текущие бонусы:</h1>
 
                             <div class="list tasks__examples__list">
 
@@ -292,6 +322,12 @@
     </div>
 
 </footer>
+
+<script>
+
+    document.getElementById('input_price_value').value = priceValue;
+
+</script>
 
 </body>
 

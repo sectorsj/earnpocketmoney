@@ -4,7 +4,9 @@ body {
     font-size:  20px;
     color: #292929;
 }
-
+a{
+    color: #F3F5F6;
+}
 /* Utility */
 .none {
     display: none !important;
@@ -26,6 +28,7 @@ body {
 /* Основной контейнер */
 .container {
     max-width: 1400px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -44,8 +47,7 @@ body {
 
 /* Заголовок досок(экранов)*/
 .header__h1 {
-    margin-top: 30px;
-    margin-bottom: 30px;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,8 +59,15 @@ body {
 }
 
 .board__header__h1{
-
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
+
+.item-second__header{
+    margin-top: 5%;
+    margin-bottom: 5%px;
+}
+
 
 .header__h2 {
     font-weight: 700;
@@ -144,20 +153,21 @@ body {
     flex-direction: column;
 }
 
-.registration_login__board {
+/* .registration_login__board {
     height: 450px;
     max-width: 450px;
     min-width: 320px;
     padding: 15px;
     margin: 0 auto;
-}
+} */
 
 /* Элементы на доске (экране) */
 .item {
 }
 
 /* Первый элемент на доске (экране) */
-.item-first {
+.item-first > div > a  {
+
 }
 
 .list_col{
@@ -167,6 +177,7 @@ body {
 
 /* Область для отображения спосков (задач, семьи и др) */
 .list {
+    overflow:auto;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -311,6 +322,8 @@ body {
 }
 
 .input {
+    display: block;
+    /* width: 100%; */
 }
 
 .form-control {
@@ -318,6 +331,7 @@ body {
     box-sizing: border-box;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
+
 }
 
 .has-error {
