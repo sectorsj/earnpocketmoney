@@ -43,7 +43,7 @@
                 </nav>
                 <div class="header-login">
 
-                    <a class="btn__signin" th:href="@{/register}">Регистрация</a>
+                    <!-- <a class="btn__signin" th:href="@{/register}">Регистрация</a> -->
                     <a class="btn btn-default" th:href="@{/}">Выход</a>
     
                 </div>
@@ -73,17 +73,17 @@
     
                             <div class="board board__greeting greeting">
     
-                                <h1  class="header__h1 board__header__h1 greeting__board__header__h1" th:text="${'Добро пожаловать, ' + user.getLogin() + ' ' +  user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent XXX!</h1>
+                                <h1  class="header__h1 board__header__h1 greeting__board__header__h1" th:text="${'Добро пожаловать, ' + user.getLogin() + ' ' +  user.getPeopleGroups().getName() + ' !'}">Добро пожаловать, Parent1 !</h1>
 
                                 <!--Блоки для родителей-->
                                 <div
                                     class="list list__creating__new-task-and-bonuses"
                                     th:if="${user.role.getRole().equals('ROLE_PARENT')}">
+                                    
+                                    <!--Кнопка для создания задач-->
+                                    <a href="/app/api/v1/tasks" class="item item-first item__btn-link btn__create-new-task__link">
 
-                                    <div
-                                        class="item item-first create__new__task__item">
-
-                                        <a href="/app/api/v1/tasks" class="btn__link create__new__task__link">
+                                        <div class="create-new__item create-new-task create-new-task__link__btn">
 
                                             <img
                                                 src="content/img/Icon_3.svg"
@@ -91,33 +91,32 @@
                                                 alt="task-photo"
                                                 th:src="@{/content/img/Icon_3.svg}"/>
 
-                                        </a>
+                                        </div>
 
                                         <h1 class="item__header__h1 create__task__header__h1">Создать новую задачу </h1>
 
-                                    </div>
+                                    </a>
+                                    
 
                                     <!--Кнопка для создания бонусов-->
+                                    <a href="/app/api/v1/bonuses" class="item item-first item__btn-link btn__create-new-bonus__link">
 
-                                    <div class="item item-first create__new__task__item">
-
-                                        <a href="/app/api/v1/bonuses" class="btn__link create__new__task__link">
+                                        <div  class="create-new__item create-new-bonus__link__btn">
 
                                             <img
                                                 src="content/img/Icon_3.svg"
                                                 class="icons create__new__task__icon"
-                                                alt="task-photo"
+                                                alt="bonus-photo"
                                                 th:src="@{/content/img/Icon_3.svg}"/>
 
-                                        </a>
+                                        </div>
 
                                         <h1 class="item__header__h1 create__task__header__h1">Создать новый бонус </h1>
 
-                                    </div>
+                                    </a>
 
                                 </div>
 
-                                
 
                                 <!--Блоки для детей-->
 
@@ -133,12 +132,10 @@
 
 
                                                 <!-- Карточка задачи -->
-    
                                                 <div  class="card__row task__card__row"> 
     
     
                                                     <!-- Блок заголовок и текст карточки -->
-    
                                                     <div class="card__header__text task__card__headerandtext">
      
                                                         <!-- Заголовок карточки -->
@@ -154,9 +151,7 @@
                                                     <p class="card__text__p card__status" th:text="${'Статус ' + t.status.getTitle()}">
                                                         Статус: принята                                              
                                                     </p>
-    
 
-    
                                                     <!-- Блок оценка карточки -->
                                                     <div class="card-span card-span__task card-span__task__wages">
                                                        
@@ -171,6 +166,7 @@
                                             
                                             <div class="subitem subitem__child-button subitem__child-button__complete">
                                                 <a 
+                                                    href="#"
                                                     type="submit"
                                                     class="btn btn-action btn-acton__complete btn-acton_task-complete"
                                                     th:href="@{ '/api/v1/task_info/end/' + ${taskDto.id}}">
@@ -202,12 +198,14 @@
 
                                            <div class="subitem__child-button subitem__child-button__list">
                                                <a 
+                                                href="#"
                                                 type="subitem"
                                                 class="btn btn-action btn-acton__complete btn-acton_task-complete"
                                                 th:href="@{ '/api/v1/task_info/end/' + ${taskDto.id}}">
                                                     Список
                                                 </a>
                                                <a 
+                                                href="#"
                                                 type="subitem"
                                                 class="btn btn-action btn-acton__complete btn-acton_task-list"
                                                 th:href="@{ '/api/v1/task_info/end/' + ${taskDto.id}}">
@@ -238,16 +236,14 @@
                                 
                                 <div  class="list tasks__list">
 
-                                    <!-- Карточка задачи -->
-                                    <div class="card card__task" th:each=" t : ${tasks}">
+                                    <!-- Карточка задачи -->                                   
+                                    <a href="#" class="card card__task" th:each=" t : ${tasks}"  th:href="@{'/api/v1/task_info/' + ${t.id}}">
 
                                       
-                                        <div  class="card__row task__card__row" >
+                                        <div  class="card__row task__card__row">
                                 
                                             <!-- Блок заголовок и текст карточки -->
-                                            <a class="card__header__text task__card__headerandtext"
-
-                                               th:href="@{'/api/v1/task_info/' + ${t.id}}">
+                                            <div class="card__header__text task__card__headerandtext">
 
 
                                                 <!-- Заголовок карточки -->
@@ -258,21 +254,54 @@
 
                                               <!--  <p class="card__text__p card__status" th:text="${ 'Статус: ' + t.status.getTitle()}">текущий статус задачи</p> -->
 
-                                            </a>
+                                            </div>
 
                                             <p class="card__text__p card__status" th:text="${'Статус ' + t.status.getTitle()}">Статус: принята</p>
 
                                             <!-- Блок оценка карточки -->
-                                             <div class="card-span card-span__task card-span__task__wages">
+                                            <div class="card-span card-span__task card-span__task__wages">
+                                            
                                                 <!-- Оценка карточки -->
-
                                                 <span class="span__number span__wages" th:text="${t.wages}">5</span>
 
                                             </div>
 
                                          </div>
 
-                                    </div>
+                                    </a>
+
+                                    <a href="#" class="card card__task" th:each=" t : ${tasks}"  th:href="@{'/api/v1/task_info/' + ${t.id}}">
+
+                                      
+                                        <div  class="card__row task__card__row">
+                                
+                                            <!-- Блок заголовок и текст карточки -->
+                                            <div class="card__header__text task__card__headerandtext">
+
+
+                                                <!-- Заголовок карточки -->
+                                                <h1 class="card__header__h1 task__card__header__h1" th:text="${t.title}">Заголовок задачи</h1>
+
+                                                <!-- Текст карточки -->
+                                                <p class="card__text__p task__card__text__p" th:text="${'Назначено: ' + t.getUserExecutingTask().getLogin()}">Назначенный исполнитель</p>
+
+                                              <!--  <p class="card__text__p card__status" th:text="${ 'Статус: ' + t.status.getTitle()}">текущий статус задачи</p> -->
+
+                                            </div>
+
+                                            <p class="card__text__p card__status" th:text="${'Статус ' + t.status.getTitle()}">Статус: принята</p>
+
+                                            <!-- Блок оценка карточки -->
+                                            <div class="card-span card-span__task card-span__task__wages">
+                                            
+                                                <!-- Оценка карточки -->
+                                                <span class="span__number span__wages" th:text="${t.wages}">5</span>
+
+                                            </div>
+
+                                         </div>
+
+                                    </a>
 
                                 </div>
                                                     
@@ -313,7 +342,7 @@
                                             <div class="card__header__text family__card__headerandtext">
 
                                                 <!-- Заголовок карточки -->
-                                                <h1 class="card__header__h1 family__card__header__h1" th:text="${f.login}">Имя ребнка</h1>
+                                                <h1 class="card__header__h1 family__card__header__h1" th:text="${f.login}">Имя ребенка</h1>
 
                                                 <!-- Текст карточки -->
                                                 <p class="card__text__p family__card__text__p" th:text="${f.peopleGroupName}">Количество полученных задач</p>
@@ -329,6 +358,7 @@
                                             </div>
 
                                         </div>
+                                        
                                     </div>
 
                                 </div>
@@ -455,3 +485,30 @@
 <!--    </div>-->
 
 <!-- </div>-->
+
+
+
+
+
+
+
+<!-- <div
+                                    class="list list__creating__new-task-and-bonuses"
+                                    th:if="${user.role.getRole().equals('ROLE_PARENT')}"> -->
+                                    
+                                    <!--Кнопка для создания задач-->
+                                    <!-- <div class="item item-first create__new__task__item">
+
+                                        <a href="/app/api/v1/tasks" class="btn__link create__new__task__link">
+
+                                            <img
+                                                src="content/img/Icon_3.svg"
+                                                class="icons create__new__task__icon"
+                                                alt="task-photo"
+                                                th:src="@{/content/img/Icon_3.svg}"/>
+
+                                        </a>
+
+                                        <h1 class="item__header__h1 create__task__header__h1">Создать новую задачу </h1>
+
+                                    </div> -->

@@ -32,7 +32,7 @@
     <div class="container">
         <div class="header-row">
             <div class="header-logo">
-                <img src="content/img/logo-01.svg" alt="Logo" width="250px">
+                <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
             </div>
 
             <nav class="header-nav">
@@ -46,7 +46,7 @@
             </nav>
             <div class="header-login">
 
-                <a class="btn__signin" href="/app/register">Регистрация</a>
+                <!-- <a class="btn__signin" href="/app/register">Регистрация</a> -->
                 <a class="btn btn-default" th:href="@{/}">Выход</a>
 
             </div>
@@ -143,7 +143,7 @@
 
                                                 <a href="#" class = add__photo__icon>
 
-                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo">
+                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_3.svg}">
 
                                                 </a>
 
@@ -155,7 +155,7 @@
                                             <div class="add__child">
 
                                                 <a href="#"class = add__child__icon>
-                                                    <img src="content/img/Icon_4.svg" class="icons" alt="add__child">
+                                                    <img src="content/img/Icon_4.svg" class="icons" alt="add__child" th:src="@{/content/img/Icon_4.svg}">
                                                 </a>
 
                                                 <h1 class="add__child__header"></h1>
@@ -196,75 +196,58 @@
                     <!-- Шаблоны задач -->
                     <div class="container right__content__element">
 
-                        <div class="board board__task-examples">
+                        <div class="board board__bonus__list">
 
+                            <!-- Заголовок -->
                             <h1 class="header__h1 board__header__h1 tasks__list__board__header">Текущие бонусы:</h1>
 
-                            <div class="list tasks__examples__list">
+                                <!-- Лист -->
+                                <div  class="list list__bonuses">
+                                    
+                                    <!-- Карточка задачи -->
+                                    <div class="card card__bonus" th:each="b : ${bonusDtoList}" >                                  
 
-                                <!-- Карточка шаблона задачи -->
-                               <!-- <div class="card card__task__example">
-
-                                    <div class="card__row task__example__card__row">
-
-                                        &lt;!&ndash; Блок заголовок и текст карточки &ndash;&gt;
-                                        <div class="card__header__text task__card__headerandtext">
-
-                                            &lt;!&ndash; Заголовок карточки &ndash;&gt;
-                                            <h1 class="card__header__h1 task__card__header__h1">Заголовок бонуса</h1>
-
-                                            &lt;!&ndash; Текст карточки &ndash;&gt;
-                                            <p class="card__text__p task__card__text__p">Стоимость бонуса</p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>-->
-
-                                <div  class="list tasks__list" th:each="b : ${bonusDtoList}" >
-
-                                    <div class="card card__task">
-
-                                        <!-- Карточка задачи -->
-
-                                        <div  class="card__row task__card__row"  >
+                                        <div  class="card__row bonus__card__row"  >
 
                                             <!-- Блок заголовок и текст карточки -->
-                                            <a class="card__header__text task__card__headerandtext"
-
-                                               >
-
-
+                                            <a class="card__header__text bonus__card__headerandtext">
 
                                                 <!-- Заголовок карточки -->
-                                                <h1 class="card__header__h1 task__card__header__h1" th:text="${b.title}">Заголовок бонуса</h1>
+                                                <h1 class="card__header__h1 bonus__card__header__h1" th:text="${b.title}">Заголовок бонуса</h1>
 
                                                 <!-- Текст карточки -->
-                                                <p class="card__text__p task__card__text__p" th:text="${'Назначено: ' + b.userGettingBonus.getLogin()}">Назначенный исполнитель</p>
-
-                                                <!--  <p class="card__text__p card__status" th:text="${ 'Статус: ' + t.status.getTitle()}">текущий статус задачи</p> -->
+                                                <p class="card__text__p bonus__card__text__p" th:text="${'Назначено: ' + b.userGettingBonus.getLogin()}">Назначенный исполнитель</p>
 
                                             </a>
 
                                             <p class="card__text__p card__status" th:text="${'Статус ' + b.gettingStatus}">Статус: принята</p>
 
                                             <!-- Блок оценка карточки -->
-                                            <div class="card-span card-span__task card-span__task__wages">
+                                            <div class="card-span card-span__bonus card-span__bonus__price">
                                                 <!-- Оценка карточки -->
 
-                                                <span class="span__number span__wages" th:text="${b.price}">5</span>
+                                                <span class="span__number span__price" th:text="${b.price}">5</span>
 
                                             </div>
 
+                                        </div>
 
+                                    </div>         
 
+                                </div>
+
+                                <!-- Блок перекрытия низа доски -->
+                                <div class="expand__list__element showmore__element">
+
+                                    <div class="element__row showmore__element__row ">
+
+                                        <div class="showmore__text">
+                                            <!-- <a href="#" class="link__a showmore__link">Еще...</a> -->
                                         </div>
 
                                     </div>
+
                                 </div>
-
-
 
                             </div>
 
@@ -279,6 +262,7 @@
         </div>
 
     </section>
+
 </main>
 
 <footer class="footer">

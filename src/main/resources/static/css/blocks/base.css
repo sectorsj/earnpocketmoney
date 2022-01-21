@@ -25,6 +25,7 @@ body {
 /* Grid */
 /* Основной контейнер */
 .container {
+    overflow: hidden;
     max-width: 1400px;
     width: 100%;
     margin-left: auto;
@@ -154,6 +155,7 @@ body {
 
 /* Элементы на доске (экране) */
 .item {
+    
 }
 
 /* Первый элемент на доске (экране) */
@@ -177,9 +179,10 @@ body {
     flex: 1 1 auto;
 }
 
-.list > div {
+.list > div, .list > a {
     margin-bottom: 8px;
 }
+
 
 /* Схема положения элементов в карточке - вертикальная */
 .card__row{
@@ -348,4 +351,15 @@ body {
 }
 
 .has-error {
+}
+
+.link__active{
+    text-shadow: 
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #e60073,
+        0 0 40px #e60073,
+        0 0 50px #e60073,
+        0 0 60px #e60073,
+        0 0 70px #e60073;
 }

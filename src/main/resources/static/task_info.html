@@ -34,7 +34,7 @@
         <div class="container">
             <div class="header-row">
                 <div class="header-logo">
-                    <img src="content/img/logo-01.svg" alt="Logo" width="250px">
+                    <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
                 </div>
 
                 <nav class="header-nav">
@@ -48,7 +48,7 @@
                 </nav>
                 <div class="header-login">
 
-                    <a class="btn__signin" href="/app/register">Регистрация</a>
+                    <!-- <a class="btn__signin" href="/app/register">Регистрация</a> -->
                     <a class="btn btn-default" th:href="@{/}">Выход</a>
 
                 </div>
