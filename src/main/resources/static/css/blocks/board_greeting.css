@@ -159,25 +159,26 @@
 .greeting {
 }
 
-.board__header__h1 {
-}
-
 .greeting__board__header__h1 {
 }
 
 .cabinet__board__header__h1 {
 }
 
-.create__new__task__item {
+.item__btn-link {
     display: flex;
     flex-direction: row;
 }
 
-.create__new__task__item > * {
+.btn__create-new-task__link,
+.btn__create-new-bonus__link {
+    width: 65%;
+}
+
+.item__btn-link > * {
     margin-top: 10%;
     margin-left: 10%;
 }
-
 
 .btn__link {
 }
@@ -219,15 +220,12 @@
     height: 80px;
 }
 
-.card__header__text {
-    
-}
-
 .task__card__headerandtext {
 
 }
 
 .card__header__h1 {
+    
 }
 
 .card__text__p {
@@ -284,6 +282,8 @@
 }
 
 .board__family {
+    height: 100%;
+    overflow: auto;
     background-image: url(../../content/img/fon_ny_2-01.svg);
     display: flex;
     flex-direction: column;
@@ -309,7 +309,7 @@
     flex-grow: 6;
 }
 
-.family__view, .children__parents__view{
+.family__view{
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -319,10 +319,41 @@
     flex: 1 1 auto;
 }
 
+.children__parents__view{
+
+}
+
+.block-children{
+    height: 330px;
+}
+.block-parents{
+    height: 330px;
+}
+
 .family__list__board__header {
 }
 
-.family__list {
+.list__chat {
+    display: flex;
+    max-width: 100%;
+    margin: 0px auto;
+    justify-content: center;
+    flex: 1 1 auto;
+}
+
+.list__children {
+    height: 250px;
+}
+.list__parents {
+    height: 250px;
+}
+
+.limiter{
+    background-color: rgb(226, 23, 23);
+}
+
+.limiter__text{
+    height: 3%;
 }
 
 .card__family {
@@ -346,8 +377,8 @@
 }
 
 .view__header__h2 {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -399,10 +430,15 @@
 }
 
 .card__family {
+    margin-bottom: 2%;
 }
 
 
-.header__h1 .board__header{
+.header__h1 {
+}
+
+.board__header__h1{
+
 }
 
 .family__board__header {
@@ -419,20 +455,17 @@
 }
 
 .family__chat__view {
-
 }
 
 .message {
-    margin-bottom: 5%;
+    margin-bottom: 8%;
     width: 100%;
 }
 
 .chat__message {
-
 }
 
 .family__chat__message {
-
 }
 
 .message__row, .message__family__chat__row {
@@ -451,26 +484,45 @@
 .item {
 }
 
-.item-second {
-   
+.item-second__chat {
+    background-color: #114d43;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid #BDBDBD;
 }
 
-.message__sender {
-    height: 100px;
-    background-color: rgb(204, 41, 150);
+.item__chat {
+    height: 12%;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content:center; */
 }
 
-.body__sender {
+.form__input {
+   margin-top: 3.5%;
+}
+
+.input__row{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-evenly;
 }
 
 .form-control__chat {
-    width: 400px;
-    height: 51px;
-    padding: 18px;
+    width: 85%;
+    height: 48px;
+    margin-right: 2%;
+    padding-left:  15px;
     border: 1px solid #BDBDBD;
     box-sizing: border-box;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
+}
+
+
+.icon__btn__send-message{
+    width: 38px;
+    height: 38px;
 }
 
 /*///////////////////////// tasks ////////////////////////// */
@@ -537,12 +589,10 @@
 .content__row__tasks {
 }
 
-
 .board__task-making {
 }
 
 .task-making {
-
 }
 
 .board__header__task-making {
@@ -553,8 +603,6 @@
     display: flex;
     width: 100%;
 }
-
-
 
 .input-fields input{
     width: 100%;
@@ -568,7 +616,6 @@
 .create__task__input + div {
     margin-top: 30px;
 }
-
 
 .create__task__input input {
 
@@ -598,7 +645,6 @@ input:focus::placeholder {
 }
 
 .create__task-list__col {
-
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -610,9 +656,7 @@ input:focus::placeholder {
     /* padding-left: 12%; */
 }
 
-
-
-.item__header__increment__buttons{
+.item__header__increment__buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -634,7 +678,7 @@ input:focus::placeholder {
     align-items: center;
 }
 
-.task__wages__buttons > * + *  {
+.task__wages__buttons > * + * {
     margin-left: 10px;
 }
 
@@ -672,10 +716,8 @@ input:focus::placeholder {
 .add__child__header {
 }
 
-
 /* Кнопка Submit */
 .btn__submit, a.btn__submit {
-    /* width: 40%; */
     min-height: 51px;
     display: flex;
     justify-content: center;
@@ -813,16 +855,17 @@ input:focus::placeholder {
 }
 
 .text-field{
-    margin-top: 0.5%;
     margin-bottom: 0.5%;
+    margin-top: 0.5%;
+    margin-top: 5%;
+    /* ??? margin top 2 раза*/
 
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
 }
 
-.text-field__author{
+.text-field__author {
     margin: 5% 0 5% 0;
 }
 
@@ -830,7 +873,7 @@ input:focus::placeholder {
     margin: 7% 0 5% 0;
 }
 
-.header-text__col{
+.header-text__col {
     display: flex;
     flex-direction: column;
 }
@@ -845,7 +888,6 @@ input:focus::placeholder {
 .header-field__description {
     height: 20%;
 }
-
 
 .text-field__task-description {
     overflow:auto;
@@ -862,11 +904,11 @@ input:focus::placeholder {
     margin: 2%;
 }
 
-.text-field__currency-amount{
+.text-field__currency-amount {
     margin: 2% 5% 0;
 }
 
-.text-field__currency-amount__p{
+.text-field__currency-amount__p {
     font-weight: 700;
     font-size: 28px;
     color: #706c6c;
@@ -876,12 +918,9 @@ input:focus::placeholder {
     margin-top: 8%;
 }
 
-
-
 .text-field__date__col {
     display:  flex;
-    flex-direction: column;
-    
+    flex-direction: column;  
 }
 
 .list__photo-placeholder {
@@ -921,7 +960,6 @@ input:focus::placeholder {
 .item-second {
     margin-top: 10;
 }
-
 
 .item-third {
     margin-top: 10%;
@@ -969,7 +1007,6 @@ input:focus::placeholder {
     line-height: 1;
 }
 
-
 .btn-acton__parent__appoint {
 }
 
@@ -981,7 +1018,7 @@ input:focus::placeholder {
 .btn-acton__child__complete {
 }
 
-.btn__jc-sb{
+.btn__jc-sb {
     display: flex;
     width: 70%;
     justify-content: space-between;
@@ -998,11 +1035,11 @@ input:focus::placeholder {
     line-height: 1;
 }
 
-.subitem__child-button{
+.subitem__child-button {
     display: flex;
    
 }
-.subitem__child-button__complete{
+.subitem__child-button__complete {
     margin-top: 5%;
     justify-content: center;
 }
@@ -1011,6 +1048,33 @@ input:focus::placeholder {
     justify-content: space-between;
 }
 
-.cabinet__board__header__h1{
 
+/*///////////////////////// bonuses ////////////////////////// */
+
+.card__bonus {
+    width: 100%;
+    height: 80px;
+}
+
+.bonus__card__row {
+    display: flex;
+    flex-direction: row;
+}
+
+.board__bonus__list {
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+    flex-basis: 60%;
+    flex-grow: 6;
+}
+
+.list__bonuses{
+    overflow: auto;
+    height: 20%;
 }

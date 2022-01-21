@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -34,7 +34,7 @@
         <div class="container">
             <div class="header-row">
                 <div class="header-logo">
-                    <img src="content/img/logo-01.svg" alt="Logo" width="250px">
+                    <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
                 </div>
 
                 <nav class="header-nav">
@@ -48,7 +48,7 @@
                 </nav>
                 <div class="header-login">
 
-                    <a class="btn__signin" href="/app/register">Регистрация</a>
+                    <!-- <a class="btn__signin" href="/app/register">Регистрация</a> -->
                     <a class="btn btn-default" th:href="@{/}">Выход</a>
 
                 </div>
@@ -74,12 +74,13 @@
                                 <div class="board board__task-info__left task-info__left">
 
                                     <div class="list">
+                        
+                                        <div class="header-field header-field__task-header">
+                                            <h1 th:text="${taskDto.title + ':'}" class="header-field__h1">Заголовок задачи</h1>
+                                        </div>
+
                                         <div class="text-field text-field__author">
                                             <p th:text="${'Автор задачи: ' + taskDto.userCreatingTask.getLogin()}" class="text-field__p">Автор: Parent 1</p>
-                                        </div>
-    
-                                        <div class="header-field header-field__task-header">
-                                            <h1 th:text="${'Название задачи: ' + taskDto.title}" class="header-field__h1">Заголовок задачи</h1>
                                         </div>
     
                                         <div class="header-text__col header-text-field text-field__description">
@@ -129,9 +130,8 @@
 
                                         <div class="text-field text-field__date text-field__date__col">
                                             <p th:text="${'Дата создания задачи: ' + taskDto.createdAt}" class="text-field__p text-fleld_date__p">01.01.2022</p>
-                                            <!--<p th:text="${'Дата изменения задачи: ' + taskDto.updatedAt}" class="text-field__p text-fleld_date__p">01.01.2022</p>-->
-                                            <!--<p th:text="${'Дата изменения задачи: ' +  taskDto.updatedAt!=null?'+++++':'-&#45;&#45;&#45;&#45;'}" class="text-field__p text-fleld_date__p">01.01.2022</p>-->
                                             <p th:if="${taskDto.updatedAt!=null}" th:text="${'Дата изменения задачи: ' + taskDto.updatedAt}" class="text-field__p text-fleld_date__p">01.01.2022</p>
+
                                         </div>
 
                                     </div>
@@ -159,11 +159,11 @@
                                         <!-- Родитель : Parent 1            -->
                                         <!-- Назначить : ----------         --> 
                                         <!-- Назначить Подтвердить          -->
-                                        <form class="item item-second item__role_buttons"
-                                              method="POST"
-                                              th:if="${user.role.getRole().equals('ROLE_PARENT')}"
-                                              th:action="@{ '/api/v1/task_info/addChild/' + ${taskDto.id}}"
-                                              th:object="${taskForm}"
+                                        <form class="item  item__role_buttons item-second"
+                                                method="POST"
+                                                th:if="${user.role.getRole().equals('ROLE_PARENT')}"
+                                                th:action="@{ '/api/v1/task_info/addChild/' + ${taskDto.id}}"
+                                                th:object="${taskForm}"
                                         >
 
                                             <div class="p__column">
@@ -171,20 +171,22 @@
                                                 <div class="text-field">
                                                     <p class="text-field__p" th:text="${'Вы: ' + user.login}" >Родитель : Parent 1</p>
                                                 </div>
+                                               
 
-                                                <p class="text-field__p">Назначить :
+                                                <p class="text-field__p">Назначить : 
 
-                                                    <select th:field= "*{userExecutingTask}">
+                                                    <select th:field= "*{userExecutingTask}"> 
                                                         <option th:value="*{null}">  Задача на выбор  </option>
                                                         <option
-                                                                th:each="u : ${users}"
-                                                                th:value="${u.login}"
-                                                                th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}">добавить ребенка
-
+                                                        th:each="u : ${users}"
+                                                        th:value="${u.login}"
+                                                        th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"> 
+                                                            ----------
                                                         </option>
+
                                                     </select>
 
-                                                </p>
+                                                </p> 
 
                                             </div>
                                            
@@ -204,18 +206,17 @@
                                                                                               
                                            </div>
 
-
                                         </form>
 
 
                                         <!--Пункт                           -->
                                         <!-- Родитель : Child 1             --> 
                                         <!-- Принять Завершить              -->
-                                        <div class="item item-third item__role_buttons"
-                                             th:if="${user.role.getRole().equals('ROLE_CHILDREN')}">
+                                        <div class="item item__role_buttons item-third "
+                                        th:if="${user.role.getRole().equals('ROLE_CHILDREN')}">
 
                                             <div class="text-field ">
-                                                <p class="text-field__p" th:text="${'Вы: ' + user.login}" >Ребенок : Child 1</p>
+                                                <p class="text-field__p" th:text="${'Вы: ' + user.login}">Ребенок : Child 1</p>
                                             </div>
                                            
                                             <div class="btn__row btn__jc-sb">

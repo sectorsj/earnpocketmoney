@@ -50,7 +50,7 @@
 
             <div class="header-login">
 
-                <a class="btn__signin" href="/register">Регистрация</a>
+                <!-- <a class="btn__signin" href="/register">Регистрация</a> -->
                 <a class="btn btn-default"th:href="@{/}">Выход</a>
 
             </div>
@@ -78,66 +78,100 @@
                             <!--/*@thymesVar id="getPeopleGroupName" type=""*/-->
                             <h1 class="header__h1 board__header__h1 family__board__header" th:text="${'Семья ' + user.getPeopleGroups().getName() + ' !'}" >Семья 'Ивановы'</h1>
 
-
                             <div class="family__view children__parents__view">
 
-                                <h2 class="header__h2 view__header__h2 family__view__header__h2">Дети:</h2>
+                                <div class="block block-children">
 
-                                <div class="card card__family card__family__members" th:each="c : ${children}">
+                                    <h2 class="header__h2 view__header__h2 family__view__header__h2">Дети:</h2>
 
-                                    <div class="card__row family__card__row">
 
-                                        <!-- Блок заголовок и текст карточки -->
-                                        <div class="card__header__text family__card__headerandtext">
+                                    <!-- Список -->
+                                    <div class="list list__children">
+                                        
+                                        <!-- Карточка -->
+                                        <div class="card card__family card__family__members" th:each="c : ${children}">
 
-                                            <!-- Заголовок карточки -->
-                                            <h1 class="card__header__h1 family__card__header__h1" th:text="${c.login}">Child 1</h1>
+                                            <div class="card__row family__card__row">
 
-                                            <!-- Текст карточки -->
-                                            <p class="card__text__p task__card__text__p" th:text="${ ' Кол-во заработанных денег = ' + c.walletSize}">Задач у ребенка</p>
+                                                <!-- Блок заголовок и текст карточки -->
+                                                <div class="card__header__text family__card__headerandtext">
+
+                                                    <!-- Заголовок карточки -->
+                                                    <h1 class="card__header__h1 family__card__header__h1" th:text="${c.login}">Child 1</h1>
+
+                                                    <!-- Текст карточки -->
+                                                    <p class="card__text__p task__card__text__p" th:text="${ ' Кол-во заработанных денег = ' + c.walletSize}">Задач у ребенка</p>
+
+                                                </div>
+
+                                                <!-- Блок оценка карточки -->
+                                                <div class="card-span card-span__task card-span__task__wages__summ">
+                                                    <!-- Оценка карточки -->
+
+                                                    <span class="span__number span__wages" th:text="${c.executingTasksListSize}">5</span>
+
+                                                </div>
+
+                                            </div>
 
                                         </div>
 
-                                        <!-- Блок оценка карточки -->
-                                        <div class="card-span card-span__task card-span__task__wages__summ">
-                                            <!-- Оценка карточки -->
+                                    </div>  
+                                    
+                                </div>
 
-                                            <span class="span__number span__wages" th:text="${c.executingTasksListSize}">5</span>
+                                <div class="block block-parents">
 
+                                    <h2 class="header__h2 view__header__h2 family__view__header__h2">Взрослые:</h2>
+
+                                    <!-- Список -->
+                                    <div class="list list__parents">
+
+                                        
+                                        <!-- Карточка -->
+                                        <div class="card card__family card__family__members" th:each="p : ${parent}">
+
+                                            <div class="card__row family__card__row">
+
+                                                <!-- Блок заголовок и текст карточки -->
+                                                <div class="card__header__text family__card__headerandtext">
+
+                                                    <!-- Заголовок карточки -->
+                                                    <h1 class="card__header__h1 family__card__header__h1" th:text="${p.login}">Parent 2</h1>
+
+                                                    <!-- Текст карточки -->
+                                                <!--   <p class="card__text__p task__card__text__p" th:text="${u.login}">Задач у ребенка</p>-->
+
+                                                </div>
+
+                                                <!-- Блок оценка карточки -->
+                                                <div class="card-span card-span__task card-span__task__wages__summ">
+                                                    <!-- Оценка карточки -->
+
+                                                    <span class="span__number span__wages" th:text="${p.creatingTasksListSize}">5</span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                       
+                                    </div>
+
+                                </div> 
+
+                                <!-- Блок перекрытия низа доски -->
+                                <!-- <div class="limiter showmore__element">
+
+                                    <div class="element__row showmore__element__row ">
+
+                                        <div class="limiter__text">
+                                            <a href="#" class="link__a showmore__link">Еще...</a>
                                         </div>
 
                                     </div>
 
-                                </div>
-
-                                <h2 class="header__h2 view__header__h2 family__view__header__h2">Взрослые:</h2>
-
-                                <div class="card card__family card__family__members" th:each="p : ${parent}">
-
-                                    <div class="card__row family__card__row">
-
-                                        <!-- Блок заголовок и текст карточки -->
-                                        <div class="card__header__text family__card__headerandtext">
-
-                                            <!-- Заголовок карточки -->
-                                            <h1 class="card__header__h1 family__card__header__h1" th:text="${p.login}">Parent 2</h1>
-
-                                            <!-- Текст карточки -->
-                                         <!--   <p class="card__text__p task__card__text__p" th:text="${u.login}">Задач у ребенка</p>-->
-
-                                        </div>
-
-                                        <!-- Блок оценка карточки -->
-                                        <div class="card-span card-span__task card-span__task__wages__summ">
-                                            <!-- Оценка карточки -->
-
-                                            <span class="span__number span__wages" th:text="${p.creatingTasksListSize}">5</span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                </div> -->
 
                             </div>
 
@@ -153,99 +187,101 @@
 
                         <div class="board board__chat">
     
-                            <div class=" item item-first item__board__chat">
-    
-                                <h1 class="header__h1 board__header__h1 family__board__header__h1">Семейный чат:</h1>
-    
-                                <div class="chat__view family__chat__view">
-    
-                                    <div class="message chat__message family__chat__message">
-    
-                                        <div class="message__row message__family__chat__row">
-    
-                                            <!-- Блок заголовок и текст карточки -->
-                                            <div class="message__header__text">
-    
-                                                <!-- Кто написал СМС -->
-                                                <h1 class="message__header message__header__h1" >Parent 1</h1>
-    
-                                                <!-- Текст СМС -->
-                                                <p class="message__text message__text__p">Уже пришел домой?</p>
-    
-                                            </div>
-    
+                            <h1 class="header__h1 board__header__h1 family__board__header__h1">Семейный чат:</h1>
+
+                            <div class="list list__message">
+
+                                <div class="message chat__message family__chat__message">
+
+                                    <div class="message__row message__family__chat__row">
+
+                                        <!-- Блок заголовок и текст карточки -->
+                                        <div class="message__header__text">
+
+                                            <!-- Кто написал СМС -->
+                                            <h1 class="message__header message__header__h1" >Parent 1</h1>
+
+                                            <!-- Текст СМС -->
+                                            <p class="message__text message__text__p">Уже пришел домой?</p>
+
                                         </div>
-    
+
                                     </div>
-    
-                                    <div class="message chat__message family__chat__message">
-    
-                                        <div class="message__row message__family__chat__row">
-    
-                                            <!-- Блок заголовок и текст карточки -->
-                                            <div class="message__header__text">
-    
-                                                <!-- Кто написал СМС -->
-                                                <h1 class="message__header message__header__h1" >Child 1</h1>
-    
-                                                <!-- Текст СМС -->
-                                                <p class="message__text message__text__p">
-                                                    Да пап. Сейчас возьму задачу.<br>
-                                                    Разнообразный и богатый опыт говорит нам, что социально-экономическое развитие
-                                                    однозначно фиксирует необходимость переосмысления внешнеэкономических политик!
-                                                    Но ключевые особенности структуры проекта освещают чрезвычайно интересные особенности
-                                                    картины в целом, однако конкретные выводы, разумеется, заблокированы в рамках своих
-                                                    собственных рациональных ограничений. Убеждённость некоторых оппонентов требует от
-                                                    нас анализа поставленных обществом задач. Новая модель организационной деятельности
-                                                    требует определения и уточнения приоритизации разума над эмоциями. Внезапно,
-                                                    акционеры крупнейших компаний набирают популярность среди определенных слоев населения,
-                                                    а значит, должны быть разоблачены. Имеется спорная точка зрения, гласящая примерно
-                                                    следующее: базовые сценарии поведения <br>
-                                                    пользователей освещают чрезвычайно интересные особенности картины в целом, однако
-                                                    конкретные выводы, разумеется, преданы социально-демократической анафеме.
-                                                </p>
-    
-                                            </div>
-    
-                                        </div>
-    
-                                    </div>
-    
+
                                 </div>
-    
-                            </div>
-    
-                            <div class="item item-second message__sender">
-                                <div class="body__sender">
-                                    <div class="create__task__list__col">
-    
-                                    </div>
-                                    <div >
-                                       <!-- action=""
-                                        method="POST"
-                                        action=""-->
 
-                                        <!-- Форма ввода текста -->
-                                        <div class="input create__task__input">
+                                <div class="message chat__message family__chat__message">
 
-                                            <div class="task-header">
+                                    <div class="message__row message__family__chat__row">
 
-                                                <input type="text"
+                                        <!-- Блок заголовок и текст карточки -->
+                                        <div class="message__header__text">
 
-                                                        value=""
-                                                        class="form-control form-control__chat"
-                                                        id="title"
-                                                        placeholder="Введите текст..."
-                                                        aria-describedby="taskHelp">
+                                            <!-- Кто написал СМС -->
+                                            <h1 class="message__header message__header__h1" >Child 1</h1>
 
-                                            </div>
+                                            <!-- Текст СМС -->
+                                            <p class="message__text message__text__p">
+                                                Да пап. Сейчас возьму задачу.
+                                                Разнообразный и богатый опыт говорит нам, что социально-экономическое развитие
+                                                однозначно фиксирует необходимость переосмысления внешнеэкономических политик!
+                                                Но ключевые особенности структуры проекта освещают чрезвычайно интересные особенности
+                                                картины в целом, однако конкретные выводы, разумеется, заблокированы в рамках своих
+                                                собственных рациональных ограничений. Убеждённость некоторых оппонентов требует от
+                                                нас анализа поставленных обществом задач. Новая модель организационной деятельности
+                                                требует определения и уточнения приоритизации разума над эмоциями. Внезапно,
+                                                акционеры крупнейших компаний набирают популярность среди определенных слоев населения,
+                                                а значит, должны быть разоблачены. Имеется спорная точка зрения, гласящая примерно
+                                                следующее: базовые сценарии поведения
+                                                пользователей освещают чрезвычайно интересные особенности картины в целом, однако
+                                                конкретные выводы, разумеется, преданы социально-демократической анафеме.
+                                            </p>
 
                                         </div>
-    
+
                                     </div>
-    
+
                                 </div>
+                            
                             </div>
+                            
+                                <!-- Блок перекрытия низа доски -->
+                                
+                            <div class="item item-second__chat item__chat">
+
+                                <form name="" class="form__input">
+
+                                    <div class="container input__row">
+
+                                        <input
+                                            type="text"
+                                            class="form-control form-control__chat"
+                                            id="taskText"
+                                            placeholder="Сообщение..."
+                                            aria-describedby="taskHelp">
+
+                                        <a href="#" type="submit" class ="btn btn__send-message">
+
+                                            <img src="content/img/message_circle.svg" class="icon__btn__send-message" alt="send-message" th:src="@{/content/img/message_circle.svg}">
+
+                                        </a>
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <!-- <div class="limiter showmore__element">
+
+                                <div class="element__row showmore__element__row ">
+
+                                    <div class="limiter__text">
+                                        <a href="#" class="link__a showmore__link">Еще...</a> 
+                                    </div>
+
+                                </div>
+
+                            </div> -->
     
                         </div>
     
