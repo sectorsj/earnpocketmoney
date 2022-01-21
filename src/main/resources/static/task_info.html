@@ -180,7 +180,9 @@
                                                         <option
                                                         th:each="u : ${users}"
                                                         th:value="${u.login}"
-                                                        th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"> 
+                                                        th:text="${u.login}"
+                                                        >
+                                                            <!--th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"-->
                                                             ----------
                                                         </option>
 

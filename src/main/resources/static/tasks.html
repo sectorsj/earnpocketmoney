@@ -140,7 +140,13 @@
                                                     </div>
 
                                                     <div class="task__wages__buttons">
-                                                        <a th:onclick="'decWageValue();'" class="btn__wages"  >-</a>
+                                                        <a th:onclick="'decWageValue();'" class="btn__wages"  >
+                                                            <img
+                                                                src="content/img/minus.svg"
+                                                                class="icons"
+                                                                alt="add__child"
+                                                                th:src="@{/content/img/minus.svg}">
+                                                        </a>
 
 
                                                         <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
@@ -162,7 +168,13 @@
 
                                                         <!--<a href = "#" class="btn__wages"   >+</a>-->
 
-                                                        <a onclick="incWageValue()" class="btn__wages"  >+</a>
+                                                        <a onclick="incWageValue()" class="btn__wages"  >
+                                                            <img
+                                                                src="content/img/plus.svg"
+                                                                class="icons"
+                                                                alt="add__child"
+                                                                th:src="@{/content/img/plus.svg}">
+                                                        </a>
                                                     </div>
 
                                                 </div>

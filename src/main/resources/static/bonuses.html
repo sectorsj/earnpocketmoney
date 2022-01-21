@@ -140,7 +140,13 @@
                                                 </div>
 
                                                 <div class="task__wages__buttons">
-                                                    <a th:onclick="'decPriceValue();'" class="btn__wages"  >-</a>
+                                                    <a th:onclick="'decPriceValue();'" class="btn__wages"  >
+                                                        <img
+                                                                src="content/img/minus.svg"
+                                                                class="icons"
+                                                                alt="add__child"
+                                                                th:src="@{/content/img/minus.svg}">
+                                                    </a>
 
                                                     <!--<a href = "#" class="btn__wages"  >-</a>-->
                                                     <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
@@ -159,7 +165,12 @@
                                                            value=""
                                                     >
                                                     <!--<a href = "#" class="btn__wages"   >+</a>-->
-                                                    <a onclick="incPriceValue()" class="btn__wages"  >+</a>
+                                                    <a onclick="incPriceValue()" class="btn__wages"  >
+                                                        <img
+                                                                src="content/img/plus.svg"
+                                                                class="icons"
+                                                                alt="add__child"
+                                                                th:src="@{/content/img/plus.svg}"></a>
                                                 </div>
 
                                             </div>
@@ -169,7 +180,7 @@
 
                                                 <a href="#" class = add__photo__icon>
 
-                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_3.svg}">
+                                                    <img src="content/img/bonus_7.svg" class="icons" alt="task__photo" th:src="@{/content/img/bonus_7.svg}">
 
                                                 </a>
 
