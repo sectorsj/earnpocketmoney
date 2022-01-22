@@ -33,9 +33,14 @@ body{
     border: 1px solid #828282;
     box-sizing: border-box;
     border-radius: 10px;
-    margin-top: 5%;
 }
 
+.form-signin {
+}
+
+.form-signin .form-heading,
+.form-signin .checkbox {
+}
 
 .form-signin .checkbox {
     font-weight: normal;
@@ -50,17 +55,11 @@ body{
     margin-bottom: 20px;
 }
 
+.form-control   {
+
+}
 
 .has-error {
-}
-
-
-.text-center {
-    color: #706c6c;
-}
-
-.login__text-center {
-    margin-top: 25px;
 }
 
 .btn {
@@ -83,4 +82,11 @@ body{
 .btn-primary {
 }
 .btn-block {
+}
+.text-center {
+    color: #706c6c;
+}
+
+.login__text-center {
+    margin-top: 25px;
 }

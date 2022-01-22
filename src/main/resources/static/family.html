@@ -87,7 +87,7 @@
 
                                     <!-- Список -->
                                     <div class="list list__children">
-                                        
+
                                         <!-- Карточка -->
                                         <div class="card card__family card__family__members" th:each="c : ${children}">
 
@@ -116,8 +116,8 @@
 
                                         </div>
 
-                                    </div>  
-                                    
+                                    </div>
+
                                 </div>
 
                                 <div class="block block-parents">
@@ -127,7 +127,7 @@
                                     <!-- Список -->
                                     <div class="list list__parents">
 
-                                        
+
                                         <!-- Карточка -->
                                         <div class="card card__family card__family__members" th:each="p : ${parent}">
 
@@ -140,7 +140,7 @@
                                                     <h1 class="card__header__h1 family__card__header__h1" th:text="${p.login}">Parent 2</h1>
 
                                                     <!-- Текст карточки -->
-                                                <!--   <p class="card__text__p task__card__text__p" th:text="${u.login}">Задач у ребенка</p>-->
+                                                    <!--   <p class="card__text__p task__card__text__p" th:text="${u.login}">Задач у ребенка</p>-->
 
                                                 </div>
 
@@ -155,22 +155,18 @@
                                             </div>
 
                                         </div>
-                                       
+
                                     </div>
 
-                                </div> 
+                                </div>
 
                                 <!-- Блок перекрытия низа доски -->
                                 <!-- <div class="limiter showmore__element">
-
                                     <div class="element__row showmore__element__row ">
-
                                         <div class="limiter__text">
                                             <a href="#" class="link__a showmore__link">Еще...</a>
                                         </div>
-
                                     </div>
-
                                 </div> -->
 
                             </div>
@@ -186,7 +182,7 @@
                     <div class="container right__content__element">
 
                         <div class="board board__chat">
-    
+
                             <h1 class="header__h1 board__header__h1 family__board__header__h1">Семейный чат:</h1>
 
                             <div class="list list__message">
@@ -242,11 +238,11 @@
                                     </div>
 
                                 </div>
-                            
+
                             </div>
-                            
-                                <!-- Блок перекрытия низа доски -->
-                                
+
+                            <!-- Блок перекрытия низа доски -->
+
                             <div class="item item-second__chat item__chat">
 
                                 <form name="" class="form__input">
@@ -254,15 +250,15 @@
                                     <div class="container input__row">
 
                                         <input
-                                            type="text"
-                                            class="form-control form-control__chat"
-                                            id="taskText"
-                                            placeholder="Сообщение..."
-                                            aria-describedby="taskHelp">
+                                                type="text"
+                                                class="form-control form-control__chat"
+                                                id="taskText"
+                                                placeholder="Сообщение..."
+                                                aria-describedby="taskHelp">
 
                                         <a href="#" type="submit" class ="btn btn__send-message">
 
-                                            <img src="content/img/message_circle.svg" class="icon__btn__send-message" alt="send-message" th:src="@{/content/img/message_circle.svg}">
+                                            <img src="content/img/message_circle.svg" class="icon__btn__send-message" alt="send-message" th:src="@{/content/img/strelka_8.svg}">
 
                                         </a>
 
@@ -272,19 +268,15 @@
                             </div>
 
                             <!-- <div class="limiter showmore__element">
-
                                 <div class="element__row showmore__element__row ">
-
                                     <div class="limiter__text">
-                                        <a href="#" class="link__a showmore__link">Еще...</a> 
+                                        <a href="#" class="link__a showmore__link">Еще...</a>
                                     </div>
-
                                 </div>
-
                             </div> -->
-    
+
                         </div>
-    
+
                     </div>
 
                 </div>

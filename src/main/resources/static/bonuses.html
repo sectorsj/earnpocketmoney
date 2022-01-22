@@ -52,6 +52,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var priceValue = 5;
+
+        function incPriceValue(){
+            priceValue++;
+            document.getElementById('input_price_value').value = priceValue;
+        }
+
+        function decPriceValue(){
+            priceValue--;
+            document.getElementById('input_price_value').value = priceValue;
+        }
+
+    </script>
+
 </header>
 
 <main>
@@ -70,7 +86,8 @@
                             <!-- Заголовок -->
                             <h1 class="header__h1 board__header__h1 board__header__task-making">Создать бонус:</h1>
 
-                            <div class="item item-first item__make-new-task">
+                            <div class="item item-first item__make-new-task"
+                                 th:if="${user.role.getRole().equals('ROLE_PARENT')}">
 
                                 <!-- Стоимость задачи -->
                                 <!-- <div class="increment__element task__wages__header__buttons__row"> -->
@@ -123,17 +140,37 @@
                                                 </div>
 
                                                 <div class="task__wages__buttons">
-                                                    <a href = "#" class="btn__wages"  >-</a>
+                                                    <a th:onclick="'decPriceValue();'" class="btn__wages"  >
+                                                        <img
+                                                                src="content/img/minus.svg"
+                                                                class="icons"
+                                                                alt="add__child"
+                                                                th:src="@{/content/img/minus.svg}">
+                                                    </a>
+
+                                                    <!--<a href = "#" class="btn__wages"  >-</a>-->
                                                     <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
                                                     <!--  <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
-                                                    <select class="btn__wages" th:field= "*{price}">
+                                                    <!--<select class="btn__wages" th:field= "*{price}">
                                                         <option
                                                                 th:each="i : ${#numbers.sequence(1, 100)}"
                                                                 th:value="${i}"
                                                                 th:text="${i}">
                                                         </option>
-                                                    </select>
-                                                    <a href = "#" class="btn__wages"   >+</a>
+                                                    </select>-->
+
+                                                    <input class="btn__wages"
+                                                           id = "input_price_value"
+                                                           th:field="*{price}"
+                                                           value=""
+                                                    >
+                                                    <!--<a href = "#" class="btn__wages"   >+</a>-->
+                                                    <a onclick="incPriceValue()" class="btn__wages"  >
+                                                        <img
+                                                                src="content/img/plus.svg"
+                                                                class="icons"
+                                                                alt="add__child"
+                                                                th:src="@{/content/img/plus.svg}"></a>
                                                 </div>
 
                                             </div>
@@ -143,7 +180,7 @@
 
                                                 <a href="#" class = add__photo__icon>
 
-                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_3.svg}">
+                                                    <img src="content/img/bonus_7.svg" class="icons" alt="task__photo" th:src="@{/content/img/bonus_7.svg}">
 
                                                 </a>
 
@@ -161,7 +198,7 @@
                                                 <h1 class="add__child__header"></h1>
 
                                                 <select th:field= "*{userGettingBonus}">
-                                                    <option th:value="*{null}">  Бонус на выбор  </option>
+                                                    <option th:value="*{null}">  Выбрать ребенка  </option>
                                                     <option
                                                             th:each="c : ${children}"
                                                             th:value="${c.login}"
@@ -201,50 +238,48 @@
                             <!-- Заголовок -->
                             <h1 class="header__h1 board__header__h1 tasks__list__board__header">Текущие бонусы:</h1>
 
-                                <!-- Лист -->
-                                <div  class="list list__bonuses">
-                                    
-                                    <!-- Карточка задачи -->
-                                    <div class="card card__bonus" th:each="b : ${bonusDtoList}" >                                  
+                            <!-- Лист -->
+                            <div  class="list list__bonuses">
 
-                                        <div  class="card__row bonus__card__row"  >
+                                <!-- Карточка задачи -->
+                                <div class="card card__bonus" th:each="b : ${bonusDtoList}" >
 
-                                            <!-- Блок заголовок и текст карточки -->
-                                            <a class="card__header__text bonus__card__headerandtext">
+                                    <div  class="card__row bonus__card__row"  >
 
-                                                <!-- Заголовок карточки -->
-                                                <h1 class="card__header__h1 bonus__card__header__h1" th:text="${b.title}">Заголовок бонуса</h1>
+                                        <!-- Блок заголовок и текст карточки -->
+                                        <a class="card__header__text bonus__card__headerandtext">
 
-                                                <!-- Текст карточки -->
-                                                <p class="card__text__p bonus__card__text__p" th:text="${'Назначено: ' + b.userGettingBonus.getLogin()}">Назначенный исполнитель</p>
+                                            <!-- Заголовок карточки -->
+                                            <h1 class="card__header__h1 bonus__card__header__h1" th:text="${b.title}">Заголовок бонуса</h1>
 
-                                            </a>
+                                            <!-- Текст карточки -->
+                                            <!-- <p class="card__text__p bonus__card__text__p" th:text="${'Назначено: ' + b.userGettingBonus.getLogin()}">Назначенный исполнитель</p>-->
 
-                                            <p class="card__text__p card__status" th:text="${'Статус ' + b.gettingStatus}">Статус: принята</p>
+                                        </a>
 
-                                            <!-- Блок оценка карточки -->
-                                            <div class="card-span card-span__bonus card-span__bonus__price">
-                                                <!-- Оценка карточки -->
+                                        <!-- <p class="card__text__p card__status" th:text="${'Статус ' + b.gettingStatus}">Статус: принята</p>-->
 
-                                                <span class="span__number span__price" th:text="${b.price}">5</span>
+                                        <!-- Блок оценка карточки -->
+                                        <div class="card-span card-span__bonus card-span__bonus__price">
+                                            <!-- Оценка карточки -->
 
-                                            </div>
+                                            <span class="span__number span__price" th:text="${b.price}">5</span>
 
                                         </div>
 
-                                    </div>         
+                                    </div>
 
                                 </div>
 
-                                <!-- Блок перекрытия низа доски -->
-                                <div class="expand__list__element showmore__element">
+                            </div>
 
-                                    <div class="element__row showmore__element__row ">
+                            <!-- Блок перекрытия низа доски -->
+                            <div class="expand__list__element showmore__element">
 
-                                        <div class="showmore__text">
-                                            <!-- <a href="#" class="link__a showmore__link">Еще...</a> -->
-                                        </div>
+                                <div class="element__row showmore__element__row ">
 
+                                    <div class="showmore__text">
+                                        <!-- <a href="#" class="link__a showmore__link">Еще...</a> -->
                                     </div>
 
                                 </div>
@@ -261,6 +296,8 @@
 
         </div>
 
+        </div>
+
     </section>
 
 </main>
@@ -274,6 +311,12 @@
     </div>
 
 </footer>
+
+<script>
+
+    document.getElementById('input_price_value').value = priceValue;
+
+</script>
 
 </body>
 

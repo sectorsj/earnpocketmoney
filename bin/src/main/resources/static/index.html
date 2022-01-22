@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPM_Index</title>
+
+   <link th:href="@{/css/blocks/board_greeting.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" />
+    <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/blocks/board_greeting.css">
+    <link rel="stylesheet" href="css/blocks/header.css">
+
+    <!--Reset-->
+    <link rel="stylesheet" href="css/blocks/base.css">
+    <link rel="stylesheet" href="css/blocks/reset.css">
+
+    <!--Fonts-->
+    <link rel="stylesheet" href="css/fonts/VAGRounded/stylesheet.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="header-logo">
+                    <img src="content/img/logo-01.svg"  alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
+                </div>
+                <nav class="header-nav">
+                    <ul class="">
+                        <li><a href="#" class="link__active">Главная</a></li>
+                        <li><a th:href="@{/api/v1/cabinet}">Кабинет</a></li>
+                        <li><a th:href="@{/api/v1/family}">Семья</a></li>
+                        <li><a th:href="@{/api/v1/tasks}">Задачи</a></li>
+                        <li><a href="#">Статистика</a></li>
+                    </ul>
+                </nav>
+                <div class="header-login">
+
+                    <a class="btn__signin" th:href="@{/register}">Регистрация</a>
+                    <a class="btn btn-default" th:href="@{/auth}">Вход</a>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="index">
+
+
+            <div class="container index__container">
+
+                <div class="content__row index__content__row">
+
+                    <div class="content__element left__content__element">
+
+                        <div class="board board__index">
+
+                            <h1 class="header__h1 board__header__h1 greeting__board__header">Добро пожаловать на наш сайт!</h1>
+
+                            <div class="item item-first item__coolteam-products">
+
+                                <a href="/app/api/v1/tasks" class="btn__link coolteam-products__link">
+
+                                    <img src="content/img/logo-01.svg" class="coolteam-products__icon" alt="projet-photo" th:src="@{/content/img/logo-01.svg}"/>
+
+                                </a>
+
+                                <h1 class="item__header__h1 create__task__header__h1">Проект CoolTeam</h1>
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div th:insert="copyright :: copy">
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPM_Bonuses</title>
+
+
+    <link th:href="@{/css/blocks/board_greeting.css}"  media="screen" rel="stylesheet" >
+    <link th:href="@{/css/blocks/header.css}" media="screen" rel="stylesheet">
+    <link th:href="@{/css/blocks/base.css}" media="screen" rel="stylesheet">
+    <link th:href="@{/css/blocks/reset.css}" media="screen" rel="stylesheet">
+    <link th:href="@{/css/fonts/VAGRounded/stylesheet.css}" rel="stylesheet" >
+
+
+    <link rel="stylesheet" href="css/blocks/board_greeting.css">
+    <link rel="stylesheet" href="css/blocks/header.css">
+    <link rel="stylesheet" href="css/blocks/footer.css">
+
+    <!--Reset-->
+    <link rel="stylesheet" href="css/blocks/base.css">
+    <link rel="stylesheet" href="css/blocks/reset.css">
+
+    <!--Fonts-->
+    <link rel="stylesheet" href="css/fonts/VAGRounded/stylesheet.css">
+
+</head>
+
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header-row">
+            <div class="header-logo">
+                <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
+            </div>
+
+            <nav class="header-nav">
+                <ul class="">
+                    <li><a th:href="@{/}">Главная</a></li>
+                    <li><a th:href="@{/api/v1/cabinet}">Кабинет</a></li>
+                    <li><a th:href="@{/api/v1/family}">Семья</a></li>
+                    <li><a href="#" class= "link__active">Задачи</a></li>
+                    <li><a href="#">Статистика</a></li>
+                </ul>
+            </nav>
+            <div class="header-login">
+
+                <!-- <a class="btn__signin" href="/app/register">Регистрация</a> -->
+                <a class="btn btn-default" th:href="@{/}">Выход</a>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="tasks">
+
+        <div class="container container__tasks">
+
+            <div class="content__row content__row__tasks">
+
+                <div class="content__element__col left__content__element__col">
+
+                    <div class="content__element left__content__element">
+
+                        <div class="board board__task-making task-making">
+
+                            <!-- Заголовок -->
+                            <h1 class="header__h1 board__header__h1 board__header__task-making">Создать бонус:</h1>
+
+                            <div class="item item-first item__make-new-task">
+
+                                <!-- Стоимость задачи -->
+                                <!-- <div class="increment__element task__wages__header__buttons__row"> -->
+                                <div class="list__col create__task-list__col">
+
+                                    <div class="list list__create-task-list">
+
+                                        <!-- Форма создания карточки -->
+                                        <form method="POST"
+                                              th:action="@{/api/v1/bonuses}"
+                                              th:object="${bonusForm}">
+
+                                            <!-- Форма ввода текста -->
+                                            <div class="input create__task__input">
+
+                                                <div class="task-header">
+
+                                                    <input type="text"
+                                                           th:field="*{title}"
+                                                           value=""
+                                                           class="form-control form-control__create-task"
+                                                           id="title"
+                                                           placeholder="Введите заголовок задачи..."
+                                                           aria-describedby="taskHelp">
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="input create__task__input">
+
+                                                <div class="task-text">
+
+                                                    <input type="text"
+                                                           th:field="*{bonusText}"
+                                                           value=""
+                                                           class="form-control form-control__create-task"
+                                                           id="taskText"
+                                                           placeholder="Введите описание задачи..."
+                                                           aria-describedby="taskHelp">
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="item item-first item__header__increment__buttons">
+
+                                                <div class="tasks__wage__header__h1">
+                                                    <h2 class="wages ">Стоимость бонуса</h2>
+                                                </div>
+
+                                                <div class="task__wages__buttons">
+                                                    <a href = "#" class="btn__wages"  >-</a>
+                                                    <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
+                                                    <!--  <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
+                                                    <select class="btn__wages" th:field= "*{price}">
+                                                        <option
+                                                                th:each="i : ${#numbers.sequence(1, 100)}"
+                                                                th:value="${i}"
+                                                                th:text="${i}">
+                                                        </option>
+                                                    </select>
+                                                    <a href = "#" class="btn__wages"   >+</a>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Фото бонуса -->
+                                            <div class="add__task__photo">
+
+                                                <a href="#" class = add__photo__icon>
+
+                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_3.svg}">
+
+                                                </a>
+
+                                                <h1 class="add__photo__header">Сделать фото бонуса</h1>
+
+                                            </div>
+
+                                            <!-- Добавление ребенка -->
+                                            <div class="add__child">
+
+                                                <a href="#"class = add__child__icon>
+                                                    <img src="content/img/Icon_4.svg" class="icons" alt="add__child" th:src="@{/content/img/Icon_4.svg}">
+                                                </a>
+
+                                                <h1 class="add__child__header"></h1>
+
+                                                <select th:field= "*{userGettingBonus}">
+                                                    <option th:value="*{null}">  Бонус на выбор  </option>
+                                                    <option
+                                                            th:each="c : ${children}"
+                                                            th:value="${c.login}"
+                                                            th:text="${c.login }">добавить ребенка
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                            <span class="has-error"
+                                                  th:text="${error}">
+                                                </span>
+
+                                            <!-- Кнопка создания формы -->
+                                            <button type="submit" class="btn__submit btn-primary">Создать бонус</button>
+
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="content__element__col right__content__element__col">
+
+                    <!-- Шаблоны задач -->
+                    <div class="container right__content__element">
+
+                        <div class="board board__bonus__list">
+
+                            <!-- Заголовок -->
+                            <h1 class="header__h1 board__header__h1 tasks__list__board__header">Текущие бонусы:</h1>
+
+                                <!-- Лист -->
+                                <div  class="list list__bonuses">
+                                    
+                                    <!-- Карточка задачи -->
+                                    <div class="card card__bonus" th:each="b : ${bonusDtoList}" >                                  
+
+                                        <div  class="card__row bonus__card__row"  >
+
+                                            <!-- Блок заголовок и текст карточки -->
+                                            <a class="card__header__text bonus__card__headerandtext">
+
+                                                <!-- Заголовок карточки -->
+                                                <h1 class="card__header__h1 bonus__card__header__h1" th:text="${b.title}">Заголовок бонуса</h1>
+
+                                                <!-- Текст карточки -->
+                                                <p class="card__text__p bonus__card__text__p" th:text="${'Назначено: ' + b.userGettingBonus.getLogin()}">Назначенный исполнитель</p>
+
+                                            </a>
+
+                                            <p class="card__text__p card__status" th:text="${'Статус ' + b.gettingStatus}">Статус: принята</p>
+
+                                            <!-- Блок оценка карточки -->
+                                            <div class="card-span card-span__bonus card-span__bonus__price">
+                                                <!-- Оценка карточки -->
+
+                                                <span class="span__number span__price" th:text="${b.price}">5</span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>         
+
+                                </div>
+
+                                <!-- Блок перекрытия низа доски -->
+                                <div class="expand__list__element showmore__element">
+
+                                    <div class="element__row showmore__element__row ">
+
+                                        <div class="showmore__text">
+                                            <!-- <a href="#" class="link__a showmore__link">Еще...</a> -->
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer__row">
+        <div th:insert="copyright :: copy" class="footer__text">
+
+        </div>
+    </div>
+
+</footer>
+
+</body>
+
+</html>

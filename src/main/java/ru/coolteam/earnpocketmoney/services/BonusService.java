@@ -3,9 +3,7 @@ package ru.coolteam.earnpocketmoney.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.coolteam.earnpocketmoney.models.Bonus;
-import ru.coolteam.earnpocketmoney.models.PeopleGroups;
-import ru.coolteam.earnpocketmoney.models.User;
+import ru.coolteam.earnpocketmoney.models.*;
 import ru.coolteam.earnpocketmoney.repositories.BonusRepository;
 
 import java.time.LocalDateTime;
@@ -35,6 +33,10 @@ public class BonusService {
 
     public List<Bonus> getAllBonusesByUserGettingBonus (User userGettingBonus){
         return bonusRepository.findBonusByUserGettingBonus(userGettingBonus);
+    }
+
+    public Bonus save (Bonus bonus){
+        return bonusRepository.save(bonus);
     }
 
     public Optional<Bonus> findByName (String title) {

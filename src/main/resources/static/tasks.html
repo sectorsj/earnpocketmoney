@@ -28,171 +28,210 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="header-row">
-                <div class="header-logo">
-                    <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
-                </div>
+<header class="header">
+    <div class="container">
+        <div class="header-row">
+            <div class="header-logo">
+                <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
+            </div>
 
-                <nav class="header-nav">
-                    <ul class="">
-                        <li><a th:href="@{/}">Главная</a></li>
-                        <li><a th:href="@{/api/v1/cabinet}">Кабинет</a></li>
-                        <li><a th:href="@{/api/v1/family}">Семья</a></li>
-                        <li><a href="#" class= "link__active">Задачи</a></li>
-                        <li><a href="#">Статистика</a></li>
-                    </ul>
-                </nav>
-                <div class="header-login">
+            <nav class="header-nav">
+                <ul class="">
+                    <li><a th:href="@{/}">Главная</a></li>
+                    <li><a th:href="@{/api/v1/cabinet}">Кабинет</a></li>
+                    <li><a th:href="@{/api/v1/family}">Семья</a></li>
+                    <li><a href="#" class= "link__active">Задачи</a></li>
+                    <li><a href="#">Статистика</a></li>
+                </ul>
+            </nav>
+            <div class="header-login">
 
-                    <!-- <a class="btn__signin" href="/app/register">Регистрация</a> -->
-                    <a class="btn btn-default" th:href="@{/}">Выход</a>
+                <!-- <a class="btn__signin" href="/app/register">Регистрация</a> -->
+                <a class="btn btn-default" th:href="@{/}">Выход</a>
 
-                </div>
             </div>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <section class="tasks">
+    <script>
+            var wageValue = 5;
 
-            <div class="container container__tasks">
+            function incWageValue(){
+                wageValue++;
+                document.getElementById('input_wages_value').value = wageValue;
+            }
 
-                <div class="content__row content__row__tasks">
+            function decWageValue(){
+                wageValue--;
+                document.getElementById('input_wages_value').value = wageValue;
+            }
 
-                    <div class="content__element__col left__content__element__col">
+        </script>
 
-                        <div class="content__element left__content__element">
+</header>
 
-                            <div class="board board__task-making task-making">
+<main>
+    <section class="tasks">
 
-                                <!-- Заголовок -->
-                                <h1 class="header__h1 board__header__h1 board__header__task-making">Создать задачу:</h1>
+        <div class="container container__tasks">
 
-                                <div class="container item item-first item__make-new-task">
+            <div class="content__row content__row__tasks">
 
-                                    <!-- Стоимость задачи -->
-                                    <div class="list__col create__task-list__col">
+                <div class="content__element__col left__content__element__col">
 
-                                        <div class="list list__create-task-list">
+                    <div class="content__element left__content__element">
+
+                        <div class="board board__task-making task-making">
+
+                            <!-- Заголовок -->
+                            <h1 class="header__h1 board__header__h1 board__header__task-making">Создать задачу:</h1>
+
+                            <div class="container item item-first item__make-new-task">
+
+                                <!-- Стоимость задачи -->
+                                <div class="list__col create__task-list__col">
+
+                                    <div class="list list__create-task-list">
 
                                         <!-- Форма создания карточки -->
                                         <form
-                                            method="POST"
-                                            th:action="@{/api/v1/tasks}"
-                                            th:object="${taskForm}">
+                                                method="POST"
+                                                th:action="@{/api/v1/tasks}"
+                                                th:object="${taskForm}">
 
-                                                <!-- Форма ввода текста -->
-                                                <div class="input create__task__input">
+                                            <!-- Форма ввода текста -->
+                                            <div class="input create__task__input">
 
-                                                    <div class="task-header">
+                                                <div class="task-header">
 
-                                                        <input type="text"                                                       
-                                                            th:field="*{title}"
-                                                            value=""
-                                                            class="form-control form-control__create-task"
-                                                            id="title"
-                                                            placeholder="Введите заголовок задачи..."
-                                                            aria-describedby="taskHelp">
-
-                                                    </div>
-
-                                                </div>
-                    
-                                                <div class="input create__task__input">
-                                        
-                                                    <div class="task-text">
-
-                                                        <input type="text"
-                                                            th:field="*{taskText}"
-                                                            value=""
-                                                            class="form-control form-control__create-task"
-                                                            id="taskText"
-                                                            placeholder="Введите описание задачи..."
-                                                            aria-describedby="taskHelp">
-
-                                                    </div>
+                                                    <input type="text"
+                                                           th:field="*{title}"
+                                                           value=""
+                                                           class="form-control form-control__create-task"
+                                                           id="title"
+                                                           placeholder="Введите заголовок задачи..."
+                                                           aria-describedby="taskHelp">
 
                                                 </div>
 
+                                            </div>
 
-                                                <div class="item item-first item__header__increment__buttons">
+                                            <div class="input create__task__input">
 
-                                                    <div class="tasks__wage__header__h1">
-                                                        <h2 class="wages ">Стоимость задачи</h2>
-                                                    </div>
+                                                <div class="task-text">
 
-                                                    <div class="task__wages__buttons">
-                                                        <a href = "#" class="btn__wages"  >-</a>
-                                                        <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
-                                                        <!--  <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
-                                                        <select class="btn__wages" th:field= "*{wages}">
-                                                            <option
-                                                                    th:each="i : ${#numbers.sequence(1, 100)}"
-                                                                    th:value="${i}"
-                                                                    th:text="${i}">
-                                                            </option>
-                                                        </select>
-                                                        <a href = "#" class="btn__wages">+</a>
-                                                    </div>
+                                                    <input type="text"
+                                                           th:field="*{taskText}"
+                                                           value=""
+                                                           class="form-control form-control__create-task"
+                                                           id="taskText"
+                                                           placeholder="Введите описание задачи..."
+                                                           aria-describedby="taskHelp">
 
                                                 </div>
-                                
-                                                <!-- Фото задачи -->
-                                                <div class="add__task__photo">
 
-                                                    <a href="#" class = add__photo__icon>
+                                            </div>
 
-                                                        <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_3.svg}">
 
+                                            <div class="item item-first item__header__increment__buttons">
+
+                                                <div class="tasks__wage__header__h1">
+                                                    <h2 class="wages ">Стоимость задачи</h2>
+                                                </div>
+
+                                                <div class="task__wages__buttons">
+                                                    <a th:onclick="'decWageValue();'" class="btn__wages"  >
+                                                        <img
+                                                                src="content/img/minus.svg"
+                                                                class="icons"
+                                                                alt="add__child"
+                                                                th:src="@{/content/img/minus.svg}">
                                                     </a>
 
-                                                    <h1 class="add__photo__header">Сделать фото задачи</h1>
 
-                                                </div>
-                                
-                                                <!-- Добавление ребенка -->
-                                                <div class="add__child">
+                                                    <!-- <button th:onclick="${taskForm.decrementWages()}" class="btn__wages"   >-</button>-->
+                                                    <!--  <a href = "#" class="btn__wages"  th:text="${taskForm.wages}" >5</a>-->
 
-                                                    <a href="#"class = add__child__icon>
-                                                        <img src="content/img/Icon_4.svg" class="icons" alt="add__child" th:src="@{/content/img/Icon_4.svg}">
-                                                    </a>
-
-                                                    <!-- <h1 class="add__child__header"></h1> -->
-
-                                                    <select th:field= "*{userExecutingTask}">
-
-                                                        <option th:value="*{null}">
-                                                            ребенок
-                                                        </option>
-
+                                                    <!--<select class="btn__wages" th:field= "*{wages}">
                                                         <option
+                                                                th:each="i : ${#numbers.sequence(1, 100)}"
+                                                                th:value="${i}"
+                                                                th:text="${i}">
+                                                        </option>
+                                                    </select>-->
+
+                                                    <input class="btn__wages"
+                                                           id = "input_wages_value"
+                                                           th:field="*{wages}"
+                                                           value=""
+                                                    >
+
+                                                    <!--<a href = "#" class="btn__wages"   >+</a>-->
+
+                                                    <a onclick="incWageValue()" class="btn__wages"  >
+                                                        <img
+                                                                src="content/img/plus.svg"
+                                                                class="icons"
+                                                                alt="add__child"
+                                                                th:src="@{/content/img/plus.svg}">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Фото задачи -->
+                                            <div class="add__task__photo">
+
+                                                <a href="#" class = add__photo__icon>
+
+                                                    <img src="content/img/Icon_3.svg" class="icons" alt="task__photo" th:src="@{/content/img/Icon_3.svg}">
+
+                                                </a>
+
+                                                <h1 class="add__photo__header">Сделать фото задачи</h1>
+
+                                            </div>
+
+                                            <!-- Добавление ребенка -->
+                                            <div class="add__child">
+
+                                                <a href="#"class = add__child__icon>
+                                                    <img src="content/img/Icon_4.svg" class="icons" alt="add__child" th:src="@{/content/img/Icon_4.svg}">
+                                                </a>
+
+                                                <!-- <h1 class="add__child__header"></h1> -->
+
+                                                <select th:field= "*{userExecutingTask}">
+
+                                                    <option th:value="*{null}">
+                                                        ребенок
+                                                    </option>
+
+                                                    <option
                                                             th:each="u : ${users}"
                                                             th:value="${u.login}"
-                                                            th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}">
-                                                                добавить ребенка
-                                                        </option>
+                                                            th:text="${u.login}">
+                                                        добавить ребенка
+                                                    </option>
+                                                    <!--th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"-->
 
-                                                    </select>
+                                                </select>
 
-                                                </div>
+                                            </div>
 
-                                                <span
+                                            <span
                                                     class="has-error"
                                                     th:text="${error}">
                                                 </span>
-                                
-                                                <!-- Кнопка создания формы -->
-                                                <button
+
+                                            <!-- Кнопка создания формы -->
+                                            <button
                                                     type="submit"
                                                     class="btn__submit btn-primary">
-                                                        Создать задачу
-                                                </button>
+                                                Создать задачу
+                                            </button>
 
-                                            </form>
-                                            
-                                        </div>
+                                        </form>
 
                                     </div>
 
@@ -204,33 +243,33 @@
 
                     </div>
 
-                    <div class="content__element__col right__content__element__col">
+                </div>
 
-                        <!-- Шаблоны задач -->
-                        <div class="container right__content__element">
+                <div class="content__element__col right__content__element__col">
 
-                            <div class="board board__task-examples">
+                    <!-- Шаблоны задач -->
+                    <div class="container right__content__element">
 
-                                <h1 class="header__h1 board__header__h1 tasks__list__board__header">Шаблоны задач:</h1>
+                        <div class="board board__task-examples">
 
-                                <div class="list tasks__examples__list">
+                            <h1 class="header__h1 board__header__h1 tasks__list__board__header">Шаблоны задач:</h1>
 
-                                    <!-- Карточка шаблона задачи -->
-                                    <div class="card card__task__example">
-                                        
-                                        <div class="card__row task__example__card__row">
+                            <div class="list tasks__examples__list">
 
-                                            <!-- Блок заголовок и текст карточки -->
-                                            <div class="card__header__text task__card__headerandtext">
+                                <!-- Карточка шаблона задачи -->
+                                <div class="card card__task__example">
 
-                                                <!-- Заголовок карточки -->
-                                                <h1 class="card__header__h1 task__card__header__h1">Заголовок задачи</h1>
+                                    <div class="card__row task__example__card__row">
 
-                                                <!-- Текст карточки -->
-                                                <p class="card__text__p task__card__text__p">Текст задачи</p>
+                                        <!-- Блок заголовок и текст карточки -->
+                                        <div class="card__header__text task__card__headerandtext">
 
-                                            </div>
-                                            
+                                            <!-- Заголовок карточки -->
+                                            <h1 class="card__header__h1 task__card__header__h1">Заголовок задачи</h1>
+
+                                            <!-- Текст карточки -->
+                                            <p class="card__text__p task__card__text__p">Текст задачи</p>
+
                                         </div>
 
                                     </div>
@@ -246,19 +285,27 @@
                 </div>
 
             </div>
-            
-        </section>
-    </main>
 
-    <footer class="footer">
-
-        <div class="footer__row">
-            <div th:insert="copyright :: copy" class="footer__text">
-
-            </div>
         </div>
 
-    </footer>
+    </section>
+</main>
+
+<footer class="footer">
+
+    <div class="footer__row">
+        <div th:insert="copyright :: copy" class="footer__text">
+
+        </div>
+    </div>
+
+</footer>
+
+<script>
+
+        document.getElementById('input_wages_value').value = wageValue;
+
+    </script>
 
 </body>
 

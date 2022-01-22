@@ -1,0 +1,141 @@
+body{
+    font-family: 'VAGRounded', sans-serif;
+    color: #000;
+    padding-top: 1;
+    padding-bottom: 40px;
+
+    background-color: #eee;
+    background-image: url(../../content/img/fon_ny_1-01.svg);
+}
+
+.registration {
+
+}
+
+.registration__container {
+}
+.content {
+}
+.registration__content {
+}
+.content__element {
+}
+
+.board__registration {
+    overflow:hidden;
+
+    height: 580px;
+    /* max-height: 60%; */
+    /* min-height: ; */
+    width: 40%;
+    max-width: 100%;
+    min-width: 320px;
+
+    padding: 15px;
+    margin: 0 auto;
+
+    background-image: url(../../content/img/fon_ny_2-01.svg);
+
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: 60%;
+    flex-grow: 6; */
+    margin-top: 8%;
+}
+
+.board__header__h1 {
+}
+
+.registration__board__header {
+}
+
+
+
+.header__h2, .board__header__h2, .registration__board__header {
+    margin-top: 3%;
+    margin-bottom: 30px;
+}
+
+.header__h2__choose-role{
+    display: flex;
+    justify-content: center;
+}
+
+.form-group {
+}
+
+.form-group > input {
+    margin-bottom: 20px;
+}
+
+.form-control {
+}
+
+.form-control__input{
+    /* margin-top: 3%; */
+    margin-bottom: 3%;
+}
+
+.has-error {
+    color: red
+}
+
+input:focus::placeholder {
+    opacity: 0;
+    box-shadow: #4f1dac;
+}
+
+.btn {
+    min-height: 51px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #01996D;
+
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+
+
+.btn-lg {
+    margin-top: 10%;
+    margin-bottom: 3%;
+    width: 100%;
+}
+
+.btn-primary {
+}
+
+.btn-block {
+}
+
+.registration__container {
+}
+.registration__content {
+}
+.content__element__col {
+}
+
+.checkbox__col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.checkbox__row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}

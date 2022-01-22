@@ -1,9 +1,9 @@
 package ru.coolteam.earnpocketmoney.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.coolteam.earnpocketmoney.models.Task;
-import ru.coolteam.earnpocketmoney.models.User;
+import ru.coolteam.earnpocketmoney.models.*;
 import ru.coolteam.earnpocketmoney.repositories.PeopleGroupsRepository;
 import ru.coolteam.earnpocketmoney.repositories.StatusRepository;
 import ru.coolteam.earnpocketmoney.repositories.TaskRepository;
@@ -100,5 +100,20 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
+    public List<Task> findTasksByUserAndStatus (User user, Status status){
+        List<Task> tasks = null;
+        tasks = taskRepository.findTasksByUserExecutingTaskAndStatusOrderByUpdatedAtAsc(user, status);
+        return tasks;
+    }
+
+    public Task findTaskByUserAndStatus (User user, Status status){
+        List<Task> tasks = null;
+        tasks = taskRepository.findTasksByUserExecutingTaskAndStatusOrderByUpdatedAtAsc(user, status);
+        Task task = null;
+        if(tasks.size()!=0){
+            task = taskRepository.findTasksByUserExecutingTaskAndStatusOrderByUpdatedAtAsc(user, status).get(0);
+        }
+        return task;
+    }
 
 }

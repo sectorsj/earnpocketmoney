@@ -19,8 +19,11 @@ create table wallets (
 
 
 insert into wallets (value) values
-(99),
-(101);
+(100),
+(5),
+(101),
+(17),
+(1);
 
 drop table  if exists people_groups;
 create table people_groups (
@@ -28,8 +31,8 @@ create table people_groups (
                 name                        varchar(30) not null unique
 );
 insert into people_groups (name) values
-('Abramov'),
-('Yakovlev');
+('Ivanov'),
+('Petrov');
 
 drop table if exists statuses;
 create table statuses (
@@ -38,10 +41,11 @@ create table statuses (
 );
 
 insert into statuses (title) values
-('do_not_accepted'),
-('accepted'),
-('executed'),
-('expired');
+('не принято'),
+('принято'),
+('выполнено'),
+('подтверждено выполнение'),
+('просрочено');
 
 drop table  if exists users;
 create table users (
@@ -57,11 +61,11 @@ create table users (
 
 insert into users (login, password,id_wallet, id_role, id_people_groups) values
 --*пароль у всех один - '100'*--
-('parent1', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 1, 1, 1),
-('children1', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 1),
-('parent2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 1, 1, 2),
-('children2', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 2),
-('children3', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 1);
+('Pavel', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 1, 1, 1),
+('Masha', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 2, 2, 1),
+('Petr', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 3, 1, 2),
+('Dasha', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 4, 2, 2),
+('Sasha', '$2a$10$VH3WAg6iuGwMvBAFM1CNUOqJiw8MYT5oQF3rZqsf.gAA441m91sgy', 5, 2, 1);
 
 
 drop table  if exists bonuses;
@@ -81,7 +85,7 @@ drop table  if exists tasks;
 create table tasks (
                 id                          bigserial primary key,
                 title                       varchar(30) not null,
-                task_text                   varchar(80),
+                task_text                   varchar(300),
                 created_at                  timestamp default current_timestamp,
                 updated_at                  timestamp,
                 id_user_creating_task       integer not null REFERENCES users(id),
@@ -93,16 +97,18 @@ create table tasks (
 
 insert into tasks (title, task_text , id_user_creating_task, id_user_executing_task, id_status , wages)
 values
-('Тестовая задача 1', '1 task description! attention! attention!', 1, 2, 1, 15),
-('Тестовая задача 2', '2 task description! attention! attention!', 1, 2, 1, 24),
-('Тестовая задача 3', '3 task description! attention! attention!', 1, 2, 2, 1),
-('Тестовая задача 33', '33 task description! attention! attention!', 1, 5, 2, 1),
-('Тестовая задача 4', '4 task description! attention! attention!', 3, 4, 3, 14),
-('Тестовая задача 5', '5 task description! attention! attention!', 3, 4, 3, 10);
+('Вынести мусор', 'Вынести мусор с кухни до вечера', 1, 2, 1, 15),
+('Сделать уроки', 'Сделать ДЗ по математике, геометрии и дипломную работу в ГикБрэйнс', 1, 2, 1, 24),
+('Выгулять собаку', 'Выгулять собаку на площадке за домом', 1, 2, 2, 1),
+('Сходить в магазин', 'Купить: хлеб, молоко, масло, яйца и сыр, шоколадку себе на сдачу', 1, 5, 2, 1),
+('Провести уборку', 'Убрать игрушки в детской, пропылесосить и помыть полы', 3, 4, 2, 14),
+('Постирать кроссовки', 'Замочить в тазу свои кроссовки с порошком на 20 минут, после чего постирать, прополоскать и высушить', 3, 4, 2, 10);
 
 
 insert into bonuses (title, id_user_creating_bonus , price) values
-('bicycle', 1, 15),
-('gun', 2, 99);
+('Велосипед', 1, 15),
+('Ноутбук', 1, 19),
+('Коньки', 1, 35),
+('Пистолет (пока что водяной)', 2, 99);
 
 commit;

@@ -2,10 +2,7 @@ package ru.coolteam.earnpocketmoney.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.coolteam.earnpocketmoney.models.PeopleGroups;
-import ru.coolteam.earnpocketmoney.models.Role;
-import ru.coolteam.earnpocketmoney.models.Task;
-import ru.coolteam.earnpocketmoney.models.User;
+import ru.coolteam.earnpocketmoney.models.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,5 +16,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findTaskByUserCreatingTask (User user);
     List<Task> findTaskByUserExecutingTask (User user);
     List<Task> findAllByUserExecutingTask_PeopleGroups (PeopleGroups peopleGroups);
+    List<Task> findTasksByUserExecutingTaskAndStatusOrderByUpdatedAtAsc (User userExecutingTask, Status status);
 
 }
