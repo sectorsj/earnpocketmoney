@@ -43,10 +43,11 @@ public class TaskController {
         return "task_info";
     }
 
-    @GetMapping("/create")
-    public String createNewTask(@RequestParam(name = "title") String title) {
-        taskService.createTask(title);
-        return "New task = " + title;
+    // Поиск по Заголовку Задачи
+    @GetMapping("/getTitle")
+    public TaskDto getTaskDtoByTitle(@RequestParam String title){
+        TaskDto taskDto = new TaskDto(taskService.findByTitle(title).get()) ;
+        return taskDto;
     }
 
     // Обновление времени создания Задачи

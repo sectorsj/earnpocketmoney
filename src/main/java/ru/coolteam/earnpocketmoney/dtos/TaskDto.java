@@ -4,7 +4,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.coolteam.earnpocketmoney.models.Task;
 
+import java.time.LocalDateTime;
+
 @Data
+@NoArgsConstructor
 public class TaskDto {
     private Long id;
     private String title;

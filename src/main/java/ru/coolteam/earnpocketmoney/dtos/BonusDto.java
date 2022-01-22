@@ -10,24 +10,29 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BonusDto {
 
+    private Integer id;
     private String title;
-    private ParentDto parentDto;
-    private ChildDto childDto;
-    private Integer price;
-    private LocalDateTime receivedAt;
+    private String bonusText;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private UserDto userCreatingBonus;
+    private UserDto userGettingBonus;
+    private Long price;
+    private Boolean gettingStatus;
 
     public BonusDto(Bonus bonus) {
+        this.id = bonus.getId();
         this.title = bonus.getTitle();
-        this.parentDto = new ParentDto(bonus.getParent());
-        if(bonus.getChild()!=null) {
-            this.childDto = new ChildDto(bonus.getChild());
+        this.bonusText = bonus.getBonusText();
+        this.createdAt = bonus.getCreatedAt();
+        this.updatedAt = bonus.getUpdatedAt();
+        this.userCreatingBonus = new UserDto(bonus.getUserCreatingBonus());
+        if(bonus.getUserGettingBonus()!=null){
+        this.userGettingBonus = new UserDto(bonus.getUserGettingBonus());
         }else {
-            this.childDto = new ChildDto();
+            this.userGettingBonus = new UserDto();
         }
         this.price = bonus.getPrice();
-        this.receivedAt = bonus.getReceivedAt();
+        this.gettingStatus = bonus.getGettingStatus();
     }
-
-
-
 }
