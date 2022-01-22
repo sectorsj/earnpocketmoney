@@ -25,32 +25,20 @@ public class BonusService {
         return bonusRepository.findAll();
     }
 
-    public List<Bonus> getAllBonusesByPeopleGroups(PeopleGroups peopleGroups) {
-        return bonusRepository.findBonusByUserCreatingBonus_PeopleGroups(peopleGroups);
-    }
-
-    public List<Bonus> getAllBonusesByUserCreatingBonus (User userCreatingBonus){
-        return bonusRepository.findBonusByUserCreatingBonus(userCreatingBonus);
-    }
-
-    public List<Bonus> getAllBonusesByUserGettingBonus (User userGettingBonus){
-        return bonusRepository.findBonusByUserGettingBonus(userGettingBonus);
-    }
-
     public Optional<Bonus> findByName (String title) {
         return bonusRepository.findFirstBonusByTitle(title);
     }
 
-    public Bonus createBonus (String title, User userCreatingBonus, Long price){
+    public Bonus createBonus (String title, Parent parent, Integer price){
         Bonus bonus = new Bonus();
         bonus.setTitle(title);
-        bonus.setUserCreatingBonus(userCreatingBonus);
+        bonus.setParent(parent);
         bonus.setPrice(price);
         return bonusRepository.save(bonus);
     }
 
     //метод для корректировки стоимости бонуса родителем
-    public Bonus updateBonusFromParent (String title, User userCreatingBonus, Long price){
+    public Bonus updateBonusFromParent (String title, Parent parent, Integer price){
         Bonus bonus = findByName(title).get();
         bonus.setPrice(price);
         return bonusRepository.save(bonus);
@@ -58,10 +46,10 @@ public class BonusService {
     }
 
     //метод для корректировки бонуса со стороны ребенка (получение)
-    public Bonus updateBonusFromChildren (String title, User userGettingBonus, LocalDateTime localDateTime){
+    public Bonus updateBonusFromChildren (String title, Child child, LocalDateTime localDateTime){
         Bonus bonus = findByName(title).get();
-        bonus.setUserGettingBonus(userGettingBonus);
-        bonus.setUpdatedAt(localDateTime);
+        bonus.setChild(child);
+        bonus.setReceivedAt(localDateTime);
         return bonusRepository.save(bonus);
     }
 
@@ -70,7 +58,5 @@ public class BonusService {
         bonusRepository.delete(bonus);
         return true;
     }
-
-
 
 }

@@ -1,5 +1,6 @@
 package ru.coolteam.earnpocketmoney.models;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -21,27 +22,28 @@ public class Bonus {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "bonus_text")
-    private String bonusText;
-
-    @Column(name = "created_at")
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @ManyToOne
+    @JoinColumn(name = "id_parent")
+    private Parent parent;
 
     @ManyToOne
-    @JoinColumn(name = "id_user_creating_bonus")
-    private User userCreatingBonus;
-
-    @ManyToOne
-    @JoinColumn(name = "id_user_getting_bonus")
-    private User userGettingBonus;
+    @JoinColumn(name = "id_child")
+    private Child child;
 
     @Column(name = "price")
-    private Long price;
+    private Integer price;
 
-    @Column(name = "getting_status")
-    private Boolean gettingStatus;
+    @Column(name = "received_at")
+    private LocalDateTime receivedAt;
+
+    public Bonus(Integer id, String title, Parent parent, Child child, Integer price, LocalDateTime receivedAt) {
+        this.id = id;
+        this.title = title;
+        this.parent = parent;
+        this.child = child;
+        this.price = price;
+        this.receivedAt = receivedAt;
+    }
+
+
 }
