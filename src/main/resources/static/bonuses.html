@@ -140,12 +140,15 @@
                                                 </div>
 
                                                 <div class="task__wages__buttons">
-                                                    <a th:onclick="'decPriceValue();'" class="btn__wages"  >
+
+                                                    <a href="#" th:onclick="'decPriceValue();'" class="btn__wages btn__wages__elem">
+
                                                         <img
-                                                                src="content/img/minus.svg"
-                                                                class="icons"
-                                                                alt="add__child"
-                                                                th:src="@{/content/img/minus.svg}">
+                                                            src="content/img/minus.svg"
+                                                            class="icons"
+                                                            alt="add__child"
+                                                            th:src="@{/content/img/minus.svg}">
+
                                                     </a>
 
                                                     <!--<a href = "#" class="btn__wages"  >-</a>-->
@@ -159,18 +162,24 @@
                                                         </option>
                                                     </select>-->
 
-                                                    <input class="btn__wages"
-                                                           id = "input_price_value"
-                                                           th:field="*{price}"
-                                                           value=""
+                                                    <input
+                                                        class="btn__wages btn__wages__elem"
+                                                        id = "input_price_value"
+                                                        th:field="*{price}"
+                                                        value=""
                                                     >
+
                                                     <!--<a href = "#" class="btn__wages"   >+</a>-->
-                                                    <a onclick="incPriceValue()" class="btn__wages"  >
+                                                    <a href="#" onclick="incPriceValue()" class="btn__wages btn__wages__elem" >
+
                                                         <img
-                                                                src="content/img/plus.svg"
-                                                                class="icons"
-                                                                alt="add__child"
-                                                                th:src="@{/content/img/plus.svg}"></a>
+                                                            src="content/img/plus.svg"
+                                                            class="icons"
+                                                            alt="add__child"
+                                                            th:src="@{/content/img/plus.svg}">
+
+                                                    </a>
+
                                                 </div>
 
                                             </div>

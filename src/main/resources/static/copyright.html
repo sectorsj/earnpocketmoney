@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/blocks/board_greeting.css}"/>
+    <link rel="stylesheet" th:href="@{/css/blocks/footer.css}"/>
+    <link rel="stylesheet" th:href="@{/css/blocks/base.css}"/>
+    <link rel="stylesheet" th:href="@{/css/blocks/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/css/fonts/VAGRounded/stylesheet.css}"/>
+    <link rel="stylesheet" href="css/blocks/board_greeting.css">
+    <link rel="stylesheet" href="css/blocks/footer.css">
+    <link rel="stylesheet" href="css/blocks/base.css">
+    <link rel="stylesheet" href="css/blocks/reset.css">
+    <link rel="stylesheet" href="css/fonts/VAGRounded/stylesheet.css">
+</head>
+
 <body>
-<div th:fragment="copy">
-    © 2021 CoolTeam
-</div>
+    <div th:fragment="copy">
+        <footer class="footer">
+            <div class="container">
+                © 2021 CoolTeam
+            </div> 
+        </footer>
+    </div>
 </body>
 </html>

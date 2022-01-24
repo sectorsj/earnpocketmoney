@@ -66,7 +66,7 @@
                 document.getElementById('input_wages_value').value = wageValue;
             }
 
-        </script>
+    </script>
 
 </header>
 
@@ -95,9 +95,9 @@
 
                                         <!-- Форма создания карточки -->
                                         <form
-                                                method="POST"
-                                                th:action="@{/api/v1/tasks}"
-                                                th:object="${taskForm}">
+                                            method="POST"
+                                            th:action="@{/api/v1/tasks}"
+                                            th:object="${taskForm}">
 
                                             <!-- Форма ввода текста -->
                                             <div class="input create__task__input">
@@ -105,12 +105,12 @@
                                                 <div class="task-header">
 
                                                     <input type="text"
-                                                           th:field="*{title}"
-                                                           value=""
-                                                           class="form-control form-control__create-task"
-                                                           id="title"
-                                                           placeholder="Введите заголовок задачи..."
-                                                           aria-describedby="taskHelp">
+                                                        th:field="*{title}"
+                                                        value=""
+                                                        class="form-control form-control__create-task"
+                                                        id="title"
+                                                        placeholder="Введите заголовок задачи..."
+                                                        aria-describedby="taskHelp">
 
                                                 </div>
 
@@ -121,12 +121,12 @@
                                                 <div class="task-text">
 
                                                     <input type="text"
-                                                           th:field="*{taskText}"
-                                                           value=""
-                                                           class="form-control form-control__create-task"
-                                                           id="taskText"
-                                                           placeholder="Введите описание задачи..."
-                                                           aria-describedby="taskHelp">
+                                                        th:field="*{taskText}"
+                                                        value=""
+                                                        class="form-control form-control__create-task"
+                                                        id="taskText"
+                                                        placeholder="Введите описание задачи..."
+                                                        aria-describedby="taskHelp">
 
                                                 </div>
 
@@ -140,12 +140,15 @@
                                                 </div>
 
                                                 <div class="task__wages__buttons">
-                                                    <a th:onclick="'decWageValue();'" class="btn__wages"  >
+                                                    
+                                                    <a href="#" th:onclick="'decWageValue();'" class="btn__wages btn__wages__elem">
+
                                                         <img
-                                                                src="content/img/minus.svg"
-                                                                class="icons"
-                                                                alt="add__child"
-                                                                th:src="@{/content/img/minus.svg}">
+                                                            src="content/img/minus.svg"
+                                                            class="icons"
+                                                            alt="add__child"
+                                                            th:src="@{/content/img/minus.svg}">
+
                                                     </a>
 
 
@@ -160,21 +163,25 @@
                                                         </option>
                                                     </select>-->
 
-                                                    <input class="btn__wages"
+                                                        <input
+                                                            class="btn__wages btn__wages__elem"
                                                            id = "input_wages_value"
                                                            th:field="*{wages}"
                                                            value=""
-                                                    >
+                                                           placeholder=""
+                                                        >
 
                                                     <!--<a href = "#" class="btn__wages"   >+</a>-->
 
-                                                    <a onclick="incWageValue()" class="btn__wages"  >
+                                                    <a href="#" onclick="incWageValue()" class=" btn__wages btn__wages__elem">
+
                                                         <img
                                                                 src="content/img/plus.svg"
                                                                 class="icons"
                                                                 alt="add__child"
                                                                 th:src="@{/content/img/plus.svg}">
                                                     </a>
+
                                                 </div>
 
                                             </div>
@@ -208,10 +215,10 @@
                                                     </option>
 
                                                     <option
-                                                            th:each="u : ${users}"
-                                                            th:value="${u.login}"
-                                                            th:text="${u.login}">
-                                                        добавить ребенка
+                                                        th:each="u : ${users}"
+                                                        th:value="${u.login}"
+                                                        th:text="${u.login}">
+                                                            добавить ребенка
                                                     </option>
                                                     <!--th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"-->
 
@@ -220,15 +227,15 @@
                                             </div>
 
                                             <span
-                                                    class="has-error"
-                                                    th:text="${error}">
-                                                </span>
+                                                class="has-error"
+                                                th:text="${error}">
+                                            </span>
 
                                             <!-- Кнопка создания формы -->
                                             <button
-                                                    type="submit"
-                                                    class="btn__submit btn-primary">
-                                                Создать задачу
+                                                type="submit"
+                                                class="btn__submit btn-primary">
+                                                    Создать задачу
                                             </button>
 
                                         </form>

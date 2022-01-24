@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EPM_Index</title>
 
-   <link th:href="@{/css/blocks/board_greeting.css}" rel="stylesheet" />
+    <link th:href="@{/css/blocks/board_greeting.css}" rel="stylesheet" />
     <link th:href="@{/css/blocks/header.css}" rel="stylesheet" />
     <link th:href="@{/css/blocks/base.css}" rel="stylesheet" />
     <link th:href="@{/css/blocks/reset.css}" rel="stylesheet" />
@@ -24,13 +24,19 @@
 </head>
 
 <body>
+
     <header class="header">
+
         <div class="container">
+
             <div class="header-row">
+
                 <div class="header-logo">
-                    <img src="content/img/logo-01.svg"  alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
+                    <img src="content/img/logo-01.svg" alt="Logo" width="250px" th:src="@{/content/img/logo-01.svg}">
                 </div>
+
                 <nav class="header-nav">
+
                     <ul class="">
                         <li><a href="#" class="link__active">Главная</a></li>
                         <li><a th:href="@{/api/v1/cabinet}">Кабинет</a></li>
@@ -38,18 +44,23 @@
                         <li><a th:href="@{/api/v1/tasks}">Задачи</a></li>
                         <li><a href="#">Статистика</a></li>
                     </ul>
+
                 </nav>
+
                 <div class="header-login">
 
                     <a class="btn__signin" th:href="@{/register}">Регистрация</a>
                     <a class="btn btn-default" th:href="@{/auth}">Вход</a>
 
                 </div>
+
             </div>
+
         </div>
+        
     </header>
 
-    <main>
+    <main  class="main">
 
         <section class="index">
 
@@ -88,9 +99,9 @@
 
     </main>
 
-    <footer>
-        <div th:insert="copyright :: copy">
-
+    <footer class="footer">
+        <div class="copy" th:insert="copyright :: copy">
+            
         </div>
     </footer>
 

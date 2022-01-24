@@ -159,72 +159,78 @@
                                 <!-- Родитель : Parent 1            -->
                                 <!-- Назначить : ----------         -->
                                 <!-- Назначить Подтвердить          -->
-                                <form class="item  item__role_buttons item-second"
-                                      method="POST"
-                                      th:if="${user.role.getRole().equals('ROLE_PARENT')}"
-                                      th:action="@{ '/api/v1/task_info/addChild/' + ${taskDto.id}}"
-                                      th:object="${taskForm}"
-                                >
+                                <div class="form-position">
 
-                                    <div class="p__column">
+                                    <form
+                                        class="item item__role_buttons item-second"
+                                        method="POST"
+                                        th:if="${user.role.getRole().equals('ROLE_PARENT')}"
+                                        th:action="@{ '/api/v1/task_info/addChild/' + ${taskDto.id}}"
+                                        th:object="${taskForm}">
 
-                                        <div class="text-field">
-                                            <p class="text-field__p" th:text="${'Вы: ' + user.login}" >Родитель : Parent 1</p>
-                                        </div>
+                                        <div class="p__column">
+
+                                            <div class="text-field text-field__appoint">
+                                                <p class="text-field__p " th:text="${'Вы: ' + user.login}" >Родитель : Parent 1</p>
+                                            </div>
 
 
-                                        <p class="text-field__p">Назначить :
+                                            <p class="text-field__p">Назначить :
 
-                                            <select th:field= "*{userExecutingTask}">
-                                                <option th:value="*{null}">  Задача на выбор  </option>
-                                                <option
+                                                <select th:field= "*{userExecutingTask}">
+
+                                                    <option th:value="*{null}">
+                                                        ребенок
+                                                    </option>
+
+                                                    <option
                                                         th:each="u : ${users}"
                                                         th:value="${u.login}"
-                                                        th:text="${u.login}"
-                                                >
-                                                    <!--th:text="${u.login + ',  Количество текущих задач: ' +  u.executingTasksListSize}"-->
-                                                    ----------
-                                                </option>
+                                                        th:text="${u.login}">
+                                                            ----------
+                                                    </option>
 
-                                            </select>
+                                                </select>
 
-                                        </p>
+                                            </p>
 
-                                    </div>
+                                        </div>
 
-                                    <div class="btn__row btn__jc-sb">
+                                        <div class="btn__row btn__jc-sb">
 
-                                        <button type="submit"
-                                                class="btn btn-action btn-acton__parent btn-acton__parent__appoint"
-                                        >
-                                            Назначить
-                                        </button>
+                                            <button
+                                                type="submit"
+                                                class="btn btn-action btn-acton__parent btn-acton__parent__appoint">
+                                                    Назначить
+                                            </button>
 
-                                        <a type="submit"
-                                           class="btn btn-action btn-acton__parent btn-acton__parent__confirm"
-                                           th:href="@{ '/api/v1/task_info/end/confirmation/' + ${taskDto.id}}">
-                                            Подтвердить
-                                        </a>
+                                            <a
+                                                type="submit"
+                                                class="btn btn-action btn-acton__parent btn-acton__parent__confirm"
+                                                th:href="@{ '/api/v1/task_info/end/confirmation/' + ${taskDto.id}}">
+                                                    Подтвердить
+                                            </a>
 
-                                    </div>
+                                        </div>
 
-                                </form>
+                                    </form>
+
+                                </div>
 
 
                                 <!--Пункт                           -->
                                 <!-- Родитель : Child 1             -->
                                 <!-- Принять Завершить              -->
-                                <div class="item item__role_buttons item-third "
+
+                                <!-- <div class="item item__role_buttons item-third "
                                      th:if="${user.role.getRole().equals('ROLE_CHILDREN')}">
 
-                                    <div class="text-field ">
+                                    <div class="text-field">
                                         <p class="text-field__p" th:text="${'Вы: ' + user.login}">Ребенок : Child 1</p>
                                     </div>
 
                                     <div class="btn__row btn__jc-sb">
 
-                                        <!-- <a class="btn btn__add-task" th:href="@{/}">Принять</a> -->
-                                        <!-- <a class="btn btn__add-task" th:href="@{/}">Завершить</a>  -->
                                         <a type="submit"
                                            class="btn btn-action btn-acton__child btn-acton__child__accept"
                                            th:href="@{ '/api/v1/task_info/accepted/' + ${taskDto.id}}">
@@ -239,7 +245,7 @@
 
                                     </div>
 
-                                </div>
+                                </div> -->
 
                             </div>
 
